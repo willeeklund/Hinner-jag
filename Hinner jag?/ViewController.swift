@@ -112,7 +112,7 @@ class ViewController: UITableViewController, CLLocationManagerDelegate {
             if nil == cell {
                 cell = TravelHeaderCell()
             }
-            cell?.headerLabel?.text = "Plattform \(section)"
+            cell?.headerLabel?.text = "Riktning \(section)"
             return cell! as TravelHeaderCell
         }
     }
@@ -136,7 +136,7 @@ class ViewController: UITableViewController, CLLocationManagerDelegate {
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
-            return 75.0
+            return 95.0
         } else {
             return 45.0
         }

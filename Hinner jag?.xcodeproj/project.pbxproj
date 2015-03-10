@@ -26,6 +26,10 @@
 		0211B2351AAE393E00947C45 /* HeadlineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0211B2341AAE393E00947C45 /* HeadlineCell.swift */; };
 		0211B2371AAE395C00947C45 /* TravelDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0211B2361AAE395C00947C45 /* TravelDetailsCell.swift */; };
 		0211B2391AAE397900947C45 /* TravelHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0211B2381AAE397900947C45 /* TravelHeaderCell.swift */; };
+		0211B2471AAE4BB000947C45 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0211B2461AAE4BB000947C45 /* NotificationCenter.framework */; };
+		0211B24C1AAE4BB000947C45 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0211B24B1AAE4BB000947C45 /* TodayViewController.swift */; };
+		0211B24E1AAE4BB000947C45 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0211B24D1AAE4BB000947C45 /* MainInterface.storyboard */; };
+		0211B2511AAE4BB000947C45 /* Hinner jag widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0211B2441AAE4BB000947C45 /* Hinner jag widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +61,13 @@
 			remoteGlobalIDString = 0211B20A1AAE37FB00947C45;
 			remoteInfo = HinnerJagKit;
 		};
+		0211B24F1AAE4BB000947C45 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0211B1D61AAE37B600947C45 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0211B2431AAE4BB000947C45;
+			remoteInfo = "Hinner jag widget";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -69,6 +80,17 @@
 				0211B2231AAE37FC00947C45 /* HinnerJagKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0211B2551AAE4BB000947C45 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				0211B2511AAE4BB000947C45 /* Hinner jag widget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -98,8 +120,11 @@
 		0211B2341AAE393E00947C45 /* HeadlineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadlineCell.swift; sourceTree = "<group>"; };
 		0211B2361AAE395C00947C45 /* TravelDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelDetailsCell.swift; sourceTree = "<group>"; };
 		0211B2381AAE397900947C45 /* TravelHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelHeaderCell.swift; sourceTree = "<group>"; };
-		0211B23A1AAE423B00947C45 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		0211B23C1AAE426B00947C45 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		0211B2441AAE4BB000947C45 /* Hinner jag widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Hinner jag widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0211B2461AAE4BB000947C45 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		0211B24A1AAE4BB000947C45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0211B24B1AAE4BB000947C45 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		0211B24D1AAE4BB000947C45 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,18 +158,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0211B2411AAE4BB000947C45 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0211B2471AAE4BB000947C45 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		0211B1D51AAE37B600947C45 = {
 			isa = PBXGroup;
 			children = (
-				0211B23C1AAE426B00947C45 /* CoreLocation.framework */,
-				0211B23A1AAE423B00947C45 /* MapKit.framework */,
 				0211B1E01AAE37B600947C45 /* Hinner jag? */,
 				0211B1F91AAE37B600947C45 /* Hinner jag?Tests */,
 				0211B20C1AAE37FB00947C45 /* HinnerJagKit */,
 				0211B21B1AAE37FC00947C45 /* HinnerJagKitTests */,
+				0211B2481AAE4BB000947C45 /* Hinner jag widget */,
+				0211B2451AAE4BB000947C45 /* Frameworks */,
 				0211B1DF1AAE37B600947C45 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -156,6 +189,7 @@
 				0211B1F61AAE37B600947C45 /* Hinner jag?Tests.xctest */,
 				0211B20B1AAE37FB00947C45 /* HinnerJagKit.framework */,
 				0211B2151AAE37FC00947C45 /* HinnerJagKitTests.xctest */,
+				0211B2441AAE4BB000947C45 /* Hinner jag widget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -248,6 +282,32 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		0211B2451AAE4BB000947C45 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0211B2461AAE4BB000947C45 /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0211B2481AAE4BB000947C45 /* Hinner jag widget */ = {
+			isa = PBXGroup;
+			children = (
+				0211B24B1AAE4BB000947C45 /* TodayViewController.swift */,
+				0211B24D1AAE4BB000947C45 /* MainInterface.storyboard */,
+				0211B2491AAE4BB000947C45 /* Supporting Files */,
+			);
+			path = "Hinner jag widget";
+			sourceTree = "<group>";
+		};
+		0211B2491AAE4BB000947C45 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0211B24A1AAE4BB000947C45 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -270,11 +330,13 @@
 				0211B1DB1AAE37B600947C45 /* Frameworks */,
 				0211B1DC1AAE37B600947C45 /* Resources */,
 				0211B2271AAE37FC00947C45 /* Embed Frameworks */,
+				0211B2551AAE4BB000947C45 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				0211B2211AAE37FC00947C45 /* PBXTargetDependency */,
+				0211B2501AAE4BB000947C45 /* PBXTargetDependency */,
 			);
 			name = "Hinner jag?";
 			productName = "Hinner jag?";
@@ -336,6 +398,23 @@
 			productReference = 0211B2151AAE37FC00947C45 /* HinnerJagKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		0211B2431AAE4BB000947C45 /* Hinner jag widget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0211B2521AAE4BB000947C45 /* Build configuration list for PBXNativeTarget "Hinner jag widget" */;
+			buildPhases = (
+				0211B2401AAE4BB000947C45 /* Sources */,
+				0211B2411AAE4BB000947C45 /* Frameworks */,
+				0211B2421AAE4BB000947C45 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Hinner jag widget";
+			productName = "Hinner jag widget";
+			productReference = 0211B2441AAE4BB000947C45 /* Hinner jag widget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -359,6 +438,9 @@
 						CreatedOnToolsVersion = 6.1.1;
 						TestTargetID = 0211B1DD1AAE37B600947C45;
 					};
+					0211B2431AAE4BB000947C45 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
 				};
 			};
 			buildConfigurationList = 0211B1D91AAE37B600947C45 /* Build configuration list for PBXProject "Hinner jag?" */;
@@ -378,6 +460,7 @@
 				0211B1F51AAE37B600947C45 /* Hinner jag?Tests */,
 				0211B20A1AAE37FB00947C45 /* HinnerJagKit */,
 				0211B2141AAE37FC00947C45 /* HinnerJagKitTests */,
+				0211B2431AAE4BB000947C45 /* Hinner jag widget */,
 			);
 		};
 /* End PBXProject section */
@@ -411,6 +494,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0211B2421AAE4BB000947C45 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0211B24E1AAE4BB000947C45 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +548,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0211B2401AAE4BB000947C45 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0211B24C1AAE4BB000947C45 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -479,6 +578,11 @@
 			isa = PBXTargetDependency;
 			target = 0211B20A1AAE37FB00947C45 /* HinnerJagKit */;
 			targetProxy = 0211B2201AAE37FC00947C45 /* PBXContainerItemProxy */;
+		};
+		0211B2501AAE4BB000947C45 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0211B2431AAE4BB000947C45 /* Hinner jag widget */;
+			targetProxy = 0211B24F1AAE4BB000947C45 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -536,7 +640,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -572,7 +676,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -583,6 +687,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Hinner jag?/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -593,6 +698,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Hinner jag?/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -636,6 +742,7 @@
 		0211B2251AAE37FC00947C45 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -661,6 +768,7 @@
 		0211B2261AAE37FC00947C45 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -710,6 +818,32 @@
 			};
 			name = Release;
 		};
+		0211B2531AAE4BB000947C45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Hinner jag widget/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		0211B2541AAE4BB000947C45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Hinner jag widget/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -729,6 +863,7 @@
 				0211B2021AAE37B600947C45 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0211B2031AAE37B600947C45 /* Build configuration list for PBXNativeTarget "Hinner jag?Tests" */ = {
 			isa = XCConfigurationList;
@@ -737,6 +872,7 @@
 				0211B2051AAE37B600947C45 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0211B2241AAE37FC00947C45 /* Build configuration list for PBXNativeTarget "HinnerJagKit" */ = {
 			isa = XCConfigurationList;
@@ -745,6 +881,7 @@
 				0211B2261AAE37FC00947C45 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0211B2281AAE37FC00947C45 /* Build configuration list for PBXNativeTarget "HinnerJagKitTests" */ = {
 			isa = XCConfigurationList;
@@ -753,6 +890,16 @@
 				0211B22A1AAE37FC00947C45 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0211B2521AAE4BB000947C45 /* Build configuration list for PBXNativeTarget "Hinner jag widget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0211B2531AAE4BB000947C45 /* Debug */,
+				0211B2541AAE4BB000947C45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
