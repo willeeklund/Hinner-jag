@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-public class LocateStation
+public class LocateStation: NSObject, CLLocationManagerDelegate
 {
     lazy var stationList: [Station] = {
         var tmpList = [Station]()
@@ -26,11 +26,50 @@ public class LocateStation
         //        tmpList.append(Station(id: , latitude: , longitude: , title: ""))
         return tmpList
     }()
+    
+    var locationManager: CLLocationManager! = CLLocationManager()
+    
+    var realtimeDeparturesObj = RealtimeDepartures()
 
-    public init() {
-        println("LocateStation.init()")
+    public var locationUpdatedCallback: ((station: Station?, departures: [Departure]?, error: NSError?) -> ())?
+
+    // MARK: - Init
+    public override init() {
+        super.init()
+        self.locationManager.delegate = self
+        self.locationManager.requestWhenInUseAuthorization()
+    }
+    
+    public func startUpdatingLocation() {
+        self.locationManager.startUpdatingLocation()
+    }
+    
+    // MARK: - Get location of the user
+    public func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        self.locationManager.stopUpdatingLocation()
+        let location = locations.last as CLLocation
+        self.findClosestStationFromLocation(location)
+    }
+    
+    public func findClosestStationFromLocation(location: CLLocation) {
+        var closestStation = self.findStationClosestToLatitude(location.coordinate.latitude, longitude: location.coordinate.longitude)
+        assert(nil != closestStation, "No station was found")
+
+        self.realtimeDeparturesObj.departuresFromStationId(closestStation!.id) {
+            (departures: [Departure]?, error: NSError?) -> () in
+            // When we check that the user is reasonably close to ANY station,
+            // this is a good place to send back possible errors
+            if nil != self.locationUpdatedCallback {
+                self.locationUpdatedCallback?(station: closestStation, departures: departures, error: nil)
+            }
+        }
+    }
+    
+    public func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+        println("ERROR - location manager: \(error)")
     }
 
+    // Compare distance from all known stations, return closest one
     public func findStationClosestToLatitude(latitude: Double, longitude: Double) -> Station? {
         var userLocation = CLLocation(latitude: latitude, longitude: longitude)
         var closest: Station? = self.stationList.first

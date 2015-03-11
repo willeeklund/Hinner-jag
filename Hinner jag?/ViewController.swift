@@ -8,9 +8,9 @@
 
 import UIKit
 import HinnerJagKit
-import MapKit
 
-class ViewController: UITableViewController, CLLocationManagerDelegate {
+class ViewController: UITableViewController
+{
     // MARK: - Variables
     var departuresDict: Dictionary<Int, [Departure]> = Dictionary<Int, [Departure]>() {
         didSet {
@@ -18,48 +18,27 @@ class ViewController: UITableViewController, CLLocationManagerDelegate {
             println("Now we have \(self.departuresDict.count) groups")
         }
     }
-    var locationManager: CLLocationManager! = CLLocationManager()
+
     var closestStation: Station?
-    var locateStation = LocateStation()
+    var locateStation: LocateStation = LocateStation()
     var realtimeDeparturesObj = RealtimeDepartures()
     
     // MARK: - Lifecycle stuff
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.locationManager.delegate = self
-        self.locationManager.requestWhenInUseAuthorization()
-        self.locationManager.startUpdatingLocation()
-        println("viewDidLoad::startUpdatingLocation()")
-    }
-    
-    // MARK: - Get location of the user
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        self.locationManager.stopUpdatingLocation()
-        let location = locations.last as CLLocation
-        println("didUpdateLocations() with \(location)")
-        self.closestStation = self.locateStation.findStationClosestToLatitude(location.coordinate.latitude, longitude: location.coordinate.longitude)
-        self.fetchDepartures()
-    }
-    
-    @IBAction func refresh(sender: AnyObject?) {
-        println("Refreshing position")
-        self.locationManager.startUpdatingLocation()
-    }
-    
-    // MARK: - Fetch departures
-    func fetchDepartures() {
-        println("fetchDepartures() running")
-        if nil == self.closestStation {
-            println("Have not found any closest station yet, hold on")
-            return
-        }
-        let stationId = self.closestStation!.id
+        println("lifecycle: viewDidLoad")
         self.departuresDict = Dictionary<Int, [Departure]>()
-        self.realtimeDeparturesObj.departuresFromStationId(stationId) {
-            (departures: [Departure]?, error: NSError?) -> () in
+        self.locateStation.locationUpdatedCallback = { (station: Station?, departures: [Departure]?, error: NSError?) in
+            self.closestStation = station
+            println("Now we are using the location callback. \(station)")
             if nil == departures {
                 println("No departures were found. Error: \(error)")
             }
+            println("departures = \(departures!)")
             // Add departures into separated groups
             var tmpDict: Dictionary<Int, [Departure]> = Dictionary<Int, [Departure]>()
             for dept in departures! {
@@ -74,7 +53,14 @@ class ViewController: UITableViewController, CLLocationManagerDelegate {
             dispatch_async(dispatch_get_main_queue(), {
                 self.refreshControl!.endRefreshing()
             })
+            
         }
+        self.refresh(nil)
+    }
+    
+    @IBAction func refresh(sender: AnyObject?) {
+        println("Refreshing position")
+        self.locateStation.startUpdatingLocation()
     }
     
     // MARK: - Table stuff
