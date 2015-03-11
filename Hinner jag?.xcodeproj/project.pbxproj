@@ -30,6 +30,7 @@
 		0211B24C1AAE4BB000947C45 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0211B24B1AAE4BB000947C45 /* TodayViewController.swift */; };
 		0211B24E1AAE4BB000947C45 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0211B24D1AAE4BB000947C45 /* MainInterface.storyboard */; };
 		0211B2511AAE4BB000947C45 /* Hinner jag widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0211B2441AAE4BB000947C45 /* Hinner jag widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		02E90DA81AB0FBAF00FD5DB7 /* HinnerJagKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0211B20B1AAE37FB00947C45 /* HinnerJagKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,6 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02E90DA81AB0FBAF00FD5DB7 /* HinnerJagKit.framework in Frameworks */,
 				0211B2471AAE4BB000947C45 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
