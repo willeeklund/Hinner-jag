@@ -30,7 +30,6 @@ class ViewController: UITableViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("lifecycle: viewDidLoad")
         self.departuresDict = Dictionary<Int, [Departure]>()
         self.locateStation.locationUpdatedCallback = { (station: Station?, departures: [Departure]?, error: NSError?) in
             self.closestStation = station
@@ -38,7 +37,6 @@ class ViewController: UITableViewController
             if nil == departures {
                 println("No departures were found. Error: \(error)")
             }
-            println("departures = \(departures!)")
             // Add departures into separated groups
             var tmpDict: Dictionary<Int, [Departure]> = Dictionary<Int, [Departure]>()
             for dept in departures! {
@@ -78,7 +76,6 @@ class ViewController: UITableViewController
     
     // Header for table
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        println("Header section \(section)")
         if section == 0 {
             let reuseId = "HeadlineCell"
             var cell = self.tableView.dequeueReusableCellWithIdentifier(reuseId) as? HeadlineCell

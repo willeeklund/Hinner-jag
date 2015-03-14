@@ -17,14 +17,42 @@ public class Station: CLLocation, MKAnnotation
     
     override public var description: String {
         get {
-            return "Station \(self.id): \(self.title) \(self.coordinate)"
+            return "Station \(self.id): \(self.title) at (\(self.coordinate.latitude), \(self.coordinate.longitude))"
         }
     }
     
-    public init(id: Int, latitude: Double, longitude: Double, title: String) {
-        super.init(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), altitude: 0.0, horizontalAccuracy: 0.0, verticalAccuracy: 0.0, timestamp: NSDate())
-        self.id = id
-        self.title = title
+    public init(dict: NSDictionary) {
+        // Hopefully we can read info from the dictionary, otherwise use defaults
+        var usedLatitude = 0.0
+        if let dictLatitude = dict["latitude"] as Double? {
+            usedLatitude = dictLatitude
+        }
+        var usedLongitude = 0.0
+        if let dictLongitude = dict["longitude"] as Double? {
+            usedLongitude = dictLongitude
+        }
+
+        var usedId = 0
+        if let dictId = dict["siteid"] as Int? {
+            usedId = dictId
+        }
+
+        var usedTitle = ""
+        if let dictTitle = dict["sitename"] as String? {
+            usedTitle = dictTitle
+        }
+        
+        // Assert that we got real data
+        assert(0.0 != usedLatitude, "Must set real latitude")
+        assert(0.0 != usedLongitude, "Must set real longitude")
+        assert(usedLatitude != usedLongitude, "We suspect coding error if latitude == longitude")
+        assert(0   != usedId, "Must set real id")
+        assert(""  != usedTitle, "Must set real title")
+
+        // Create instance
+        super.init(coordinate: CLLocationCoordinate2D(latitude: usedLatitude, longitude: usedLongitude), altitude: 0.0, horizontalAccuracy: 0.0, verticalAccuracy: 0.0, timestamp: NSDate())
+        self.id = usedId
+        self.title = usedTitle
     }
     
     required public init(coder aDecoder: NSCoder) {

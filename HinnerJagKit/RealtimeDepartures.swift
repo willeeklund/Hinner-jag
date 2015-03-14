@@ -12,6 +12,8 @@ public class RealtimeDepartures
 {
     let session: NSURLSession
     let realtimeKey = "bebfe14511a74ca5aef16db943ae8589"
+//    let apiServer = "http://localhost:3000"
+    let apiServer = "https://hinner-jag.herokuapp.com"
     
     public init() {
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
@@ -27,9 +29,7 @@ public class RealtimeDepartures
     
     func performRealtimeApiReqForStation(stationId: Int, callback: ([Departure]?, error: NSError?) -> ()) {
         println("stationId = \(stationId)")
-        let apiURL = NSURL(string: "http://api.sl.se/api2/realtimedepartures.json?key=\(self.realtimeKey)&siteid=\(stationId)&timewindow=5")
-        
-        let request = NSURLRequest(URL: apiURL!)
+        let request = NSURLRequest(URL: NSURL(string: "\(self.apiServer)/api/realtimedepartures/\(stationId).json")!)
         let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
             if error == nil {
                 var JSONError: NSError?
