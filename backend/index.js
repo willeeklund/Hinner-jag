@@ -1,3 +1,8 @@
+require('nodetime').profile({
+  accountKey: 'f8a193d2541fbb68eb35ac5b16ba610253f5e32b',
+  appName: 'Hinner-jag backend'
+});
+
 require('colors');
 var express = require('express'),
     path = require('path'),
