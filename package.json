@@ -7,7 +7,7 @@
     "node": "0.10.30"
   },
   "scripts": {
-    "start": "node node-backend/index.js"
+    "start": "node ./backend/index.js"
   },
   "dependencies": {
     "async": "~0.6",

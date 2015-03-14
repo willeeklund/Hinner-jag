@@ -1,3 +1,5 @@
 node_modules
 *.swp
+Exports/
+npm-debug.log
 
