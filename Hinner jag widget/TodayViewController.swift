@@ -50,7 +50,8 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
         println("ERROR - location manager. \(error)")
     }
-    
+
+    // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         println("Today VC: viewDidLoad")
@@ -82,6 +83,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
         self.locationManager.startUpdatingLocation()
     }
 
+    // MARK: - Update UI
     func updateUI() {
         println("updateUI()")
         dispatch_async(dispatch_get_main_queue(), {
@@ -111,6 +113,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
         stationLabel.text = ""
     }
     
+    // MARK: - Today widget specific stuff
     func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)!) {
         // Perform any setup necessary in order to update the view.
 
