@@ -8,6 +8,8 @@
 
 import UIKit
 import XCTest
+import HinnerJagKit
+import CoreLocation
 
 class Hinner_jag_Tests: XCTestCase {
     
@@ -32,5 +34,5 @@ class Hinner_jag_Tests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-    
+
 }
