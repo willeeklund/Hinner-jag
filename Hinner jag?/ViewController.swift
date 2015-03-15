@@ -12,7 +12,8 @@ import HinnerJagKit
 class ViewController: UITableViewController
 {
     // MARK: - Variables
-    var departuresDict: Dictionary<Int, [Departure]> = Dictionary<Int, [Departure]>() {
+    var mappingDict: Dictionary <Int, String> = Dictionary <Int, String>()
+    var departuresDict: Dictionary<String, [Departure]> = Dictionary<String, [Departure]>() {
         didSet {
             self.tableView.reloadData()
             println("Now we have \(self.departuresDict.count) groups")
@@ -22,6 +23,7 @@ class ViewController: UITableViewController
     var closestStation: Station?
     var locateStation: LocateStation = LocateStation()
     var realtimeDeparturesObj = RealtimeDepartures()
+//    var sortDepartures = SortDepartures()
     
     // MARK: - Lifecycle stuff
     required init(coder aDecoder: NSCoder) {
@@ -30,24 +32,15 @@ class ViewController: UITableViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.departuresDict = Dictionary<Int, [Departure]>()
+        self.departuresDict = Dictionary<String, [Departure]>()
         self.locateStation.locationUpdatedCallback = { (station: Station?, departures: [Departure]?, error: NSError?) in
             self.closestStation = station
             println("Now we are using the location callback. \(station)")
             if nil == departures {
                 println("No departures were found. Error: \(error)")
             }
-            // Add departures into separated groups
-            var tmpDict: Dictionary<Int, [Departure]> = Dictionary<Int, [Departure]>()
-            for dept in departures! {
-                if let depList = tmpDict[dept.direction] {
-                    tmpDict[dept.direction]?.append(dept)
-                } else {
-                    tmpDict[dept.direction] = [Departure]()
-                    tmpDict[dept.direction]?.append(dept)
-                }
-            }
-            self.departuresDict = tmpDict
+            
+            (self.mappingDict, self.departuresDict) = SortDepartures.getMappingFromDepartures(departures!, mappingStart: 1)
             dispatch_async(dispatch_get_main_queue(), {
                 self.refreshControl!.endRefreshing()
             })
@@ -67,11 +60,12 @@ class ViewController: UITableViewController
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let depList = self.departuresDict[section] {
-            return depList.count
-        } else {
-            return 0
+        if let mappingName = self.mappingDict[section] {
+            if let depList = self.departuresDict[mappingName] {
+                return depList.count
+            }
         }
+        return 0
     }
     
     // Header for table
@@ -95,7 +89,7 @@ class ViewController: UITableViewController
             if nil == cell {
                 cell = TravelHeaderCell()
             }
-            cell?.headerLabel?.text = "Riktning \(section)"
+            cell?.headerLabel?.text = self.mappingDict[section]
             return cell! as TravelHeaderCell
         }
     }
@@ -107,11 +101,13 @@ class ViewController: UITableViewController
         if nil == cell {
             cell = TravelDetailsCell()
         }
-        if let depList = self.departuresDict[indexPath.section] {
-            if indexPath.row < depList.count {
-                let departure = depList[indexPath.row]
-                cell?.remainingTimeLabel?.text = departure.remainingTime
-                cell?.destinationLabel?.text = departure.destination
+        if let mappingName = self.mappingDict[indexPath.section] {
+            if let depList = self.departuresDict[mappingName] {
+                if indexPath.row < depList.count {
+                    let departure = depList[indexPath.row]
+                    cell?.remainingTimeLabel?.text = departure.remainingTime
+                    cell?.destinationLabel?.text = departure.destination
+                }
             }
         }
         return cell! as TravelDetailsCell

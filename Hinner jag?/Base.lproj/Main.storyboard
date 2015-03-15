@@ -9,13 +9,13 @@
         <!--View Controller-->
         <scene sceneID="peC-mS-Ocu">
             <objects>
-                <tableViewController id="obH-mF-fGV" customClass="ViewController" customModule="Hinner_jag_" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="obH-mF-fGV" customClass="ViewController" customModule="Hinner_jag" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="1OR-tn-34Z">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeadlineCell" rowHeight="95" id="jIE-yi-3eW" customClass="HeadlineCell" customModule="Hinner_jag_" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeadlineCell" rowHeight="95" id="jIE-yi-3eW" customClass="HeadlineCell" customModule="Hinner_jag" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jIE-yi-3eW" id="L1B-Wu-1kt">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -65,22 +65,28 @@
                                     <outlet property="headerLabel" destination="hnz-Oe-n2e" id="6a6-EE-tXw"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TravelHeaderCell" id="8tD-IG-LxG" customClass="TravelHeaderCell" customModule="Hinner_jag_" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TravelHeaderCell" id="8tD-IG-LxG" customClass="TravelHeaderCell" customModule="Hinner_jag" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8tD-IG-LxG" id="WXI-Cc-nVc">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uld-2U-egR">
-                                            <rect key="frame" x="8" y="5" width="98" height="33"/>
+                                            <rect key="frame" x="8" y="5" width="584" height="33"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="98" id="BsV-TL-ZfJ"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="BsV-TL-ZfJ"/>
+                                                </mask>
+                                            </variation>
                                         </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="uld-2U-egR" firstAttribute="leading" secondItem="WXI-Cc-nVc" secondAttribute="leadingMargin" id="Vaz-YA-wlu"/>
+                                        <constraint firstItem="uld-2U-egR" firstAttribute="trailing" secondItem="WXI-Cc-nVc" secondAttribute="trailingMargin" id="YiD-q2-Z91"/>
                                         <constraint firstItem="uld-2U-egR" firstAttribute="top" secondItem="WXI-Cc-nVc" secondAttribute="topMargin" constant="-3" id="b5Z-wt-qWU"/>
                                         <constraint firstItem="uld-2U-egR" firstAttribute="centerY" secondItem="WXI-Cc-nVc" secondAttribute="centerY" id="owa-9w-Vku"/>
                                     </constraints>
@@ -90,7 +96,7 @@
                                     <outlet property="headerLabel" destination="uld-2U-egR" id="tUE-5p-Q6K"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TravelDetailsCell" id="aFb-2l-7vx" customClass="TravelDetailsCell" customModule="Hinner_jag_" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TravelDetailsCell" id="aFb-2l-7vx" customClass="TravelDetailsCell" customModule="Hinner_jag" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aFb-2l-7vx" id="cKF-Ui-Ifo">
                                     <autoresizingMask key="autoresizingMask"/>
