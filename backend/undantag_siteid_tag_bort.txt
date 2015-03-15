@@ -1,12 +1,20 @@
 // Undantag hittade
-
+1000 Sergelstorg
 1345 Mälartorget
+1838 Skarpnäcksområdet
 7365 Alby
 7364 Alby
 3432 Bergshamra
 3430 Bergshamra
-
-
+3768 Trondheimsgatan
+9002 Cityterminalen
+1225 Fleminggatan
+9600 Stockholms östra
+1082 Odengatan
+1345 Mälartorget
+1019 Kungsgatan
+1230 Kellgrensgatan
+1109 Karlavägen
 
 Testa genom att kontrollera att det finns tunnelbanor med i resultatet:
 http://api.sl.se/api2/realtimedepartures.json?key=bebfe14511a74ca5aef16db943ae8589&timewindow=50&siteid=<siteid att testa>
