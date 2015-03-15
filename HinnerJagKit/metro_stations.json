@@ -18,18 +18,6 @@
       "latitude": 59.2393860393184,
       "longitude": 17.8454440837609
     },
-    { "id": 4,
-      "siteid": 7365,
-      "sitename": "Alby (Lagmansbacken)",
-      "latitude": 59.2393860393184,
-      "longitude": 17.8454440837609
-    },
-    { "id": 5,
-      "siteid": 7364,
-      "sitename": "Alby centrum",
-      "latitude": 59.2393860393184,
-      "longitude": 17.8454440837609
-    },
     { "id": 6,
       "siteid": 9112,
       "sitename": "Alvik",
@@ -114,12 +102,6 @@
       "latitude": 59.3313179695028,
       "longitude": 18.0616773959365
     },
-    { "id": 20,
-      "siteid": 9002,
-      "sitename": "Cityterminalen",
-      "latitude": 59.3313179695028,
-      "longitude": 18.0616773959365
-    },
     { "id": 21,
       "siteid": 9201,
       "sitename": "Danderyds sjukhus",
@@ -161,12 +143,6 @@
       "sitename": "Fittja",
       "latitude": 59.2474292520423,
       "longitude": 17.8610002461975
-    },
-    { "id": 28,
-      "siteid": 1225,
-      "sitename": "Fleminggatan/S:t Eriksgatan",
-      "latitude": 59.3329774570606,
-      "longitude": 18.0314880483801
     },
     { "id": 29,
       "siteid": 9115,
@@ -360,18 +336,6 @@
       "latitude": 59.3389882957986,
       "longitude": 18.0919988929416
     },
-    { "id": 61,
-      "siteid": 1109,
-      "sitename": "Karlavägen",
-      "latitude": 59.3408076157474,
-      "longitude": 18.0819427479138
-    },
-    { "id": 62,
-      "siteid": 1230,
-      "sitename": "Kellgrensgatan",
-      "latitude": 59.337477366128,
-      "longitude": 18.015593812489
-    },
     { "id": 63,
       "siteid": 9302,
       "sitename": "Kista",
@@ -383,12 +347,6 @@
       "sitename": "Kristineberg",
       "latitude": 59.3327224102678,
       "longitude": 18.0031233049855
-    },
-    { "id": 65,
-      "siteid": 1019,
-      "sitename": "Kungsgatan / Sveavägen",
-      "latitude": 59.3356060415282,
-      "longitude": 18.0629635851674
     },
     { "id": 66,
       "siteid": 9340,
@@ -444,12 +402,6 @@
       "latitude": 59.3012518260086,
       "longitude": 17.957741811607
     },
-    { "id": 75,
-      "siteid": 1345,
-      "sitename": "Mälartorget",
-      "latitude": 59.3234014331035,
-      "longitude": 18.0671617033001
-    },
     { "id": 76,
       "siteid": 9200,
       "sitename": "Mörby centrum",
@@ -473,12 +425,6 @@
       "sitename": "Näckrosen",
       "latitude": 59.3673205615557,
       "longitude": 17.9817335216068
-    },
-    { "id": 80,
-      "siteid": 1082,
-      "sitename": "Odengatan/Valhallavägen",
-      "latitude": 59.3465411447573,
-      "longitude": 18.0693156587543
     },
     { "id": 81,
       "siteid": 9117,
@@ -561,12 +507,6 @@
     { "id": 94,
       "siteid": 9140,
       "sitename": "Skarpnäck (t-banan)",
-      "latitude": 59.267427306007,
-      "longitude": 18.1335110441424
-    },
-    { "id": 95,
-      "siteid": 1838,
-      "sitename": "Skarpnäcksområdet",
       "latitude": 59.267427306007,
       "longitude": 18.1335110441424
     },
@@ -713,12 +653,6 @@
       "sitename": "Thorildsplan",
       "latitude": 59.3314927232727,
       "longitude": 18.0158378154947
-    },
-    { "id": 120,
-      "siteid": 3768,
-      "sitename": "Trondheimsgatan",
-      "latitude": 59.4097176326344,
-      "longitude": 17.9269066053237
     },
     { "id": 121,
       "siteid": 3623,
