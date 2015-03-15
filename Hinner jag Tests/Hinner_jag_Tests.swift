@@ -1,8 +1,8 @@
 //
 //  Hinner_jag_Tests.swift
-//  Hinner jag?Tests
+//  Hinner jag Tests
 //
-//  Created by Wilhelm Eklund on 09/03/15.
+//  Created by Wilhelm Eklund on 15/03/15.
 //  Copyright (c) 2015 Wilhelm Eklund. All rights reserved.
 //
 
