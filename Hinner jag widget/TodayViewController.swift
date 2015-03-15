@@ -23,6 +23,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     var locateStation: LocateStation = LocateStation()
     var locationManager: CLLocationManager! = CLLocationManager()
     
+    @IBOutlet var todayView: UIView!
     @IBOutlet weak var closestStationLabel: UILabel!
     @IBOutlet weak var time_1_1: UILabel!
     @IBOutlet weak var time_1_2: UILabel!
@@ -55,6 +56,11 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     override func viewDidLoad() {
         super.viewDidLoad()
         println("Today VC: viewDidLoad")
+//        var frame = self.todayView.frame
+//        frame.size.height = 180.0
+//        self.todayView.frame = frame
+//        println("Height of today view: \(self.todayView.frame.height)")
+//        println("Height of main view:  \(self.view.frame.height)")
         
         // Reset
         self.departuresDict = Dictionary<Int, [Departure]>()
@@ -91,11 +97,11 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
                 self.closestStationLabel.text = "Söker efter plats..."
             } else {
                 self.closestStationLabel.text = "Närmaste station: \(self.closestStation!.title)"
-                self.updateLabelForSection(1, row: 1, timeLabel: self.time_1_1, stationLabel: self.station_1_1)
-                self.updateLabelForSection(1, row: 2, timeLabel: self.time_1_2, stationLabel: self.station_1_2)
-                self.updateLabelForSection(2, row: 1, timeLabel: self.time_2_1, stationLabel: self.station_2_1)
-                self.updateLabelForSection(2, row: 2, timeLabel: self.time_2_2, stationLabel: self.station_2_2)
             }
+            self.updateLabelForSection(1, row: 1, timeLabel: self.time_1_1, stationLabel: self.station_1_1)
+            self.updateLabelForSection(1, row: 2, timeLabel: self.time_1_2, stationLabel: self.station_1_2)
+            self.updateLabelForSection(2, row: 1, timeLabel: self.time_2_1, stationLabel: self.station_2_1)
+            self.updateLabelForSection(2, row: 2, timeLabel: self.time_2_2, stationLabel: self.station_2_2)
         })
     }
     

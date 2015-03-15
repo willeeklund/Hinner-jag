@@ -20,7 +20,6 @@ public class SortDepartures {
             if let depList = departuresDict[mappingName] {
                 departuresDict[mappingName]?.append(dept)
             } else {
-                println("mappingName = \(mappingName)")
                 mappingDict[largestUsedMapping++] = mappingName
                 departuresDict[mappingName] = [Departure]()
                 departuresDict[mappingName]?.append(dept)
