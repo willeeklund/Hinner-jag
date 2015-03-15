@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Dela din position för att hitta närmaste station</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Dela din position för att hitta närmaste station</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -24,6 +20,10 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Dela din position för att hitta närmaste station</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Dela din position för att hitta närmaste station</string>
 	<key>NSPrincipalClass</key>
 	<string></string>
 </dict>
