@@ -21,30 +21,44 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hinner jag?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hnz-Oe-n2e">
-                                            <rect key="frame" x="152" y="26" width="296" height="24"/>
+                                            <rect key="frame" x="152" y="26" width="296" height="27"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="296" id="szT-qG-YVt"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Närmast" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5UJ-Is-jEo">
-                                            <rect key="frame" x="8" y="63" width="353" height="24"/>
+                                            <rect key="frame" x="8" y="65" width="353" height="24"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="353" id="oVY-mq-DXy"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="SBM-Cg-TGd">
+                                            <rect key="frame" x="8" y="22" width="35" height="35"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="35" id="X4a-Kh-IaA"/>
+                                                <constraint firstAttribute="width" constant="35" id="tgt-Vd-Lea"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="hnz-Oe-n2e" firstAttribute="top" secondItem="L1B-Wu-1kt" secondAttribute="topMargin" constant="18" id="4s2-oZ-vnq"/>
+                                        <constraint firstItem="5UJ-Is-jEo" firstAttribute="top" secondItem="SBM-Cg-TGd" secondAttribute="bottom" constant="8" symbolic="YES" id="Q71-R8-vCR"/>
+                                        <constraint firstItem="SBM-Cg-TGd" firstAttribute="leading" secondItem="5UJ-Is-jEo" secondAttribute="leading" id="X8I-i9-cL8"/>
+                                        <constraint firstItem="SBM-Cg-TGd" firstAttribute="top" secondItem="L1B-Wu-1kt" secondAttribute="topMargin" constant="14" id="Y4r-UO-vdm"/>
                                         <constraint firstItem="5UJ-Is-jEo" firstAttribute="top" secondItem="hnz-Oe-n2e" secondAttribute="bottom" constant="13" id="Yph-Nj-EHZ"/>
                                         <constraint firstItem="5UJ-Is-jEo" firstAttribute="leading" secondItem="L1B-Wu-1kt" secondAttribute="leadingMargin" id="Zvb-90-JsC"/>
                                         <constraint firstItem="hnz-Oe-n2e" firstAttribute="centerX" secondItem="L1B-Wu-1kt" secondAttribute="centerX" id="aSM-MW-oTG"/>
+                                        <constraint firstItem="SBM-Cg-TGd" firstAttribute="centerY" secondItem="hnz-Oe-n2e" secondAttribute="centerY" id="yt6-oF-K9h"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="Yph-Nj-EHZ"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="closestStationLabel" destination="5UJ-Is-jEo" id="tQl-K6-M21"/>
@@ -62,8 +76,7 @@
                                                 <constraint firstAttribute="width" constant="98" id="BsV-TL-ZfJ"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                     </subviews>
                                     <constraints>
@@ -72,6 +85,7 @@
                                         <constraint firstItem="uld-2U-egR" firstAttribute="centerY" secondItem="WXI-Cc-nVc" secondAttribute="centerY" id="owa-9w-Vku"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.31078968124738865" green="0.66118194659550977" blue="0.17200843468805052" alpha="0.25" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="headerLabel" destination="uld-2U-egR" id="tUE-5p-Q6K"/>
                                 </connections>
@@ -86,8 +100,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="61" id="LgG-ne-ajQ"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzx-GL-s8F">
@@ -96,7 +109,6 @@
                                                 <constraint firstAttribute="width" constant="274" id="h4S-H7-pYg"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -132,4 +144,7 @@
             <point key="canvasLocation" x="270" y="332"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo" width="300" height="300"/>
+    </resources>
 </document>
