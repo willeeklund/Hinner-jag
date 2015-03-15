@@ -26,7 +26,7 @@
                                     <group key="rootItem" width="1" height="0.0" alignment="left" id="vwm-yU-Mul">
                                         <items>
                                             <label alignment="left" text="header" id="HED-xZ-qDI">
-                                                <color key="textColor" red="0.45110097557075518" green="0.89369061197979804" blue="0.0085113391617123325" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="0.45098039215686275" green="0.8901960784313725" blue="0.0078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
                                             </label>
                                         </items>
@@ -64,12 +64,59 @@
         <!--Glance Interface Controller-->
         <scene sceneID="BOz-TT-tkC">
             <objects>
-                <glanceController spacing="0.0" id="0uZ-2p-rRc" customClass="GlanceController" customModule="Hinner_jag__WatchKit_App" customModuleProvider="target">
+                <glanceController spacing="0.0" id="0uZ-2p-rRc" customClass="GlanceController" customModule="Hinner_jag__WatchKit_Extension">
                     <items>
-                        <group alignment="left" id="t8f-Gd-c4y"/>
-                        <group alignment="left" id="uCw-4Q-Ouw"/>
+                        <group alignment="left" id="t8f-Gd-c4y">
+                            <items>
+                                <imageView width="20" height="20" alignment="left" image="logo" contentMode="scaleAspectFit" id="qC0-7u-AAX"/>
+                                <label width="1" alignment="left" text="Söker plats..." id="mtN-NK-DlS"/>
+                            </items>
+                        </group>
+                        <group alignment="left" contentMode="scaleAspectFill" layout="vertical" spacing="21" id="uCw-4Q-Ouw">
+                            <items>
+                                <table alignment="left" id="NrE-jm-Ibj">
+                                    <items>
+                                        <tableRow identifier="header" selectable="NO" id="FyA-Tb-qSI" customClass="TravelHeaderRow" customModule="Hinner_jag__WatchKit_Extension">
+                                            <group key="rootItem" width="1" height="0.0" alignment="left" id="9Y0-nQ-JAh">
+                                                <items>
+                                                    <label alignment="left" text="header" id="RVv-Os-51F">
+                                                        <color key="textColor" red="0.45098039215686275" green="0.8901960784313725" blue="0.0078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                                    </label>
+                                                </items>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </group>
+                                            <connections>
+                                                <outlet property="headerLabel" destination="RVv-Os-51F" id="R3G-Cu-tvF"/>
+                                            </connections>
+                                        </tableRow>
+                                        <tableRow identifier="details" selectable="NO" id="O9p-5h-0FD" customClass="TravelDetailsRow" customModule="Hinner_jag__WatchKit_Extension">
+                                            <group key="rootItem" width="1" height="0.0" alignment="left" id="Gf7-IP-wgF">
+                                                <items>
+                                                    <label alignment="left" text="tid" id="GZ3-jF-vvi">
+                                                        <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                                    </label>
+                                                    <label alignment="left" text="plats" id="TlG-Cd-l5t">
+                                                        <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                            <connections>
+                                                <outlet property="destinationLabel" destination="TlG-Cd-l5t" id="RKp-uc-oS0"/>
+                                                <outlet property="remainingTimeLabel" destination="GZ3-jF-vvi" id="nkZ-cI-Ubq"/>
+                                            </connections>
+                                        </tableRow>
+                                    </items>
+                                </table>
+                            </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                        </group>
                     </items>
                     <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="14"/>
+                    <connections>
+                        <outlet property="closestStationLabel" destination="mtN-NK-DlS" id="N7l-hm-6zO"/>
+                        <outlet property="tableView" destination="NrE-jm-Ibj" id="llV-ji-bmH"/>
+                    </connections>
                 </glanceController>
             </objects>
             <point key="canvasLocation" x="235" y="672"/>

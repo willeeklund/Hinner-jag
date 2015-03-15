@@ -79,26 +79,45 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
         
         self.closestStationLabel.setText(self.closestStation!.title)
         
+        var (typesOfRows, startIndexGroup2) = self.calculateTypesOfRows()
+        self.tableView.setNumberOfRows(typesOfRows.count, withRowType: "header")
+        self.tableView.setRowTypes(typesOfRows)
+        self.fillTableWithContent(typesOfRows, startIndexGroup2: startIndexGroup2)
+    }
+    
+    func calculateTypesOfRows() -> ([String], Int) {
         // Calculate type for the rows
         var typesOfRows: [String] = [String]()
         if let group1 = self.departuresDict[1] {
             typesOfRows.append("header")
-            for item in group1[0...1] {
-                typesOfRows.append("details")
+            var counter = 0
+            for item in group1 {
+                if counter < 2 {
+                    typesOfRows.append("details")
+                }
+                counter++
             }
         }
         var startIndexGroup2 = typesOfRows.count
         if let group2 = self.departuresDict[2] {
             typesOfRows.append("header")
-            for item in group2[0...1] {
-                typesOfRows.append("details")
+            var counter = 0
+            for item in group2 {
+                if counter < 2 {
+                    typesOfRows.append("details")
+                }
+                counter++
             }
         }
-        
+        return (typesOfRows, startIndexGroup2)
+    }
+    
+    func fillTableWithContent(typesOfRows: [String], startIndexGroup2: Int) {
+        println("start group 2 = \(startIndexGroup2)")
+        println("typesOfRows = \(typesOfRows)")
         // Create table rows and fill with content
-        self.tableView.setNumberOfRows(typesOfRows.count, withRowType: "header")
-        self.tableView.setRowTypes(typesOfRows)
         for (index, rowType) in enumerate(typesOfRows) {
+            println("index = \(index), rowType = \(rowType)")
             if "header" == rowType {
                 if let header = self.tableView.rowControllerAtIndex(index) as TravelHeaderRow? {
                     if index < startIndexGroup2 {
@@ -112,13 +131,14 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
                     var departure: Departure?
                     if index < startIndexGroup2 {
                         if let group1 = self.departuresDict[1] {
-                            if index < group1.count {
-                                departure = group1[index]
+                            let usedIndex = index - 1 // Start at first departure
+                            if usedIndex < group1.count {
+                                departure = group1[usedIndex]
                             }
                         }
                     } else {
                         if let group2 = self.departuresDict[2] {
-                            let usedIndex = index - startIndexGroup2
+                            let usedIndex = index - startIndexGroup2 - 1 // Start at first departure
                             if usedIndex >= 0 && usedIndex < group2.count {
                                 departure = group2[usedIndex]
                             }
