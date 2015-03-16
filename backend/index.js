@@ -28,7 +28,7 @@ app.get('/', function (req, res) {
 
 app.get('/api/realtimedepartures/:site_id.json', function (req, res) {
   var realtimeKey = 'bebfe14511a74ca5aef16db943ae8589',
-  timewindow = 5;
+  timewindow = 15;
   SL_api_url = 'http://api.sl.se/api2/realtimedepartures.json?' +
                'key=' + realtimeKey +
                '&timewindow=' + timewindow +

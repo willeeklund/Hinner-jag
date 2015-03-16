@@ -8,7 +8,7 @@
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Hinner_jag__WatchKit_App" customModuleProvider="target">
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Hinner_jag_WatchKit_Extension">
                     <items>
                         <group width="1" alignment="left" id="aRN-ze-0jV">
                             <items>
@@ -22,7 +22,7 @@
                         </group>
                         <table alignment="left" id="Dj2-Fj-GQP">
                             <items>
-                                <tableRow identifier="header" selectable="NO" id="EJz-Tc-D6K" customClass="TravelHeaderRow" customModule="Hinner_jag__WatchKit_Extension">
+                                <tableRow identifier="header" selectable="NO" id="EJz-Tc-D6K" customClass="TravelHeaderRow" customModule="Hinner_jag_WatchKit_Extension">
                                     <group key="rootItem" width="1" height="0.0" alignment="left" id="vwm-yU-Mul">
                                         <items>
                                             <label alignment="left" text="header" id="HED-xZ-qDI">
@@ -36,7 +36,7 @@
                                         <outlet property="headerLabel" destination="HED-xZ-qDI" id="bPV-vA-xbE"/>
                                     </connections>
                                 </tableRow>
-                                <tableRow identifier="details" selectable="NO" id="hDZ-XE-XG4" customClass="TravelDetailsRow" customModule="Hinner_jag__WatchKit_Extension">
+                                <tableRow identifier="details" selectable="NO" id="hDZ-XE-XG4" customClass="TravelDetailsRow" customModule="Hinner_jag_WatchKit_Extension">
                                     <group key="rootItem" width="1" height="0.0" alignment="left" id="m8D-Z2-rFH">
                                         <items>
                                             <label alignment="left" text="tid" id="qKl-ZP-6PO">
@@ -64,7 +64,7 @@
         <!--Glance Interface Controller-->
         <scene sceneID="BOz-TT-tkC">
             <objects>
-                <glanceController spacing="0.0" id="0uZ-2p-rRc" customClass="GlanceController" customModule="Hinner_jag__WatchKit_Extension">
+                <glanceController spacing="0.0" id="0uZ-2p-rRc" customClass="GlanceController" customModule="Hinner_jag_WatchKit_Extension">
                     <items>
                         <group alignment="left" id="t8f-Gd-c4y">
                             <items>
@@ -76,7 +76,7 @@
                             <items>
                                 <table alignment="left" id="NrE-jm-Ibj">
                                     <items>
-                                        <tableRow identifier="header" selectable="NO" id="FyA-Tb-qSI" customClass="TravelHeaderRow" customModule="Hinner_jag__WatchKit_Extension">
+                                        <tableRow identifier="header" selectable="NO" id="FyA-Tb-qSI" customClass="TravelHeaderRow" customModule="Hinner_jag_WatchKit_Extension">
                                             <group key="rootItem" width="1" height="0.0" alignment="left" id="9Y0-nQ-JAh">
                                                 <items>
                                                     <label alignment="left" text="header" id="RVv-Os-51F">
@@ -90,7 +90,7 @@
                                                 <outlet property="headerLabel" destination="RVv-Os-51F" id="R3G-Cu-tvF"/>
                                             </connections>
                                         </tableRow>
-                                        <tableRow identifier="details" selectable="NO" id="O9p-5h-0FD" customClass="TravelDetailsRow" customModule="Hinner_jag__WatchKit_Extension">
+                                        <tableRow identifier="details" selectable="NO" id="O9p-5h-0FD" customClass="TravelDetailsRow" customModule="Hinner_jag_WatchKit_Extension">
                                             <group key="rootItem" width="1" height="0.0" alignment="left" id="Gf7-IP-wgF">
                                                 <items>
                                                     <label alignment="left" text="tid" id="GZ3-jF-vvi">
@@ -140,7 +140,7 @@
         <!--Notification Controller-->
         <scene sceneID="KIl-fV-djm">
             <objects>
-                <controller id="gdX-wl-uQE" customClass="NotificationController" customModule="Hinner_jag__WatchKit_App" customModuleProvider="target"/>
+                <controller id="gdX-wl-uQE" customClass="NotificationController" customModule="Hinner_jag_WatchKit_App" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="553" y="1001"/>
         </scene>

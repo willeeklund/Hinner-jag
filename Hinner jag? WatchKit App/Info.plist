@@ -28,7 +28,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>WKCompanionAppBundleIdentifier</key>
-	<string>com.wilhelmeklund.Hinner-jag-</string>
+	<string>com.wilhelmeklund.Hinner-jag</string>
 	<key>WKWatchKitApp</key>
 	<true/>
 </dict>

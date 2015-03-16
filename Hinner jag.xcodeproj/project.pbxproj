@@ -95,6 +95,20 @@
 			remoteGlobalIDString = 02F2FF321AB48BB8001A1F90;
 			remoteInfo = "Hinner jag? WatchKit Extension";
 		};
+		02F755BC1AB6254A0088D6C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0211B1D61AAE37B600947C45 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0211B20A1AAE37FB00947C45;
+			remoteInfo = HinnerJagKit;
+		};
+		02F755BE1AB625580088D6C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0211B1D61AAE37B600947C45 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0211B20A1AAE37FB00947C45;
+			remoteInfo = HinnerJagKit;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -505,6 +519,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				02F755BF1AB625580088D6C8 /* PBXTargetDependency */,
 			);
 			name = "Hinner jag widget";
 			productName = "Hinner jag widget";
@@ -540,6 +555,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				02F755BD1AB6254A0088D6C8 /* PBXTargetDependency */,
 				02F2FF451AB48BB8001A1F90 /* PBXTargetDependency */,
 			);
 			name = "Hinner jag WatchKit Extension";
@@ -797,6 +813,16 @@
 			target = 02F2FF321AB48BB8001A1F90 /* Hinner jag WatchKit Extension */;
 			targetProxy = 02F2FF4E1AB48BB8001A1F90 /* PBXContainerItemProxy */;
 		};
+		02F755BD1AB6254A0088D6C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0211B20A1AAE37FB00947C45 /* HinnerJagKit */;
+			targetProxy = 02F755BC1AB6254A0088D6C8 /* PBXContainerItemProxy */;
+		};
+		02F755BF1AB625580088D6C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0211B20A1AAE37FB00947C45 /* HinnerJagKit */;
+			targetProxy = 02F755BE1AB625580088D6C8 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -918,7 +944,7 @@
 				INFOPLIST_FILE = "Hinner jag?/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e7769057-8a87-4ebf-9fc7-34de1261bd1e";
 			};
 			name = Debug;
 		};
@@ -927,12 +953,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wilhelm Eklund";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Hinner jag?/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e7769057-8a87-4ebf-9fc7-34de1261bd1e";
 			};
 			name = Release;
 		};
@@ -956,7 +982,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e7769057-8a87-4ebf-9fc7-34de1261bd1e";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -970,8 +996,8 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Wilhelm Eklund";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wilhelm Eklund";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -981,7 +1007,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e7769057-8a87-4ebf-9fc7-34de1261bd1e";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1005,7 +1031,7 @@
 				INFOPLIST_FILE = HinnerJagKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e7769057-8a87-4ebf-9fc7-34de1261bd1e";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hinner jag?.app/Hinner jag?";
 			};
 			name = Debug;
@@ -1013,8 +1039,8 @@
 		0211B22A1AAE37FC00947C45 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Wilhelm Eklund";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wilhelm Eklund";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1022,7 +1048,7 @@
 				INFOPLIST_FILE = HinnerJagKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e7769057-8a87-4ebf-9fc7-34de1261bd1e";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hinner jag?.app/Hinner jag?";
 			};
 			name = Release;
@@ -1040,7 +1066,7 @@
 				INFOPLIST_FILE = "Hinner jag widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e7769057-8a87-4ebf-9fc7-34de1261bd1e";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1050,12 +1076,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Hinner jag widget/Hinner jag widget.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Wilhelm Eklund";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wilhelm Eklund";
 				INFOPLIST_FILE = "Hinner jag widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e7769057-8a87-4ebf-9fc7-34de1261bd1e";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1078,7 +1104,7 @@
 				INFOPLIST_FILE = "Hinner jag Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e7769057-8a87-4ebf-9fc7-34de1261bd1e";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hinner jag.app/Hinner jag";
 			};
 			name = Debug;
@@ -1087,8 +1113,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Wilhelm Eklund";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wilhelm Eklund";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -1097,7 +1123,7 @@
 				INFOPLIST_FILE = "Hinner jag Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e7769057-8a87-4ebf-9fc7-34de1261bd1e";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hinner jag.app/Hinner jag";
 			};
 			name = Release;
@@ -1151,7 +1177,7 @@
 				INFOPLIST_FILE = "Hinner jag? WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e7769057-8a87-4ebf-9fc7-34de1261bd1e";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1159,13 +1185,13 @@
 		02F2FF561AB48BB8001A1F90 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Wilhelm Eklund";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wilhelm Eklund";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = "Hinner jag? WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e7769057-8a87-4ebf-9fc7-34de1261bd1e";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
