@@ -90,7 +90,27 @@ class ViewController: UITableViewController
             if nil == cell {
                 cell = TravelHeaderCell()
             }
-            cell?.headerLabel?.text = self.mappingDict[section]
+            if let sectionString = self.mappingDict[section] {
+                var imageName: String?
+                var directionLabel: String = ""
+                println("\(sectionString)")
+                if sectionString.rangeOfString("gröna") != nil {
+                    imageName = "train_green"
+                    directionLabel = "Gröna linjen"
+                } else if sectionString.rangeOfString("röda") != nil {
+                    imageName = "train_red"
+                    directionLabel = "Röda linjen"
+                } else if sectionString.rangeOfString("blå") != nil {
+                    imageName = "train_blue"
+                    directionLabel = "Blåa linjen"
+                }
+                if nil != imageName {
+                    cell?.trainImage.image = UIImage(named: imageName!)
+                }
+                cell?.headerLabel?.text = directionLabel
+            } else {
+                cell?.headerLabel?.text = ""
+            }
             return cell! as TravelHeaderCell
         }
     }

@@ -12,6 +12,7 @@ import UIKit
 class TravelHeaderCell: UITableViewCell
 {
     
+    @IBOutlet weak var trainImage: UIImageView!
     @IBOutlet weak var headerLabel: UILabel!
     var lineColor: UIColor = UIColor.greenColor()
     
