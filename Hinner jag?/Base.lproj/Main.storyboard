@@ -91,7 +91,7 @@
                                         <constraint firstItem="uld-2U-egR" firstAttribute="centerY" secondItem="WXI-Cc-nVc" secondAttribute="centerY" id="owa-9w-Vku"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.31078968124738865" green="0.66118194659550977" blue="0.17200843468805052" alpha="0.25" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.070588235294117646" green="0.53333333333333333" blue="0.38039215686274508" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="headerLabel" destination="uld-2U-egR" id="tUE-5p-Q6K"/>
                                 </connections>
@@ -109,7 +109,7 @@
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzx-GL-s8F">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzx-GL-s8F">
                                             <rect key="frame" x="77" y="11" width="274" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="274" id="h4S-H7-pYg"/>
@@ -151,6 +151,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="300" height="300"/>
+        <image name="logo" width="172" height="172"/>
     </resources>
 </document>

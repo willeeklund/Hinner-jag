@@ -39,7 +39,6 @@
 		02F2FF431AB48BB8001A1F90 /* Hinner jag WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = 02F2FF421AB48BB8001A1F90 /* Hinner jag WatchKit App.app */; };
 		02F2FF4B1AB48BB8001A1F90 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02F2FF491AB48BB8001A1F90 /* Interface.storyboard */; };
 		02F2FF4D1AB48BB8001A1F90 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02F2FF4C1AB48BB8001A1F90 /* Images.xcassets */; };
-		02F2FF501AB48BB8001A1F90 /* Hinner jag WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 02F2FF331AB48BB8001A1F90 /* Hinner jag WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		02F2FF581AB4A1C1001A1F90 /* TravelDetailsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F2FF571AB4A1C1001A1F90 /* TravelDetailsRow.swift */; };
 		02F2FF5B1AB4A4AD001A1F90 /* TravelHeaderRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F2FF5A1AB4A4AD001A1F90 /* TravelHeaderRow.swift */; };
 		02F755BB1AB621210088D6C8 /* metro_stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 02F755BA1AB621210088D6C8 /* metro_stations.json */; };
@@ -88,13 +87,6 @@
 			remoteGlobalIDString = 02F2FF411AB48BB8001A1F90;
 			remoteInfo = "Hinner jag? WatchKit App";
 		};
-		02F2FF4E1AB48BB8001A1F90 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0211B1D61AAE37B600947C45 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 02F2FF321AB48BB8001A1F90;
-			remoteInfo = "Hinner jag? WatchKit Extension";
-		};
 		02F755BC1AB6254A0088D6C8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0211B1D61AAE37B600947C45 /* Project object */;
@@ -130,7 +122,6 @@
 			dstSubfolderSpec = 13;
 			files = (
 				0211B2511AAE4BB000947C45 /* Hinner jag widget.appex in Embed App Extensions */,
-				02F2FF501AB48BB8001A1F90 /* Hinner jag WatchKit Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,7 +455,6 @@
 			dependencies = (
 				0211B2211AAE37FC00947C45 /* PBXTargetDependency */,
 				0211B2501AAE4BB000947C45 /* PBXTargetDependency */,
-				02F2FF4F1AB48BB8001A1F90 /* PBXTargetDependency */,
 			);
 			name = "Hinner jag";
 			productName = "Hinner jag?";
@@ -808,11 +798,6 @@
 			target = 02F2FF411AB48BB8001A1F90 /* Hinner jag WatchKit App */;
 			targetProxy = 02F2FF441AB48BB8001A1F90 /* PBXContainerItemProxy */;
 		};
-		02F2FF4F1AB48BB8001A1F90 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 02F2FF321AB48BB8001A1F90 /* Hinner jag WatchKit Extension */;
-			targetProxy = 02F2FF4E1AB48BB8001A1F90 /* PBXContainerItemProxy */;
-		};
 		02F755BD1AB6254A0088D6C8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0211B20A1AAE37FB00947C45 /* HinnerJagKit */;
@@ -944,7 +929,7 @@
 				INFOPLIST_FILE = "Hinner jag?/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e7769057-8a87-4ebf-9fc7-34de1261bd1e";
+				PROVISIONING_PROFILE = "35a6b7af-a37d-4f41-aec2-c9d54894d604";
 			};
 			name = Debug;
 		};
@@ -958,7 +943,7 @@
 				INFOPLIST_FILE = "Hinner jag?/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e7769057-8a87-4ebf-9fc7-34de1261bd1e";
+				PROVISIONING_PROFILE = "35a6b7af-a37d-4f41-aec2-c9d54894d604";
 			};
 			name = Release;
 		};
@@ -982,7 +967,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e7769057-8a87-4ebf-9fc7-34de1261bd1e";
+				PROVISIONING_PROFILE = "35a6b7af-a37d-4f41-aec2-c9d54894d604";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1007,7 +992,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e7769057-8a87-4ebf-9fc7-34de1261bd1e";
+				PROVISIONING_PROFILE = "35a6b7af-a37d-4f41-aec2-c9d54894d604";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1066,7 +1051,7 @@
 				INFOPLIST_FILE = "Hinner jag widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e7769057-8a87-4ebf-9fc7-34de1261bd1e";
+				PROVISIONING_PROFILE = "35a6b7af-a37d-4f41-aec2-c9d54894d604";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1081,7 +1066,7 @@
 				INFOPLIST_FILE = "Hinner jag widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e7769057-8a87-4ebf-9fc7-34de1261bd1e";
+				PROVISIONING_PROFILE = "35a6b7af-a37d-4f41-aec2-c9d54894d604";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1177,7 +1162,7 @@
 				INFOPLIST_FILE = "Hinner jag? WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "e7769057-8a87-4ebf-9fc7-34de1261bd1e";
+				PROVISIONING_PROFILE = "35a6b7af-a37d-4f41-aec2-c9d54894d604";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1191,7 +1176,7 @@
 				INFOPLIST_FILE = "Hinner jag? WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "e7769057-8a87-4ebf-9fc7-34de1261bd1e";
+				PROVISIONING_PROFILE = "35a6b7af-a37d-4f41-aec2-c9d54894d604";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

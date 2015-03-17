@@ -38,6 +38,7 @@ class ViewController: UITableViewController
             println("Now we are using the location callback. \(station)")
             if nil == departures {
                 println("No departures were found. Error: \(error)")
+                return
             }
             
             (self.mappingDict, self.departuresDict) = SortDepartures.getMappingFromDepartures(departures!, mappingStart: 1)
