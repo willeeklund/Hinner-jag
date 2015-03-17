@@ -27,12 +27,16 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     @IBOutlet weak var closestStationLabel: UILabel!
     @IBOutlet weak var time_1_1: UILabel!
     @IBOutlet weak var time_1_2: UILabel!
+    @IBOutlet weak var time_1_3: UILabel!
     @IBOutlet weak var time_2_1: UILabel!
     @IBOutlet weak var time_2_2: UILabel!
+    @IBOutlet weak var time_2_3: UILabel!
     @IBOutlet weak var station_1_1: UILabel!
     @IBOutlet weak var station_1_2: UILabel!
+    @IBOutlet weak var station_1_3: UILabel!
     @IBOutlet weak var station_2_1: UILabel!
     @IBOutlet weak var station_2_2: UILabel!
+    @IBOutlet weak var station_2_3: UILabel!
     
     // MARK: - Life cycle
     required init(coder aDecoder: NSCoder) {
@@ -100,8 +104,10 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
             }
             self.updateLabelForSection(1, row: 1, timeLabel: self.time_1_1, stationLabel: self.station_1_1)
             self.updateLabelForSection(1, row: 2, timeLabel: self.time_1_2, stationLabel: self.station_1_2)
+            self.updateLabelForSection(1, row: 3, timeLabel: self.time_1_3, stationLabel: self.station_1_3)
             self.updateLabelForSection(2, row: 1, timeLabel: self.time_2_1, stationLabel: self.station_2_1)
             self.updateLabelForSection(2, row: 2, timeLabel: self.time_2_2, stationLabel: self.station_2_2)
+            self.updateLabelForSection(2, row: 3, timeLabel: self.time_2_3, stationLabel: self.station_2_3)
         })
     }
     
@@ -115,18 +121,12 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
                 return
             }
         }
-        timeLabel.text = ""
-        stationLabel.text = ""
+        timeLabel.text = "..."
+        stationLabel.text = "..."
     }
     
     // MARK: - Today widget specific stuff
     func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)!) {
-        // Perform any setup necessary in order to update the view.
-
-        // If an error is encountered, use NCUpdateResult.Failed
-        // If there's no update required, use NCUpdateResult.NoData
-        // If there's an update, use NCUpdateResult.NewData
-
         completionHandler(NCUpdateResult.NewData)
     }
     

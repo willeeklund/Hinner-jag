@@ -50,7 +50,7 @@
       "size" : "86x86",
       "idiom" : "watch",
       "scale" : "2x",
-      "filename" : "HinnerjagSTHLM_86x86.png",
+      "filename" : "HinnerjagSTHLM_172x172.png",
       "role" : "quickLook",
       "subtype" : "38mm"
     },
@@ -58,7 +58,7 @@
       "size" : "98x98",
       "idiom" : "watch",
       "scale" : "2x",
-      "filename" : "HinnerjagSTHLM_98x98.png",
+      "filename" : "HinnerjagSTHLM_196x196.png",
       "role" : "quickLook",
       "subtype" : "42mm"
     }
