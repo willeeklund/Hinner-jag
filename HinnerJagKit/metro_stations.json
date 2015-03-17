@@ -3,6 +3,7 @@
     { "id": 1,
       "siteid": 9110,
       "sitename": "Abrahamsberg",
+      "from_central_direction": 1,
       "latitude": 59.3365630909855,
       "longitude": 17.9531728536484
     },
@@ -93,6 +94,7 @@
     { "id": 18,
       "siteid": 9109,
       "sitename": "Brommaplan",
+      "from_central_direction": 1,
       "latitude": 59.3382848826814,
       "longitude": 17.9396416118668
     },
@@ -345,12 +347,13 @@
     { "id": 64,
       "siteid": 9113,
       "sitename": "Kristineberg",
+      "from_central_direction": 1,
       "latitude": 59.3327224102678,
       "longitude": 18.0031233049855
     },
     { "id": 66,
       "siteid": 9340,
-      "sitename": "Kungsträdgården (T-banan)",
+      "sitename": "Kungsträdgården",
       "latitude": 59.3307821796554,
       "longitude": 18.0728892526853
     },

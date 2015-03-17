@@ -58,7 +58,7 @@ public class LocateStation: NSObject, CLLocationManagerDelegate
         var closestStation = self.findStationClosestToLatitude(location.coordinate.latitude, longitude: location.coordinate.longitude)
         assert(nil != closestStation, "No station was found")
 
-        self.realtimeDeparturesObj.departuresFromStationId(closestStation!.id) {
+        self.realtimeDeparturesObj.departuresFromStation(closestStation!) {
             (departures: [Departure]?, error: NSError?) -> () in
             // When we check that the user is reasonably close to ANY station,
             // this is a good place to send back possible errors

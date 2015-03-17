@@ -52,7 +52,15 @@ class HinnerJagKitTests: XCTestCase {
         let expectation = self.expectationWithDescription("Can fetch from the API")
         let realtimeDepartures = RealtimeDepartures()
         var depList: [Departure]?
-        realtimeDepartures.departuresFromStationId(9110) { (departures: [Departure]?, error: NSError?) in
+        var abDict = NSMutableDictionary()
+        abDict.setValue(9110, forKey: "siteid")
+        abDict.setValue("Abrahamsberg fake", forKey: "sitename")
+        abDict.setValue(59.3365630909855, forKey: "latitude")
+        abDict.setValue(17.9531728536484, forKey: "longitude")
+        abDict.setValue(1, forKey: "from_central_direction")
+
+        let abrahamsbergStation = Station(dict: abDict)
+        realtimeDepartures.departuresFromStation(abrahamsbergStation) { (departures: [Departure]?, error: NSError?) in
             depList = departures
             XCTAssert(departures != nil, "We got some departures")
             XCTAssert(departures!.count > 0, "At least one departure")

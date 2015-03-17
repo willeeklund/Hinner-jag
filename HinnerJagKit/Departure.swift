@@ -16,6 +16,7 @@ public class Departure: NSObject
     public var direction: Int = 0
     public var lineNumber: Int = 0
     public var lineName: String = ""
+    public var from_central_direction: Int?
     
     override public var description: String {
         get {
@@ -23,7 +24,7 @@ public class Departure: NSObject
         }
     }
     
-    public init(dict: NSDictionary) {
+    public init(dict: NSDictionary, station: Station) {
         super.init()
         if let dest = dict["Destination"] as? String {
             self.destination = dest
@@ -40,6 +41,7 @@ public class Departure: NSObject
         if let name = dict["GroupOfLine"] as? String {
             self.lineName = name
         }
+        self.from_central_direction = station.from_central_direction
     }
     
 }

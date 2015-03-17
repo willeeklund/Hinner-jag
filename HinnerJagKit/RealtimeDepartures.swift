@@ -20,16 +20,16 @@ public class RealtimeDepartures
         self.session = NSURLSession(configuration: configuration);
     }
     
-    public func departuresFromStationId(stationId: Int, callback: ([Departure]?, error: NSError?) -> ()) {
+    public func departuresFromStation(station: Station, callback: ([Departure]?, error: NSError?) -> ()) {
         var realtimeApiQueue = dispatch_queue_create("realtime API queue", nil)
         dispatch_async(realtimeApiQueue, {
-            self.performRealtimeApiReqForStation(stationId, callback)
+            self.performRealtimeApiReqForStation(station, callback)
         })
     }
     
-    func performRealtimeApiReqForStation(stationId: Int, callback: ([Departure]?, error: NSError?) -> ()) {
-        println("stationId = \(stationId)")
-        let request = NSURLRequest(URL: NSURL(string: "\(self.apiServer)/api/realtimedepartures/\(stationId).json")!)
+    func performRealtimeApiReqForStation(station: Station, callback: ([Departure]?, error: NSError?) -> ()) {
+        println("stationId = \(station.id)")
+        let request = NSURLRequest(URL: NSURL(string: "\(self.apiServer)/api/realtimedepartures/\(station.id).json")!)
         let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
             if error == nil {
                 var JSONError: NSError?
@@ -39,7 +39,7 @@ public class RealtimeDepartures
                         if let metros = allTypes["Metros"] as [NSDictionary]? {
                             var departureList = [Departure]()
                             for item in metros {
-                                departureList.append(Departure(dict: item))
+                                departureList.append(Departure(dict: item, station: station))
                             }
                             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                 callback(departureList, error: nil)

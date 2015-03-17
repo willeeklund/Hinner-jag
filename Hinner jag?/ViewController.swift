@@ -93,21 +93,32 @@ class ViewController: UITableViewController
             if let sectionString = self.mappingDict[section] {
                 var imageName: String?
                 var directionLabel: String = ""
-                println("\(sectionString)")
+                var directionSuffix: String = ""
+                if let depList = self.departuresDict[sectionString] {
+                    let firstDep = depList[0]
+                    if firstDep.from_central_direction != nil {
+                        if firstDep.from_central_direction! == firstDep.direction {
+                            directionSuffix = "från T-centralen"
+                        } else {
+                            directionSuffix = "mot T-centralen"
+                        }
+                    }
+                    
+                }
                 if sectionString.rangeOfString("gröna") != nil {
                     imageName = "train_green"
-                    directionLabel = "Gröna linjen"
+                    directionLabel = "Grön linje"
                 } else if sectionString.rangeOfString("röda") != nil {
                     imageName = "train_red"
-                    directionLabel = "Röda linjen"
+                    directionLabel = "Röd linje"
                 } else if sectionString.rangeOfString("blå") != nil {
                     imageName = "train_blue"
-                    directionLabel = "Blåa linjen"
+                    directionLabel = "Blå linje"
                 }
                 if nil != imageName {
                     cell?.trainImage.image = UIImage(named: imageName!)
                 }
-                cell?.headerLabel?.text = directionLabel
+                cell?.headerLabel?.text = "\(directionLabel) \(directionSuffix)"
             } else {
                 cell?.headerLabel?.text = ""
             }

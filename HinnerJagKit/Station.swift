@@ -14,6 +14,7 @@ public class Station: CLLocation, MKAnnotation
 {
     public var id: Int = 0
     public var title: String = ""
+    public var from_central_direction: Int?
     
     override public var description: String {
         get {
@@ -40,6 +41,10 @@ public class Station: CLLocation, MKAnnotation
         var usedTitle = ""
         if let dictTitle = dict["sitename"] as String? {
             usedTitle = dictTitle
+        }
+        
+        if let dictFromCentralDirection = dict["from_central_direction"] as Int? {
+            self.from_central_direction = dictFromCentralDirection
         }
         
         // Assert that we got real data
