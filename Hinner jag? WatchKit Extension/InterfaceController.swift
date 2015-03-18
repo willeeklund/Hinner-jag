@@ -165,7 +165,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
         println("didUpdateLocations")
         self.locationManager.stopUpdatingLocation()
         let location = locations.last as CLLocation
-        self.locateStation.findClosestStationFromLocation(location)
+        self.locateStation.findClosestStationFromLocationAndFetchDepartures(location)
     }
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {

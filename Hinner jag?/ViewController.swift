@@ -47,6 +47,9 @@ class ViewController: UITableViewController
             })
             
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         self.refresh(nil)
     }
     

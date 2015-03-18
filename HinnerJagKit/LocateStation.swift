@@ -30,7 +30,7 @@ public class LocateStation: NSObject, CLLocationManagerDelegate
         return tmpList
     }()
     
-    var locationManager: CLLocationManager! = CLLocationManager()
+    public var locationManager: CLLocationManager! = CLLocationManager()
     
     var realtimeDeparturesObj = RealtimeDepartures()
 
@@ -51,11 +51,16 @@ public class LocateStation: NSObject, CLLocationManagerDelegate
     public func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         self.locationManager.stopUpdatingLocation()
         let location = locations.last as CLLocation
-        self.findClosestStationFromLocation(location)
+        self.findClosestStationFromLocationAndFetchDepartures(location)
     }
-    
-    public func findClosestStationFromLocation(location: CLLocation) {
+
+    public func findClosestStationFromLocation(location: CLLocation) -> Station? {
         var closestStation = self.findStationClosestToLatitude(location.coordinate.latitude, longitude: location.coordinate.longitude)
+        return closestStation
+    }
+
+    public func findClosestStationFromLocationAndFetchDepartures(location: CLLocation) {
+        var closestStation = self.findClosestStationFromLocation(location)
         assert(nil != closestStation, "No station was found")
 
         self.realtimeDeparturesObj.departuresFromStation(closestStation!) {

@@ -49,7 +49,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         self.locationManager.stopUpdatingLocation()
         let location = locations.last as CLLocation
-        self.locateStation.findClosestStationFromLocation(location)
+        self.locateStation.findClosestStationFromLocationAndFetchDepartures(location)
     }
 
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
@@ -59,12 +59,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("Today VC: viewDidLoad")
-//        var frame = self.todayView.frame
-//        frame.size.height = 180.0
-//        self.todayView.frame = frame
-//        println("Height of today view: \(self.todayView.frame.height)")
-//        println("Height of main view:  \(self.view.frame.height)")
         
         // Reset
         self.departuresDict = Dictionary<Int, [Departure]>()
@@ -89,8 +83,20 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
             }
             self.departuresDict = tmpDict
         }
-        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         self.locationManager.startUpdatingLocation()
+        if nil != self.locationManager.location {
+            // Less than 5 minutes ago, use old location
+            if -300.0 < self.locationManager.location.timestamp.timeIntervalSinceNow {
+                if let oldStation = self.locateStation.findClosestStationFromLocation(self.locationManager.location) {
+                    println("## OldStation = \(oldStation.title)")
+                    self.closestStation = oldStation
+                    self.updateUI()
+                }
+            }
+        }
     }
 
     // MARK: - Update UI
