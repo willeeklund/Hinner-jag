@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main App View Controller-->
         <scene sceneID="peC-mS-Ocu">
             <objects>
-                <tableViewController id="obH-mF-fGV" customClass="ViewController" customModule="Hinner_jag" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="obH-mF-fGV" customClass="MainAppViewController" customModule="Hinner_jag" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="1OR-tn-34Z">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,28 +31,20 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Närmast" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5UJ-Is-jEo">
                                             <rect key="frame" x="8" y="65" width="353" height="24"/>
                                             <constraints>
+                                                <constraint firstAttribute="height" constant="24" id="C3D-Jw-XUV"/>
                                                 <constraint firstAttribute="width" constant="353" id="oVY-mq-DXy"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SBM-Cg-TGd">
-                                            <rect key="frame" x="8" y="22" width="35" height="35"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="35" id="X4a-Kh-IaA"/>
-                                                <constraint firstAttribute="width" constant="35" id="tgt-Vd-Lea"/>
-                                            </constraints>
-                                        </imageView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="5UJ-Is-jEo" secondAttribute="bottom" constant="-2.5" id="44v-Me-n70"/>
                                         <constraint firstItem="hnz-Oe-n2e" firstAttribute="top" secondItem="L1B-Wu-1kt" secondAttribute="topMargin" constant="18" id="4s2-oZ-vnq"/>
-                                        <constraint firstItem="5UJ-Is-jEo" firstAttribute="top" secondItem="SBM-Cg-TGd" secondAttribute="bottom" constant="8" symbolic="YES" id="Q71-R8-vCR"/>
-                                        <constraint firstItem="SBM-Cg-TGd" firstAttribute="leading" secondItem="5UJ-Is-jEo" secondAttribute="leading" id="X8I-i9-cL8"/>
-                                        <constraint firstItem="SBM-Cg-TGd" firstAttribute="top" secondItem="L1B-Wu-1kt" secondAttribute="topMargin" constant="14" id="Y4r-UO-vdm"/>
                                         <constraint firstItem="5UJ-Is-jEo" firstAttribute="top" secondItem="hnz-Oe-n2e" secondAttribute="bottom" constant="13" id="Yph-Nj-EHZ"/>
+                                        <constraint firstItem="5UJ-Is-jEo" firstAttribute="top" secondItem="hnz-Oe-n2e" secondAttribute="bottom" constant="12" id="ZOY-TC-Ynk"/>
                                         <constraint firstItem="5UJ-Is-jEo" firstAttribute="leading" secondItem="L1B-Wu-1kt" secondAttribute="leadingMargin" id="Zvb-90-JsC"/>
                                         <constraint firstItem="hnz-Oe-n2e" firstAttribute="centerX" secondItem="L1B-Wu-1kt" secondAttribute="centerX" id="aSM-MW-oTG"/>
-                                        <constraint firstItem="SBM-Cg-TGd" firstAttribute="centerY" secondItem="hnz-Oe-n2e" secondAttribute="centerY" id="yt6-oF-K9h"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">

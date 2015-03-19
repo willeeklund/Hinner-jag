@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0211B1E41AAE37B600947C45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0211B1E31AAE37B600947C45 /* AppDelegate.swift */; };
 		0211B1E71AAE37B600947C45 /* Hinner_jag_.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0211B1E51AAE37B600947C45 /* Hinner_jag_.xcdatamodeld */; };
-		0211B1E91AAE37B600947C45 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0211B1E81AAE37B600947C45 /* ViewController.swift */; };
+		0211B1E91AAE37B600947C45 /* MainAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0211B1E81AAE37B600947C45 /* MainAppViewController.swift */; };
 		0211B1EC1AAE37B600947C45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0211B1EA1AAE37B600947C45 /* Main.storyboard */; };
 		0211B1EE1AAE37B600947C45 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0211B1ED1AAE37B600947C45 /* Images.xcassets */; };
 		0211B1F11AAE37B600947C45 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0211B1EF1AAE37B600947C45 /* LaunchScreen.xib */; };
@@ -29,7 +29,31 @@
 		0211B24C1AAE4BB000947C45 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0211B24B1AAE4BB000947C45 /* TodayViewController.swift */; };
 		0211B24E1AAE4BB000947C45 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0211B24D1AAE4BB000947C45 /* MainInterface.storyboard */; };
 		0211B2511AAE4BB000947C45 /* Hinner jag widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0211B2441AAE4BB000947C45 /* Hinner jag widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		021D6DB91AB8469400337673 /* Hinner jag WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 02F2FF331AB48BB8001A1F90 /* Hinner jag WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		02B11BA21ABA3D02003ACD06 /* GAI.h in Headers */ = {isa = PBXBuildFile; fileRef = 02B11B981ABA3D02003ACD06 /* GAI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		02B11BA31ABA3D02003ACD06 /* GAIDictionaryBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 02B11B991ABA3D02003ACD06 /* GAIDictionaryBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		02B11BA41ABA3D02003ACD06 /* GAIEcommerceFields.h in Headers */ = {isa = PBXBuildFile; fileRef = 02B11B9A1ABA3D02003ACD06 /* GAIEcommerceFields.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		02B11BA51ABA3D02003ACD06 /* GAIEcommerceProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = 02B11B9B1ABA3D02003ACD06 /* GAIEcommerceProduct.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		02B11BA61ABA3D02003ACD06 /* GAIEcommerceProductAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 02B11B9C1ABA3D02003ACD06 /* GAIEcommerceProductAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		02B11BA71ABA3D02003ACD06 /* GAIEcommercePromotion.h in Headers */ = {isa = PBXBuildFile; fileRef = 02B11B9D1ABA3D02003ACD06 /* GAIEcommercePromotion.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		02B11BA81ABA3D02003ACD06 /* GAIFields.h in Headers */ = {isa = PBXBuildFile; fileRef = 02B11B9E1ABA3D02003ACD06 /* GAIFields.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		02B11BA91ABA3D02003ACD06 /* GAILogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 02B11B9F1ABA3D02003ACD06 /* GAILogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		02B11BAA1ABA3D02003ACD06 /* GAITrackedViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 02B11BA01ABA3D02003ACD06 /* GAITrackedViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		02B11BAB1ABA3D02003ACD06 /* GAITracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 02B11BA11ABA3D02003ACD06 /* GAITracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		02B11BB21ABA42EB003ACD06 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB11ABA42EB003ACD06 /* libGoogleAnalyticsServices.a */; };
+		02B11BB41ABA430B003ACD06 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB31ABA430B003ACD06 /* CoreData.framework */; };
+		02B11BB61ABA431E003ACD06 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB51ABA431E003ACD06 /* SystemConfiguration.framework */; };
+		02B11BB81ABA4331003ACD06 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB71ABA4331003ACD06 /* libz.dylib */; };
+		02B11BBA1ABA439E003ACD06 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB91ABA439E003ACD06 /* libGoogleAnalyticsServices.a */; };
+		02B11BBB1ABA43A6003ACD06 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB31ABA430B003ACD06 /* CoreData.framework */; };
+		02B11BBC1ABA43B0003ACD06 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB51ABA431E003ACD06 /* SystemConfiguration.framework */; };
+		02B11BBD1ABA43B9003ACD06 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB71ABA4331003ACD06 /* libz.dylib */; };
+		02B11BBE1ABA4712003ACD06 /* GAIExtendViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B11BAE1ABA4165003ACD06 /* GAIExtendViewControllers.swift */; };
+		02B11BBF1ABA4835003ACD06 /* GAIExtendViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B11BAE1ABA4165003ACD06 /* GAIExtendViewControllers.swift */; };
+		02B11BC01ABA486B003ACD06 /* GAIExtendViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B11BAE1ABA4165003ACD06 /* GAIExtendViewControllers.swift */; };
+		02B11BC11ABA48C9003ACD06 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB51ABA431E003ACD06 /* SystemConfiguration.framework */; };
+		02B11BC21ABA48D2003ACD06 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB31ABA430B003ACD06 /* CoreData.framework */; };
+		02B11BC31ABA48DA003ACD06 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB71ABA4331003ACD06 /* libz.dylib */; };
+		02B11BC41ABA48E7003ACD06 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB11ABA42EB003ACD06 /* libGoogleAnalyticsServices.a */; };
 		02D4E8391AB5FD8D00FD597F /* SortDepartures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D4E8381AB5FD8D00FD597F /* SortDepartures.swift */; };
 		02D4E8431AB61DDC00FD597F /* Hinner_jag_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D4E8421AB61DDC00FD597F /* Hinner_jag_Tests.swift */; };
 		02E90DA81AB0FBAF00FD5DB7 /* HinnerJagKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0211B20B1AAE37FB00947C45 /* HinnerJagKit.framework */; };
@@ -73,13 +97,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 0211B2431AAE4BB000947C45;
 			remoteInfo = "Hinner jag widget";
-		};
-		021D6DBA1AB8469400337673 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0211B1D61AAE37B600947C45 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 02F2FF321AB48BB8001A1F90;
-			remoteInfo = "Hinner jag WatchKit Extension";
 		};
 		02D4E8441AB61DDC00FD597F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -130,7 +147,6 @@
 			dstSubfolderSpec = 13;
 			files = (
 				0211B2511AAE4BB000947C45 /* Hinner jag widget.appex in Embed App Extensions */,
-				021D6DB91AB8469400337673 /* Hinner jag WatchKit Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,7 +158,7 @@
 		0211B1E21AAE37B600947C45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0211B1E31AAE37B600947C45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0211B1E61AAE37B600947C45 /* Hinner_jag_.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hinner_jag_.xcdatamodel; sourceTree = "<group>"; };
-		0211B1E81AAE37B600947C45 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0211B1E81AAE37B600947C45 /* MainAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppViewController.swift; sourceTree = "<group>"; };
 		0211B1EB1AAE37B600947C45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0211B1ED1AAE37B600947C45 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0211B1F01AAE37B600947C45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -166,6 +182,22 @@
 		0211B24D1AAE4BB000947C45 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		028EB6611AAF97E6004C508C /* Hinner jag?.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Hinner jag?.entitlements"; sourceTree = "<group>"; };
 		028EB6621AAF983C004C508C /* Hinner jag widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Hinner jag widget.entitlements"; sourceTree = "<group>"; };
+		02B11B981ABA3D02003ACD06 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		02B11B991ABA3D02003ACD06 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		02B11B9A1ABA3D02003ACD06 /* GAIEcommerceFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceFields.h; sourceTree = "<group>"; };
+		02B11B9B1ABA3D02003ACD06 /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProduct.h; sourceTree = "<group>"; };
+		02B11B9C1ABA3D02003ACD06 /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProductAction.h; sourceTree = "<group>"; };
+		02B11B9D1ABA3D02003ACD06 /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommercePromotion.h; sourceTree = "<group>"; };
+		02B11B9E1ABA3D02003ACD06 /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
+		02B11B9F1ABA3D02003ACD06 /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
+		02B11BA01ABA3D02003ACD06 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		02B11BA11ABA3D02003ACD06 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		02B11BAE1ABA4165003ACD06 /* GAIExtendViewControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GAIExtendViewControllers.swift; path = "../Hinner jag?/GAIExtendViewControllers.swift"; sourceTree = "<group>"; };
+		02B11BB11ABA42EB003ACD06 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		02B11BB31ABA430B003ACD06 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		02B11BB51ABA431E003ACD06 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		02B11BB71ABA4331003ACD06 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		02B11BB91ABA439E003ACD06 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = ../../../../../Downloads/GoogleAnalyticsServicesiOS_3.10/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		02D4E8381AB5FD8D00FD597F /* SortDepartures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortDepartures.swift; sourceTree = "<group>"; };
 		02D4E83E1AB61DDC00FD597F /* Hinner jag Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hinner jag Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		02D4E8411AB61DDC00FD597F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -191,6 +223,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02B11BBD1ABA43B9003ACD06 /* libz.dylib in Frameworks */,
+				02B11BBC1ABA43B0003ACD06 /* SystemConfiguration.framework in Frameworks */,
+				02B11BBB1ABA43A6003ACD06 /* CoreData.framework in Frameworks */,
+				02B11BBA1ABA439E003ACD06 /* libGoogleAnalyticsServices.a in Frameworks */,
 				0211B2221AAE37FC00947C45 /* HinnerJagKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,6 +235,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02B11BB81ABA4331003ACD06 /* libz.dylib in Frameworks */,
+				02B11BB61ABA431E003ACD06 /* SystemConfiguration.framework in Frameworks */,
+				02B11BB41ABA430B003ACD06 /* CoreData.framework in Frameworks */,
+				02B11BB21ABA42EB003ACD06 /* libGoogleAnalyticsServices.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +254,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02B11BC41ABA48E7003ACD06 /* libGoogleAnalyticsServices.a in Frameworks */,
+				02B11BC31ABA48DA003ACD06 /* libz.dylib in Frameworks */,
+				02B11BC21ABA48D2003ACD06 /* CoreData.framework in Frameworks */,
+				02B11BC11ABA48C9003ACD06 /* SystemConfiguration.framework in Frameworks */,
 				02E90DA81AB0FBAF00FD5DB7 /* HinnerJagKit.framework in Frameworks */,
 				0211B2471AAE4BB000947C45 /* NotificationCenter.framework in Frameworks */,
 			);
@@ -270,7 +314,7 @@
 			children = (
 				028EB6611AAF97E6004C508C /* Hinner jag?.entitlements */,
 				0211B1E31AAE37B600947C45 /* AppDelegate.swift */,
-				0211B1E81AAE37B600947C45 /* ViewController.swift */,
+				0211B1E81AAE37B600947C45 /* MainAppViewController.swift */,
 				0211B2331AAE391900947C45 /* Views */,
 				0211B1EA1AAE37B600947C45 /* Main.storyboard */,
 				0211B1ED1AAE37B600947C45 /* Images.xcassets */,
@@ -293,6 +337,7 @@
 		0211B20C1AAE37FB00947C45 /* HinnerJagKit */ = {
 			isa = PBXGroup;
 			children = (
+				02B11B971ABA3CCE003ACD06 /* Google Analytics */,
 				02F755BA1AB621210088D6C8 /* metro_stations.json */,
 				0211B20F1AAE37FB00947C45 /* HinnerJagKit.h */,
 				0211B22B1AAE383500947C45 /* Station.swift */,
@@ -343,6 +388,11 @@
 		0211B2451AAE4BB000947C45 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				02B11BB91ABA439E003ACD06 /* libGoogleAnalyticsServices.a */,
+				02B11BB71ABA4331003ACD06 /* libz.dylib */,
+				02B11BB51ABA431E003ACD06 /* SystemConfiguration.framework */,
+				02B11BB31ABA430B003ACD06 /* CoreData.framework */,
+				02B11BB11ABA42EB003ACD06 /* libGoogleAnalyticsServices.a */,
 				0211B2461AAE4BB000947C45 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
@@ -365,6 +415,24 @@
 				0211B24A1AAE4BB000947C45 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		02B11B971ABA3CCE003ACD06 /* Google Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				02B11BAE1ABA4165003ACD06 /* GAIExtendViewControllers.swift */,
+				02B11B981ABA3D02003ACD06 /* GAI.h */,
+				02B11B991ABA3D02003ACD06 /* GAIDictionaryBuilder.h */,
+				02B11B9A1ABA3D02003ACD06 /* GAIEcommerceFields.h */,
+				02B11B9B1ABA3D02003ACD06 /* GAIEcommerceProduct.h */,
+				02B11B9C1ABA3D02003ACD06 /* GAIEcommerceProductAction.h */,
+				02B11B9D1ABA3D02003ACD06 /* GAIEcommercePromotion.h */,
+				02B11B9E1ABA3D02003ACD06 /* GAIFields.h */,
+				02B11B9F1ABA3D02003ACD06 /* GAILogger.h */,
+				02B11BA01ABA3D02003ACD06 /* GAITrackedViewController.h */,
+				02B11BA11ABA3D02003ACD06 /* GAITracker.h */,
+			);
+			name = "Google Analytics";
 			sourceTree = "<group>";
 		};
 		02D4E83F1AB61DDC00FD597F /* Hinner jag Tests */ = {
@@ -442,7 +510,17 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02B11BA31ABA3D02003ACD06 /* GAIDictionaryBuilder.h in Headers */,
+				02B11BA81ABA3D02003ACD06 /* GAIFields.h in Headers */,
+				02B11BA21ABA3D02003ACD06 /* GAI.h in Headers */,
+				02B11BA41ABA3D02003ACD06 /* GAIEcommerceFields.h in Headers */,
+				02B11BAA1ABA3D02003ACD06 /* GAITrackedViewController.h in Headers */,
+				02B11BA91ABA3D02003ACD06 /* GAILogger.h in Headers */,
+				02B11BAB1ABA3D02003ACD06 /* GAITracker.h in Headers */,
+				02B11BA51ABA3D02003ACD06 /* GAIEcommerceProduct.h in Headers */,
 				0211B2101AAE37FB00947C45 /* HinnerJagKit.h in Headers */,
+				02B11BA71ABA3D02003ACD06 /* GAIEcommercePromotion.h in Headers */,
+				02B11BA61ABA3D02003ACD06 /* GAIEcommerceProductAction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,7 +542,6 @@
 			dependencies = (
 				0211B2211AAE37FC00947C45 /* PBXTargetDependency */,
 				0211B2501AAE4BB000947C45 /* PBXTargetDependency */,
-				021D6DBB1AB8469400337673 /* PBXTargetDependency */,
 			);
 			name = "Hinner jag";
 			productName = "Hinner jag?";
@@ -718,7 +795,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0211B1E91AAE37B600947C45 /* ViewController.swift in Sources */,
+				0211B1E91AAE37B600947C45 /* MainAppViewController.swift in Sources */,
+				02B11BBF1ABA4835003ACD06 /* GAIExtendViewControllers.swift in Sources */,
 				0211B1E71AAE37B600947C45 /* Hinner_jag_.xcdatamodeld in Sources */,
 				0211B2391AAE397900947C45 /* TravelHeaderCell.swift in Sources */,
 				0211B2371AAE395C00947C45 /* TravelDetailsCell.swift in Sources */,
@@ -735,6 +813,7 @@
 				02D4E8391AB5FD8D00FD597F /* SortDepartures.swift in Sources */,
 				0211B2301AAE389A00947C45 /* LocateStation.swift in Sources */,
 				0211B2321AAE38B100947C45 /* Departure.swift in Sources */,
+				02B11BBE1ABA4712003ACD06 /* GAIExtendViewControllers.swift in Sources */,
 				0211B22E1AAE387500947C45 /* RealtimeDepartures.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -751,6 +830,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02B11BC01ABA486B003ACD06 /* GAIExtendViewControllers.swift in Sources */,
 				0211B24C1AAE4BB000947C45 /* TodayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -797,11 +877,6 @@
 			isa = PBXTargetDependency;
 			target = 0211B2431AAE4BB000947C45 /* Hinner jag widget */;
 			targetProxy = 0211B24F1AAE4BB000947C45 /* PBXContainerItemProxy */;
-		};
-		021D6DBB1AB8469400337673 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 02F2FF321AB48BB8001A1F90 /* Hinner jag WatchKit Extension */;
-			targetProxy = 021D6DBA1AB8469400337673 /* PBXContainerItemProxy */;
 		};
 		02D4E8451AB61DDC00FD597F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -943,6 +1018,10 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Hinner jag?/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/wiek/Downloads/GoogleAnalyticsServicesiOS_3.10,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -955,6 +1034,10 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Hinner jag?/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/wiek/Downloads/GoogleAnalyticsServicesiOS_3.10,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -977,9 +1060,14 @@
 				INFOPLIST_FILE = HinnerJagKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1000,9 +1088,14 @@
 				INFOPLIST_FILE = HinnerJagKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1053,6 +1146,10 @@
 				);
 				INFOPLIST_FILE = "Hinner jag widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -1066,6 +1163,10 @@
 				CODE_SIGN_ENTITLEMENTS = "Hinner jag widget/Hinner jag widget.entitlements";
 				INFOPLIST_FILE = "Hinner jag widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;

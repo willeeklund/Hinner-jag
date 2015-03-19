@@ -43,6 +43,10 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
         super.init(coder: aDecoder)
         self.locationManager.delegate = self
         self.locationManager.requestWhenInUseAuthorization()
+        // Init GA
+        GAI.sharedInstance().trackUncaughtExceptions = true
+        GAI.sharedInstance().logger.logLevel = GAILogLevel.Verbose
+        GAI.sharedInstance().trackerWithTrackingId("UA-60944711-1")
     }
     
     // MARK: - Get location of the user
@@ -59,6 +63,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setScreeName("TodayViewController")
         
         // Reset
         self.departuresDict = Dictionary<Int, [Departure]>()
@@ -67,9 +72,19 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
         // Set up callback
         self.locateStation.locationUpdatedCallback = { (station: Station?, departures: [Departure]?, error: NSError?) in
             self.closestStation = station
+            if nil != station {
+                println("Now we are using the location callback. \(station!)")
+                self.trackEvent("Station", action: "found", label: "\(station!.title) (\(station!.id))", value: 1)
+            } else {
+                self.trackEvent("Station", action: "not_found", label: "", value: nil)
+            }
+            
             if nil == departures {
                 println("No departures were found. Error: \(error)")
+                self.trackEvent("Departures", action: "not_found", label: "", value: nil)
+                return
             }
+            
             self.departures = departures
             // Add departures into separated groups
             var tmpDict: Dictionary<Int, [Departure]> = Dictionary<Int, [Departure]>()
