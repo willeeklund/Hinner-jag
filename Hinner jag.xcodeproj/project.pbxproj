@@ -47,7 +47,6 @@
 		02B11BBB1ABA43A6003ACD06 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB31ABA430B003ACD06 /* CoreData.framework */; };
 		02B11BBC1ABA43B0003ACD06 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB51ABA431E003ACD06 /* SystemConfiguration.framework */; };
 		02B11BBD1ABA43B9003ACD06 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB71ABA4331003ACD06 /* libz.dylib */; };
-		02B11BBE1ABA4712003ACD06 /* GAIExtendViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B11BAE1ABA4165003ACD06 /* GAIExtendViewControllers.swift */; };
 		02B11BBF1ABA4835003ACD06 /* GAIExtendViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B11BAE1ABA4165003ACD06 /* GAIExtendViewControllers.swift */; };
 		02B11BC01ABA486B003ACD06 /* GAIExtendViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B11BAE1ABA4165003ACD06 /* GAIExtendViewControllers.swift */; };
 		02B11BC11ABA48C9003ACD06 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB51ABA431E003ACD06 /* SystemConfiguration.framework */; };
@@ -813,7 +812,6 @@
 				02D4E8391AB5FD8D00FD597F /* SortDepartures.swift in Sources */,
 				0211B2301AAE389A00947C45 /* LocateStation.swift in Sources */,
 				0211B2321AAE38B100947C45 /* Departure.swift in Sources */,
-				02B11BBE1ABA4712003ACD06 /* GAIExtendViewControllers.swift in Sources */,
 				0211B22E1AAE387500947C45 /* RealtimeDepartures.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -950,6 +948,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GA_TRACKING_ID = off;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -996,6 +995,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GA_TRACKING_ID = "UA-60944711-1";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;

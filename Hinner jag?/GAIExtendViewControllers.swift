@@ -11,6 +11,26 @@ import UIKit
 import HinnerJagKit
 
 extension UIViewController {
+    
+    func gaSetup() {
+        let tracker = GAI.sharedInstance().defaultTracker
+        if tracker != nil {
+            println("Have already initialized tracker")
+            return
+        }
+        let hinnerJagKitBundle = NSBundle(forClass: LocateStation.classForCoder())
+        if let path = hinnerJagKitBundle.pathForResource("Info", ofType: "plist") {
+            if let infoDict = NSDictionary(contentsOfFile: path) as? Dictionary<String, AnyObject> {
+                if let gaTrackerId: String = infoDict["GA_TRACKING_ID"] as? String {
+                    if gaTrackerId.hasPrefix("UA-") {
+                        GAI.sharedInstance().trackUncaughtExceptions = true
+                        GAI.sharedInstance().trackerWithTrackingId(gaTrackerId)
+                    }
+                }
+            }
+        }
+    }
+    
     func setScreeName(name: String) {
         self.title = name
         self.sendScreenView()
@@ -18,12 +38,18 @@ extension UIViewController {
     
     func sendScreenView() {
         let tracker = GAI.sharedInstance().defaultTracker
+        if nil == tracker {
+            return
+        }
         tracker.set(kGAIScreenName, value: self.title)
         tracker.send(GAIDictionaryBuilder.createScreenView().build())
     }
     
     func trackEvent(category: String, action: String, label: String, value: NSNumber?) {
         let tracker = GAI.sharedInstance().defaultTracker
+        if nil == tracker {
+            return
+        }
         let trackDictionary = GAIDictionaryBuilder.createEventWithCategory(category, action: action, label: label, value: value).build()
         tracker.send(trackDictionary)
     }

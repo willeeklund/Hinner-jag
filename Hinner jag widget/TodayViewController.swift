@@ -44,9 +44,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
         self.locationManager.delegate = self
         self.locationManager.requestWhenInUseAuthorization()
         // Init GA
-        GAI.sharedInstance().trackUncaughtExceptions = true
-        GAI.sharedInstance().logger.logLevel = GAILogLevel.Verbose
-        GAI.sharedInstance().trackerWithTrackingId("UA-60944711-1")
+        self.gaSetup()
     }
     
     // MARK: - Get location of the user

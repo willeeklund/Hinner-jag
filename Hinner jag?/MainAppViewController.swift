@@ -28,6 +28,7 @@ class MainAppViewController: UITableViewController
     // MARK: - Lifecycle stuff
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        self.gaSetup()
     }
     
     override func viewDidLoad() {
