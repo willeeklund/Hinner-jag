@@ -57,7 +57,7 @@
                                     <outlet property="headerLabel" destination="hnz-Oe-n2e" id="6a6-EE-tXw"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TravelHeaderCell" id="8tD-IG-LxG" customClass="TravelHeaderCell" customModule="Hinner_jag" customModuleProvider="target">
+                            <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TravelHeaderCell" id="8tD-IG-LxG" customClass="TravelHeaderCell" customModule="Hinner_jag">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8tD-IG-LxG" id="WXI-Cc-nVc">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -99,11 +99,11 @@
                                     </variation>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="headerLabel" destination="uld-2U-egR" id="tUE-5p-Q6K"/>
-                                    <outlet property="trainImage" destination="8wO-hw-zNr" id="Cgj-rd-9iv"/>
+                                    <outlet property="headerLabel" destination="uld-2U-egR" id="NVz-1F-0JG"/>
+                                    <outlet property="trainImage" destination="8wO-hw-zNr" id="4Ce-KC-rna"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TravelDetailsCell" id="aFb-2l-7vx" customClass="TravelDetailsCell" customModule="Hinner_jag" customModuleProvider="target">
+                            <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TravelDetailsCell" id="aFb-2l-7vx" customClass="TravelDetailsCell" customModule="Hinner_jag">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aFb-2l-7vx" id="cKF-Ui-Ifo">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -135,8 +135,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="destinationLabel" destination="bzx-GL-s8F" id="ues-Tf-BlV"/>
-                                    <outlet property="remainingTimeLabel" destination="Eyq-gf-bvT" id="Tlj-xB-RjQ"/>
+                                    <outlet property="destinationLabel" destination="bzx-GL-s8F" id="xc3-t8-ELT"/>
+                                    <outlet property="remainingTimeLabel" destination="Eyq-gf-bvT" id="XAp-Rh-Uxs"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
