@@ -159,67 +159,13 @@ class TodayViewController: UITableViewController, NCWidgetProviding, CLLocationM
             }
             return cell! as UITableViewCell
         } else {
-            let reuseId = "TravelHeaderCell"
-            var cell = self.tableView.dequeueReusableCellWithIdentifier(reuseId) as? TravelHeaderCell
-            if nil == cell {
-                cell = TravelHeaderCell()
-            }
-        
-            if let sectionString = self.mappingDict[section] {
-                var imageName: String?
-                var directionLabel: String = ""
-                var directionSuffix: String = ""
-                if let depList = self.departuresDict[sectionString] {
-                    let firstDep = depList[0]
-                    if firstDep.from_central_direction != nil {
-                        if firstDep.from_central_direction! == firstDep.direction {
-                            directionSuffix = "från T-centralen"
-                        } else {
-                            directionSuffix = "mot T-centralen"
-                        }
-                    }
-                    
-                }
-                if sectionString.rangeOfString("gröna") != nil {
-                    imageName = "train_green"
-                    directionLabel = "Grön linje"
-                } else if sectionString.rangeOfString("röda") != nil {
-                    imageName = "train_red"
-                    directionLabel = "Röd linje"
-                } else if sectionString.rangeOfString("blå") != nil {
-                    imageName = "train_blue"
-                    directionLabel = "Blå linje"
-                }
-                if nil != imageName {
-                    cell?.trainImage.image = UIImage(named: imageName!)
-                }
-                cell?.headerLabel?.text = "\(directionLabel) \(directionSuffix)"
-            }
-            return cell! as TravelHeaderCell
+            return TravelHeaderCell.createCellForIndexPath(section, tableView: tableView, mappingDict: self.mappingDict, departuresDict: self.departuresDict)
         }
     }
     
     // Cell in table
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let reuseId = "TravelDetailsCell"
-        var cell: TravelDetailsCell? = self.tableView.dequeueReusableCellWithIdentifier(reuseId) as? TravelDetailsCell
-        if nil == cell {
-            cell = TravelDetailsCell()
-        }
-        if let mappingName = self.mappingDict[indexPath.section] {
-            if let depList = self.departuresDict[mappingName] {
-                if indexPath.row < depList.count {
-                    let departure = depList[indexPath.row]
-                    cell?.remainingTimeLabel?.text = departure.remainingTime
-                    cell?.destinationLabel?.text = departure.destination
-                }
-            }
-        } else {
-            cell?.remainingTimeLabel?.text = "..."
-            cell?.destinationLabel?.text = "..."
-        }
-        
-        return cell! as TravelDetailsCell
+        return TravelDetailsCell.createCellForIndexPath(indexPath, tableView: tableView, mappingDict: self.mappingDict, departuresDict: self.departuresDict)
     }
     
     // MARK: - Today widget specific stuff
