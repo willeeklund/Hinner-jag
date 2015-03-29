@@ -11,17 +11,8 @@ import NotificationCenter
 import HinnerJagKit
 import CoreLocation
 
-class TodayViewController: UITableViewController, NCWidgetProviding, CLLocationManagerDelegate, UITableViewDelegate {
+class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLocationManagerDelegate, UITableViewDelegate {
     // MARK: - Variables
-    var mappingDict: Dictionary <Int, String> = Dictionary <Int, String>()
-    var departuresDict: Dictionary<String, [Departure]> = Dictionary<String, [Departure]>() {
-        didSet {
-            self.updateUI()
-        }
-    }
-    var closestStation: Station?
-    var departures: [Departure]?
-    var locateStation: LocateStation = LocateStation()
     var locationManager: CLLocationManager! = CLLocationManager()
     
     // MARK: - Life cycle
@@ -43,6 +34,10 @@ class TodayViewController: UITableViewController, NCWidgetProviding, CLLocationM
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
         println("ERROR - location manager. \(error)")
     }
+    
+    override func getLastLocation() -> CLLocation? {
+        return self.locationManager.location
+    }
 
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
@@ -56,8 +51,10 @@ class TodayViewController: UITableViewController, NCWidgetProviding, CLLocationM
         self.updatePreferredContentSize()
 
         // Set up callback
-        self.locateStation.locationUpdatedCallback = { (station: Station?, departures: [Departure]?, error: NSError?) in
+        self.locateStation.locationUpdatedCallback = { (stationsSorted: [Station], departures: [Departure]?, error: NSError?) in
+            let station = stationsSorted.first
             self.closestStation = station
+            self.closestSortedStations = stationsSorted
             if nil != station {
                 println("Now we are using the location callback. \(station!)")
                 self.trackEvent("Station", action: "found", label: "\(station!.title) (\(station!.id))", value: 1)
@@ -71,9 +68,10 @@ class TodayViewController: UITableViewController, NCWidgetProviding, CLLocationM
                 return
             }
             
-            self.departures = departures
             // Add departures into separated groups
-            (self.mappingDict, self.departuresDict) = SortDepartures.getMappingFromDepartures(departures!, mappingStart: 1)
+            (self.mappingDict, self.departuresDict) = Utils.getMappingFromDepartures(departures!, mappingStart: 1)
+            println("departuresDict = \(self.departuresDict)")
+            println("mappingDict = \(self.mappingDict)")
         }
     }
     
@@ -82,20 +80,20 @@ class TodayViewController: UITableViewController, NCWidgetProviding, CLLocationM
         if nil != self.locationManager.location {
             // Less than 5 minutes ago, use old location
             if -300.0 < self.locationManager.location.timestamp.timeIntervalSinceNow {
-                if let oldStation = self.locateStation.findClosestStationFromLocation(self.locationManager.location) {
-                    println("OldStation = \(oldStation.title)")
-                    self.closestStation = oldStation
-                    self.updateUI()
-                }
+                let sortedStations = self.locateStation.findClosestStationFromLocation(self.locationManager.location)
+                let oldStation = sortedStations.first
+                println("OldStation = \(oldStation!.title)")
+                self.closestStation = oldStation
+                self.updateUI()
+                
             }
         }
     }
 
     // MARK: - Update UI
-    func updateUI() {
-        println("updateUI()")
+    override func updateUI() {
+        super.updateUI()
         dispatch_async(dispatch_get_main_queue(), {
-            self.tableView.reloadData()
             self.updatePreferredContentSize()
         })
     }
@@ -103,7 +101,7 @@ class TodayViewController: UITableViewController, NCWidgetProviding, CLLocationM
     func updatePreferredContentSize() {
         var height: CGFloat = 30.0
         let rowHeight = CGFloat(self.tableView(self.tableView, heightForHeaderInSection: 1))
-        var i = 1; // Start at second section
+        var i = 0; // Start at second section
         while i < self.numberOfSectionsInTableView(self.tableView) {
             height += rowHeight * CGFloat(self.tableView(self.tableView, numberOfRowsInSection: i) + 1)
             i++
@@ -112,15 +110,8 @@ class TodayViewController: UITableViewController, NCWidgetProviding, CLLocationM
     }
         
     // MARK: - Table stuff
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return self.departuresDict.count + 1 // Extra section for closest station
-    }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            // Only header for the closest station section
-            return 0
-        }
         if let mappingName = self.mappingDict[section] {
             if let depList = self.departuresDict[mappingName] {
                 if self.departuresDict.count > 4 {
@@ -131,7 +122,12 @@ class TodayViewController: UITableViewController, NCWidgetProviding, CLLocationM
                 return depList.count
             }
         }
-        return 0
+        // For first section
+        if self.selectChosenStation {
+            return self.closestSortedStations.count
+        } else {
+            return 0
+        }
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -146,18 +142,18 @@ class TodayViewController: UITableViewController, NCWidgetProviding, CLLocationM
     // Header for table
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
-            let reuseId = "HeaderCell"
-            var cell = self.tableView.dequeueReusableCellWithIdentifier(reuseId) as? UITableViewCell
+            let reuseId = "HeadlineCell"
+            var cell = self.tableView.dequeueReusableCellWithIdentifier(reuseId) as? HeadlineCell
             if nil == cell {
-                cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: reuseId)
+                cell = HeadlineCell()
             }
-            if nil == self.closestStation {
-                cell?.textLabel?.text = "Söker efter plats..."
-            } else {
-                let dist = Int(self.closestStation!.distanceFromLocation(self.locationManager.location))
-                cell?.textLabel?.text = "Närmast: \(self.closestStation!.title) (\(dist)m)"
-            }
-            return cell! as UITableViewCell
+            
+            // Text on button
+            let closestStationLabel = Utils.getLabelTextForClosestStation(self.closestStation, ownLocation: self.getLastLocation())
+            cell?.closestStationButton.setTitle(closestStationLabel, forState: .Normal)
+            cell?.controller = self
+
+            return cell! as HeadlineCell
         } else {
             return TravelHeaderCell.createCellForIndexPath(section, tableView: tableView, mappingDict: self.mappingDict, departuresDict: self.departuresDict)
         }
@@ -165,7 +161,25 @@ class TodayViewController: UITableViewController, NCWidgetProviding, CLLocationM
     
     // Cell in table
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return TravelDetailsCell.createCellForIndexPath(indexPath, tableView: tableView, mappingDict: self.mappingDict, departuresDict: self.departuresDict)
+        if indexPath.section == 0 {
+            // Section for changing closest station manually
+            let reuseId = "chooseStation"
+            var cell = tableView.dequeueReusableCellWithIdentifier(reuseId) as UITableViewCell?
+            if cell == nil {
+                cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: reuseId)
+            }
+            if indexPath.row < self.closestSortedStations.count {
+                let station = self.closestSortedStations[indexPath.row]
+                var dist = station.distanceFromLocation(self.locateStation.locationManager.location)
+                let distFormat = Utils.distanceFormat(dist)
+                cell?.textLabel?.text = "\(station.title) (\(distFormat))"
+                cell?.textLabel?.textColor = UIColor.whiteColor()
+            }
+            
+            return cell! as UITableViewCell
+        } else {
+            return TravelDetailsCell.createCellForIndexPath(indexPath, tableView: tableView, mappingDict: self.mappingDict, departuresDict: self.departuresDict)
+        }
     }
     
     // MARK: - Today widget specific stuff

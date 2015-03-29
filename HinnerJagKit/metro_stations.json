@@ -98,12 +98,6 @@
       "latitude": 59.3382848826814,
       "longitude": 17.9396416118668
     },
-    { "id": 19,
-      "siteid": 1002,
-      "sitename": "Centralen",
-      "latitude": 59.3313179695028,
-      "longitude": 18.0616773959365
-    },
     { "id": 21,
       "siteid": 9201,
       "sitename": "Danderyds sjukhus",
@@ -551,12 +545,6 @@
       "from_central_direction": 1,
       "latitude": 59.337477366128,
       "longitude": 18.015593812489
-    },
-    { "id": 106,
-      "siteid": 9000,
-      "sitename": "Stockholms central",
-      "latitude": 59.3313179695028,
-      "longitude": 18.0616773959365
     },
     { "id": 108,
       "siteid": 9111,

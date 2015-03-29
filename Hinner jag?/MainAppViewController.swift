@@ -7,23 +7,14 @@
 //
 
 import UIKit
+import MapKit
 import HinnerJagKit
 
-class MainAppViewController: UITableViewController
+class MainAppViewController: HinnerJagTableViewController
 {
-    // MARK: - Variables
-    var mappingDict: Dictionary <Int, String> = Dictionary <Int, String>()
-    var departuresDict: Dictionary<String, [Departure]> = Dictionary<String, [Departure]>() {
-        didSet {
-            self.tableView.reloadData()
-            println("Now we have \(self.departuresDict.count) groups")
-        }
+    override func getLastLocation() -> CLLocation? {
+        return self.locateStation.locationManager.location
     }
-
-    var closestStation: Station?
-    var locateStation: LocateStation = LocateStation()
-    var realtimeDeparturesObj = RealtimeDepartures()
-//    var sortDepartures = SortDepartures()
     
     // MARK: - Lifecycle stuff
     required init(coder aDecoder: NSCoder) {
@@ -35,8 +26,12 @@ class MainAppViewController: UITableViewController
         super.viewDidLoad()
         self.setScreeName("MainAppViewController")
         self.departuresDict = Dictionary<String, [Departure]>()
-        self.locateStation.locationUpdatedCallback = { (station: Station?, departures: [Departure]?, error: NSError?) in
+        self.closestStation = nil
+        
+        self.locateStation.locationUpdatedCallback = { (stationsSorted: [Station], departures: [Departure]?, error: NSError?) in
+            let station = stationsSorted.first
             self.closestStation = station
+            self.closestSortedStations = stationsSorted
             if nil != station {
                 println("Now we are using the location callback. \(station!)")
                 self.trackEvent("Station", action: "found", label: "\(station!.title) (\(station!.id))", value: 1)
@@ -50,7 +45,7 @@ class MainAppViewController: UITableViewController
                 return
             }
             
-            (self.mappingDict, self.departuresDict) = SortDepartures.getMappingFromDepartures(departures!, mappingStart: 1)
+            (self.mappingDict, self.departuresDict) = Utils.getMappingFromDepartures(departures!, mappingStart: 1)
             self.trackEvent("Departures", action: "found", label: "\(self.departuresDict.count) groups", value: 1)
             dispatch_async(dispatch_get_main_queue(), {
                 self.refreshControl!.endRefreshing()
@@ -68,9 +63,6 @@ class MainAppViewController: UITableViewController
     }
     
     // MARK: - Table stuff
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return self.departuresDict.count + 1
-    }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let mappingName = self.mappingDict[section] {
@@ -78,7 +70,12 @@ class MainAppViewController: UITableViewController
                 return depList.count
             }
         }
-        return 0
+        // For first section
+        if self.selectChosenStation {
+            return self.closestSortedStations.count
+        } else {
+            return 0
+        }
     }
     
     // Header for table
@@ -89,14 +86,11 @@ class MainAppViewController: UITableViewController
             if nil == cell {
                 cell = HeadlineCell()
             }
-            let headerText = "Närmast:"
-            if nil == self.closestStation {
-                cell?.closestStationLabel?.text = "Söker efter plats..."
-            } else {
-                let dist = Int(self.closestStation!.distanceFromLocation(self.locateStation.locationManager.location))
-                cell?.closestStationLabel?.text = "Närmast: \(self.closestStation!.title) (\(dist)m)"
-            }
+            // Text on button
+            let closestStationLabel = Utils.getLabelTextForClosestStation(self.closestStation, ownLocation: self.getLastLocation())
+            cell?.closestStationButton.setTitle(closestStationLabel, forState: .Normal)
             
+            cell?.controller = self
             return cell! as HeadlineCell
         } else {
             return TravelHeaderCell.createCellForIndexPath(section, tableView: tableView, mappingDict: self.mappingDict, departuresDict: self.departuresDict)
@@ -105,7 +99,25 @@ class MainAppViewController: UITableViewController
     
     // Cell in table
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return TravelDetailsCell.createCellForIndexPath(indexPath, tableView: tableView, mappingDict: self.mappingDict, departuresDict: self.departuresDict)
+        if indexPath.section == 0 {
+            // Section for changing closest station manually
+            let reuseId = "chooseStation"
+            var cell = tableView.dequeueReusableCellWithIdentifier(reuseId) as UITableViewCell?
+            if cell == nil {
+                cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: reuseId)
+            }
+            if indexPath.row < self.closestSortedStations.count {
+                let station = self.closestSortedStations[indexPath.row]
+                var dist = station.distanceFromLocation(self.locateStation.locationManager.location)
+                let distFormat = Utils.distanceFormat(dist)
+                cell?.textLabel?.text = "\(station.title) (\(distFormat))"
+            }
+
+            return cell! as UITableViewCell
+        } else {
+            // Travel details
+            return TravelDetailsCell.createCellForIndexPath(indexPath, tableView: tableView, mappingDict: self.mappingDict, departuresDict: self.departuresDict)
+        }
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

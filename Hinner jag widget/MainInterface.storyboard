@@ -10,24 +10,36 @@
         <scene sceneID="XJ8-8X-duP">
             <objects>
                 <tableViewController id="BUW-g8-FM8" customClass="TodayViewController" customModule="Hinner_jag_widget" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="34" sectionHeaderHeight="34" sectionFooterHeight="22" id="cy6-6w-Xp4">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cy6-6w-Xp4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeaderCell" textLabel="ATk-ee-b10" rowHeight="27" style="IBUITableViewCellStyleDefault" id="O00-Hc-7L4">
+                            <tableViewCell opaque="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeadlineCell" rowHeight="27" id="O00-Hc-7L4" customClass="HeadlineCell" customModule="Hinner_jag_widget" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O00-Hc-7L4" id="7Xb-tX-Aqt">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Letar efter plats..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ATk-ee-b10">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.30419212995391309" green="0.75611804165293361" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OeZ-JZ-aTY">
+                                            <rect key="frame" x="8" y="0.0" width="304" height="24"/>
+                                            <state key="normal" title="Button">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="changeSelectedStation:" destination="O00-Hc-7L4" eventType="touchUpInside" id="cCi-8b-ibR"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="OeZ-JZ-aTY" firstAttribute="leading" secondItem="7Xb-tX-Aqt" secondAttribute="leadingMargin" id="9d8-Hj-cBY"/>
+                                        <constraint firstItem="OeZ-JZ-aTY" firstAttribute="trailing" secondItem="7Xb-tX-Aqt" secondAttribute="trailingMargin" id="M1y-Ze-YgI"/>
+                                        <constraint firstItem="OeZ-JZ-aTY" firstAttribute="top" secondItem="7Xb-tX-Aqt" secondAttribute="top" id="Q1O-jt-Acw"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="OeZ-JZ-aTY" secondAttribute="bottom" constant="-5" id="bI3-qQ-hal"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="closestStationButton" destination="OeZ-JZ-aTY" id="wpB-go-Ugg"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TravelHeaderCell" rowHeight="27" id="jGy-rW-P4M" customClass="TravelHeaderCell" customModule="Hinner_jag_widget" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>

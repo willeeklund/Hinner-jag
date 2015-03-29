@@ -34,7 +34,7 @@ public class LocateStation: NSObject, CLLocationManagerDelegate
     
     var realtimeDeparturesObj = RealtimeDepartures()
 
-    public var locationUpdatedCallback: ((station: Station?, departures: [Departure]?, error: NSError?) -> ())?
+    public var locationUpdatedCallback: ((stationsSorted: [Station], departures: [Departure]?, error: NSError?) -> ())?
 
     // MARK: - Init
     public override init() {
@@ -54,21 +54,20 @@ public class LocateStation: NSObject, CLLocationManagerDelegate
         self.findClosestStationFromLocationAndFetchDepartures(location)
     }
 
-    public func findClosestStationFromLocation(location: CLLocation) -> Station? {
-        var closestStation = self.findStationClosestToLatitude(location.coordinate.latitude, longitude: location.coordinate.longitude)
-        return closestStation
+    public func findClosestStationFromLocation(location: CLLocation) -> [Station] {
+        var closestStationsSorted = self.findStationsSortedClosestToLatitude(location.coordinate.latitude, longitude: location.coordinate.longitude)
+        return closestStationsSorted
     }
 
     public func findClosestStationFromLocationAndFetchDepartures(location: CLLocation) {
-        var closestStation = self.findClosestStationFromLocation(location)
-        assert(nil != closestStation, "No station was found")
+        var closestStationsSorted: [Station] = self.findClosestStationFromLocation(location)
 
-        self.realtimeDeparturesObj.departuresFromStation(closestStation!) {
+        self.realtimeDeparturesObj.departuresFromStation(closestStationsSorted.first!) {
             (departures: [Departure]?, error: NSError?) -> () in
             // When we check that the user is reasonably close to ANY station,
             // this is a good place to send back possible errors
             if nil != self.locationUpdatedCallback {
-                self.locationUpdatedCallback?(station: closestStation, departures: departures, error: nil)
+                self.locationUpdatedCallback?(stationsSorted: closestStationsSorted, departures: departures, error: nil)
             }
         }
     }
@@ -78,17 +77,13 @@ public class LocateStation: NSObject, CLLocationManagerDelegate
     }
 
     // Compare distance from all known stations, return closest one
-    public func findStationClosestToLatitude(latitude: Double, longitude: Double) -> Station? {
+    public func findStationsSortedClosestToLatitude(latitude: Double, longitude: Double) -> [Station] {
         var userLocation = CLLocation(latitude: latitude, longitude: longitude)
         var closest: Station? = self.stationList.first
-        var minDist = closest?.distanceFromLocation(userLocation)
-        for station in self.stationList {
-            let dist = station.distanceFromLocation(userLocation)
-            if dist < minDist {
-                minDist = dist
-                closest = station
-            }
-        }
-        return closest
+        
+        var sortedStationList: [Station] = self.stationList
+        sortedStationList.sort({ $0.distanceFromLocation(userLocation) < $1.distanceFromLocation(userLocation) })
+        // Only return 3 stations
+        return Array(sortedStationList[0...3])
     }
 }

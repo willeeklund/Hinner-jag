@@ -36,7 +36,8 @@ class HinnerJagKitTests: XCTestCase {
     
     func testLocatingAbrahamsberg() {
         var locateStation = LocateStation()
-        var closest: Station? = locateStation.findStationClosestToLatitude(59.3365630909855, longitude: 17.9531728536484)
+        let closestSortedStations: [Station] = locateStation.findStationsSortedClosestToLatitude(59.3365630909855, longitude: 17.9531728536484)
+        var closest = closestSortedStations.first
         
         XCTAssert(nil != closest, "Can find a station")
         XCTAssert(closest!.title == "Abrahamsberg", "Can find Abrahamsbergs station")
@@ -45,7 +46,7 @@ class HinnerJagKitTests: XCTestCase {
     
     func testMetroStationListIsValid() {
         var locateStation = LocateStation()
-        XCTAssert(locateStation.stationList.count > 100, "At least 100 stations could be parsed from metro_stations.json")
+        XCTAssert(locateStation.stationList.count >= 100, "At least 100 stations could be parsed from metro_stations.json")
     }
     
     func testFetchingResultsFromAPI() {

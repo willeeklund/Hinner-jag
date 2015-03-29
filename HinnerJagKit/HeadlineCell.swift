@@ -1,19 +1,26 @@
 //
 //  HeadlineCell.swift
-//  Hinner jag?
+//  Hinner jag
 //
-//  Created by Wilhelm Eklund on 09/03/15.
+//  Created by Wilhelm Eklund on 29/03/15.
 //  Copyright (c) 2015 Wilhelm Eklund. All rights reserved.
 //
 
 import Foundation
 import UIKit
+import HinnerJagKit
 
 class HeadlineCell: UITableViewCell
 {
-    
+    var controller: HinnerJagTableViewController?
     @IBOutlet weak var headerLabel: UILabel!
-    @IBOutlet weak var closestStationLabel: UILabel!
+    @IBOutlet weak var closestStationButton: UIButton!
+    
+    @IBAction func changeSelectedStation(sender: UIButton) {
+        if nil != self.controller {
+            self.controller!.changeChosenStation()
+        }
+    }
     
     override init() {
         super.init()
