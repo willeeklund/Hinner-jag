@@ -22,7 +22,7 @@ app.configure(function () {
 /**
  * Express Routing
  */
-app.get('/', function (req, res) {
+app.get('/hej', function (req, res) {
   res.send('Hej test');
 });
 
