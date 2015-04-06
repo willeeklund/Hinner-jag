@@ -127,4 +127,13 @@ class MainAppViewController: HinnerJagTableViewController
             return 45.0
         }
     }
+    
+    // MARK: - Segue
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.destinationViewController is MapViewController {
+            var mapVC: MapViewController = segue.destinationViewController as MapViewController
+            mapVC.locateStation = self.locateStation
+            mapVC.chosenStation = self.closestStation
+        }
+    }
 }

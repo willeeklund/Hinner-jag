@@ -6,6 +6,54 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Map-->
+        <scene sceneID="mhg-Ye-K3P">
+            <objects>
+                <viewController title="Map" id="QHl-Ia-Pss" customClass="MapViewController" customModule="Hinner_jag" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cvD-eW-BEg"/>
+                        <viewControllerLayoutGuide type="bottom" id="cz9-Gk-E8U"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lVR-fQ-Edc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dNT-BO-owL">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e7q-bG-9cD">
+                                <rect key="frame" x="494" y="28" width="90" height="30"/>
+                                <color key="backgroundColor" red="0.01176470588" green="0.50588235290000005" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="Js5-cS-ti0"/>
+                                </constraints>
+                                <state key="normal" title="Stäng karta">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeMap:" destination="QHl-Ia-Pss" eventType="touchUpInside" id="4QO-HY-Z0p"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="e7q-bG-9cD" firstAttribute="top" secondItem="cvD-eW-BEg" secondAttribute="bottom" constant="8" symbolic="YES" id="2Ht-AI-bvY"/>
+                            <constraint firstItem="e7q-bG-9cD" firstAttribute="trailing" secondItem="lVR-fQ-Edc" secondAttribute="trailingMargin" id="MkZ-MA-ckN"/>
+                            <constraint firstAttribute="trailing" secondItem="dNT-BO-owL" secondAttribute="trailing" id="WxD-i1-qOW"/>
+                            <constraint firstItem="dNT-BO-owL" firstAttribute="top" secondItem="lVR-fQ-Edc" secondAttribute="top" id="ibz-bk-9yU"/>
+                            <constraint firstItem="dNT-BO-owL" firstAttribute="bottom" secondItem="cz9-Gk-E8U" secondAttribute="top" id="l4B-qK-A30"/>
+                            <constraint firstItem="dNT-BO-owL" firstAttribute="leading" secondItem="lVR-fQ-Edc" secondAttribute="leading" id="mEb-AF-K71"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="dNT-BO-owL" id="4ER-LL-xsB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mww-LG-CfO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1086" y="332"/>
+        </scene>
         <!--Main App View Controller-->
         <scene sceneID="peC-mS-Ocu">
             <objects>
@@ -21,14 +69,15 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hinner jag?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hnz-Oe-n2e">
-                                            <rect key="frame" x="152" y="26" width="296" height="26.5"/>
+                                            <rect key="frame" x="233" y="22" width="134" height="27"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="296" id="szT-qG-YVt"/>
+                                                <constraint firstAttribute="width" constant="134" id="Ad2-TX-A4r"/>
+                                                <constraint firstAttribute="height" constant="27" id="zFT-oQ-Mf0"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQ7-Xc-F0I">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQ7-Xc-F0I">
                                             <rect key="frame" x="8" y="57" width="584" height="30"/>
                                             <state key="normal" title="Button">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -37,10 +86,24 @@
                                                 <action selector="changeSelectedStation:" destination="jIE-yi-3eW" eventType="touchUpInside" id="zM7-qi-ZKT"/>
                                             </connections>
                                         </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Qg-Up-ODe">
+                                            <rect key="frame" x="555" y="22" width="37" height="30"/>
+                                            <state key="normal" title="Karta">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <segue destination="QHl-Ia-Pss" kind="presentation" identifier="Show Map" id="rYW-tz-cJd"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="hnz-Oe-n2e" firstAttribute="top" secondItem="L1B-Wu-1kt" secondAttribute="topMargin" constant="18" id="4s2-oZ-vnq"/>
-                                        <constraint firstItem="hnz-Oe-n2e" firstAttribute="centerX" secondItem="L1B-Wu-1kt" secondAttribute="centerX" id="aSM-MW-oTG"/>
+                                        <constraint firstItem="hnz-Oe-n2e" firstAttribute="centerX" secondItem="TQ7-Xc-F0I" secondAttribute="centerX" id="01E-Uw-jlt"/>
+                                        <constraint firstItem="TQ7-Xc-F0I" firstAttribute="top" secondItem="hnz-Oe-n2e" secondAttribute="bottom" constant="8" symbolic="YES" id="1oB-l1-Qi0"/>
+                                        <constraint firstItem="3Qg-Up-ODe" firstAttribute="trailing" secondItem="TQ7-Xc-F0I" secondAttribute="trailing" id="2ss-CQ-sPq"/>
+                                        <constraint firstItem="TQ7-Xc-F0I" firstAttribute="leading" secondItem="L1B-Wu-1kt" secondAttribute="leadingMargin" id="4K0-Pl-mbf"/>
+                                        <constraint firstItem="hnz-Oe-n2e" firstAttribute="centerX" secondItem="L1B-Wu-1kt" secondAttribute="centerX" id="OUq-lx-sgo"/>
+                                        <constraint firstItem="3Qg-Up-ODe" firstAttribute="top" secondItem="hnz-Oe-n2e" secondAttribute="top" id="dc8-Uc-rfp"/>
+                                        <constraint firstItem="hnz-Oe-n2e" firstAttribute="top" secondItem="L1B-Wu-1kt" secondAttribute="topMargin" constant="14" id="pMO-11-WXJ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
