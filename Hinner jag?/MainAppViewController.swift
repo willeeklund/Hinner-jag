@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import HinnerJagKit
 
-class MainAppViewController: HinnerJagTableViewController
+class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewControllerDelegate
 {
     override func getLastLocation() -> CLLocation? {
         return self.locateStation.locationManager.location
@@ -135,5 +135,34 @@ class MainAppViewController: HinnerJagTableViewController
             mapVC.locateStation = self.locateStation
             mapVC.chosenStation = self.closestStation
         }
+    }
+    
+    // MARK: - Introduction walkthrough of the app
+    @IBAction func showWalkthroughButtonPressed(sender: AnyObject) {
+        self.showWalkthrough()
+    }
+    
+    func showWalkthrough() {
+        let stb = UIStoryboard(name: "Main", bundle: NSBundle(forClass: self.classForCoder))
+        // Create walkthrough view controller
+        let walkthrough = stb.instantiateViewControllerWithIdentifier("walk0") as BWWalkthroughViewController
+        let page_one = stb.instantiateViewControllerWithIdentifier("walk1") as UIViewController
+        let page_two = stb.instantiateViewControllerWithIdentifier("walk2") as UIViewController
+        let page_three = stb.instantiateViewControllerWithIdentifier("walk3") as UIViewController
+        let page_four = stb.instantiateViewControllerWithIdentifier("walk4") as UIViewController
+        let page_five = stb.instantiateViewControllerWithIdentifier("walk5") as UIViewController
+        // Attach the pages to the walkthrough master
+        walkthrough.delegate = self
+        walkthrough.addViewController(page_one)
+        walkthrough.addViewController(page_two)
+        walkthrough.addViewController(page_three)
+        walkthrough.addViewController(page_four)
+        walkthrough.addViewController(page_five)
+        // Show the walkthrough view controller
+        self.presentViewController(walkthrough, animated: true, completion: nil)
+    }
+    
+    func walkthroughCloseButtonPressed() {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
