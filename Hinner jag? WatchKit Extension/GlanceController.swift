@@ -13,13 +13,24 @@ import HinnerJagKit
 class GlanceController: InterfaceController {
     // Build up the text of labels
     func getGroupLabels(group: Int) -> (String, String) {
-        var headerText = "Mot bl.a. "
+        var headerText = ""
         var detailsText = ""
         if let groupList = self.departuresDict[group] {
             var counter = 0
             for departure in groupList {
+                println("counter = \(counter)")
+                
                 if 0 == counter {
-                    headerText += "\(departure.destination)"
+                    println("from dir: \(departure.from_central_direction)")
+                    if departure.from_central_direction != nil {
+                        if departure.from_central_direction! == departure.direction {
+                            headerText = "Från T-centralen"
+                        } else {
+                            headerText = "Mot T-centralen"
+                        }
+                    } else {
+                        headerText = "Mot bl.a. \(departure.destination)"
+                    }
                 } else {
                     detailsText += ", "
                 }

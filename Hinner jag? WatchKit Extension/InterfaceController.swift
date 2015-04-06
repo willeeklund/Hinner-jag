@@ -37,8 +37,8 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
         self.locationManager.requestWhenInUseAuthorization()
         
         // Set up callback
-        self.locateStation.locationUpdatedCallback = { (station: Station?, departures: [Departure]?, error: NSError?) in
-            self.closestStation = station
+        self.locateStation.locationUpdatedCallback = { (stationsSorted: [Station], departures: [Departure]?, error: NSError?) in
+            self.closestStation = stationsSorted.first
             if nil == departures {
                 println("No departures were found. Error: \(error)")
             }
@@ -113,11 +113,8 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
     }
     
     func fillTableWithContent(typesOfRows: [String], startIndexGroup2: Int) {
-        println("start group 2 = \(startIndexGroup2)")
-        println("typesOfRows = \(typesOfRows)")
         // Create table rows and fill with content
         for (index, rowType) in enumerate(typesOfRows) {
-            println("index = \(index), rowType = \(rowType)")
             if "header" == rowType {
                 if let header = self.tableView.rowControllerAtIndex(index) as TravelHeaderRow? {
                     if index < startIndexGroup2 {

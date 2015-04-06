@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>WKCompanionAppBundleIdentifier </key>
-	<string>com.wilhelmeklund.Hinner-jag</string>
+	<string>${BUNDLE_ID}</string>
 	<key>WKAppBundleIdentifier</key>
-	<string>com.wilhelmeklund.Hinner-jag</string>
+	<string>${BUNDLE_ID}</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
