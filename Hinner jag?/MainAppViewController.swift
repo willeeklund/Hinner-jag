@@ -27,6 +27,7 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
         self.setScreeName("MainAppViewController")
         self.departuresDict = Dictionary<String, [Departure]>()
         self.closestStation = nil
+        self.startWalkthroughTimer()
         
         self.locateStation.locationUpdatedCallback = { (stationsSorted: [Station], departures: [Departure]?, error: NSError?) in
             let station = stationsSorted.first
@@ -138,6 +139,19 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
     }
     
     // MARK: - Introduction walkthrough of the app
+    func startWalkthroughTimer() {
+        NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "checkIfHasSeenWalkthrough", userInfo: nil, repeats: false)
+    }
+    
+    func checkIfHasSeenWalkthrough() {
+        let walkthroughKey = "hasSeenWalkthrough1"
+        if !NSUserDefaults.standardUserDefaults().boolForKey(walkthroughKey) {
+            self.showWalkthrough()
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: walkthroughKey)
+        }
+        NSUserDefaults.standardUserDefaults().synchronize()
+    }
+    
     @IBAction func showWalkthroughButtonPressed(sender: AnyObject) {
         self.showWalkthrough()
     }
