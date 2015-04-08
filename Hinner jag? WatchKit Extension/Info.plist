@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>WKCompanionAppBundleIdentifier </key>
-	<string>${BUNDLE_ID}</string>
-	<key>WKAppBundleIdentifier</key>
-	<string>${BUNDLE_ID}</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -25,7 +21,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>1</string>
 	<key>NSExtension</key>
 	<dict>
 		<key>NSExtensionAttributes</key>
@@ -42,5 +38,9 @@
 	<string>Dela din position för att hitta närmaste station</string>
 	<key>RemoteInterfacePrincipalClass</key>
 	<string>$(PRODUCT_MODULE_NAME).InterfaceController</string>
+	<key>WKAppBundleIdentifier</key>
+	<string>${BUNDLE_ID}</string>
+	<key>WKCompanionAppBundleIdentifier </key>
+	<string>${BUNDLE_ID}</string>
 </dict>
 </plist>
