@@ -16,7 +16,6 @@ var express = require('express'),
  * Fetch data from SL api using asyncronous queue
  */
 result_queues = {},
-ttl_cache = 20,
 
 getQueueNameFromReqParams = function (params) {
   return params.site_id;
@@ -47,9 +46,15 @@ updateResultCache = function (req, res, callback) {
     ) {
       console.log('Error: no metro departures'.red, ('for siteid ' + req.params.site_id).yellow);
     }
-    console.log('Result content'.yellow, content);
-    // TODO: Only use content.ResponseData.Metros
-    memoryCache.put(queueName, content, 1000 * ttl_cache);
+    // Remove all fields except Metros
+    content.ResponseData.Buses = [];
+    content.ResponseData.Ships = [];
+    content.ResponseData.Trains = [];
+    content.ResponseData.StopPointDeviations = [];
+    // The result will be the same for 1 minute
+    var ttl_age = 60 - content.ResponseData.DataAge;
+    console.log('Data age'.blue, content.ResponseData.DataAge, 'new in'.cyan, ttl_age);
+    memoryCache.put(queueName, content, 1000 * ttl_age);
     callback(err, content);
   });
 },
@@ -104,7 +109,7 @@ app.get('/hej', function (req, res) {
 
 app.get('/api/realtimedepartures/:site_id.json', function (req, res) {
   queueResultRequest(req, res, function (result) {
-    res.header('Cache-Control', 'public, max-age=' + ttl_cache);
+    res.header('Cache-Control', 'public, max-age=' + 30);
     res.send(result);
   });
 });
