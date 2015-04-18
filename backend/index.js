@@ -52,7 +52,7 @@ updateResultCache = function (req, res, callback) {
     content.ResponseData.Trains = [];
     content.ResponseData.StopPointDeviations = [];
     // The result will be the same for 1 minute
-    var ttl_age = 60 - content.ResponseData.DataAge;
+    var ttl_age = Math.max(60 - content.ResponseData.DataAge, 5);
     console.log('Data age'.blue, content.ResponseData.DataAge, 'new in'.cyan, ttl_age);
     memoryCache.put(queueName, content, 1000 * ttl_age);
     callback(err, content);
