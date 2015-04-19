@@ -34,6 +34,9 @@
 		0236B3D31ABE21A600EDF6C8 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB11ABA42EB003ACD06 /* libGoogleAnalyticsServices.a */; };
 		025C989A1AD2947A0096FC79 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025C98991AD2947A0096FC79 /* MapViewController.swift */; };
 		026C9F8D1AD2E85500B75285 /* Hinner jag WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 02F2FF331AB48BB8001A1F90 /* Hinner jag WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		02873E041AE423C600D17610 /* GAIExtendViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B11BAE1ABA4165003ACD06 /* GAIExtendViewControllers.swift */; };
+		02873E051AE4257E00D17610 /* GAIExtendViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B11BAE1ABA4165003ACD06 /* GAIExtendViewControllers.swift */; };
+		02873E061AE4258000D17610 /* GAIExtendViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B11BAE1ABA4165003ACD06 /* GAIExtendViewControllers.swift */; };
 		0289760F1ABE164B00A67E9B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0211B1ED1AAE37B600947C45 /* Images.xcassets */; };
 		0295DD441AC7F6E500D850BA /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0295DD431AC7F6E500D850BA /* Utils.swift */; };
 		02B11BA21ABA3D02003ACD06 /* GAI.h in Headers */ = {isa = PBXBuildFile; fileRef = 02B11B981ABA3D02003ACD06 /* GAI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -52,8 +55,6 @@
 		02B11BBB1ABA43A6003ACD06 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB31ABA430B003ACD06 /* CoreData.framework */; };
 		02B11BBC1ABA43B0003ACD06 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB51ABA431E003ACD06 /* SystemConfiguration.framework */; };
 		02B11BBD1ABA43B9003ACD06 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB71ABA4331003ACD06 /* libz.dylib */; };
-		02B11BBF1ABA4835003ACD06 /* GAIExtendViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B11BAE1ABA4165003ACD06 /* GAIExtendViewControllers.swift */; };
-		02B11BC01ABA486B003ACD06 /* GAIExtendViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B11BAE1ABA4165003ACD06 /* GAIExtendViewControllers.swift */; };
 		02B11BC11ABA48C9003ACD06 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB51ABA431E003ACD06 /* SystemConfiguration.framework */; };
 		02B11BC21ABA48D2003ACD06 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB31ABA430B003ACD06 /* CoreData.framework */; };
 		02B11BC31ABA48DA003ACD06 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB71ABA4331003ACD06 /* libz.dylib */; };
@@ -867,9 +868,9 @@
 			files = (
 				02ED99B61AD2FEC700CB6C9E /* BWWalkthroughPageViewController.swift in Sources */,
 				0211B1E91AAE37B600947C45 /* MainAppViewController.swift in Sources */,
+				02873E051AE4257E00D17610 /* GAIExtendViewControllers.swift in Sources */,
 				02ED99B71AD2FEC700CB6C9E /* BWWalkthroughViewController.swift in Sources */,
 				02DDF84E1ABDB19200A9AF12 /* TravelDetailsCell.swift in Sources */,
-				02B11BBF1ABA4835003ACD06 /* GAIExtendViewControllers.swift in Sources */,
 				02DDF84C1ABDB18A00A9AF12 /* TravelHeaderCell.swift in Sources */,
 				0211B1E71AAE37B600947C45 /* Hinner_jag_.xcdatamodeld in Sources */,
 				0211B1E41AAE37B600947C45 /* AppDelegate.swift in Sources */,
@@ -883,6 +884,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0295DD441AC7F6E500D850BA /* Utils.swift in Sources */,
+				02873E041AE423C600D17610 /* GAIExtendViewControllers.swift in Sources */,
 				022DE4871AC819AD000E9462 /* HinnerJagTableViewController.swift in Sources */,
 				0211B22C1AAE383500947C45 /* Station.swift in Sources */,
 				0211B2301AAE389A00947C45 /* LocateStation.swift in Sources */,
@@ -903,9 +905,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02B11BC01ABA486B003ACD06 /* GAIExtendViewControllers.swift in Sources */,
 				0211B24C1AAE4BB000947C45 /* TodayViewController.swift in Sources */,
 				0227AD231AC8224400572CD2 /* HeadlineCell.swift in Sources */,
+				02873E061AE4258000D17610 /* GAIExtendViewControllers.swift in Sources */,
 				02DDF84F1ABDB19400A9AF12 /* TravelDetailsCell.swift in Sources */,
 				02DDF84D1ABDB18D00A9AF12 /* TravelHeaderCell.swift in Sources */,
 			);

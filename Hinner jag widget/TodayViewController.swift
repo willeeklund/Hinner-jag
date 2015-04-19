@@ -56,7 +56,6 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
             self.closestStation = station
             self.closestSortedStations = stationsSorted
             if nil != station {
-                println("Now we are using the location callback. \(station!)")
                 self.trackEvent("Station", action: "found", label: "\(station!.title) (\(station!.id))", value: 1)
             } else {
                 self.trackEvent("Station", action: "not_found", label: "", value: nil)
@@ -70,8 +69,6 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
             
             // Add departures into separated groups
             (self.mappingDict, self.departuresDict) = Utils.getMappingFromDepartures(departures!, mappingStart: 1)
-            println("departuresDict = \(self.departuresDict)")
-            println("mappingDict = \(self.mappingDict)")
         }
     }
     
@@ -82,10 +79,8 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
             if -300.0 < self.locationManager.location.timestamp.timeIntervalSinceNow {
                 let sortedStations = self.locateStation.findClosestStationFromLocation(self.locationManager.location)
                 let oldStation = sortedStations.first
-                println("OldStation = \(oldStation!.title)")
                 self.closestStation = oldStation
                 self.updateUI()
-                
             }
         }
     }

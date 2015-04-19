@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="obH-mF-fGV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="obH-mF-fGV">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
@@ -117,7 +117,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Aktivera vår Today Widget genom att att dra ned från toppen av skärmen. Klicka på &quot;Edit&quot; (eller &quot;Redigera&quot;)." selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITv-wo-L2b">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Aktivera vår Today Widget genom att att dra ned från toppen av skärmen. Klicka på &quot;Ändra&quot;." selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITv-wo-L2b">
                                 <rect key="frame" x="16" y="90" width="568" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="qdP-b2-k0I"/>
@@ -395,7 +395,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Spara genom att klicka på &quot;Done&quot; (eller &quot;Klar&quot;) uppe i högra hörnet." selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1R-HC-CpH">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Spara genom att klicka på &quot;Klar&quot; uppe i högra hörnet." selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1R-HC-CpH">
                                 <rect key="frame" x="16" y="90" width="568" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="qu3-rX-wy9"/>
@@ -538,10 +538,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="intro1" width="628" height="918"/>
-        <image name="intro2" width="630" height="906"/>
-        <image name="intro3" width="630" height="900"/>
-        <image name="intro4" width="634" height="916"/>
-        <image name="intro5" width="632" height="910"/>
+        <image name="intro1" width="640" height="960"/>
+        <image name="intro2" width="640" height="960"/>
+        <image name="intro3" width="640" height="960"/>
+        <image name="intro4" width="640" height="960"/>
+        <image name="intro5" width="640" height="960"/>
     </resources>
 </document>

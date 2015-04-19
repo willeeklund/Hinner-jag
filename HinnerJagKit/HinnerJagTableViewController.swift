@@ -66,7 +66,9 @@ public class HinnerJagTableViewController: UITableViewController
         }
         println("Did select section: \(indexPath.section) row: \(indexPath.row)")
         if indexPath.row < self.closestSortedStations.count {
-            searchFromNewClosestStation(self.closestSortedStations[indexPath.row])
+            let station = self.closestSortedStations[indexPath.row]
+            searchFromNewClosestStation(station)
+            self.trackEvent("Station", action: "change_from_table", label: "\(station.title) (\(station.id))", value: 1)
         }
         self.selectChosenStation = false
     }

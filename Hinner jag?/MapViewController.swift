@@ -17,6 +17,12 @@ class MapViewController: UIViewController, MKMapViewDelegate
     var locateStation: LocateStation?
     var chosenStation: Station?
     
+    // MARK: - Lifecycle stuff
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.gaSetup()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setScreeName("MapViewController")
@@ -63,12 +69,12 @@ class MapViewController: UIViewController, MKMapViewDelegate
     }
     
     func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
-        println("calloutAccessoryControlTapped()")
         if self.presentingViewController is MainAppViewController && view.annotation is Station {
-            println("Set new selected station")
+            let station = view.annotation as! Station
             let mainAppVC = self.presentingViewController as! MainAppViewController
-            mainAppVC.searchFromNewClosestStation(view.annotation as! Station)
+            mainAppVC.searchFromNewClosestStation(station)
             mainAppVC.dismissViewControllerAnimated(true, completion: nil)
+            self.trackEvent("Station", action: "change_from_map", label: "\(station.title) (\(station.id))", value: 1)
         }
     }
 
