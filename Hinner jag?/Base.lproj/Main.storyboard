@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="obH-mF-fGV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="obH-mF-fGV">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -18,14 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dNT-BO-owL">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" pitchEnabled="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNT-BO-owL">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e7q-bG-9cD">
                                 <rect key="frame" x="494" y="28" width="90" height="30"/>
                                 <color key="backgroundColor" red="0.01176470588" green="0.50588235290000005" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="Js5-cS-ti0"/>
+                                    <constraint firstAttribute="width" constant="90" id="ucc-Az-0mr"/>
                                 </constraints>
                                 <state key="normal" title="Stäng karta">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -38,8 +38,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="e7q-bG-9cD" firstAttribute="top" secondItem="cvD-eW-BEg" secondAttribute="bottom" constant="8" symbolic="YES" id="2Ht-AI-bvY"/>
-                            <constraint firstItem="e7q-bG-9cD" firstAttribute="trailing" secondItem="lVR-fQ-Edc" secondAttribute="trailingMargin" id="MkZ-MA-ckN"/>
+                            <constraint firstItem="e7q-bG-9cD" firstAttribute="trailing" secondItem="lVR-fQ-Edc" secondAttribute="trailingMargin" id="KRJ-xg-Ydj"/>
+                            <constraint firstItem="e7q-bG-9cD" firstAttribute="top" secondItem="cvD-eW-BEg" secondAttribute="bottom" constant="8" symbolic="YES" id="Vtd-S7-LJq"/>
                             <constraint firstAttribute="trailing" secondItem="dNT-BO-owL" secondAttribute="trailing" id="WxD-i1-qOW"/>
                             <constraint firstItem="dNT-BO-owL" firstAttribute="top" secondItem="lVR-fQ-Edc" secondAttribute="top" id="ibz-bk-9yU"/>
                             <constraint firstItem="dNT-BO-owL" firstAttribute="bottom" secondItem="cz9-Gk-E8U" secondAttribute="top" id="l4B-qK-A30"/>
@@ -180,7 +180,8 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQ7-Xc-F0I">
-                                            <rect key="frame" x="8" y="57" width="584" height="30"/>
+                                            <rect key="frame" x="1" y="57" width="598" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                             <state key="normal" title="Button">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -197,12 +198,9 @@
                                                 <segue destination="QHl-Ia-Pss" kind="presentation" identifier="Show Map" id="rYW-tz-cJd"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="quh-p3-9qc">
-                                            <rect key="frame" x="8" y="22" width="38" height="30"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="38" id="zSv-gi-3ju"/>
-                                            </constraints>
-                                            <state key="normal" title="Intro">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="quh-p3-9qc">
+                                            <rect key="frame" x="8" y="26" width="22" height="22"/>
+                                            <state key="normal">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -211,16 +209,25 @@
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="hnz-Oe-n2e" firstAttribute="centerX" secondItem="TQ7-Xc-F0I" secondAttribute="centerX" id="01E-Uw-jlt"/>
-                                        <constraint firstItem="TQ7-Xc-F0I" firstAttribute="top" secondItem="hnz-Oe-n2e" secondAttribute="bottom" constant="8" symbolic="YES" id="1oB-l1-Qi0"/>
-                                        <constraint firstItem="3Qg-Up-ODe" firstAttribute="trailing" secondItem="TQ7-Xc-F0I" secondAttribute="trailing" id="2ss-CQ-sPq"/>
                                         <constraint firstItem="TQ7-Xc-F0I" firstAttribute="leading" secondItem="L1B-Wu-1kt" secondAttribute="leadingMargin" id="4K0-Pl-mbf"/>
+                                        <constraint firstItem="quh-p3-9qc" firstAttribute="leading" secondItem="L1B-Wu-1kt" secondAttribute="leadingMargin" id="6sw-CJ-GMl"/>
+                                        <constraint firstItem="TQ7-Xc-F0I" firstAttribute="bottom" secondItem="L1B-Wu-1kt" secondAttribute="bottomMargin" id="N1E-ju-Ada"/>
+                                        <constraint firstItem="quh-p3-9qc" firstAttribute="centerY" secondItem="3Qg-Up-ODe" secondAttribute="centerY" id="OH3-2A-y0d"/>
                                         <constraint firstItem="hnz-Oe-n2e" firstAttribute="centerX" secondItem="L1B-Wu-1kt" secondAttribute="centerX" id="OUq-lx-sgo"/>
+                                        <constraint firstItem="TQ7-Xc-F0I" firstAttribute="leading" secondItem="L1B-Wu-1kt" secondAttribute="leadingMargin" constant="-7" id="QeR-lN-H0N"/>
+                                        <constraint firstItem="TQ7-Xc-F0I" firstAttribute="centerX" secondItem="hnz-Oe-n2e" secondAttribute="centerX" id="c3z-rz-LGr"/>
+                                        <constraint firstItem="quh-p3-9qc" firstAttribute="leading" secondItem="L1B-Wu-1kt" secondAttribute="leadingMargin" id="d3s-lj-KZu"/>
                                         <constraint firstItem="3Qg-Up-ODe" firstAttribute="top" secondItem="hnz-Oe-n2e" secondAttribute="top" id="dc8-Uc-rfp"/>
-                                        <constraint firstItem="quh-p3-9qc" firstAttribute="baseline" secondItem="3Qg-Up-ODe" secondAttribute="baseline" id="m5m-Rn-gQ8"/>
                                         <constraint firstItem="hnz-Oe-n2e" firstAttribute="top" secondItem="L1B-Wu-1kt" secondAttribute="topMargin" constant="14" id="pMO-11-WXJ"/>
-                                        <constraint firstItem="quh-p3-9qc" firstAttribute="leading" secondItem="TQ7-Xc-F0I" secondAttribute="leading" id="sAb-iv-MsX"/>
+                                        <constraint firstItem="TQ7-Xc-F0I" firstAttribute="trailing" secondItem="3Qg-Up-ODe" secondAttribute="trailing" constant="7" id="plK-KV-Ulc"/>
+                                        <constraint firstItem="TQ7-Xc-F0I" firstAttribute="top" secondItem="hnz-Oe-n2e" secondAttribute="bottom" constant="8" symbolic="YES" id="si4-Ri-Gpp"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="d3s-lj-KZu"/>
+                                            <exclude reference="4K0-Pl-mbf"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="closestStationButton" destination="TQ7-Xc-F0I" id="Ytg-4O-pfI"/>
@@ -287,7 +294,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzx-GL-s8F">
-                                            <rect key="frame" x="77" y="11" width="274" height="21"/>
+                                            <rect key="frame" x="77" y="12" width="274" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="274" id="h4S-H7-pYg"/>
                                             </constraints>
@@ -531,10 +538,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="intro1" width="640" height="922"/>
-        <image name="intro2" width="636" height="926"/>
-        <image name="intro3" width="626" height="908"/>
-        <image name="intro4" width="636" height="920"/>
-        <image name="intro5" width="630" height="918"/>
+        <image name="intro1" width="628" height="918"/>
+        <image name="intro2" width="630" height="906"/>
+        <image name="intro3" width="630" height="900"/>
+        <image name="intro4" width="634" height="916"/>
+        <image name="intro5" width="632" height="910"/>
     </resources>
 </document>
