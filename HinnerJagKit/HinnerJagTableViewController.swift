@@ -66,11 +66,15 @@ public class HinnerJagTableViewController: UITableViewController
         }
         println("Did select section: \(indexPath.section) row: \(indexPath.row)")
         if indexPath.row < self.closestSortedStations.count {
-            self.closestStation = self.closestSortedStations[indexPath.row]
-            println("Selected station: \(self.closestStation!)")
-            self.locateStation.findClosestStationFromLocationAndFetchDepartures(self.closestStation!)
-            self.departuresDict = Dictionary<String, [Departure]>()
+            searchFromNewClosestStation(self.closestSortedStations[indexPath.row])
         }
         self.selectChosenStation = false
+    }
+    
+    public func searchFromNewClosestStation(newStation: Station) {
+        self.closestStation = newStation
+        println("Selected station: \(self.closestStation!)")
+        self.locateStation.findClosestStationFromLocationAndFetchDepartures(self.closestStation!)
+        self.departuresDict = Dictionary<String, [Departure]>()
     }
 }

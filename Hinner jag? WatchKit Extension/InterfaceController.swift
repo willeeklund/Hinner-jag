@@ -116,7 +116,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
         // Create table rows and fill with content
         for (index, rowType) in enumerate(typesOfRows) {
             if "header" == rowType {
-                if let header = self.tableView.rowControllerAtIndex(index) as TravelHeaderRow? {
+                if let header = self.tableView.rowControllerAtIndex(index) as! TravelHeaderRow? {
                     if index < startIndexGroup2 {
                         header.headerLabel.setText("Plattform 1")
                     } else {
@@ -124,7 +124,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
                     }
                 }
             } else if "details" == rowType {
-                if let detailRow = self.tableView.rowControllerAtIndex(index) as TravelDetailsRow? {
+                if let detailRow = self.tableView.rowControllerAtIndex(index) as! TravelDetailsRow? {
                     var departure: Departure?
                     if index < startIndexGroup2 {
                         if let group1 = self.departuresDict[1] {
@@ -161,7 +161,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         println("didUpdateLocations")
         self.locationManager.stopUpdatingLocation()
-        let location = locations.last as CLLocation
+        let location = locations.last as! CLLocation
         self.locateStation.findClosestStationFromLocationAndFetchDepartures(location)
     }
     

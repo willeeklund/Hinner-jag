@@ -27,7 +27,7 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
     // MARK: - Get location of the user
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         self.locationManager.stopUpdatingLocation()
-        let location = locations.last as CLLocation
+        let location = locations.last as! CLLocation
         self.locateStation.findClosestStationFromLocationAndFetchDepartures(location)
     }
 
@@ -164,7 +164,7 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
         if indexPath.section == 0 {
             // Section for changing closest station manually
             let reuseId = "chooseStation"
-            var cell = tableView.dequeueReusableCellWithIdentifier(reuseId) as UITableViewCell?
+            var cell = tableView.dequeueReusableCellWithIdentifier(reuseId) as! UITableViewCell?
             if cell == nil {
                 cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: reuseId)
             }

@@ -16,14 +16,6 @@ class TravelHeaderCell: UITableViewCell
     @IBOutlet weak var trainImage: UIImageView!
     @IBOutlet weak var headerLabel: UILabel!
     
-    override init() {
-        super.init()
-    }
-    
-    required override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }

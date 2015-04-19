@@ -28,6 +28,7 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
         self.departuresDict = Dictionary<String, [Departure]>()
         self.closestStation = nil
         self.startWalkthroughTimer()
+        self.refresh(nil)
         
         self.locateStation.locationUpdatedCallback = { (stationsSorted: [Station], departures: [Departure]?, error: NSError?) in
             let station = stationsSorted.first
@@ -54,17 +55,12 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
-        self.refresh(nil)
-    }
-    
     @IBAction func refresh(sender: AnyObject?) {
         println("Refreshing position")
         self.locateStation.startUpdatingLocation()
     }
     
     // MARK: - Table stuff
-    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let mappingName = self.mappingDict[section] {
             if let depList = self.departuresDict[mappingName] {
@@ -103,7 +99,7 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
         if indexPath.section == 0 {
             // Section for changing closest station manually
             let reuseId = "chooseStation"
-            var cell = tableView.dequeueReusableCellWithIdentifier(reuseId) as UITableViewCell?
+            var cell = tableView.dequeueReusableCellWithIdentifier(reuseId) as! UITableViewCell?
             if cell == nil {
                 cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: reuseId)
             }
@@ -132,7 +128,7 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
     // MARK: - Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.destinationViewController is MapViewController {
-            var mapVC: MapViewController = segue.destinationViewController as MapViewController
+            var mapVC: MapViewController = segue.destinationViewController as! MapViewController
             mapVC.locateStation = self.locateStation
             mapVC.chosenStation = self.closestStation
         }
@@ -159,12 +155,12 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
     func showWalkthrough() {
         let stb = UIStoryboard(name: "Main", bundle: NSBundle(forClass: self.classForCoder))
         // Create walkthrough view controller
-        let walkthrough = stb.instantiateViewControllerWithIdentifier("walk0") as BWWalkthroughViewController
-        let page_one = stb.instantiateViewControllerWithIdentifier("walk1") as UIViewController
-        let page_two = stb.instantiateViewControllerWithIdentifier("walk2") as UIViewController
-        let page_three = stb.instantiateViewControllerWithIdentifier("walk3") as UIViewController
-        let page_four = stb.instantiateViewControllerWithIdentifier("walk4") as UIViewController
-        let page_five = stb.instantiateViewControllerWithIdentifier("walk5") as UIViewController
+        let walkthrough = stb.instantiateViewControllerWithIdentifier("walk0") as! BWWalkthroughViewController
+        let page_one = stb.instantiateViewControllerWithIdentifier("walk1") as! UIViewController
+        let page_two = stb.instantiateViewControllerWithIdentifier("walk2") as! UIViewController
+        let page_three = stb.instantiateViewControllerWithIdentifier("walk3") as! UIViewController
+        let page_four = stb.instantiateViewControllerWithIdentifier("walk4") as! UIViewController
+        let page_five = stb.instantiateViewControllerWithIdentifier("walk5") as! UIViewController
         // Attach the pages to the walkthrough master
         walkthrough.delegate = self
         walkthrough.addViewController(page_one)

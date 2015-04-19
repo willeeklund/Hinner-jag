@@ -23,7 +23,7 @@ public class RealtimeDepartures
     public func departuresFromStation(station: Station, callback: ([Departure]?, error: NSError?) -> ()) {
         var realtimeApiQueue = dispatch_queue_create("realtime API queue", nil)
         dispatch_async(realtimeApiQueue, {
-            self.performRealtimeApiReqForStation(station, callback)
+            self.performRealtimeApiReqForStation(station, callback: callback)
 //            self.fetchDummyDepartureJsonData(station, callback)
         })
     }
@@ -54,10 +54,10 @@ public class RealtimeDepartures
     
     func parseJsonDataToDepartures(data: NSData?, station: Station, callback: ([Departure]?, error: NSError?) -> ()) {
         var JSONError: NSError?
-        let responseDict = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments, error: &JSONError) as NSDictionary
+        let responseDict = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments, error: &JSONError) as! NSDictionary
         if JSONError == nil {
-            if let allTypes = responseDict["ResponseData"] as NSDictionary? {
-                if let metros = allTypes["Metros"] as [NSDictionary]? {
+            if let allTypes = responseDict["ResponseData"] as! NSDictionary? {
+                if let metros = allTypes["Metros"] as! [NSDictionary]? {
                     var departureList = [Departure]()
                     for item in metros {
                         departureList.append(Departure(dict: item, station: station))

@@ -62,8 +62,8 @@ At the moment it's only used to perform custom animations on didScroll.
     
     // MARK: - Private properties -
     
-    private let scrollview:UIScrollView!
-    private var controllers:[UIViewController]!
+    private let scrollview:UIScrollView! = UIScrollView()
+    private var controllers:[UIViewController]! = [UIViewController]()
     private var lastViewConstraint:NSArray?
     
     
@@ -73,7 +73,6 @@ At the moment it's only used to perform custom animations on didScroll.
         super.init(coder: aDecoder)
         
         // Setup the scrollview
-        scrollview = UIScrollView()
         scrollview.showsHorizontalScrollIndicator = false
         scrollview.showsVerticalScrollIndicator = false
         scrollview.pagingEnabled = true
@@ -81,15 +80,10 @@ At the moment it's only used to perform custom animations on didScroll.
         // Controllers as empty array
         controllers = Array()
     }
-    
-    override init() {
-        super.init()
-        scrollview = UIScrollView()
-        controllers = Array()
-    }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setScreeName("WalkthroughViewController")
         
         // Initialize UIScrollView
         
@@ -184,10 +178,10 @@ At the moment it's only used to perform custom animations on didScroll.
             scrollview.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[previousView]-0-[view]", options:nil, metrics: nil, views: ["previousView":previousView,"view":vc.view]))
             
             if let cst = lastViewConstraint{
-                scrollview.removeConstraints(cst)
+                scrollview.removeConstraints(cst as [AnyObject])
             }
             lastViewConstraint = NSLayoutConstraint.constraintsWithVisualFormat("H:[view]-0-|", options:nil, metrics: nil, views: ["view":vc.view])
-            scrollview.addConstraints(lastViewConstraint!)
+            scrollview.addConstraints(lastViewConstraint! as [AnyObject])
         }
     }
 

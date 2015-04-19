@@ -42,7 +42,7 @@ extension UIViewController {
             return
         }
         tracker.set(kGAIScreenName, value: self.title)
-        tracker.send(GAIDictionaryBuilder.createScreenView().build())
+        tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
     }
     
     func trackEvent(category: String, action: String, label: String, value: NSNumber?) {
@@ -51,6 +51,6 @@ extension UIViewController {
             return
         }
         let trackDictionary = GAIDictionaryBuilder.createEventWithCategory(category, action: action, label: label, value: value).build()
-        tracker.send(trackDictionary)
+        tracker.send(trackDictionary as [NSObject : AnyObject])
     }
 }

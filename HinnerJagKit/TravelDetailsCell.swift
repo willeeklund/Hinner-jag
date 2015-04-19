@@ -16,14 +16,6 @@ class TravelDetailsCell: UITableViewCell
     @IBOutlet weak var remainingTimeLabel: UILabel!
     @IBOutlet weak var destinationLabel: UILabel!
     
-    override init() {
-        super.init()
-    }
-    
-    required override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }

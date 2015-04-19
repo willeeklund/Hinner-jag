@@ -51,17 +51,17 @@ class GlanceController: InterfaceController {
         var (header2, details2) = self.getGroupLabels(2)
         
         // Set value on the labels
-        if let headerRow = self.tableView.rowControllerAtIndex(0) as TravelHeaderRow? {
+        if let headerRow = self.tableView.rowControllerAtIndex(0) as! TravelHeaderRow? {
             headerRow.headerLabel.setText(header1)
         }
-        if let headerRow = self.tableView.rowControllerAtIndex(2) as TravelHeaderRow? {
+        if let headerRow = self.tableView.rowControllerAtIndex(2) as! TravelHeaderRow? {
             headerRow.headerLabel.setText(header2)
         }
-        if let detailsRow = self.tableView.rowControllerAtIndex(1) as TravelDetailsRow? {
+        if let detailsRow = self.tableView.rowControllerAtIndex(1) as! TravelDetailsRow? {
             detailsRow.remainingTimeLabel.setText(details1)
             detailsRow.destinationLabel.setText("")
         }
-        if let detailsRow = self.tableView.rowControllerAtIndex(3) as TravelDetailsRow? {
+        if let detailsRow = self.tableView.rowControllerAtIndex(3) as! TravelDetailsRow? {
             detailsRow.remainingTimeLabel.setText(details2)
             detailsRow.destinationLabel.setText("")
         }

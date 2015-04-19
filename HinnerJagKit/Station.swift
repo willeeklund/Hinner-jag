@@ -25,25 +25,25 @@ public class Station: CLLocation, MKAnnotation
     public init(dict: NSDictionary) {
         // Hopefully we can read info from the dictionary, otherwise use defaults
         var usedLatitude = 0.0
-        if let dictLatitude = dict["latitude"] as Double? {
+        if let dictLatitude = dict["latitude"] as! Double? {
             usedLatitude = dictLatitude
         }
         var usedLongitude = 0.0
-        if let dictLongitude = dict["longitude"] as Double? {
+        if let dictLongitude = dict["longitude"] as! Double? {
             usedLongitude = dictLongitude
         }
 
         var usedId = 0
-        if let dictId = dict["siteid"] as Int? {
+        if let dictId = dict["siteid"] as! Int? {
             usedId = dictId
         }
 
         var usedTitle = ""
-        if let dictTitle = dict["sitename"] as String? {
+        if let dictTitle = dict["sitename"] as! String? {
             usedTitle = dictTitle
         }
         
-        if let dictFromCentralDirection = dict["from_central_direction"] as Int? {
+        if let dictFromCentralDirection = dict["from_central_direction"] as! Int? {
             self.from_central_direction = dictFromCentralDirection
         }
         

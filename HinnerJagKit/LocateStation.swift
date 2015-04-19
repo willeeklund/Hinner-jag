@@ -20,8 +20,8 @@ public class LocateStation: NSObject, CLLocationManagerDelegate
         let metroStationsData = NSData(contentsOfFile: metroStationsFilePath!)
         assert(nil != metroStationsData, "metro_stations.json must contain valid data")
         var JSONError: NSError?
-        let responseDict = NSJSONSerialization.JSONObjectWithData(metroStationsData!, options: NSJSONReadingOptions.AllowFragments, error: &JSONError) as NSDictionary
-        if let metroStationsList = responseDict["metro_stations"] as [NSDictionary]? {
+        let responseDict = NSJSONSerialization.JSONObjectWithData(metroStationsData!, options: NSJSONReadingOptions.AllowFragments, error: &JSONError) as! NSDictionary
+        if let metroStationsList = responseDict["metro_stations"] as! [NSDictionary]? {
             for stationInfo in metroStationsList {
                 tmpList.append(Station(dict: stationInfo))
             }
@@ -50,7 +50,7 @@ public class LocateStation: NSObject, CLLocationManagerDelegate
     // MARK: - Get location of the user
     public func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         self.locationManager.stopUpdatingLocation()
-        let location = locations.last as CLLocation
+        let location = locations.last as! CLLocation
         self.findClosestStationFromLocationAndFetchDepartures(location)
     }
 
