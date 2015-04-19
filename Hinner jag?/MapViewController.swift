@@ -61,7 +61,7 @@ class MapViewController: UIViewController, MKMapViewDelegate
             // view?.leftCalloutAccessoryView = imageView
             var btn = UIButton()
             btn.setBackgroundImage(UIImage(named: "right_arrow"), forState: .Normal)
-            btn.sizeToFit()
+            btn.frame = CGRect(x: 0, y: 0, width: 46, height: 46)
             view?.rightCalloutAccessoryView = btn
         }
         view?.annotation = annotation
