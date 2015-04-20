@@ -57,6 +57,7 @@ updateResultCache = function (req, res, callback) {
         ('(' + nbrDepartures + ' departures)').blue
       );
       dataSourceTravelPlanner.fetchData(req.params.site_id, function (err, resultList) {
+        console.log(('Adding ' + resultList.length + ' departures from TravelPlanner').blue);
         resultList.forEach(function (departure) {
           content.ResponseData.Metros.push(departure);
         });
