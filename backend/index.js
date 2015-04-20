@@ -11,6 +11,7 @@ var express = require('express'),
     config = require('./config'),
     async = require('async'),
     memoryCache = require('memory-cache'),
+    dataSourceTravelPlanner = require('./dataSources/travelPlanner2'),
 
 /**
  * Fetch data from SL api using asyncronous queue
@@ -22,8 +23,8 @@ getQueueNameFromReqParams = function (params) {
 },
 
 updateResultCache = function (req, res, callback) {
-  var realtimeKey = 'bebfe14511a74ca5aef16db943ae8589',
-  timewindow = 30,
+  var realtimeKey = config.apiKeys.realtimeKey,
+  timewindow = 60,
   SL_api_url = 'http://api.sl.se/api2/realtimedepartures.json?' +
                'key=' + realtimeKey +
                '&timewindow=' + timewindow +
@@ -38,22 +39,25 @@ updateResultCache = function (req, res, callback) {
       return;
     }
     var content = JSON.parse(requestResult.body);
-    if (
-      undefined === content ||
-      undefined === content.ResponseData ||
-      undefined === content.ResponseData.Metros ||
-      0 === content.ResponseData.Metros.length
-    ) {
-      console.log('Error: no metro departures'.red, ('for siteid ' + req.params.site_id).yellow);
-    }
     // Remove all fields except Metros
     content.ResponseData.Buses = [];
     content.ResponseData.Ships = [];
     content.ResponseData.Trains = [];
+    content.ResponseData.Trams = [];
     content.ResponseData.StopPointDeviations = [];
     // The result will be the same for 1 minute
     var ttl_age = 60 - content.ResponseData.DataAge;
     console.log('Data age'.blue, content.ResponseData.DataAge, 'new in'.cyan, ttl_age);
+    if (0 === content.ResponseData.Metros.length) {
+      // No metro departures in realtime result
+      console.log('Error: no metro departures'.red, ('for siteid ' + req.params.site_id).yellow);
+      dataSourceTravelPlanner.fetchData(req.params.site_id, function (err, resultList) {
+        content.ResponseData.Metros = resultList;
+        memoryCache.put(queueName, content, 1000 * ttl_age);
+        callback(err, content);
+      });
+      return;
+    }
     memoryCache.put(queueName, content, 1000 * ttl_age);
     callback(err, content);
   });
