@@ -6,10 +6,15 @@ getJourneyDirectionsFromSiteId = function(siteId) {
   siteId = parseInt(siteId, 10);
   switch(siteId) {
     case 9280: return 1; // Norsborg
-    case 9340: return 2; // Kungsträdgården
+    case 9340: return 1; // Kungsträdgården
     case 9100: return 2; // Hässelby strand
   }
   return 1;
+},
+
+capitalizeFirstLetterAndTrimEnd = function(str) {
+  var capitalized = str.charAt(0).toUpperCase() + str.slice(1);
+  return capitalized.substring(0, capitalized.indexOf('linje') + 5);
 },
 
 transformDisplayTime = function (timeString) {
@@ -21,7 +26,11 @@ transformDisplayTime = function (timeString) {
   var timeStringMinutes = parseInt(timeStringParts[0], 10) * 60 + parseInt(timeStringParts[1], 10);
 
   var diffMinutes = timeStringMinutes - currTimeMinutes;
-  return diffMinutes + ' min';
+  if (diffMinutes < 1) {
+    return 'Nu';
+  } else {
+    return diffMinutes + ' min';
+  }
 },
 
 fetchDeparturesFromSiteId = function (siteId, callback) {
@@ -44,10 +53,11 @@ fetchDeparturesFromSiteId = function (siteId, callback) {
           'SiteId': siteId,
           'LineNumber': tripContent.line,
           'Destination': tripContent.dir,
-          'GroupOfLine': tripContent.name,
+          'GroupOfLine': capitalizeFirstLetterAndTrimEnd(tripContent.name),
           'StopAreaName': tripContent.Origin.name,
           'TransportMode': 'METRO',
           'JourneyDirection': getJourneyDirectionsFromSiteId(siteId),
+          'FromTravelPlanner': true,
           'DisplayTime': transformDisplayTime(tripContent.Origin.time)
         };
         retDepartures.push(usedInfo);

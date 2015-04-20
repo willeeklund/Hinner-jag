@@ -48,11 +48,18 @@ updateResultCache = function (req, res, callback) {
     // The result will be the same for 1 minute
     var ttl_age = Math.max(60 - content.ResponseData.DataAge, 5);
     console.log('Data age'.blue, content.ResponseData.DataAge, 'new in'.cyan, ttl_age);
-    if (0 === content.ResponseData.Metros.length) {
-      // No metro departures in realtime result
-      console.log('Error: no metro departures'.red, ('for siteid ' + req.params.site_id).yellow);
+    var nbrDepartures = content.ResponseData.Metros.length;
+    if (0 === nbrDepartures) {
+      // Too few metro departures in realtime result, add from travel planner
+      console.log(
+        'Error: too few metro departures'.red,
+        ('for siteid ' + req.params.site_id).yellow,
+        ('(' + nbrDepartures + ' departures)').blue
+      );
       dataSourceTravelPlanner.fetchData(req.params.site_id, function (err, resultList) {
-        content.ResponseData.Metros = resultList;
+        resultList.forEach(function (departure) {
+          content.ResponseData.Metros.push(departure);
+        });
         memoryCache.put(queueName, content, 1000 * ttl_age);
         callback(err, content);
       });
