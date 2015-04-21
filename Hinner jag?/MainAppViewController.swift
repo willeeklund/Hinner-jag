@@ -108,6 +108,7 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
                 var dist = station.distanceFromLocation(self.locateStation.locationManager.location)
                 let distFormat = Utils.distanceFormat(dist)
                 cell?.textLabel?.text = "\(station.title) (\(distFormat))"
+                cell?.textLabel?.textColor = UIColor(red: 0, green: 0.478431, blue: 1.0, alpha: 1.0)
             }
 
             return cell! as UITableViewCell

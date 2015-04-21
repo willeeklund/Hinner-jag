@@ -96,7 +96,7 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
     func updatePreferredContentSize() {
         var height: CGFloat = 30.0
         let rowHeight = CGFloat(self.tableView(self.tableView, heightForHeaderInSection: 1))
-        var i = 0; // Start at second section
+        var i = 0;
         while i < self.numberOfSectionsInTableView(self.tableView) {
             height += rowHeight * CGFloat(self.tableView(self.tableView, numberOfRowsInSection: i) + 1)
             i++
@@ -126,11 +126,16 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 30
+        }
         return 27.0
-        
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 30
+        }
         return 24.0
     }
     
@@ -168,7 +173,8 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
                 var dist = station.distanceFromLocation(self.locateStation.locationManager.location)
                 let distFormat = Utils.distanceFormat(dist)
                 cell?.textLabel?.text = "\(station.title) (\(distFormat))"
-                cell?.textLabel?.textColor = UIColor.whiteColor()
+                cell?.textLabel?.textColor = UIColor(red: 8.0/255.0, green: 206.0/255.0, blue: 253.0/255.0, alpha: 1)
+                cell?.textLabel?.font = UIFont(name: "Arial", size: 18.0)
             }
             
             return cell! as UITableViewCell
