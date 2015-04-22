@@ -51,13 +51,14 @@ updateResultCache = function (req, res, callback) {
     var nbrDepartures = content.ResponseData.Metros.length;
     if (0 === nbrDepartures) {
       // Too few metro departures in realtime result, add from travel planner
-      console.log(
-        'Error: too few metro departures'.red,
-        ('for siteid ' + req.params.site_id).yellow,
-        ('(' + nbrDepartures + ' departures)').blue
-      );
+      console.log('Not enough metro departures'.red);
       dataSourceTravelPlanner.fetchData(req.params.site_id, function (err, resultList) {
-        console.log(('Adding ' + resultList.length + ' departures from TravelPlanner').blue);
+        console.log(
+          'Error: too few metro departures'.red,
+          ('for siteid ' + req.params.site_id).yellow,
+          ('(' + nbrDepartures + ' departures)').blue,
+          ('Adding ' + resultList.length + ' departures from TravelPlanner').blue
+        );
         resultList.forEach(function (departure) {
           content.ResponseData.Metros.push(departure);
         });
