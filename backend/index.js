@@ -120,10 +120,15 @@ app.get('/hej', function (req, res) {
 });
 
 app.get('/api/realtimedepartures/:site_id.json', function (req, res) {
-  queueResultRequest(req, res, function (result) {
-    res.header('Cache-Control', 'public, max-age=' + 30);
-    res.send(result);
-  });
+  try {
+    queueResultRequest(req, res, function (result) {
+      res.header('Cache-Control', 'public, max-age=' + 30);
+      res.send(result);
+    });
+  } catch (error) {
+    console.log('Caught an error: '.red, error);
+    res.send('Sorry, something went wrong with this request.');
+  }
 });
 
 var port = Number(process.env.PORT || 3000);
