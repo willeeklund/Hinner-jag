@@ -699,5 +699,55 @@
       "latitude": 59.3349688288931,
       "longitude": 18.0763846822514
     }
+  ],
+  "train_stations": [
+    {
+      "siteid": 9500,
+      "sitename": "Märsta",
+      "latitude": 59.6234435745398,
+      "longitude": 17.8608697599580
+    },
+    {
+      "siteid": 9501,
+      "sitename": "Rosersberg",
+      "latitude": 59.5830381899391,
+      "longitude": 17.8802340414674
+    },
+    {
+      "siteid": 9502,
+      "sitename": "Upplands Väsby",
+      "latitude": 60.0,
+      "longitude": 20.0
+    },
+    {
+      "siteid": 9503,
+      "sitename": "Rotebro",
+      "latitude": 60.0,
+      "longitude": 20.0
+    },
+    {
+      "siteid": 9510,
+      "sitename": "Karlberg",
+      "latitude": 59.3395583708463,
+      "longitude": 18.0294576555531
+    },
+    {
+      "siteid": 9001,
+      "sitename": "T-Centralen",
+      "latitude": 59.3313179695028,
+      "longitude": 18.0616773959365
+    },
+    { "id": 1,
+      "siteid": 9505,
+      "sitename": "Häggvik",
+      "latitude": 60.0,
+      "longitude": 20.0
+    },
+    {
+      "siteid": 9530,
+      "sitename": "Stockholms Södra",
+      "latitude": 60.0,
+      "longitude": 20.0
+    }
   ]
 }

@@ -10,15 +10,33 @@ import Foundation
 import CoreLocation
 import MapKit
 
+public enum StationType {
+    case Metro
+    case Train
+}
+
 public class Station: CLLocation, MKAnnotation
 {
     public var id: Int = 0
     public var title: String = ""
     public var from_central_direction: Int?
+    public var stationType: StationType?
+    
+    private func typeOfStation() -> String {
+        // StationType has not been set
+        if nil == self.stationType {
+            return "Station"
+        }
+        // Description of station type
+        switch self.stationType! {
+        case .Metro: return "Metro station"
+        case .Train: return "Train station"
+        }
+    }
     
     override public var description: String {
         get {
-            return "Station \(self.id): \(self.title) at (\(self.coordinate.latitude), \(self.coordinate.longitude))"
+            return "\(self.typeOfStation()) \(self.id): \(self.title) at (\(self.coordinate.latitude), \(self.coordinate.longitude))"
         }
     }
     
@@ -45,6 +63,14 @@ public class Station: CLLocation, MKAnnotation
         
         if let dictFromCentralDirection = dict["from_central_direction"] as! Int? {
             self.from_central_direction = dictFromCentralDirection
+        }
+        
+        if let dictStationTypeString = dict["stationType"] as? String {
+            if "Train" == dictStationTypeString {
+                self.stationType = .Train
+            } else if "Metro" == dictStationTypeString {
+                self.stationType = .Metro
+            }
         }
         
         // Assert that we got real data

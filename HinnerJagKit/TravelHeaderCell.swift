@@ -31,6 +31,7 @@ class TravelHeaderCell: UITableViewCell
             cell = TravelHeaderCell()
         }
         if let sectionString = mappingDict[section] {
+            println("sectionString = \(sectionString)")
             var imageName: String?
             var directionLabel: String = ""
             var directionSuffix: String = ""
@@ -45,6 +46,7 @@ class TravelHeaderCell: UITableViewCell
                 }
                 
             }
+            // Metro groups
             if sectionString.rangeOfString("gröna") != nil {
                 imageName = "train_green"
                 directionLabel = "Grön linje"
@@ -54,6 +56,13 @@ class TravelHeaderCell: UITableViewCell
             } else if sectionString.rangeOfString("blå") != nil {
                 imageName = "train_blue"
                 directionLabel = "Blå linje"
+            }
+            // Train groups
+            else if sectionString.rangeOfString("TRAIN") != nil {
+                // TODO: Better image of pendeltåg
+                imageName = "logo_green"
+                let trainRange = Range<String.Index>(start: advance(sectionString.startIndex, 8), end: advance(sectionString.startIndex, 19))
+                directionLabel = sectionString.substringWithRange(trainRange)
             }
             if nil != imageName {
                 cell?.trainImage.image = UIImage(named: imageName!)

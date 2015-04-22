@@ -57,15 +57,22 @@ public class RealtimeDepartures
         let responseDict = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments, error: &JSONError) as! NSDictionary
         if JSONError == nil {
             if let allTypes = responseDict["ResponseData"] as! NSDictionary? {
+                var departureList = [Departure]()
+                // Add Metro departures
                 if let metros = allTypes["Metros"] as! [NSDictionary]? {
-                    var departureList = [Departure]()
                     for item in metros {
                         departureList.append(Departure(dict: item, station: station))
                     }
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        callback(departureList, error: nil)
-                    })
                 }
+                // Add Train ("pendeltåg") departures
+                if let metros = allTypes["Trains"] as! [NSDictionary]? {
+                    for item in metros {
+                        departureList.append(Departure(dict: item, station: station))
+                    }
+                }
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    callback(departureList, error: nil)
+                })
             }
         } else {
             dispatch_async(dispatch_get_main_queue(), { () -> Void in

@@ -21,9 +21,20 @@ public class LocateStation: NSObject, CLLocationManagerDelegate
         assert(nil != metroStationsData, "metro_stations.json must contain valid data")
         var JSONError: NSError?
         let responseDict = NSJSONSerialization.JSONObjectWithData(metroStationsData!, options: NSJSONReadingOptions.AllowFragments, error: &JSONError) as! NSDictionary
+        // Add all Metro stations
         if let metroStationsList = responseDict["metro_stations"] as! [NSDictionary]? {
             for stationInfo in metroStationsList {
-                tmpList.append(Station(dict: stationInfo))
+                var info: NSMutableDictionary = stationInfo.mutableCopy() as! NSMutableDictionary
+                info.setValue("Metro", forKey: "stationType")
+                tmpList.append(Station(dict: info))
+            }
+        }
+        // Add all Train stations
+        if let metroStationsList = responseDict["train_stations"] as! [NSDictionary]? {
+            for stationInfo in metroStationsList {
+                var info: NSMutableDictionary = stationInfo.mutableCopy() as! NSMutableDictionary
+                info.setValue("Train", forKey: "stationType")
+                tmpList.append(Station(dict: info))
             }
         }
 
@@ -83,7 +94,7 @@ public class LocateStation: NSObject, CLLocationManagerDelegate
         
         var sortedStationList: [Station] = self.stationList
         sortedStationList.sort({ $0.distanceFromLocation(userLocation) < $1.distanceFromLocation(userLocation) })
-        // Only return 3 stations
+        // Only return 4 stations
         return Array(sortedStationList[0...3])
     }
 }

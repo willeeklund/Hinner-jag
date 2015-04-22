@@ -17,7 +17,7 @@ public class Utils
         var mappingDict = Dictionary <Int, String>()
         var departuresDict = Dictionary <String, [Departure]>()
         for dept in departures {
-            let mappingName = "\(dept.lineName) - riktning \(dept.direction)"
+            let mappingName = "\(dept.transportType) - \(dept.lineName) - riktning \(dept.direction)"
             if let depList = departuresDict[mappingName] {
                 departuresDict[mappingName]?.append(dept)
             } else {

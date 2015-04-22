@@ -51,10 +51,17 @@ class MapViewController: UIViewController, MKMapViewDelegate
             return nil
         }
         let reuseId = "MapViewController"
-        var view: MKAnnotationView? = self.mapView?.dequeueReusableAnnotationViewWithIdentifier(reuseId)
+        var view = self.mapView?.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
         if nil == view {
             view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             view?.canShowCallout = true
+            // TODO: Change to different color depending on metro or train
+            if let station = annotation as? Station {
+                if station.stationType == .Train {
+                    view?.pinColor = .Purple
+                }
+            }
+
             // TODO: Set left accessory view to show which lines exist at this station
             // var imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 46, height: 46))
             // imageView.image = UIImage(named: "train_green")
@@ -63,8 +70,9 @@ class MapViewController: UIViewController, MKMapViewDelegate
             btn.setBackgroundImage(UIImage(named: "right_arrow"), forState: .Normal)
             btn.frame = CGRect(x: 0, y: 0, width: 46, height: 46)
             view?.rightCalloutAccessoryView = btn
+        } else {
+            view?.annotation = annotation
         }
-        view?.annotation = annotation
         return view
     }
     

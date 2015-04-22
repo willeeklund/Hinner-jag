@@ -22,6 +22,13 @@ getQueueNameFromReqParams = function (params) {
   return params.site_id;
 },
 
+fixTrainDepartureList = function (trainDepartureList) {
+  trainDepartureList.forEach(function (item) {
+    item.GroupOfLine = 'Pendeltåg linje ' + item.LineNumber + ' ' + item.StopPointDesignation;
+  });
+  return trainDepartureList;
+},
+
 updateResultCache = function (req, res, callback) {
   var realtimeKey = config.apiKeys.realtimeKey,
   timewindow = 60,
@@ -42,9 +49,9 @@ updateResultCache = function (req, res, callback) {
     // Remove all fields except Metros
     content.ResponseData.Buses = [];
     content.ResponseData.Ships = [];
-    content.ResponseData.Trains = [];
     content.ResponseData.Trams = [];
     content.ResponseData.StopPointDeviations = [];
+    content.ResponseData.Trains = fixTrainDepartureList(content.ResponseData.Trains);
     // The result will be the same for 1 minute
     var ttl_age = Math.max(60 - content.ResponseData.DataAge, 5);
     console.log('Data age'.blue, content.ResponseData.DataAge, 'new in'.cyan, ttl_age);
