@@ -26,7 +26,7 @@ class HeadlineCell: UITableViewCell
     
     @IBAction func stationTypeSegmentChanged(sender: UISegmentedControl) {
         if nil != self.controller {
-            self.controller!.setPreferedTravelType(StationType(rawValue: sender.selectedSegmentIndex)!)
+            self.controller!.setPreferredTravelType(StationType(rawValue: sender.selectedSegmentIndex)!)
         }
     }
     

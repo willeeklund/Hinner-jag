@@ -67,13 +67,14 @@ public class Station: CLLocation, MKAnnotation
             self.from_central_direction = dictFromCentralDirection
         }
         
+        var usedStationType: StationType?
         if let dictStationTypeString = dict["stationType"] as? String {
             if "Train" == dictStationTypeString {
-                self.stationType = .Train
+                usedStationType = .Train
             } else if "Metro" == dictStationTypeString {
-                self.stationType = .Metro
+                usedStationType = .Metro
             } else if "MetroAndTrain" == dictStationTypeString {
-                self.stationType = .MetroAndTrain
+                usedStationType = .MetroAndTrain
             }
         }
         
@@ -83,11 +84,13 @@ public class Station: CLLocation, MKAnnotation
         assert(usedLatitude != usedLongitude, "We suspect coding error if latitude == longitude")
         assert(0   != usedId, "Must set real id")
         assert(""  != usedTitle, "Must set real title")
+        assert(nil != usedStationType, "Every station must have a station type specified")
 
         // Create instance
         super.init(coordinate: CLLocationCoordinate2D(latitude: usedLatitude, longitude: usedLongitude), altitude: 0.0, horizontalAccuracy: 0.0, verticalAccuracy: 0.0, timestamp: NSDate())
         self.id = usedId
         self.title = usedTitle
+        self.stationType = usedStationType
     }
     
     required public init(coder aDecoder: NSCoder) {

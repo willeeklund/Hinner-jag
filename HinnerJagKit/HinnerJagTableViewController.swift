@@ -13,6 +13,7 @@ import MapKit
 public class HinnerJagTableViewController: UITableViewController
 {
     // MARK: - Variables
+    public var fetchedDepartures: [Departure]?
     public var mappingDict: Dictionary <Int, String> = Dictionary <Int, String>()
     public var departuresDict: Dictionary<String, [Departure]> = Dictionary<String, [Departure]>() {
         didSet {
@@ -25,7 +26,7 @@ public class HinnerJagTableViewController: UITableViewController
             self.updateUI()
         }
     }
-    public var shownStationType: StationType = HinnerJagTableViewController.getPreferedTravelType() {
+    public var shownStationType: StationType = Utils.getPreferredTravelType() {
         didSet {
             self.updateUI()
         }
@@ -39,21 +40,23 @@ public class HinnerJagTableViewController: UITableViewController
         return nil
     }
     
+    // MARK: - Create mapping from fetched departures
+    public func createMappingFromFetchedDepartures() {
+        if nil != self.fetchedDepartures && nil != self.closestStation {
+            (self.mappingDict, self.departuresDict) = Utils.getMappingFromDepartures(self.fetchedDepartures!, station: self.closestStation!, mappingStart: 1)
+        }
+    }
+    
     // MARK: - Toggle to choose different station
     public func changeChosenStation() {
         self.selectChosenStation = !self.selectChosenStation
     }
     
     // MARK: - Select preferred travel type from a segment
-    public func setPreferedTravelType(type: StationType) {
-        NSUserDefaults.standardUserDefaults().setInteger(type.rawValue, forKey: "preferredTravelType")
-        NSUserDefaults.standardUserDefaults().synchronize()
+    public func setPreferredTravelType(type: StationType) {
+        Utils.setPreferredTravelType(type)
         self.shownStationType = type
-    }
-    
-    class func getPreferedTravelType() -> StationType {
-        var preferredTravelTypeInteger = NSUserDefaults.standardUserDefaults().integerForKey("preferredTravelType")
-        return StationType(rawValue: preferredTravelTypeInteger)!
+        self.createMappingFromFetchedDepartures()
     }
     
     // MARK: - Lifecycle stuff

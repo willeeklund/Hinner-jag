@@ -31,7 +31,6 @@ class TravelHeaderCell: UITableViewCell
             cell = TravelHeaderCell()
         }
         if let sectionString = mappingDict[section] {
-            println("sectionString = \(sectionString)")
             var imageName: String?
             var directionLabel: String = ""
             let directionSuffix = self.createDirectionSuffix(sectionString, departuresDict: departuresDict)

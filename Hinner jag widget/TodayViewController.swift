@@ -56,6 +56,7 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
             let station = stationsSorted.first
             self.closestStation = station
             self.closestSortedStations = stationsSorted
+            self.fetchedDepartures = departures
             if nil != station {
                 self.trackEvent("Station", action: "found", label: "\(station!.title) (\(station!.id))", value: 1)
             } else {
@@ -68,8 +69,7 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
                 return
             }
             
-            // Add departures into separated groups
-            (self.mappingDict, self.departuresDict) = Utils.getMappingFromDepartures(departures!, mappingStart: 1)
+            self.createMappingFromFetchedDepartures()
         }
     }
     

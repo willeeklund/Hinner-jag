@@ -34,6 +34,7 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
             let station = stationsSorted.first
             self.closestStation = station
             self.closestSortedStations = stationsSorted
+            self.fetchedDepartures = departures
             if nil != station {
                 println("Now we are using the location callback. \(station!)")
                 self.trackEvent("Station", action: "found", label: "\(station!.title) (\(station!.id))", value: 1)
@@ -47,8 +48,8 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
                 return
             }
             
-            (self.mappingDict, self.departuresDict) = Utils.getMappingFromDepartures(departures!, mappingStart: 1)
-            self.trackEvent("Departures", action: "found", label: "\(self.departuresDict.count) groups", value: 1)
+            self.createMappingFromFetchedDepartures()
+            self.trackEvent("Departures", action: "fetched", label: "\(departures!.count) departures", value: 1)
             dispatch_async(dispatch_get_main_queue(), {
                 self.refreshControl!.endRefreshing()
             })
