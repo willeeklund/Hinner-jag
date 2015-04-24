@@ -72,4 +72,10 @@ class HinnerJagKitTests: XCTestCase {
             XCTAssert(depList != nil, "We got some departures")
         }
     }
+    
+    func testRealtimeDeparturesIsNotInDebugMode() {
+        let realDep = RealtimeDepartures()
+        XCTAssert(false == realDep.debugBackend, "Must use production backend to pass tests")
+        XCTAssert(false == realDep.debugJsonData, "Must fetch real JSON data to pass tests")
+    }
 }

@@ -10,10 +10,20 @@ import Foundation
 
 public class RealtimeDepartures
 {
+    // MARK: - Debug variables
+    // Unit test will fail if any of these are true to prevent them from being checked in
+    public let debugBackend = false
+    public let debugJsonData = false
+
+    // MARK: - Variables
     let session: NSURLSession
     let realtimeKey = "bebfe14511a74ca5aef16db943ae8589"
-//    let apiServer = "http://localhost:3000"
-    let apiServer = "https://hinner-jag.herokuapp.com"
+    lazy var apiServer: String = {
+        if self.debugBackend {
+            return "http://localhost:3000"
+        }
+        return "https://hinner-jag.herokuapp.com"
+    }()
     
     public init() {
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
@@ -23,11 +33,15 @@ public class RealtimeDepartures
     public func departuresFromStation(station: Station, callback: ([Departure]?, error: NSError?) -> ()) {
         var realtimeApiQueue = dispatch_queue_create("realtime API queue", nil)
         dispatch_async(realtimeApiQueue, {
-            self.performRealtimeApiReqForStation(station, callback: callback)
-//            self.fetchDummyDepartureJsonData(station, callback)
+            if self.debugJsonData {
+                self.fetchDummyDepartureJsonData(station, callback: callback)
+            } else {
+                self.performRealtimeApiReqForStation(station, callback: callback)
+            }
         })
     }
     
+    // MARK: - Fetch departure JSON data
     func fetchDummyDepartureJsonData(station: Station, callback: ([Departure]?, error: NSError?) -> ()) {
         println("Please note that dummy data is used for departures")
         // Used dummy data file
@@ -35,11 +49,10 @@ public class RealtimeDepartures
 //        testFile = "test_departures_9510_karlberg"
 //        testFile = "test_departures_9530_stockholms_sodra"
 //        testFile = "test_departures_9520_sodertalje_centrum"
-
         
         let hinnerJagKitBundle = NSBundle(forClass: LocateStation.classForCoder())
         let testDeparturesFilePath = hinnerJagKitBundle.pathForResource(testFile, ofType: "json")
-        assert(nil != testDeparturesFilePath, "The file test_departures.json must be included in the test framework")
+        assert(nil != testDeparturesFilePath, "The file \(testFile).json must be included in the framework")
         let testDeparturesData = NSData(contentsOfFile: testDeparturesFilePath!)
         self.parseJsonDataToDepartures(testDeparturesData, station: station, callback: callback)
     }
@@ -59,6 +72,7 @@ public class RealtimeDepartures
         task.resume()
     }
     
+    // MARK: - Parse JSON data into Departures
     func parseJsonDataToDepartures(data: NSData?, station: Station, callback: ([Departure]?, error: NSError?) -> ()) {
         var JSONError: NSError?
         let responseDict = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments, error: &JSONError) as! NSDictionary
