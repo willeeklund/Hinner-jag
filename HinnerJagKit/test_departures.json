@@ -1688,6 +1688,7 @@
         "TransportMode": "TRAIN",
         "LineNumber": "36",
         "Destination": "Upplands V\u00e4sby",
+        "GroupOfLine": "Pendeltåg 36",
         "SiteId": 9001
       },
       {
@@ -1704,6 +1705,7 @@
         "TransportMode": "TRAIN",
         "LineNumber": "38",
         "Destination": "Tumba",
+        "GroupOfLine": "Pendeltåg 38",
         "SiteId": 9001
       },
       {
@@ -1720,6 +1722,7 @@
         "TransportMode": "TRAIN",
         "LineNumber": "35",
         "Destination": "B\u00e5lsta",
+        "GroupOfLine": "Pendeltåg 35",
         "SiteId": 9001
       },
       {
@@ -1736,6 +1739,7 @@
         "TransportMode": "TRAIN",
         "LineNumber": "36",
         "Destination": "M\u00e4rsta",
+        "GroupOfLine": "Pendeltåg 36",
         "SiteId": 9001
       },
       {
@@ -1752,6 +1756,7 @@
         "TransportMode": "TRAIN",
         "LineNumber": "36",
         "Destination": "S\u00f6dert\u00e4lje C",
+        "GroupOfLine": "Pendeltåg 36",
         "SiteId": 9001
       },
       {
@@ -1768,6 +1773,7 @@
         "TransportMode": "TRAIN",
         "LineNumber": "35",
         "Destination": "V\u00e4sterhaninge",
+        "GroupOfLine": "Pendeltåg 35",
         "SiteId": 9001
       },
       {
@@ -1784,6 +1790,7 @@
         "TransportMode": "TRAIN",
         "LineNumber": "36",
         "Destination": "S\u00f6dert\u00e4lje C",
+        "GroupOfLine": "Pendeltåg 36",
         "SiteId": 9001
       },
       {
@@ -1806,6 +1813,7 @@
         "TransportMode": "TRAIN",
         "LineNumber": "38",
         "Destination": "Uppsala C",
+        "GroupOfLine": "Pendeltåg 38",
         "SiteId": 9001
       },
       {
@@ -1828,6 +1836,7 @@
         "TransportMode": "TRAIN",
         "LineNumber": "35",
         "Destination": "Nyn\u00e4shamn",
+        "GroupOfLine": "Pendeltåg 35",
         "SiteId": 9001
       },
       {
@@ -1844,6 +1853,7 @@
         "TransportMode": "TRAIN",
         "LineNumber": "35",
         "Destination": "Kungs\u00e4ngen",
+        "GroupOfLine": "Pendeltåg 35",
         "SiteId": 9001
       },
       {
@@ -1860,6 +1870,7 @@
         "TransportMode": "TRAIN",
         "LineNumber": "36",
         "Destination": "M\u00e4rsta",
+        "GroupOfLine": "Pendeltåg 36",
         "SiteId": 9001
       },
       {
@@ -1876,6 +1887,7 @@
         "TransportMode": "TRAIN",
         "LineNumber": "36",
         "Destination": "S\u00f6dert\u00e4lje C",
+        "GroupOfLine": "Pendeltåg 36",
         "SiteId": 9001
       },
       {
@@ -1892,6 +1904,7 @@
         "TransportMode": "TRAIN",
         "LineNumber": "35",
         "Destination": "V\u00e4sterhaninge",
+        "GroupOfLine": "Pendeltåg 35",
         "SiteId": 9001
       },
       {
@@ -1914,6 +1927,7 @@
         "TransportMode": "TRAIN",
         "LineNumber": "35",
         "Destination": "Jakobsberg",
+        "GroupOfLine": "Pendeltåg 35",
         "SiteId": 9001
       }
     ],

@@ -30,8 +30,15 @@ public class RealtimeDepartures
     
     func fetchDummyDepartureJsonData(station: Station, callback: ([Departure]?, error: NSError?) -> ()) {
         println("Please note that dummy data is used for departures")
+        // Used dummy data file
+        var testFile = "test_departures"
+//        testFile = "test_departures_9510_karlberg"
+//        testFile = "test_departures_9530_stockholms_sodra"
+//        testFile = "test_departures_9520_sodertalje_centrum"
+
+        
         let hinnerJagKitBundle = NSBundle(forClass: LocateStation.classForCoder())
-        let testDeparturesFilePath = hinnerJagKitBundle.pathForResource("test_departures", ofType: "json")
+        let testDeparturesFilePath = hinnerJagKitBundle.pathForResource(testFile, ofType: "json")
         assert(nil != testDeparturesFilePath, "The file test_departures.json must be included in the test framework")
         let testDeparturesData = NSData(contentsOfFile: testDeparturesFilePath!)
         self.parseJsonDataToDepartures(testDeparturesData, station: station, callback: callback)

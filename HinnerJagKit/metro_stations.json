@@ -704,50 +704,169 @@
     {
       "siteid": 9500,
       "sitename": "Märsta",
+      "from_central_direction": 2,
       "latitude": 59.6234435745398,
       "longitude": 17.8608697599580
     },
     {
       "siteid": 9501,
       "sitename": "Rosersberg",
+      "from_central_direction": 2,
       "latitude": 59.5830381899391,
       "longitude": 17.8802340414674
     },
     {
       "siteid": 9502,
       "sitename": "Upplands Väsby",
-      "latitude": 60.0,
-      "longitude": 20.0
+      "from_central_direction": 2,
+      "latitude": 59.5215479917057,
+      "longitude": 17.8994827972724
     },
     {
       "siteid": 9503,
       "sitename": "Rotebro",
-      "latitude": 60.0,
-      "longitude": 20.0
+      "from_central_direction": 2,
+      "latitude": 59.4765698922157,
+      "longitude": 17.9140828578122
+    },
+    {
+      "siteid": 9504,
+      "sitename": "Norrviken",
+      "from_central_direction": 2,
+      "latitude": 59.4580196491360,
+      "longitude": 17.9245695307683
+    },
+    {
+      "siteid": 9505,
+      "sitename": "Häggvik",
+      "from_central_direction": 2,
+      "latitude": 59.4435578352971,
+      "longitude": 17.9331684894166
+    },
+    {
+      "siteid": 9506,
+      "sitename": "Sollentuna",
+      "from_central_direction": 2,
+      "latitude": 59.4280188335456,
+      "longitude": 17.9488300075857
+    },
+    {
+      "siteid": 9507,
+      "sitename": "Helenelund",
+      "from_central_direction": 2,
+      "latitude": 59.4094211371147,
+      "longitude": 17.9619929161480
+    },
+    {
+      "siteid": 9508,
+      "sitename": "Ulriksdal",
+      "from_central_direction": 2,
+      "latitude": 59.3798912886667,
+      "longitude": 18.0010706232564
+    },
+    {
+      "siteid": 9509,
+      "sitename": "Solna",
+      "from_central_direction": 2,
+      "latitude": 59.3665147337155,
+      "longitude": 18.0095374234150
     },
     {
       "siteid": 9510,
       "sitename": "Karlberg",
+      "from_central_direction": 2,
       "latitude": 59.3395583708463,
       "longitude": 18.0294576555531
     },
     {
       "siteid": 9001,
-      "sitename": "T-Centralen",
+      "sitename": "Stockholm Central",
       "latitude": 59.3313179695028,
       "longitude": 18.0616773959365
-    },
-    { "id": 1,
-      "siteid": 9505,
-      "sitename": "Häggvik",
-      "latitude": 60.0,
-      "longitude": 20.0
     },
     {
       "siteid": 9530,
       "sitename": "Stockholms Södra",
-      "latitude": 60.0,
-      "longitude": 20.0
+      "from_central_direction": 1,
+      "latitude": 59.3135317369292,
+      "longitude": 18.0620271082888
+    },
+    {
+      "siteid": 9531,
+      "sitename": "Årstaberg",
+      "from_central_direction": 1,
+      "latitude": 59.2993431403456,
+      "longitude": 18.0275698409024
+    },
+    {
+      "siteid": 9529,
+      "sitename": "Älvsjö",
+      "from_central_direction": 1,
+      "latitude": 59.2785257456820,
+      "longitude": 18.0102632742484
+    },
+    {
+      "siteid": 9528,
+      "sitename": "Stuvsta",
+      "from_central_direction": 1,
+      "latitude": 59.2532754353359,
+      "longitude": 17.9958502364248
+    },
+    {
+      "siteid": 9527,
+      "sitename": "Huddinge",
+      "from_central_direction": 1,
+      "latitude": 59.2374139676809,
+      "longitude": 17.9805147945528
+    },
+    {
+      "siteid": 9526,
+      "sitename": "Flemingsberg",
+      "from_central_direction": 1,
+      "latitude": 59.2190463433643,
+      "longitude": 17.9472043350477
+    },
+    {
+      "siteid": 9525,
+      "sitename": "Tullinge",
+      "from_central_direction": 1,
+      "latitude": 59.2054130250978,
+      "longitude": 17.9038219185117
+    },
+    {
+      "siteid": 9524,
+      "sitename": "Tumba",
+      "from_central_direction": 1,
+      "latitude": 59.1996766394750,
+      "longitude": 17.8364240103246
+    },
+    {
+      "siteid": 9523,
+      "sitename": "Rönninge",
+      "from_central_direction": 1,
+      "latitude": 59.1935949553727,
+      "longitude": 17.7514584179394
+    },
+    {
+      "siteid": 9522,
+      "sitename": "Östertälje",
+      "from_central_direction": 1,
+      "latitude": 59.1837857295629,
+      "longitude": 17.6614585012139
+    },
+    {
+      "siteid": 9521,
+      "sitename": "Södertälje hamn",
+      "from_central_direction": 1,
+      "latitude": 59.1789721395906,
+      "longitude": 17.6463628503415
+    },
+    {
+      "siteid": 9520,
+      "sitename": "Södertälje centrum",
+      "from_central_direction": 1,
+      "latitude": 59.1921354248931,
+      "longitude": 17.6272251692751
     }
   ]
 }

@@ -24,7 +24,7 @@ getQueueNameFromReqParams = function (params) {
 
 fixTrainDepartureList = function (trainDepartureList) {
   trainDepartureList.forEach(function (item) {
-    item.GroupOfLine = 'Pendeltåg linje ' + item.LineNumber + ' ' + item.StopPointDesignation;
+    item.GroupOfLine = 'Pendeltåg ' + item.LineNumber;
   });
   return trainDepartureList;
 },

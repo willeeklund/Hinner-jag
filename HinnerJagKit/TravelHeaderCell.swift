@@ -34,18 +34,8 @@ class TravelHeaderCell: UITableViewCell
             println("sectionString = \(sectionString)")
             var imageName: String?
             var directionLabel: String = ""
-            var directionSuffix: String = ""
-            if let depList = departuresDict[sectionString] {
-                let firstDep = depList[0]
-                if firstDep.from_central_direction != nil {
-                    if firstDep.from_central_direction! == firstDep.direction {
-                        directionSuffix = "från T-centralen"
-                    } else {
-                        directionSuffix = "mot T-centralen"
-                    }
-                }
-                
-            }
+            let directionSuffix = self.createDirectionSuffix(sectionString, departuresDict: departuresDict)
+            
             // Metro groups
             if sectionString.rangeOfString("gröna") != nil {
                 imageName = "train_green"
@@ -60,17 +50,42 @@ class TravelHeaderCell: UITableViewCell
             // Train groups
             else if sectionString.rangeOfString("TRAIN") != nil {
                 // TODO: Better image of pendeltåg
-                imageName = "logo_green"
-                let trainRange = Range<String.Index>(start: advance(sectionString.startIndex, 8), end: advance(sectionString.startIndex, 19))
+                imageName = "train_purple"
+                let trainRange = Range<String.Index>(start: advance(sectionString.startIndex, 8), end: advance(sectionString.startIndex, 20))
                 directionLabel = sectionString.substringWithRange(trainRange)
             }
+            
+            // Set image
             if nil != imageName {
                 cell?.trainImage.image = UIImage(named: imageName!)
             }
+            
             cell?.headerLabel?.text = "\(directionLabel) \(directionSuffix)"
         } else {
             cell?.headerLabel?.text = ""
         }
         return cell! as TravelHeaderCell
+    }
+    
+    internal class func createDirectionSuffix(sectionString: String, departuresDict: Dictionary<String, [Departure]>) -> String {
+        let suffixDestination: String
+        if sectionString.rangeOfString("TRAIN") != nil {
+            suffixDestination = "Sthlm"
+        } else {
+            suffixDestination = "T-centralen"
+        }
+        if let depList = departuresDict[sectionString] {
+            let firstDep = depList[0]
+            
+            if firstDep.from_central_direction != nil {
+                if firstDep.from_central_direction! == firstDep.direction {
+                    return "från \(suffixDestination)"
+                } else {
+                    return "mot \(suffixDestination)"
+                }
+            }
+        }
+        // If not departures were received or there is no 'from_central_direction'
+        return ""
     }
 }

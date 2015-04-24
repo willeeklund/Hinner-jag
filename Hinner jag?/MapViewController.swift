@@ -60,6 +60,9 @@ class MapViewController: UIViewController, MKMapViewDelegate
                 if station.stationType == .Train {
                     view?.pinColor = .Purple
                 }
+                if station == self.chosenStation {
+                    view?.pinColor = .Green
+                }
             }
 
             // TODO: Set left accessory view to show which lines exist at this station

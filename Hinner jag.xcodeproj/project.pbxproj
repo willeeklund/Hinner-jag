@@ -32,6 +32,9 @@
 		0236B3D11ABE218300EDF6C8 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB11ABA42EB003ACD06 /* libGoogleAnalyticsServices.a */; };
 		0236B3D21ABE219600EDF6C8 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB11ABA42EB003ACD06 /* libGoogleAnalyticsServices.a */; };
 		0236B3D31ABE21A600EDF6C8 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB11ABA42EB003ACD06 /* libGoogleAnalyticsServices.a */; };
+		023F4B7A1AE8C05A00706872 /* test_departures_9510_karlberg.json in Resources */ = {isa = PBXBuildFile; fileRef = 023F4B791AE8C05A00706872 /* test_departures_9510_karlberg.json */; };
+		023F4B7C1AEA15F500706872 /* test_departures_9520_sodertalje_centrum.json in Resources */ = {isa = PBXBuildFile; fileRef = 023F4B7B1AEA15F500706872 /* test_departures_9520_sodertalje_centrum.json */; };
+		023F4B7E1AEA168100706872 /* test_departures_9530_stockholms_sodra.json in Resources */ = {isa = PBXBuildFile; fileRef = 023F4B7D1AEA168100706872 /* test_departures_9530_stockholms_sodra.json */; };
 		025C989A1AD2947A0096FC79 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025C98991AD2947A0096FC79 /* MapViewController.swift */; };
 		026C9F8D1AD2E85500B75285 /* Hinner jag WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 02F2FF331AB48BB8001A1F90 /* Hinner jag WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		02873E041AE423C600D17610 /* GAIExtendViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B11BAE1ABA4165003ACD06 /* GAIExtendViewControllers.swift */; };
@@ -205,6 +208,9 @@
 		022DE4831AC8188F000E9462 /* HeadlineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadlineCell.swift; sourceTree = "<group>"; };
 		022DE4861AC819AD000E9462 /* HinnerJagTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HinnerJagTableViewController.swift; sourceTree = "<group>"; };
 		0236B3CF1ABE213B00EDF6C8 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		023F4B791AE8C05A00706872 /* test_departures_9510_karlberg.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test_departures_9510_karlberg.json; sourceTree = "<group>"; };
+		023F4B7B1AEA15F500706872 /* test_departures_9520_sodertalje_centrum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test_departures_9520_sodertalje_centrum.json; sourceTree = "<group>"; };
+		023F4B7D1AEA168100706872 /* test_departures_9530_stockholms_sodra.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test_departures_9530_stockholms_sodra.json; sourceTree = "<group>"; };
 		025C98991AD2947A0096FC79 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		028EB6611AAF97E6004C508C /* Hinner jag?.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Hinner jag?.entitlements"; sourceTree = "<group>"; };
 		028EB6621AAF983C004C508C /* Hinner jag widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Hinner jag widget.entitlements"; sourceTree = "<group>"; };
@@ -479,6 +485,9 @@
 			isa = PBXGroup;
 			children = (
 				02B68E511AC5B36D00EFAA66 /* test_departures.json */,
+				023F4B791AE8C05A00706872 /* test_departures_9510_karlberg.json */,
+				023F4B7B1AEA15F500706872 /* test_departures_9520_sodertalje_centrum.json */,
+				023F4B7D1AEA168100706872 /* test_departures_9530_stockholms_sodra.json */,
 			);
 			name = TestData;
 			sourceTree = "<group>";
@@ -813,7 +822,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				023F4B7A1AE8C05A00706872 /* test_departures_9510_karlberg.json in Resources */,
+				023F4B7E1AEA168100706872 /* test_departures_9530_stockholms_sodra.json in Resources */,
 				02B68E521AC5B36D00EFAA66 /* test_departures.json in Resources */,
+				023F4B7C1AEA15F500706872 /* test_departures_9520_sodertalje_centrum.json in Resources */,
 				02F755BB1AB621210088D6C8 /* metro_stations.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
