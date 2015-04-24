@@ -14,6 +14,7 @@ import CoreLocation
 class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLocationManagerDelegate, UITableViewDelegate {
     // MARK: - Variables
     var locationManager: CLLocationManager! = CLLocationManager()
+    var linkColor = UIColor(red: 8.0/255.0, green: 206.0/255.0, blue: 253.0/255.0, alpha: 1)
     
     // MARK: - Life cycle
     required init(coder aDecoder: NSCoder) {
@@ -127,7 +128,11 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
-            return 30
+            if self.shouldShowStationTypeSegment() {
+                return 60.0
+            } else {
+                return 27.0
+            }
         }
         return 27.0
     }
@@ -142,18 +147,14 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
     // Header for table
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
-            let reuseId = "HeadlineCell"
-            var cell = self.tableView.dequeueReusableCellWithIdentifier(reuseId) as? HeadlineCell
-            if nil == cell {
-                cell = HeadlineCell()
-            }
-            
-            // Text on button
-            let closestStationLabel = Utils.getLabelTextForClosestStation(self.closestStation, ownLocation: self.getLastLocation())
-            cell?.closestStationButton.setTitle(closestStationLabel, forState: .Normal)
-            cell?.controller = self
-
-            return cell! as HeadlineCell
+            return HeadlineCell.createCellForTableView(
+                tableView,
+                controller: self,
+                closestStation: self.closestStation,
+                location: self.getLastLocation(),
+                shouldShowStationTypeSegment: self.shouldShowStationTypeSegment(),
+                shownStationType: self.shownStationType
+            )
         } else {
             return TravelHeaderCell.createCellForIndexPath(section, tableView: tableView, mappingDict: self.mappingDict, departuresDict: self.departuresDict)
         }
@@ -172,8 +173,8 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
                 let station = self.closestSortedStations[indexPath.row]
                 var dist = station.distanceFromLocation(self.locateStation.locationManager.location)
                 let distFormat = Utils.distanceFormat(dist)
-                cell?.textLabel?.text = "\(station.title) (\(distFormat))"
-                cell?.textLabel?.textColor = UIColor(red: 8.0/255.0, green: 206.0/255.0, blue: 253.0/255.0, alpha: 1)
+                cell?.textLabel?.text = "    \(station.title) (\(distFormat))"
+                cell?.textLabel?.textColor = self.linkColor
                 cell?.textLabel?.font = UIFont(name: "Arial", size: 18.0)
             }
             

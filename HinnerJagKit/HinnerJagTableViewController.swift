@@ -25,11 +25,15 @@ public class HinnerJagTableViewController: UITableViewController
             self.updateUI()
         }
     }
+    public var shownStationType: StationType = HinnerJagTableViewController.getPreferedTravelType() {
+        didSet {
+            self.updateUI()
+        }
+    }
 
     public var closestStation: Station?
     public var closestSortedStations: [Station] = [Station]()
     public var locateStation: LocateStation = LocateStation()
-
     
     public func getLastLocation() -> CLLocation? {
         return nil
@@ -37,10 +41,20 @@ public class HinnerJagTableViewController: UITableViewController
     
     // MARK: - Toggle to choose different station
     public func changeChosenStation() {
-        println("MainApp - changeChosenStation: \(self.selectChosenStation)")
         self.selectChosenStation = !self.selectChosenStation
     }
     
+    // MARK: - Select preferred travel type from a segment
+    public func setPreferedTravelType(type: StationType) {
+        NSUserDefaults.standardUserDefaults().setInteger(type.rawValue, forKey: "preferredTravelType")
+        NSUserDefaults.standardUserDefaults().synchronize()
+        self.shownStationType = type
+    }
+    
+    class func getPreferedTravelType() -> StationType {
+        var preferredTravelTypeInteger = NSUserDefaults.standardUserDefaults().integerForKey("preferredTravelType")
+        return StationType(rawValue: preferredTravelTypeInteger)!
+    }
     
     // MARK: - Lifecycle stuff
     required public init(coder aDecoder: NSCoder) {
@@ -53,6 +67,10 @@ public class HinnerJagTableViewController: UITableViewController
         dispatch_async(dispatch_get_main_queue(), {
             self.tableView.reloadData()
         })
+    }
+    
+    public func shouldShowStationTypeSegment() -> Bool {
+        return self.closestStation != nil && self.closestStation!.stationType == .MetroAndTrain
     }
     
     // MARK: - Table stuff

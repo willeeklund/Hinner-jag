@@ -1,4 +1,12 @@
 {
+  "metro_and_train_stations": [
+      {
+      "siteid": 9001,
+      "sitename": "T-Centralen",
+      "latitude": 59.3313179695028,
+      "longitude": 18.0616773959365
+    }
+  ],
   "metro_stations": [
     { "id": 1,
       "siteid": 9110,
@@ -588,12 +596,6 @@
       "latitude": 59.2712662580554,
       "longitude": 18.0855632676107
     },
-    { "id": 114,
-      "siteid": 9001,
-      "sitename": "T-Centralen",
-      "latitude": 59.3313179695028,
-      "longitude": 18.0616773959365
-    },
     { "id": 115,
       "siteid": 9204,
       "sitename": "Tekniska högskolan",
@@ -777,12 +779,6 @@
       "from_central_direction": 2,
       "latitude": 59.3395583708463,
       "longitude": 18.0294576555531
-    },
-    {
-      "siteid": 9001,
-      "sitename": "Stockholm Central",
-      "latitude": 59.3313179695028,
-      "longitude": 18.0616773959365
     },
     {
       "siteid": 9530,

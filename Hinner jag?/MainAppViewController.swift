@@ -78,21 +78,19 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
     // Header for table
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
-            let reuseId = "HeadlineCell"
-            var cell = self.tableView.dequeueReusableCellWithIdentifier(reuseId) as? HeadlineCell
-            if nil == cell {
-                cell = HeadlineCell()
-            }
-            // Text on button
-            let closestStationLabel = Utils.getLabelTextForClosestStation(self.closestStation, ownLocation: self.getLastLocation())
-            cell?.closestStationButton.setTitle(closestStationLabel, forState: .Normal)
-            
-            cell?.controller = self
-            return cell! as HeadlineCell
+            return HeadlineCell.createCellForTableView(
+                tableView,
+                controller: self,
+                closestStation: self.closestStation,
+                location: self.getLastLocation(),
+                shouldShowStationTypeSegment: self.shouldShowStationTypeSegment(),
+                shownStationType: self.shownStationType
+            )
         } else {
             return TravelHeaderCell.createCellForIndexPath(section, tableView: tableView, mappingDict: self.mappingDict, departuresDict: self.departuresDict)
         }
     }
+    
     
     // Cell in table
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -107,7 +105,7 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
                 let station = self.closestSortedStations[indexPath.row]
                 var dist = station.distanceFromLocation(self.locateStation.locationManager.location)
                 let distFormat = Utils.distanceFormat(dist)
-                cell?.textLabel?.text = "\(station.title) (\(distFormat))"
+                cell?.textLabel?.text = "    \(station.title) (\(distFormat))"
                 cell?.textLabel?.textColor = UIColor(red: 0, green: 0.478431, blue: 1.0, alpha: 1.0)
             }
 
@@ -120,7 +118,11 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
-            return 95.0
+            if self.shouldShowStationTypeSegment() {
+                return 130.0
+            } else {
+                return 90.0
+            }
         } else {
             return 45.0
         }

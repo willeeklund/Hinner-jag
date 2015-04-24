@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="obH-mF-fGV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="obH-mF-fGV">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -165,7 +165,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeadlineCell" rowHeight="95" id="jIE-yi-3eW" customClass="HeadlineCell" customModule="Hinner_jag" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeadlineCell" rowHeight="125" id="jIE-yi-3eW" customClass="HeadlineCell" customModule="Hinner_jag" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jIE-yi-3eW" id="L1B-Wu-1kt">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -179,16 +179,6 @@
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQ7-Xc-F0I">
-                                            <rect key="frame" x="1" y="57" width="598" height="30"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                            <state key="normal" title="Button">
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="changeSelectedStation:" destination="jIE-yi-3eW" eventType="touchUpInside" id="zM7-qi-ZKT"/>
-                                            </connections>
-                                        </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Qg-Up-ODe">
                                             <rect key="frame" x="555" y="22" width="37" height="30"/>
                                             <state key="normal" title="Karta">
@@ -207,31 +197,74 @@
                                                 <action selector="showWalkthroughButtonPressed:" destination="obH-mF-fGV" eventType="touchUpInside" id="9ms-pO-dtI"/>
                                             </connections>
                                         </button>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3bR-ME-P5W">
+                                            <rect key="frame" x="425" y="57" width="167" height="29"/>
+                                            <segments>
+                                                <segment title="Tunnelbana"/>
+                                                <segment title="Pendeltåg"/>
+                                            </segments>
+                                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="stationTypeSegmentChanged:" destination="jIE-yi-3eW" eventType="valueChanged" id="iea-8x-FIq"/>
+                                            </connections>
+                                        </segmentedControl>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQ7-Xc-F0I">
+                                            <rect key="frame" x="8" y="90" width="600" height="35"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                            <state key="normal" title="Button">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="changeSelectedStation:" destination="jIE-yi-3eW" eventType="touchUpInside" id="Dm5-ah-6FJ"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="3bR-ME-P5W" firstAttribute="trailing" secondItem="3Qg-Up-ODe" secondAttribute="trailing" id="0Hy-hg-LmK"/>
+                                        <constraint firstItem="3Qg-Up-ODe" firstAttribute="centerY" secondItem="quh-p3-9qc" secondAttribute="centerY" id="0N0-Jm-8bi"/>
+                                        <constraint firstItem="TQ7-Xc-F0I" firstAttribute="leading" secondItem="L1B-Wu-1kt" secondAttribute="leading" constant="8" id="22f-hx-OGf"/>
                                         <constraint firstItem="TQ7-Xc-F0I" firstAttribute="leading" secondItem="L1B-Wu-1kt" secondAttribute="leadingMargin" id="4K0-Pl-mbf"/>
                                         <constraint firstItem="quh-p3-9qc" firstAttribute="leading" secondItem="L1B-Wu-1kt" secondAttribute="leadingMargin" id="6sw-CJ-GMl"/>
+                                        <constraint firstItem="3bR-ME-P5W" firstAttribute="top" secondItem="3Qg-Up-ODe" secondAttribute="bottom" constant="5" id="9Hv-xx-gWi"/>
+                                        <constraint firstItem="3bR-ME-P5W" firstAttribute="centerX" secondItem="TQ7-Xc-F0I" secondAttribute="centerX" id="DMP-8C-WQi"/>
+                                        <constraint firstItem="TQ7-Xc-F0I" firstAttribute="centerX" secondItem="hnz-Oe-n2e" secondAttribute="centerX" constant="8" id="GHe-aI-mKp"/>
+                                        <constraint firstItem="TQ7-Xc-F0I" firstAttribute="top" secondItem="hnz-Oe-n2e" secondAttribute="bottom" constant="8" symbolic="YES" id="HJL-S1-eAL"/>
+                                        <constraint firstItem="3Qg-Up-ODe" firstAttribute="trailing" secondItem="3bR-ME-P5W" secondAttribute="trailing" id="JqM-dp-7Fl"/>
                                         <constraint firstItem="TQ7-Xc-F0I" firstAttribute="bottom" secondItem="L1B-Wu-1kt" secondAttribute="bottomMargin" id="N1E-ju-Ada"/>
-                                        <constraint firstItem="quh-p3-9qc" firstAttribute="centerY" secondItem="3Qg-Up-ODe" secondAttribute="centerY" id="OH3-2A-y0d"/>
+                                        <constraint firstItem="TQ7-Xc-F0I" firstAttribute="leading" secondItem="L1B-Wu-1kt" secondAttribute="leadingMargin" id="NtU-Ox-qqd"/>
                                         <constraint firstItem="hnz-Oe-n2e" firstAttribute="centerX" secondItem="L1B-Wu-1kt" secondAttribute="centerX" id="OUq-lx-sgo"/>
                                         <constraint firstItem="TQ7-Xc-F0I" firstAttribute="leading" secondItem="L1B-Wu-1kt" secondAttribute="leadingMargin" constant="-7" id="QeR-lN-H0N"/>
-                                        <constraint firstItem="TQ7-Xc-F0I" firstAttribute="centerX" secondItem="hnz-Oe-n2e" secondAttribute="centerX" id="c3z-rz-LGr"/>
+                                        <constraint firstItem="3bR-ME-P5W" firstAttribute="leading" secondItem="quh-p3-9qc" secondAttribute="leading" id="QkH-j0-CwA"/>
                                         <constraint firstItem="quh-p3-9qc" firstAttribute="leading" secondItem="L1B-Wu-1kt" secondAttribute="leadingMargin" id="d3s-lj-KZu"/>
-                                        <constraint firstItem="3Qg-Up-ODe" firstAttribute="top" secondItem="hnz-Oe-n2e" secondAttribute="top" id="dc8-Uc-rfp"/>
+                                        <constraint firstItem="3bR-ME-P5W" firstAttribute="centerX" secondItem="L1B-Wu-1kt" secondAttribute="centerX" id="f2M-Dl-228"/>
+                                        <constraint firstItem="3bR-ME-P5W" firstAttribute="leading" secondItem="L1B-Wu-1kt" secondAttribute="leadingMargin" id="gaQ-hc-wrj"/>
                                         <constraint firstItem="hnz-Oe-n2e" firstAttribute="top" secondItem="L1B-Wu-1kt" secondAttribute="topMargin" constant="14" id="pMO-11-WXJ"/>
-                                        <constraint firstItem="TQ7-Xc-F0I" firstAttribute="trailing" secondItem="3Qg-Up-ODe" secondAttribute="trailing" constant="7" id="plK-KV-Ulc"/>
-                                        <constraint firstItem="TQ7-Xc-F0I" firstAttribute="top" secondItem="hnz-Oe-n2e" secondAttribute="bottom" constant="8" symbolic="YES" id="si4-Ri-Gpp"/>
+                                        <constraint firstItem="3bR-ME-P5W" firstAttribute="bottom" secondItem="L1B-Wu-1kt" secondAttribute="bottomMargin" id="pwr-io-PeD"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="3Qg-Up-ODe" secondAttribute="trailing" id="qZv-rU-8K9"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="TQ7-Xc-F0I" secondAttribute="bottom" constant="-8" id="toX-44-1DX"/>
+                                        <constraint firstItem="3Qg-Up-ODe" firstAttribute="top" secondItem="hnz-Oe-n2e" secondAttribute="top" id="w1A-Ci-N1K"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
                                             <exclude reference="d3s-lj-KZu"/>
                                             <exclude reference="4K0-Pl-mbf"/>
+                                            <exclude reference="HJL-S1-eAL"/>
+                                            <exclude reference="N1E-ju-Ada"/>
+                                            <exclude reference="NtU-Ox-qqd"/>
+                                            <exclude reference="QeR-lN-H0N"/>
+                                            <exclude reference="0Hy-hg-LmK"/>
+                                            <exclude reference="DMP-8C-WQi"/>
+                                            <exclude reference="QkH-j0-CwA"/>
+                                            <exclude reference="f2M-Dl-228"/>
+                                            <exclude reference="gaQ-hc-wrj"/>
+                                            <exclude reference="pwr-io-PeD"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="closestStationButton" destination="TQ7-Xc-F0I" id="Ytg-4O-pfI"/>
+                                    <outlet property="closestStationButton" destination="TQ7-Xc-F0I" id="GuQ-Cq-lE2"/>
                                     <outlet property="headerLabel" destination="hnz-Oe-n2e" id="6a6-EE-tXw"/>
+                                    <outlet property="stationTypeSegment" destination="3bR-ME-P5W" id="6Fx-w1-Sqg"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TravelHeaderCell" id="8tD-IG-LxG" customClass="TravelHeaderCell" customModule="Hinner_jag">

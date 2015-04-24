@@ -10,9 +10,10 @@ import Foundation
 import CoreLocation
 import MapKit
 
-public enum StationType {
-    case Metro
-    case Train
+public enum StationType: Int {
+    case Metro = 0
+    case Train = 1
+    case MetroAndTrain = 2
 }
 
 public class Station: CLLocation, MKAnnotation
@@ -31,6 +32,7 @@ public class Station: CLLocation, MKAnnotation
         switch self.stationType! {
         case .Metro: return "Metro station"
         case .Train: return "Train station"
+        case .MetroAndTrain: return "Metro and train station"
         }
     }
     
@@ -70,6 +72,8 @@ public class Station: CLLocation, MKAnnotation
                 self.stationType = .Train
             } else if "Metro" == dictStationTypeString {
                 self.stationType = .Metro
+            } else if "MetroAndTrain" == dictStationTypeString {
+                self.stationType = .MetroAndTrain
             }
         }
         

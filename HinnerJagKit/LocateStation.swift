@@ -21,6 +21,14 @@ public class LocateStation: NSObject, CLLocationManagerDelegate
         assert(nil != metroStationsData, "metro_stations.json must contain valid data")
         var JSONError: NSError?
         let responseDict = NSJSONSerialization.JSONObjectWithData(metroStationsData!, options: NSJSONReadingOptions.AllowFragments, error: &JSONError) as! NSDictionary
+        // Add all stations with both metros and trains
+        if let metroAndTrainStationsList = responseDict["metro_and_train_stations"] as! [NSDictionary]? {
+            for stationInfo in metroAndTrainStationsList {
+                var info: NSMutableDictionary = stationInfo.mutableCopy() as! NSMutableDictionary
+                info.setValue("MetroAndTrain", forKey: "stationType")
+                tmpList.append(Station(dict: info))
+            }
+        }
         // Add all Metro stations
         if let metroStationsList = responseDict["metro_stations"] as! [NSDictionary]? {
             for stationInfo in metroStationsList {
@@ -30,8 +38,8 @@ public class LocateStation: NSObject, CLLocationManagerDelegate
             }
         }
         // Add all Train stations
-        if let metroStationsList = responseDict["train_stations"] as! [NSDictionary]? {
-            for stationInfo in metroStationsList {
+        if let trainStationsList = responseDict["train_stations"] as! [NSDictionary]? {
+            for stationInfo in trainStationsList {
                 var info: NSMutableDictionary = stationInfo.mutableCopy() as! NSMutableDictionary
                 info.setValue("Train", forKey: "stationType")
                 tmpList.append(Station(dict: info))
