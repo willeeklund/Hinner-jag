@@ -10,6 +10,7 @@
 #import "GAI.h"
 #import "GAIDictionaryBuilder.h"
 #import "GAIFields.h"
+#import "GAIEcommerceFields.h"
 
 //! Project version number for HinnerJagKit.
 FOUNDATION_EXPORT double HinnerJagKitVersionNumber;

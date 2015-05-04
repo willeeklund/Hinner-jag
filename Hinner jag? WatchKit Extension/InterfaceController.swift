@@ -12,7 +12,8 @@ import HinnerJagKit
 
 class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
     // MARK: - Variables
-    var departuresDict: Dictionary<Int, [Departure]> = Dictionary<Int, [Departure]>() {
+    var mappingDict: Dictionary <Int, String> = Dictionary <Int, String>()
+    var departuresDict: Dictionary<String, [Departure]> = Dictionary<String, [Departure]>() {
         didSet {
             self.updateUI()
         }
@@ -25,6 +26,9 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
     var departures: [Departure]?
     var locateStation: LocateStation = LocateStation()
     var locationManager: CLLocationManager! = CLLocationManager()
+    // Helpers to keep state
+    var typesOfRows: [String] = [String]()
+    var groupFromIndex = Dictionary<Int, Int>()
 
     @IBOutlet weak var closestStationLabel: WKInterfaceLabel!
     @IBOutlet weak var tableView: WKInterfaceTable!
@@ -44,16 +48,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
             }
             self.departures = departures
             // Add departures into separated groups
-            var tmpDict: Dictionary<Int, [Departure]> = Dictionary<Int, [Departure]>()
-            for dept in departures! {
-                if let depList = tmpDict[dept.direction] {
-                    tmpDict[dept.direction]?.append(dept)
-                } else {
-                    tmpDict[dept.direction] = [Departure]()
-                    tmpDict[dept.direction]?.append(dept)
-                }
-            }
-            self.departuresDict = tmpDict
+            (self.mappingDict, self.departuresDict) = Utils.getMappingFromDepartures(departures!, mappingStart: 0)
         }
     }
     
@@ -63,14 +58,20 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
         println("willActivate()")
         // Reset UI
         self.closestStation = nil
-        self.departuresDict = Dictionary<Int, [Departure]>() // This will updateUI()
+        self.departuresDict = Dictionary<String, [Departure]>() // This will updateUI()
         // Start updating location
         self.locationManager.startUpdatingLocation()
     }
     
     // MARK: - Update UI
     func updateUI() {
-        println("updateUI()")
+        if 0 == self.departuresDict.count {
+            println("updateUI() - missing departuresDict")
+        } else if 0 == self.mappingDict.count {
+            println("updateUI() - missing mappingDict")
+        } else {
+            println("updateUI() - has both")
+        }
         if nil == self.closestStation {
             self.closestStationLabel.setText("Söker plats...")
             self.tableView.setNumberOfRows(0, withRowType: "header")
@@ -79,69 +80,98 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
         
         self.closestStationLabel.setText(self.closestStation!.title)
         
-        var (typesOfRows, startIndexGroup2) = self.calculateTypesOfRows()
-        self.tableView.setNumberOfRows(typesOfRows.count, withRowType: "header")
-        self.tableView.setRowTypes(typesOfRows)
-        self.fillTableWithContent(typesOfRows, startIndexGroup2: startIndexGroup2)
+        self.calculateTypesOfRows()
+        self.tableView.setNumberOfRows(self.typesOfRows.count, withRowType: "header")
+        self.tableView.setRowTypes(self.typesOfRows)
+        self.fillTableWithContent()
     }
     
-    func calculateTypesOfRows() -> ([String], Int) {
+    func calculateTypesOfRows() {
         // Calculate type for the rows
-        var typesOfRows: [String] = [String]()
-        if let group1 = self.departuresDict[1] {
-            typesOfRows.append("header")
-            var counter = 0
-            for item in group1 {
-                if counter < 2 {
-                    typesOfRows.append("details")
+        self.typesOfRows = [String]()
+        self.groupFromIndex = Dictionary<Int, Int>()
+        
+        for (index, mappingName) in self.mappingDict {
+            // TODO: Calculate startIndexGroup2 in dynamic way, and change variable name
+            self.groupFromIndex[typesOfRows.count] = index
+
+            self.typesOfRows.append("header")
+            if let depList = self.departuresDict[mappingName] {
+                for _ in 1...depList.count {
+                    self.typesOfRows.append("details")
                 }
-                counter++
             }
         }
-        var startIndexGroup2 = typesOfRows.count
-        if let group2 = self.departuresDict[2] {
-            typesOfRows.append("header")
-            var counter = 0
-            for item in group2 {
-                if counter < 2 {
-                    typesOfRows.append("details")
-                }
-                counter++
-            }
-        }
-        return (typesOfRows, startIndexGroup2)
     }
     
-    func fillTableWithContent(typesOfRows: [String], startIndexGroup2: Int) {
+    func fillTableWithContent() {
+        println("fillTableWithContent() -  InterfaceController")
         // Create table rows and fill with content
-        for (index, rowType) in enumerate(typesOfRows) {
+        var currentHeaderIndex: Int?
+        var currentGroupIndex: Int?
+        var currentGroupDepartures = [Departure]()
+        for (index, rowType) in enumerate(self.typesOfRows) {
             if "header" == rowType {
                 if let header = self.tableView.rowControllerAtIndex(index) as! TravelHeaderRow? {
-                    if index < startIndexGroup2 {
-                        header.headerLabel.setText("Plattform 1")
-                    } else {
-                        header.headerLabel.setText("Plattform 2")
+                    // Set label for header row
+                    currentHeaderIndex = index
+                    currentGroupIndex = self.groupFromIndex[index]
+                    if nil != currentGroupIndex {
+                        if let mapName = self.mappingDict[currentGroupIndex!] {
+                            var headerSuffix = ""
+                            if let depGroup = self.departuresDict[mapName] {
+                                currentGroupDepartures = depGroup
+                                if let firstDeparture = depGroup.first {
+                                    if firstDeparture.from_central_direction != nil {
+                                        if firstDeparture.from_central_direction! == firstDeparture.direction {
+                                            headerSuffix = "från T-centralen"
+                                        } else {
+                                            headerSuffix = "mot T-centralen"
+                                        }
+                                    }
+                                }
+                            }
+                            
+                            let directionLabel: String
+                            let imageName: String
+                            let textColor: UIColor
+                            if mapName.rangeOfString("gröna") != nil {
+                                imageName = "logo_green"
+                                directionLabel = "Grön linje"
+                                textColor = UIColor.greenColor()
+                            } else if mapName.rangeOfString("röda") != nil {
+                                imageName = "logo_red"
+                                directionLabel = "Röd linje"
+                                textColor = UIColor.redColor()
+                            } else if mapName.rangeOfString("blå") != nil {
+                                imageName = "logo_blue"
+                                directionLabel = "Blå linje"
+                                textColor = UIColor.blueColor()
+                            } else {
+                                imageName = "logo_green"
+                                directionLabel = "Okänd linje"
+                                textColor = UIColor.whiteColor()
+                            }
+                            header.headerLabel.setTextColor(textColor)
+                            header.trainImage.setImage(UIImage(named: imageName))
+                            if "" != headerSuffix {
+                                header.headerLabel.setText(headerSuffix)
+                            } else {
+                                header.headerLabel.setText(directionLabel)
+                            }
+                        }
                     }
                 }
             } else if "details" == rowType {
                 if let detailRow = self.tableView.rowControllerAtIndex(index) as! TravelDetailsRow? {
+                    // Set label for details row
                     var departure: Departure?
-                    if index < startIndexGroup2 {
-                        if let group1 = self.departuresDict[1] {
-                            let usedIndex = index - 1 // Start at first departure
-                            if usedIndex < group1.count {
-                                departure = group1[usedIndex]
-                            }
-                        }
-                    } else {
-                        if let group2 = self.departuresDict[2] {
-                            let usedIndex = index - startIndexGroup2 - 1 // Start at first departure
-                            if usedIndex >= 0 && usedIndex < group2.count {
-                                departure = group2[usedIndex]
-                            }
+                    if nil != currentHeaderIndex {
+                        let indexInGroup = index - currentHeaderIndex! - 1
+                        if indexInGroup >= 0 && indexInGroup < currentGroupDepartures.count {
+                            departure = currentGroupDepartures[indexInGroup]
                         }
                     }
-                    
                     if nil != departure {
                         detailRow.remainingTimeLabel.setText(departure!.remainingTime)
                         detailRow.destinationLabel.setText(departure!.destination)

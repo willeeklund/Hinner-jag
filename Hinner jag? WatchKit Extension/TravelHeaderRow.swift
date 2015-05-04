@@ -12,4 +12,5 @@ import WatchKit
 class TravelHeaderRow: NSObject
 {
     @IBOutlet weak var headerLabel: WKInterfaceLabel!
+    @IBOutlet weak var trainImage: WKInterfaceImage!
 }

@@ -15,38 +15,37 @@ class GlanceController: InterfaceController {
     func getGroupLabels(group: Int) -> (String, String) {
         var headerText = ""
         var detailsText = ""
-        if let groupList = self.departuresDict[group] {
-            var counter = 0
-            for departure in groupList {
-                println("counter = \(counter)")
-                
-                if 0 == counter {
-                    println("from dir: \(departure.from_central_direction)")
-                    if departure.from_central_direction != nil {
-                        if departure.from_central_direction! == departure.direction {
-                            headerText = "Från T-centralen"
+        if let groupMapName = self.mappingDict[group] {
+            if let groupList = self.departuresDict[groupMapName] {
+                var counter = 0
+                for departure in groupList {
+                    if 0 == counter {
+                        if departure.from_central_direction != nil {
+                            if departure.from_central_direction! == departure.direction {
+                                headerText = "Från T-centralen"
+                            } else {
+                                headerText = "Mot T-centralen"
+                            }
                         } else {
-                            headerText = "Mot T-centralen"
+                            headerText = "Mot bl.a. \(departure.destination)"
                         }
                     } else {
-                        headerText = "Mot bl.a. \(departure.destination)"
+                        detailsText += ", "
                     }
-                } else {
-                    detailsText += ", "
+                    detailsText += "\(departure.remainingTime)"
+                    counter++
                 }
-                detailsText += "\(departure.remainingTime)"
-                counter++
             }
         }
         return (headerText, detailsText)
     }
     
     // MARK: - Override behaviour of what to show in the table
-    override func calculateTypesOfRows() -> ([String], Int) {
-        return (["header", "details", "header", "details"], 2)
+    override func calculateTypesOfRows() {
+        self.typesOfRows = ["header", "details", "header", "details"]
     }
 
-    override func fillTableWithContent(typesOfRows: [String], startIndexGroup2: Int) {
+    override func fillTableWithContent() {
         var (header1, details1) = self.getGroupLabels(1)
         var (header2, details2) = self.getGroupLabels(2)
         
