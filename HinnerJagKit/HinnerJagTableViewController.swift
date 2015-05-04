@@ -60,13 +60,28 @@ public class HinnerJagTableViewController: UITableViewController
         return self.departuresDict.count + 1 // Extra section for closest station
     }
     
+    override public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let mappingName = self.mappingDict[section] {
+            if let depList = self.departuresDict[mappingName] {
+                return depList.count
+            }
+        }
+        // For first section
+        if self.selectChosenStation {
+            return max(self.closestSortedStations.count - 1, 0)
+        } else {
+            return 0
+        }
+    }
+    
     override public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section != 0 {
             return
         }
-        println("Did select section: \(indexPath.section) row: \(indexPath.row)")
-        if indexPath.row < self.closestSortedStations.count {
-            let station = self.closestSortedStations[indexPath.row]
+        let usedRow = indexPath.row + 1
+        println("Did select section: \(indexPath.section) row: \(usedRow)")
+        if usedRow < self.closestSortedStations.count {
+            let station = self.closestSortedStations[usedRow]
             searchFromNewClosestStation(station)
             self.trackEvent("Station", action: "change_from_table", label: "\(station.title) (\(station.id))", value: 1)
         }

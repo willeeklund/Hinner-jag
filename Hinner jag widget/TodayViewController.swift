@@ -117,12 +117,7 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
                 return depList.count
             }
         }
-        // For first section
-        if self.selectChosenStation {
-            return self.closestSortedStations.count
-        } else {
-            return 0
-        }
+        return super.tableView(tableView, numberOfRowsInSection: section)
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -168,15 +163,15 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
             if cell == nil {
                 cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: reuseId)
             }
-            if indexPath.row < self.closestSortedStations.count {
-                let station = self.closestSortedStations[indexPath.row]
+            let usedRow = indexPath.row + 1
+            if usedRow < self.closestSortedStations.count {
+                let station = self.closestSortedStations[usedRow]
                 var dist = station.distanceFromLocation(self.locateStation.locationManager.location)
                 let distFormat = Utils.distanceFormat(dist)
                 cell?.textLabel?.text = "\(station.title) (\(distFormat))"
                 cell?.textLabel?.textColor = UIColor(red: 8.0/255.0, green: 206.0/255.0, blue: 253.0/255.0, alpha: 1)
                 cell?.textLabel?.font = UIFont(name: "Arial", size: 18.0)
             }
-            
             return cell! as UITableViewCell
         } else {
             return TravelDetailsCell.createCellForIndexPath(indexPath, tableView: tableView, mappingDict: self.mappingDict, departuresDict: self.departuresDict)

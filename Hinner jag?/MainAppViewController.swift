@@ -61,19 +61,6 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
     }
     
     // MARK: - Table stuff
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let mappingName = self.mappingDict[section] {
-            if let depList = self.departuresDict[mappingName] {
-                return depList.count
-            }
-        }
-        // For first section
-        if self.selectChosenStation {
-            return self.closestSortedStations.count
-        } else {
-            return 0
-        }
-    }
     
     // Header for table
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -103,8 +90,9 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
             if cell == nil {
                 cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: reuseId)
             }
-            if indexPath.row < self.closestSortedStations.count {
-                let station = self.closestSortedStations[indexPath.row]
+            let usedRow = indexPath.row + 1
+            if usedRow < self.closestSortedStations.count {
+                let station = self.closestSortedStations[usedRow]
                 var dist = station.distanceFromLocation(self.locateStation.locationManager.location)
                 let distFormat = Utils.distanceFormat(dist)
                 cell?.textLabel?.text = "\(station.title) (\(distFormat))"
