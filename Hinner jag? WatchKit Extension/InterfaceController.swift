@@ -10,7 +10,7 @@ import WatchKit
 import Foundation
 import HinnerJagKit
 
-class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
+class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, LocateStationDelegate {
     // MARK: - Variables
     var mappingDict: Dictionary <Int, String> = Dictionary <Int, String>()
     var departuresDict: Dictionary<String, [Departure]> = Dictionary<String, [Departure]>() {
@@ -39,17 +39,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
         println("awaking - finally!")
         self.locationManager.delegate = self
         self.locationManager.requestWhenInUseAuthorization()
-        
-        // Set up callback
-        self.locateStation.locationUpdatedCallback = { (stationsSorted: [Station], departures: [Departure]?, error: NSError?) in
-            self.closestStation = stationsSorted.first
-            if nil == departures {
-                println("No departures were found. Error: \(error)")
-            }
-            self.departures = departures
-            // Add departures into separated groups
-            (self.mappingDict, self.departuresDict) = Utils.getMappingFromDepartures(departures!, mappingStart: 0)
-        }
+        self.locateStation.delegate = self
     }
     
     // MARK: - Will activate
@@ -179,6 +169,17 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
                 }
             }
         }
+    }
+    
+    // MARK: - Locate station delegate protocol
+    func locateStationFoundSortedStations(stationsSorted: [Station], withDepartures departures: [Departure]?, error: NSError?) {
+        self.closestStation = stationsSorted.first
+        if nil == departures {
+            println("No departures were found. Error: \(error)")
+        }
+        self.departures = departures
+        // Add departures into separated groups
+        (self.mappingDict, self.departuresDict) = Utils.getMappingFromDepartures(departures!, mappingStart: 0)
     }
     
     // MARK: - Refresh location
