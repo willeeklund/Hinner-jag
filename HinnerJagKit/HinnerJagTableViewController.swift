@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import MapKit
 
-public class HinnerJagTableViewController: UITableViewController
+public class HinnerJagTableViewController: UITableViewController, LocateStationDelegate
 {
     // MARK: - Variables
     public var fetchedDepartures: [Departure]?
@@ -34,8 +34,32 @@ public class HinnerJagTableViewController: UITableViewController
 
     public var closestStation: Station?
     public var closestSortedStations: [Station] = [Station]()
+    
+    // MARK: - Locate station
     public var locateStation: LocateStation = LocateStation()
     
+    public func locateStationFoundSortedStations(stationsSorted: [Station], withDepartures departures: [Departure]?, error: NSError?) {
+        let station = stationsSorted.first
+        self.closestStation = station
+        self.closestSortedStations = stationsSorted
+        self.fetchedDepartures = departures
+        if nil != station {
+            println("Now we are using the location callback. \(station!)")
+            self.trackEvent("Station", action: "found", label: "\(station!.title) (\(station!.id))", value: 1)
+        } else {
+            self.trackEvent("Station", action: "not_found", label: "", value: nil)
+        }
+        
+        if nil == departures {
+            println("No departures were found. Error: \(error)")
+            self.trackEvent("Departures", action: "not_found", label: "", value: nil)
+            return
+        }
+        self.createMappingFromFetchedDepartures()
+        self.trackEvent("Departures", action: "found", label: "\(self.departuresDict.count) groups", value: 1)
+    }
+
+    // MARK: - Get last known location
     public func getLastLocation() -> CLLocation? {
         return nil
     }
@@ -63,6 +87,11 @@ public class HinnerJagTableViewController: UITableViewController
     required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 //        self.gaSetup()
+    }
+    
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        self.locateStation.delegate = self
     }
     
     // MARK: - Update UI

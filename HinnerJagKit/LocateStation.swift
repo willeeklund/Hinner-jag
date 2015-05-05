@@ -9,8 +9,14 @@
 import Foundation
 import CoreLocation
 
+public protocol LocateStationDelegate {
+    func locateStationFoundSortedStations(stationsSorted: [Station], withDepartures departures: [Departure]?, error: NSError?)
+}
+
 public class LocateStation: NSObject, CLLocationManagerDelegate
 {
+    public var delegate: LocateStationDelegate?
+    
     public lazy var stationList: [Station] = {
         var tmpList = [Station]()
         // Read bundled metro_stations.json and create station objects from it
@@ -53,8 +59,6 @@ public class LocateStation: NSObject, CLLocationManagerDelegate
     
     var realtimeDeparturesObj = RealtimeDepartures()
 
-    public var locationUpdatedCallback: ((stationsSorted: [Station], departures: [Departure]?, error: NSError?) -> ())?
-
     // MARK: - Init
     public override init() {
         super.init()
@@ -85,9 +89,7 @@ public class LocateStation: NSObject, CLLocationManagerDelegate
             (departures: [Departure]?, error: NSError?) -> () in
             // When we check that the user is reasonably close to ANY station,
             // this is a good place to send back possible errors
-            if nil != self.locationUpdatedCallback {
-                self.locationUpdatedCallback?(stationsSorted: closestStationsSorted, departures: departures, error: nil)
-            }
+            self.delegate?.locateStationFoundSortedStations(closestStationsSorted, withDepartures: departures, error: nil)
         }
     }
     

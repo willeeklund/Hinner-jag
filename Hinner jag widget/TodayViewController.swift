@@ -50,27 +50,6 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
         self.departuresDict = Dictionary<String, [Departure]>()
         self.closestStation = nil
         self.updatePreferredContentSize()
-
-        // Set up callback
-        self.locateStation.locationUpdatedCallback = { (stationsSorted: [Station], departures: [Departure]?, error: NSError?) in
-            let station = stationsSorted.first
-            self.closestStation = station
-            self.closestSortedStations = stationsSorted
-            self.fetchedDepartures = departures
-            if nil != station {
-                self.trackEvent("Station", action: "found", label: "\(station!.title) (\(station!.id))", value: 1)
-            } else {
-                self.trackEvent("Station", action: "not_found", label: "", value: nil)
-            }
-            
-            if nil == departures {
-                println("No departures were found. Error: \(error)")
-                self.trackEvent("Departures", action: "not_found", label: "", value: nil)
-                return
-            }
-            
-            self.createMappingFromFetchedDepartures()
-        }
     }
     
     override func viewWillAppear(animated: Bool) {
