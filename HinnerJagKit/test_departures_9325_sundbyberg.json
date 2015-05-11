@@ -1,0 +1,213 @@
+{
+    "StatusCode": 0,
+    "Message": null,
+    "ExecutionTime": 825,
+    "ResponseData": {
+        "LatestUpdate": "2015-05-11T21:51:56",
+        "DataAge": 35,
+        "Metros": [
+                   {
+                   "StopAreaName": "Sundbybergs centrum",
+                   "GroupOfLine": "Tunnelbanans blå linje",
+                   "DisplayTime": "11 min",
+                   "SafeDestinationName": "Hjulsta",
+                   "GroupOfLineId": 3,
+                   "DepartureGroupId": 1,
+                   "PlatformMessage": null,
+                   "TransportMode": "METRO",
+                   "LineNumber": "10",
+                   "Destination": "Hjulsta",
+                   "JourneyDirection": 1,
+                   "SiteId": 9325
+                   },
+                   {
+                   "StopAreaName": "Sundbybergs centrum",
+                   "GroupOfLine": "Tunnelbanans blå linje",
+                   "DisplayTime": "27 min",
+                   "SafeDestinationName": "Hjulsta",
+                   "GroupOfLineId": 3,
+                   "DepartureGroupId": 1,
+                   "PlatformMessage": null,
+                   "TransportMode": "METRO",
+                   "LineNumber": "10",
+                   "Destination": "Hjulsta",
+                   "JourneyDirection": 1,
+                   "SiteId": 9325
+                   },
+                   {
+                   "StopAreaName": "Sundbybergs centrum",
+                   "GroupOfLine": "Tunnelbanans blå linje",
+                   "DisplayTime": "22:34",
+                   "SafeDestinationName": "Hjulsta",
+                   "GroupOfLineId": 3,
+                   "DepartureGroupId": 1,
+                   "PlatformMessage": null,
+                   "TransportMode": "METRO",
+                   "LineNumber": "10",
+                   "Destination": "Hjulsta",
+                   "JourneyDirection": 1,
+                   "SiteId": 9325
+                   },
+                   {
+                   "StopAreaName": "Sundbybergs centrum",
+                   "GroupOfLine": "Tunnelbanans blå linje",
+                   "DisplayTime": "6 min",
+                   "SafeDestinationName": "Kungsträdgården",
+                   "GroupOfLineId": 3,
+                   "DepartureGroupId": 2,
+                   "PlatformMessage": null,
+                   "TransportMode": "METRO",
+                   "LineNumber": "10",
+                   "Destination": "Kungsträdgården",
+                   "JourneyDirection": 2,
+                   "SiteId": 9325
+                   },
+                   {
+                   "StopAreaName": "Sundbybergs centrum",
+                   "GroupOfLine": "Tunnelbanans blå linje",
+                   "DisplayTime": "21 min",
+                   "SafeDestinationName": "Kungsträdgården",
+                   "GroupOfLineId": 3,
+                   "DepartureGroupId": 2,
+                   "PlatformMessage": null,
+                   "TransportMode": "METRO",
+                   "LineNumber": "10",
+                   "Destination": "Kungsträdgården",
+                   "JourneyDirection": 2,
+                   "SiteId": 9325
+                   },
+                   {
+                   "StopAreaName": "Sundbybergs centrum",
+                   "GroupOfLine": "Tunnelbanans blå linje",
+                   "DisplayTime": "22:28",
+                   "SafeDestinationName": "Kungsträdgården",
+                   "GroupOfLineId": 3,
+                   "DepartureGroupId": 2,
+                   "PlatformMessage": null,
+                   "TransportMode": "METRO",
+                   "LineNumber": "10",
+                   "Destination": "Kungsträdgården",
+                   "JourneyDirection": 2,
+                   "SiteId": 9325
+                   }
+                   ],
+        "Buses": [],
+        "Trains": [
+                   {
+                   "JourneyDirection": 2,
+                   "SecondaryDestinationName": null,
+                   "StopAreaName": "Sundbyberg",
+                   "StopAreaNumber": 6031,
+                   "StopPointNumber": 6032,
+                   "StopPointDesignation": "2",
+                   "TimeTabledDateTime": "2015-05-11T21:51:00",
+                   "ExpectedDateTime": "2015-05-11T21:52:45",
+                   "DisplayTime": "Nu",
+                   "Deviations": null,
+                   "TransportMode": "TRAIN",
+                   "GroupOfLine": "Pendeltåg 35",
+                   "LineNumber": "35",
+                   "Destination": "Kungsängen",
+                   "SiteId": 9325
+                   },
+                   {
+                   "JourneyDirection": 1,
+                   "SecondaryDestinationName": "Stockholm C",
+                   "StopAreaName": "Sundbyberg",
+                   "StopAreaNumber": 6031,
+                   "StopPointNumber": 6031,
+                   "StopPointDesignation": "3",
+                   "TimeTabledDateTime": "2015-05-11T21:54:00",
+                   "ExpectedDateTime": "2015-05-11T21:54:00",
+                   "DisplayTime": "1 min",
+                   "Deviations": null,
+                   "TransportMode": "TRAIN",
+                   "GroupOfLine": "Pendeltåg 35",
+                   "LineNumber": "35",
+                   "Destination": "Nynäshamn",
+                   "SiteId": 9325
+                   },
+                   {
+                   "JourneyDirection": 2,
+                   "SecondaryDestinationName": null,
+                   "StopAreaName": "Sundbyberg",
+                   "StopAreaNumber": 6031,
+                   "StopPointNumber": 6032,
+                   "StopPointDesignation": "2",
+                   "TimeTabledDateTime": "2015-05-11T22:06:00",
+                   "ExpectedDateTime": "2015-05-11T22:06:00",
+                   "DisplayTime": "13 min",
+                   "Deviations": null,
+                   "TransportMode": "TRAIN",
+                   "GroupOfLine": "Pendeltåg 35",
+                   "LineNumber": "35",
+                   "Destination": "Bålsta",
+                   "SiteId": 9325
+                   },
+                   {
+                   "JourneyDirection": 1,
+                   "SecondaryDestinationName": "Stockholm C",
+                   "StopAreaName": "Sundbyberg",
+                   "StopAreaNumber": 6031,
+                   "StopPointNumber": 6031,
+                   "StopPointDesignation": "3",
+                   "TimeTabledDateTime": "2015-05-11T22:24:00",
+                   "ExpectedDateTime": "2015-05-11T22:24:00",
+                   "DisplayTime": "22:24",
+                   "Deviations": null,
+                   "TransportMode": "TRAIN",
+                   "GroupOfLine": "Pendeltåg 35",
+                   "LineNumber": "35",
+                   "Destination": "Västerhaninge",
+                   "SiteId": 9325
+                   },
+                   {
+                   "JourneyDirection": 2,
+                   "SecondaryDestinationName": null,
+                   "StopAreaName": "Sundbyberg",
+                   "StopAreaNumber": 6031,
+                   "StopPointNumber": 6032,
+                   "StopPointDesignation": "2",
+                   "TimeTabledDateTime": "2015-05-11T22:36:00",
+                   "ExpectedDateTime": "2015-05-11T22:36:00",
+                   "DisplayTime": "22:36",
+                   "Deviations": null,
+                   "TransportMode": "TRAIN",
+                   "GroupOfLine": "Pendeltåg 35",
+                   "LineNumber": "35",
+                   "Destination": "Bålsta",
+                   "SiteId": 9325
+                   }
+                   ],
+        "Trams": [],
+        "Ships": [],
+        "StopPointDeviations": [
+                                {
+                                "StopInfo": {
+                                "StopAreaNumber": 0,
+                                "StopAreaName": "Sundbyberg",
+                                "TransportMode": "TRAIN",
+                                "GroupOfLine": null
+                                },
+                                "Deviation": {
+                                "Text": "Inga tåg stannar i Årstaberg t.o.m 2/8 pga brorenovering. Se sl.se",
+                                "Consequence": null,
+                                "ImportanceLevel": 5
+                                }
+                                },
+                                {
+                                "StopInfo": {
+                                "StopAreaNumber": 0,
+                                "StopAreaName": "Sundbybergs centrum",
+                                "TransportMode": "TRAM",
+                                "GroupOfLine": "Tvärbanan"
+                                },
+                                "Deviation": {
+                                "Text": "För avgångstider, var god se sl.se eller tidtabell på hållplatsen.",
+                                "Consequence": null,
+                                "ImportanceLevel": 9
+                                }
+                                }
+                                ]
+    }
+}

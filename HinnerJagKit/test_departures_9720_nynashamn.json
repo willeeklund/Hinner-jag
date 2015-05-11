@@ -1,0 +1,46 @@
+{
+    "StatusCode": 0,
+    "Message": null,
+    "ExecutionTime": 274,
+    "ResponseData": {
+        "LatestUpdate": "2015-05-11T21:44:10",
+        "DataAge": 34,
+        "Metros": [],
+        "Buses": [],
+        "Trains": [
+                   {
+                   "JourneyDirection": 2,
+                   "SecondaryDestinationName": "Stockholm C",
+                   "StopAreaName": "Nynäshamn",
+                   "StopAreaNumber": 6251,
+                   "StopPointNumber": 6252,
+                   "StopPointDesignation": "1",
+                   "TimeTabledDateTime": "2015-05-11T21:50:00",
+                   "ExpectedDateTime": "2015-05-11T21:50:00",
+                   "DisplayTime": "21:50",
+                   "Deviations": null,
+                   "TransportMode": "TRAIN",
+                   "LineNumber": "35",
+                   "Destination": "Bålsta",
+                   "SiteId": 9720
+                   }
+                   ],
+        "Trams": [],
+        "Ships": [],
+        "StopPointDeviations": [
+                                {
+                                "StopInfo": {
+                                "StopAreaNumber": 0,
+                                "StopAreaName": "Nynäshamn",
+                                "TransportMode": "TRAIN",
+                                "GroupOfLine": null
+                                },
+                                "Deviation": {
+                                "Text": "Buss ersätter sträckan Ösmo-Nynäshamn från midnatt till kl 02:30 natt mot tisdag. Läs mer på sl.se",
+                                "Consequence": null,
+                                "ImportanceLevel": 5
+                                }
+                                }
+                                ]
+    }
+}
