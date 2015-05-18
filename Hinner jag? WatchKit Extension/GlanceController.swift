@@ -40,6 +40,12 @@ class GlanceController: InterfaceController {
         return (headerText, detailsText)
     }
     
+    // MARK: - Google Analytics
+    override func setGAScreenName() {
+        self.setScreeName("WatchAppGlanceController")
+    }
+
+    
     // MARK: - Override behaviour of what to show in the table
     override func calculateTypesOfRows() {
         self.typesOfRows = ["header", "details", "header", "details"]
