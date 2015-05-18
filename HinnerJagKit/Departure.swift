@@ -16,8 +16,9 @@ public class Departure: NSObject
     public var direction: Int = 0
     public var lineNumber: Int = 0
     public var lineName: String = ""
-    public var transportType: String = ""
+    public var transportMode: String = ""
     public var from_central_direction: Int?
+    public var stationType: StationType?
     
     override public var description: String {
         get {
@@ -43,9 +44,10 @@ public class Departure: NSObject
             self.lineName = name
         }
         if let type = dict["TransportMode"] as? String {
-            self.transportType = type
+            self.transportMode = type
         }
         self.from_central_direction = station.from_central_direction
+        self.stationType = station.stationType
     }
     
 }

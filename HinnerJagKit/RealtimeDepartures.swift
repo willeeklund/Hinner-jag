@@ -49,6 +49,8 @@ public class RealtimeDepartures
 //        testFile = "test_departures_9510_karlberg"
 //        testFile = "test_departures_9530_stockholms_sodra"
 //        testFile = "test_departures_9520_sodertalje_centrum"
+//        testFile = "test_departures_9325_sundbyberg"
+//        testFile = "test_departures_9180_farsta_strand"
         
         let hinnerJagKitBundle = NSBundle(forClass: LocateStation.classForCoder())
         let testDeparturesFilePath = hinnerJagKitBundle.pathForResource(testFile, ofType: "json")

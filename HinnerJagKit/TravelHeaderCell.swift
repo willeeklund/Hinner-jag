@@ -77,7 +77,15 @@ class TravelHeaderCell: UITableViewCell
             let firstDep = depList[0]
             
             if firstDep.from_central_direction != nil {
-                if firstDep.from_central_direction! == firstDep.direction {
+                var truthValue = firstDep.from_central_direction! == firstDep.direction
+                
+                // If both metros and trains station, reverse direction suffix for train departures
+                let isBothMetroAndTrains = firstDep.stationType != nil && firstDep.stationType! == .MetroAndTrain
+                if isBothMetroAndTrains && "TRAIN" == firstDep.transportMode {
+                    truthValue = !truthValue
+                }
+                
+                if truthValue {
                     return "från \(suffixDestination)"
                 } else {
                     return "mot \(suffixDestination)"

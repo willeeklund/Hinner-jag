@@ -36,10 +36,10 @@ public class Utils
         
         for dept in departures {
             // Only map up the departures of shown type
-            if !shownTransportTypes.contains(dept.transportType) {
+            if !shownTransportTypes.contains(dept.transportMode) {
                 continue
             }
-            let mappingName = "\(dept.transportType) - \(dept.lineName) - riktning \(dept.direction)"
+            let mappingName = "\(dept.transportMode) - \(dept.lineName) - riktning \(dept.direction)"
             if let depList = departuresDict[mappingName] {
                 departuresDict[mappingName]?.append(dept)
             } else {
