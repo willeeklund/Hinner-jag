@@ -13,7 +13,7 @@ public class RealtimeDepartures
     let session: NSURLSession
     let realtimeKey = "bebfe14511a74ca5aef16db943ae8589"
 //    let apiServer = "http://localhost:3000"
-    let apiServer = "https://hinner-jag.herokuapp.com"
+    let apiServer = "http://hinner-jag.herokuapp.com"
     
     public init() {
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
