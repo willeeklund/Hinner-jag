@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0203EB1E1B0A8FA700A233F0 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB11ABA42EB003ACD06 /* libGoogleAnalyticsServices.a */; };
+		0203EB1F1B0A8FAB00A233F0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB31ABA430B003ACD06 /* CoreData.framework */; };
+		0203EB201B0A8FAE00A233F0 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB71ABA4331003ACD06 /* libz.dylib */; };
+		0203EB211B0A8FB200A233F0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB51ABA431E003ACD06 /* SystemConfiguration.framework */; };
 		0211B1E41AAE37B600947C45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0211B1E31AAE37B600947C45 /* AppDelegate.swift */; };
 		0211B1E71AAE37B600947C45 /* Hinner_jag_.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0211B1E51AAE37B600947C45 /* Hinner_jag_.xcdatamodeld */; };
 		0211B1E91AAE37B600947C45 /* MainAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0211B1E81AAE37B600947C45 /* MainAppViewController.swift */; };
@@ -318,6 +322,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0203EB1E1B0A8FA700A233F0 /* libGoogleAnalyticsServices.a in Frameworks */,
+				0203EB1F1B0A8FAB00A233F0 /* CoreData.framework in Frameworks */,
+				0203EB211B0A8FB200A233F0 /* SystemConfiguration.framework in Frameworks */,
+				0203EB201B0A8FAE00A233F0 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1065,8 +1073,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_BUILD_NUMBER = 13;
+				CURRENT_PROJECT_VERSION = 1.2;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GA_TRACKING_ID = off;
+				GA_TRACKING_ID = "off";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1087,6 +1097,7 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -1111,6 +1122,8 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
+				CURRENT_BUILD_NUMBER = 13;
+				CURRENT_PROJECT_VERSION = 1.2;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GA_TRACKING_ID = "UA-60944711-1";
@@ -1126,6 +1139,7 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
@@ -1168,7 +1182,6 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1200,7 +1213,6 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1375,6 +1387,10 @@
 				INFOPLIST_FILE = "Hinner jag? WatchKit Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -1390,6 +1406,10 @@
 				INFOPLIST_FILE = "Hinner jag? WatchKit Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;

@@ -40,6 +40,8 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
         self.locationManager.delegate = self
         self.locationManager.requestWhenInUseAuthorization()
         self.locateStation.delegate = self
+        // Init GA
+        self.gaSetup()
     }
     
     // MARK: - Will activate
@@ -51,6 +53,8 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
         self.departuresDict = Dictionary<String, [Departure]>() // This will updateUI()
         // Start updating location
         self.locationManager.startUpdatingLocation()
+        
+        self.setGAScreenName()
     }
     
     // MARK: - Update UI
@@ -203,5 +207,47 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
         println("ERROR - location manager. \(error)")
+    }
+    
+    // MARK: - Google Analytics
+    func setGAScreenName() {
+        self.setScreeName("WatchAppInterfaceController")
+    }
+    
+    func gaSetup() {
+        let tracker = GAI.sharedInstance().defaultTracker
+        if tracker != nil {
+            println("Have already initialized tracker")
+            return
+        }
+        let hinnerJagKitBundle = NSBundle(forClass: LocateStation.classForCoder())
+        if let path = hinnerJagKitBundle.pathForResource("Info", ofType: "plist") {
+            if let infoDict = NSDictionary(contentsOfFile: path) as? Dictionary<String, AnyObject> {
+                if let gaTrackerId: String = infoDict["GA_TRACKING_ID"] as? String {
+                    if gaTrackerId.hasPrefix("UA-") {
+                        GAI.sharedInstance().trackUncaughtExceptions = true
+                        GAI.sharedInstance().trackerWithTrackingId(gaTrackerId)
+                    }
+                }
+            }
+        }
+    }
+    
+    func setScreeName(name: String) {
+        let tracker = GAI.sharedInstance().defaultTracker
+        if nil == tracker {
+            return
+        }
+        tracker.set(kGAIScreenName, value: name)
+        tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
+    }
+    
+    func trackEvent(category: String, action: String, label: String, value: NSNumber?) {
+        let tracker = GAI.sharedInstance().defaultTracker
+        if nil == tracker {
+            return
+        }
+        let trackDictionary = GAIDictionaryBuilder.createEventWithCategory(category, action: action, label: label, value: value).build()
+        tracker.send(trackDictionary as [NSObject : AnyObject])
     }
 }

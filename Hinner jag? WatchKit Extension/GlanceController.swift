@@ -40,14 +40,20 @@ class GlanceController: InterfaceController {
         return (headerText, detailsText)
     }
     
+    // MARK: - Google Analytics
+    override func setGAScreenName() {
+        self.setScreeName("WatchAppGlanceController")
+    }
+
+    
     // MARK: - Override behaviour of what to show in the table
     override func calculateTypesOfRows() {
         self.typesOfRows = ["header", "details", "header", "details"]
     }
 
     override func fillTableWithContent() {
-        var (header1, details1) = self.getGroupLabels(1)
-        var (header2, details2) = self.getGroupLabels(2)
+        var (header1, details1) = self.getGroupLabels(0)
+        var (header2, details2) = self.getGroupLabels(1)
         
         // Set value on the labels
         if let headerRow = self.tableView.rowControllerAtIndex(0) as! TravelHeaderRow? {
