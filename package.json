@@ -1,6 +1,6 @@
 {
   "name": "Hinner-jag",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Will I make it in time for the Sthlm subway?",
   "main": "Gruntfile.js",
   "engines": {

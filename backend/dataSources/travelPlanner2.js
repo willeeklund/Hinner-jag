@@ -50,7 +50,7 @@ fetchDeparturesFromSiteId = function (siteId, callback) {
       var tripContent = trip.LegList.Leg;
       if ('METRO' === tripContent.type) {
         var usedInfo = {
-          'SiteId': siteId,
+          'SiteId': parseInt(siteId),
           'LineNumber': tripContent.line,
           'Destination': tripContent.dir,
           'GroupOfLine': capitalizeFirstLetterAndTrimEnd(tripContent.name),

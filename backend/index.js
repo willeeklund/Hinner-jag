@@ -33,13 +33,19 @@ updateResultCache = function (req, res, callback) {
     console.log('Data age'.blue, resultListRealtime.ResponseData.DataAge, 'new in'.cyan, ttl_age);
     // Check if too few departures from the realtime API
     var nbrDepartures = resultListRealtime.ResponseData.Metros.length;
-    if (0 === nbrDepartures) {
+    if (
+      ( nbrDepartures < 3 && stationInfo.isEndStation(siteId) ) ||
+      ( nbrDepartures < 6 && !stationInfo.isEndStation(siteId) )
+    ) {
       // Too few metro departures in realtime result, add from travel planner
-      console.log('Not enough metro departures'.red);
+      if (0 === nbrDepartures) {
+        console.log('Not enough metro departures'.red, 'siteId'.cyan, siteId, 'nbrDepartures'.cyan, nbrDepartures);
+      } else {
+        console.log('Not enough metro departures'.yellow, 'siteId'.cyan, siteId, 'nbrDepartures'.cyan, nbrDepartures);
+      }
       dataSourceTravelPlanner.fetchData(siteId, function (err, resultList) {
         console.log(
-          'Error: too few metro departures'.red,
-          ('for siteid ' + siteId).yellow,
+          ('Too few metro departures for siteid ' + siteId).yellow,
           ('(' + nbrDepartures + ' departures)').blue,
           ('Adding ' + resultList.length + ' departures from TravelPlanner').blue
         );
