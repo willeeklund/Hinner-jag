@@ -13,18 +13,19 @@ var express = require('express'),
     memoryCache = require('memory-cache'),
     dataSourceRealtimeDepartures = require('./dataSources/realtimeDepartures'),
     dataSourceTravelPlanner = require('./dataSources/travelPlanner2'),
+    stationInfo = require('./stationInfo'),
 
 /**
  * Fetch data from SL api using asyncronous queue
  */
 result_queues = {},
 
-getQueueNameFromReqParams = function (params) {
-  return params.site_id;
+getQueueNameFromReq = function (req) {
+  return req.params.site_id;
 },
 
 updateResultCache = function (req, res, callback) {
-  var queueName = getQueueNameFromReqParams(req.params);
+  var queueName = getQueueNameFromReq(req);
   var siteId = req.params.site_id;
   dataSourceRealtimeDepartures.fetchData(siteId, function (err, resultListRealtime) {
     // The result will be the same for 1 minute
@@ -56,7 +57,7 @@ updateResultCache = function (req, res, callback) {
 },
 
 getResultDataFromRequest = function (task, done) {
-  var queueName = getQueueNameFromReqParams(task.req.params);
+  var queueName = getQueueNameFromReq(task.req);
   var cachedResultData = memoryCache.get(queueName);
   if (cachedResultData && config.useMemoryCache) {
     // Send back cached result
@@ -74,7 +75,7 @@ getResultDataFromRequest = function (task, done) {
 },
 
 queueResultRequest = function (req, res, callback) {
-  var queueName = getQueueNameFromReqParams(req.params);
+  var queueName = getQueueNameFromReq(req);
   // Create the queue if it does not exist
   result_queues[queueName] = result_queues[queueName] || async.queue(getResultDataFromRequest, 1);
   // Add request to queue
@@ -104,6 +105,13 @@ app.get('/hej', function (req, res) {
 });
 
 app.get('/api/realtimedepartures/:site_id.json', function (req, res) {
+  var siteId = parseInt(req.params.site_id);
+  if (-1 === stationInfo.whitelist.indexOf(siteId)) {
+    var invalidSiteIdMsg = 'Invalid site id ' + siteId;
+    console.log(invalidSiteIdMsg.red);
+    res.send(invalidSiteIdMsg);
+    return;
+  }
   try {
     queueResultRequest(req, res, function (result) {
       res.header('Cache-Control', 'public, max-age=' + 30);
