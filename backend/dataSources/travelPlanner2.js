@@ -2,16 +2,6 @@ require('colors');
 var request = require('request'),
     config = require('../config'),
 
-getJourneyDirectionsFromSiteId = function(siteId) {
-  siteId = parseInt(siteId, 10);
-  switch(siteId) {
-    case 9280: return 1; // Norsborg
-    case 9340: return 1; // Kungsträdgården
-    case 9100: return 2; // Hässelby strand
-  }
-  return 1;
-},
-
 capitalizeFirstLetterAndTrimEnd = function(str) {
   var capitalized = str.charAt(0).toUpperCase() + str.slice(1);
   return capitalized.substring(0, capitalized.indexOf('linje') + 5);
@@ -33,7 +23,7 @@ transformDisplayTime = function (timeString) {
   }
 },
 
-fetchDeparturesFromSiteId = function (siteId, callback) {
+fetchDeparturesFromSiteId = function (siteId, callback, stationInfo) {
   callback = callback || function () {};
   var travelPlannerKey = config.apiKeys.travelPlannerKey,
   destinationId = '9001', // T-centralen always destination for now
@@ -56,7 +46,7 @@ fetchDeparturesFromSiteId = function (siteId, callback) {
           'GroupOfLine': capitalizeFirstLetterAndTrimEnd(tripContent.name),
           'StopAreaName': tripContent.Origin.name,
           'TransportMode': 'METRO',
-          'JourneyDirection': getJourneyDirectionsFromSiteId(siteId),
+          'JourneyDirection': stationInfo.getTowardsCentralDirection(siteId),
           'FromTravelPlanner': true,
           'DisplayTime': transformDisplayTime(tripContent.Origin.time)
         };

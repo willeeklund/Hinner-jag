@@ -44,17 +44,30 @@ updateResultCache = function (req, res, callback) {
         console.log('Not enough metro departures'.yellow, 'siteId'.cyan, siteId, 'nbrDepartures'.cyan, nbrDepartures);
       }
       dataSourceTravelPlanner.fetchData(siteId, function (err, resultList) {
+        var nbrAddedTravelPlanner = 0;
+        resultList.forEach(function (departure) {
+          var hasSameTime = false;
+          resultListRealtime.ResponseData.Metros.forEach(function (realtimeDeparture) {
+            if (realtimeDeparture.DisplayTime === departure.DisplayTime) {
+              hasSameTime = true;
+            }
+          });
+          if (!hasSameTime && nbrAddedTravelPlanner < 3) {
+            // console.log('adding with hasSameTime='.green, hasSameTime, 'nbrAddedTravelPlanner='.green, nbrAddedTravelPlanner, departure);
+            resultListRealtime.ResponseData.Metros.push(departure);
+            nbrAddedTravelPlanner++;
+          // } else {
+          //   console.log('skipped departure'.yellow, departure);
+          }
+        });
         console.log(
           ('Too few metro departures for siteid ' + siteId).yellow,
           ('(' + nbrDepartures + ' departures)').blue,
-          ('Adding ' + resultList.length + ' departures from TravelPlanner').blue
+          ('Adding ' + nbrAddedTravelPlanner + '/' + resultList.length + ' departures with TravelPlanner').blue
         );
-        resultList.forEach(function (departure) {
-          resultListRealtime.ResponseData.Metros.push(departure);
-        });
         memoryCache.put(queueName, resultListRealtime, 1000 * ttl_age);
         callback(err, resultListRealtime);
-      });
+      }, stationInfo);
       return;
     }
     memoryCache.put(queueName, resultListRealtime, 1000 * ttl_age);

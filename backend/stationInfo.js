@@ -39,10 +39,28 @@ sections.forEach(function (section) {
 });
 
 var isEndStation = function (siteId) {
-    return endStationSiteIdList.indexOf(siteId) > -1
+    return endStationSiteIdList.indexOf(parseInt(siteId)) > -1
+},
+
+getFromCentralDirection = function (siteId) {
+    var direction;
+    sections.forEach(function (section) {
+        stationData[section].forEach(function (item) {
+            if (item.siteid === parseInt(siteId)) {
+                direction = item.from_central_direction;
+            }
+        });
+    });
+    return direction;
+},
+
+getTowardsCentralDirection = function (siteId) {
+    return (1 === getFromCentralDirection(siteId)) ? 2 : 1;
 };
 
 module.exports = {
     isEndStation: isEndStation,
+    getFromCentralDirection: getFromCentralDirection,
+    getTowardsCentralDirection: getTowardsCentralDirection,
     whitelist: whitelistSiteId
 };
