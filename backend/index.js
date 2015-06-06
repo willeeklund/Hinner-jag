@@ -11,6 +11,7 @@ var express = require('express'),
     config = require('./config'),
     async = require('async'),
     memoryCache = require('memory-cache'),
+    dataSourceRealtimeDepartures = require('./dataSources/realtimeDepartures'),
     dataSourceTravelPlanner = require('./dataSources/travelPlanner2'),
 
 /**
@@ -22,60 +23,35 @@ getQueueNameFromReqParams = function (params) {
   return params.site_id;
 },
 
-fixTrainDepartureList = function (trainDepartureList) {
-  trainDepartureList.forEach(function (item) {
-    item.GroupOfLine = 'Pendeltåg ' + item.LineNumber;
-  });
-  return trainDepartureList;
-},
-
 updateResultCache = function (req, res, callback) {
-  var realtimeKey = config.apiKeys.realtimeKey,
-  timewindow = 60,
-  SL_api_url = 'http://api.sl.se/api2/realtimedepartures.json?' +
-               'key=' + realtimeKey +
-               '&timewindow=' + timewindow +
-               '&siteid=' + req.params.site_id;
-
   var queueName = getQueueNameFromReqParams(req.params);
-
-  request(SL_api_url, function (err, requestResult) {
-    if (err) {
-      console.log('Error requesting from SL'.red, err);
-      console.log('requestResult from SL'.red, requestResult);
-      return;
-    }
-    var content = JSON.parse(requestResult.body);
-    // Remove all fields except Metros
-    content.ResponseData.Buses = [];
-    content.ResponseData.Ships = [];
-    content.ResponseData.Trams = [];
-    content.ResponseData.StopPointDeviations = [];
-    content.ResponseData.Trains = fixTrainDepartureList(content.ResponseData.Trains);
+  var siteId = req.params.site_id;
+  dataSourceRealtimeDepartures.fetchData(siteId, function (err, resultListRealtime) {
     // The result will be the same for 1 minute
-    var ttl_age = Math.max(60 - content.ResponseData.DataAge, 5);
-    console.log('Data age'.blue, content.ResponseData.DataAge, 'new in'.cyan, ttl_age);
-    var nbrDepartures = content.ResponseData.Metros.length;
+    var ttl_age = Math.max(60 - resultListRealtime.ResponseData.DataAge, 5);
+    console.log('Data age'.blue, resultListRealtime.ResponseData.DataAge, 'new in'.cyan, ttl_age);
+    // Check if too few departures from the realtime API
+    var nbrDepartures = resultListRealtime.ResponseData.Metros.length;
     if (0 === nbrDepartures) {
       // Too few metro departures in realtime result, add from travel planner
       console.log('Not enough metro departures'.red);
-      dataSourceTravelPlanner.fetchData(req.params.site_id, function (err, resultList) {
+      dataSourceTravelPlanner.fetchData(siteId, function (err, resultList) {
         console.log(
           'Error: too few metro departures'.red,
-          ('for siteid ' + req.params.site_id).yellow,
+          ('for siteid ' + siteId).yellow,
           ('(' + nbrDepartures + ' departures)').blue,
           ('Adding ' + resultList.length + ' departures from TravelPlanner').blue
         );
         resultList.forEach(function (departure) {
-          content.ResponseData.Metros.push(departure);
+          resultListRealtime.ResponseData.Metros.push(departure);
         });
-        memoryCache.put(queueName, content, 1000 * ttl_age);
-        callback(err, content);
+        memoryCache.put(queueName, resultListRealtime, 1000 * ttl_age);
+        callback(err, resultListRealtime);
       });
       return;
     }
-    memoryCache.put(queueName, content, 1000 * ttl_age);
-    callback(err, content);
+    memoryCache.put(queueName, resultListRealtime, 1000 * ttl_age);
+    callback(err, resultListRealtime);
   });
 },
 
