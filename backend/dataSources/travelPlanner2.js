@@ -1,10 +1,15 @@
 require('colors');
 var request = require('request'),
     config = require('../config'),
+    stationInfo,
 
 capitalizeFirstLetterAndTrimEnd = function(str) {
   var capitalized = str.charAt(0).toUpperCase() + str.slice(1);
   return capitalized.substring(0, capitalized.indexOf('linje') + 5);
+},
+
+capitalizeAndPlural = function (str) {
+  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase() + 's';
 },
 
 transformDisplayTime = function (timeString) {
@@ -23,7 +28,7 @@ transformDisplayTime = function (timeString) {
   }
 },
 
-fetchDeparturesFromSiteId = function (siteId, callback, stationInfo) {
+fetchDeparturesFromSiteId = function (siteId, callback) {
   callback = callback || function () {};
   var travelPlannerKey = config.apiKeys.travelPlannerKey,
   destinationId = '9001', // T-centralen always destination for now
@@ -38,14 +43,15 @@ fetchDeparturesFromSiteId = function (siteId, callback, stationInfo) {
     var trips = parsedBody.TripList.Trip;
     trips.forEach(function (trip) {
       var tripContent = trip.LegList.Leg;
-      if ('METRO' === tripContent.type) {
+      if ('METRO' === tripContent.type || 'TRAIN' == tripContent.type) {
         var usedInfo = {
           'SiteId': parseInt(siteId),
           'LineNumber': tripContent.line,
           'Destination': tripContent.dir,
           'GroupOfLine': capitalizeFirstLetterAndTrimEnd(tripContent.name),
           'StopAreaName': tripContent.Origin.name,
-          'TransportMode': 'METRO',
+          'TransportMode': tripContent.type,
+          'TransportModeCap': capitalizeAndPlural(tripContent.type),
           'JourneyDirection': stationInfo.getTowardsCentralDirection(siteId),
           'FromTravelPlanner': true,
           'DisplayTime': transformDisplayTime(tripContent.Origin.time)
@@ -59,5 +65,8 @@ fetchDeparturesFromSiteId = function (siteId, callback, stationInfo) {
 };
 
 module.exports = {
+  setStationInfo: function (object) {
+    stationInfo = object;
+  },
   fetchData: fetchDeparturesFromSiteId
 };

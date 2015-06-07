@@ -1,13 +1,7 @@
 require('colors');
 var request = require('request'),
     config = require('../config'),
-
-fixTrainDepartureList = function (trainDepartureList) {
-  trainDepartureList.forEach(function (item) {
-    item.GroupOfLine = 'Pendeltåg ' + item.LineNumber;
-  });
-  return trainDepartureList;
-},
+    stationInfo,
 
 fetchDeparturesFromSiteId = function (siteId, callback) {
   callback = callback || function () {};
@@ -30,12 +24,14 @@ fetchDeparturesFromSiteId = function (siteId, callback) {
     content.ResponseData.Ships = [];
     content.ResponseData.Trams = [];
     content.ResponseData.StopPointDeviations = [];
-    content.ResponseData.Trains = fixTrainDepartureList(content.ResponseData.Trains);
 
     callback(err, content);
   });
 };
 
 module.exports = {
+  setStationInfo: function (object) {
+    stationInfo = object;
+  },
   fetchData: fetchDeparturesFromSiteId
 };

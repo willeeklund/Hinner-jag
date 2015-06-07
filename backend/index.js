@@ -14,25 +14,26 @@ var express = require('express'),
     dataSourceRealtimeDepartures = require('./dataSources/realtimeDepartures'),
     dataSourceTravelPlanner = require('./dataSources/travelPlanner2'),
     stationInfo = require('./stationInfo'),
+    utils = require('./utils');
+    dataSourceRealtimeDepartures.setStationInfo(stationInfo);
+    dataSourceTravelPlanner.setStationInfo(stationInfo);
 
 /**
  * Fetch data from SL api using asyncronous queue
  */
-result_queues = {},
+var result_queues = {},
 
 getQueueNameFromReq = function (req) {
   return req.params.site_id;
 },
 
-updateResultCache = function (req, res, callback) {
-  var queueName = getQueueNameFromReq(req);
+fetchDeparturesForRequest = function (req, res, callback) {
   var siteId = req.params.site_id;
+  var completeList;
   dataSourceRealtimeDepartures.fetchData(siteId, function (err, resultListRealtime) {
-    // The result will be the same for 1 minute
-    var ttl_age = Math.max(60 - resultListRealtime.ResponseData.DataAge, 5);
-    console.log('Data age'.blue, resultListRealtime.ResponseData.DataAge, 'new in'.cyan, ttl_age);
+    completeList = resultListRealtime;
     // Check if too few departures from the realtime API
-    var nbrDepartures = resultListRealtime.ResponseData.Metros.length;
+    var nbrDepartures = completeList.ResponseData.Metros.length + completeList.ResponseData.Trains.length;
     if (
       ( nbrDepartures < 3 && stationInfo.isEndStation(siteId) ) ||
       ( nbrDepartures < 6 && !stationInfo.isEndStation(siteId) )
@@ -46,15 +47,16 @@ updateResultCache = function (req, res, callback) {
       dataSourceTravelPlanner.fetchData(siteId, function (err, resultList) {
         var nbrAddedTravelPlanner = 0;
         resultList.forEach(function (departure) {
+          var typeKey = departure.TransportModeCap; // 'Metros' or 'Trains'
           var hasSameTime = false;
-          resultListRealtime.ResponseData.Metros.forEach(function (realtimeDeparture) {
+          completeList.ResponseData[typeKey].forEach(function (realtimeDeparture) {
             if (realtimeDeparture.DisplayTime === departure.DisplayTime) {
               hasSameTime = true;
             }
           });
           if (!hasSameTime && nbrAddedTravelPlanner < 3) {
             // console.log('adding with hasSameTime='.green, hasSameTime, 'nbrAddedTravelPlanner='.green, nbrAddedTravelPlanner, departure);
-            resultListRealtime.ResponseData.Metros.push(departure);
+            completeList.ResponseData[typeKey].push(departure);
             nbrAddedTravelPlanner++;
           // } else {
           //   console.log('skipped departure'.yellow, departure);
@@ -65,13 +67,11 @@ updateResultCache = function (req, res, callback) {
           ('(' + nbrDepartures + ' departures)').blue,
           ('Adding ' + nbrAddedTravelPlanner + '/' + resultList.length + ' departures with TravelPlanner').blue
         );
-        memoryCache.put(queueName, resultListRealtime, 1000 * ttl_age);
-        callback(err, resultListRealtime);
-      }, stationInfo);
+        callback(err, completeList);
+      });
       return;
     }
-    memoryCache.put(queueName, resultListRealtime, 1000 * ttl_age);
-    callback(err, resultListRealtime);
+    callback(err, completeList);
   });
 },
 
@@ -86,7 +86,15 @@ getResultDataFromRequest = function (task, done) {
   } else {
     // Fetch result from SL api
     console.log('cache miss'.yellow, queueName);
-    updateResultCache(task.req, task.res, function (err, newResultData) {
+    fetchDeparturesForRequest(task.req, task.res, function (err, newResultData) {
+      // Formatting for train departures
+      newResultData.ResponseData.Trains = utils.fixTrainDepartureListForSiteId(
+        newResultData.ResponseData.Trains
+      );
+      // The result will be the same for 50 seconds
+      var ttl_age = Math.max(50 - newResultData.ResponseData.DataAge, 5);
+      console.log('Data age'.blue, newResultData.ResponseData.DataAge, 'new in'.cyan, ttl_age);
+      memoryCache.put(queueName, newResultData, 1000 * ttl_age);
       task.callback(newResultData);
       done();
     });

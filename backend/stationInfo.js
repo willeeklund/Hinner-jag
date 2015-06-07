@@ -42,16 +42,21 @@ var isEndStation = function (siteId) {
     return endStationSiteIdList.indexOf(parseInt(siteId)) > -1
 },
 
-getFromCentralDirection = function (siteId) {
-    var direction;
+getSiteDataFromId = function (siteId) {
+    var siteData;
     sections.forEach(function (section) {
         stationData[section].forEach(function (item) {
             if (item.siteid === parseInt(siteId)) {
-                direction = item.from_central_direction;
+                siteData = item;
+                siteData.type = section;
             }
         });
     });
-    return direction;
+    return siteData;
+},
+
+getFromCentralDirection = function (siteId) {
+    return getSiteDataFromId(siteId).from_central_direction;
 },
 
 getTowardsCentralDirection = function (siteId) {
@@ -60,6 +65,7 @@ getTowardsCentralDirection = function (siteId) {
 
 module.exports = {
     isEndStation: isEndStation,
+    getSiteDataFromId: getSiteDataFromId,
     getFromCentralDirection: getFromCentralDirection,
     getTowardsCentralDirection: getTowardsCentralDirection,
     whitelist: whitelistSiteId
