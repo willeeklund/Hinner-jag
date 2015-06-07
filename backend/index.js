@@ -48,18 +48,25 @@ fetchDeparturesForRequest = function (req, res, callback) {
         var nbrAddedTravelPlanner = 0;
         resultList.forEach(function (departure) {
           var typeKey = departure.TransportModeCap; // 'Metros' or 'Trains'
-          var hasSameTime = false;
+          var hasSameDeparture = false;
           completeList.ResponseData[typeKey].forEach(function (realtimeDeparture) {
-            if (realtimeDeparture.DisplayTime === departure.DisplayTime) {
-              hasSameTime = true;
+            // Consider it the same if the time is less than 1 minute apart
+            // and the destination label is the same
+            var realtimeTime = parseInt(realtimeDeparture.DisplayTime);
+            var travelplanTime = parseInt(departure.DisplayTime);
+            if (
+              (Math.abs(realtimeTime - travelplanTime) <= 1) &&
+              realtimeDeparture.Destination === departure.Destination
+            ) {
+              hasSameDeparture = true;
             }
           });
-          if (!hasSameTime && nbrAddedTravelPlanner < 3) {
-            // console.log('adding with hasSameTime='.green, hasSameTime, 'nbrAddedTravelPlanner='.green, nbrAddedTravelPlanner, departure);
+          if (!hasSameDeparture && nbrAddedTravelPlanner < 3) {
+            // console.log('adding with hasSameDeparture='.green, hasSameDeparture, 'nbrAddedTravelPlanner='.green, nbrAddedTravelPlanner, departure);
             completeList.ResponseData[typeKey].push(departure);
             nbrAddedTravelPlanner++;
-          // } else {
-          //   console.log('skipped departure'.yellow, departure);
+          } else {
+            console.log('skipped departure'.yellow, departure);
           }
         });
         console.log(
