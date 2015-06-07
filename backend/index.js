@@ -65,8 +65,8 @@ fetchDeparturesForRequest = function (req, res, callback) {
             // console.log('adding with hasSameDeparture='.green, hasSameDeparture, 'nbrAddedTravelPlanner='.green, nbrAddedTravelPlanner, departure);
             completeList.ResponseData[typeKey].push(departure);
             nbrAddedTravelPlanner++;
-          } else {
-            console.log('skipped departure'.yellow, departure);
+          // } else {
+          //   console.log('skipped departure'.yellow, departure);
           }
         });
         console.log(
