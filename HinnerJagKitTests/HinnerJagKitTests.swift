@@ -56,6 +56,7 @@ class HinnerJagKitTests: XCTestCase {
         var abDict = NSMutableDictionary()
         abDict.setValue(9110, forKey: "siteid")
         abDict.setValue("Abrahamsberg fake", forKey: "sitename")
+        abDict.setValue("Metro", forKey: "stationType")
         abDict.setValue(59.3365630909855, forKey: "latitude")
         abDict.setValue(17.9531728536484, forKey: "longitude")
         abDict.setValue(1, forKey: "from_central_direction")

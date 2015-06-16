@@ -69,23 +69,33 @@ class MapViewController: UIViewController, MKMapViewDelegate
             // var imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 46, height: 46))
             // imageView.image = UIImage(named: "train_green")
             // view?.leftCalloutAccessoryView = imageView
-            var btn = UIButton()
-            btn.setBackgroundImage(UIImage(named: "right_arrow"), forState: .Normal)
-            btn.frame = CGRect(x: 0, y: 0, width: 46, height: 46)
-            view?.rightCalloutAccessoryView = btn
         } else {
             view?.annotation = annotation
         }
         return view
     }
     
-    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
-        if self.presentingViewController is MainAppViewController && view.annotation is Station {
-            let station = view.annotation as! Station
-            let mainAppVC = self.presentingViewController as! MainAppViewController
-            mainAppVC.searchFromNewClosestStation(station)
-            mainAppVC.dismissViewControllerAnimated(true, completion: nil)
-            self.trackEvent("Station", action: "change_from_map", label: "\(station.title) (\(station.id))", value: 1)
+    // MARK: - Tapping annotation will select that station
+    lazy var tapRecognizer: UITapGestureRecognizer = {
+        return UITapGestureRecognizer(target: self, action: "tappedAnnotation:")
+    }()
+    
+    func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!) {
+        view.addGestureRecognizer(self.tapRecognizer)
+    }
+    func mapView(mapView: MKMapView!, didDeselectAnnotationView view: MKAnnotationView!) {
+        view.removeGestureRecognizer(self.tapRecognizer)
+    }
+    
+    func tappedAnnotation(recognizer: UIPanGestureRecognizer) {
+        if let view = recognizer.view as? MKAnnotationView {
+            if self.presentingViewController is MainAppViewController && view.annotation is Station {
+                let station = view.annotation as! Station
+                let mainAppVC = self.presentingViewController as! MainAppViewController
+                mainAppVC.searchFromNewClosestStation(station)
+                mainAppVC.dismissViewControllerAnimated(true, completion: nil)
+                self.trackEvent("Station", action: "change_from_map", label: "\(station.title) (\(station.id))", value: 1)
+            }
         }
     }
 

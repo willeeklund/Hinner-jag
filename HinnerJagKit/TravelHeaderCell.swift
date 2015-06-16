@@ -50,8 +50,7 @@ class TravelHeaderCell: UITableViewCell
             else if sectionString.rangeOfString("TRAIN") != nil {
                 // TODO: Better image of pendeltåg
                 imageName = "train_purple"
-                let trainRange = Range<String.Index>(start: advance(sectionString.startIndex, 8), end: advance(sectionString.startIndex, 20))
-                directionLabel = sectionString.substringWithRange(trainRange)
+                directionLabel = ""
             }
             
             // Set image
@@ -89,6 +88,11 @@ class TravelHeaderCell: UITableViewCell
                     return "från \(suffixDestination)"
                 } else {
                     return "mot \(suffixDestination)"
+                }
+            } else {
+                // This probably means we are at T-centralen
+                if "TRAIN" == firstDep.transportMode {
+                    return firstDep.lineName
                 }
             }
         }

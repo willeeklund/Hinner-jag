@@ -81,6 +81,8 @@ public class HinnerJagTableViewController: UITableViewController, LocateStationD
         Utils.setPreferredTravelType(type)
         self.shownStationType = type
         self.createMappingFromFetchedDepartures()
+        self.trackEvent("TravelType", action: "changePreferred", label: "\(type.description())", value: 1)
+        println("Preferred travel type \(type.description())")
     }
     
     // MARK: - Lifecycle stuff

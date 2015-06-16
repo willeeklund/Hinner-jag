@@ -94,7 +94,8 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
                     // departures at T-centralen
                     return min(2, depList.count)
                 }
-                return depList.count
+                // Otherwise show maximum 4 in each group
+                return min(4, depList.count)
             }
         }
         return super.tableView(tableView, numberOfRowsInSection: section)
