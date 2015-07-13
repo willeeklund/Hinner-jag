@@ -41,24 +41,26 @@ fetchDeparturesFromSiteId = function (siteId, callback) {
     var retDepartures = [];
     var parsedBody = JSON.parse(requestResult.body);
     var trips = parsedBody.TripList.Trip;
-    trips.forEach(function (trip) {
-      var tripContent = trip.LegList.Leg;
-      if ('METRO' === tripContent.type || 'TRAIN' == tripContent.type) {
-        var usedInfo = {
-          'SiteId': parseInt(siteId),
-          'LineNumber': tripContent.line,
-          'Destination': tripContent.dir,
-          'GroupOfLine': capitalizeFirstLetterAndTrimEnd(tripContent.name),
-          'StopAreaName': tripContent.Origin.name,
-          'TransportMode': tripContent.type,
-          'TransportModeCap': capitalizeAndPlural(tripContent.type),
-          'JourneyDirection': stationInfo.getTowardsCentralDirection(siteId),
-          'FromTravelPlanner': true,
-          'DisplayTime': transformDisplayTime(tripContent.Origin.time)
-        };
-        retDepartures.push(usedInfo);
-      }
-    });
+    if (trips) {
+      trips.forEach(function (trip) {
+        var tripContent = trip.LegList.Leg;
+        if ('METRO' === tripContent.type || 'TRAIN' == tripContent.type) {
+          var usedInfo = {
+            'SiteId': parseInt(siteId),
+            'LineNumber': tripContent.line,
+            'Destination': tripContent.dir,
+            'GroupOfLine': capitalizeFirstLetterAndTrimEnd(tripContent.name),
+            'StopAreaName': tripContent.Origin.name,
+            'TransportMode': tripContent.type,
+            'TransportModeCap': capitalizeAndPlural(tripContent.type),
+            'JourneyDirection': stationInfo.getTowardsCentralDirection(siteId),
+            'FromTravelPlanner': true,
+            'DisplayTime': transformDisplayTime(tripContent.Origin.time)
+          };
+          retDepartures.push(usedInfo);
+        }
+      });
+    }
 
     callback(null, retDepartures);
   });
