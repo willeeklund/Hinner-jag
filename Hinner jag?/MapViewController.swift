@@ -18,7 +18,7 @@ class MapViewController: UIViewController, MKMapViewDelegate
     var chosenStation: Station?
     
     // MARK: - Lifecycle stuff
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.gaSetup()
     }
@@ -45,7 +45,7 @@ class MapViewController: UIViewController, MKMapViewDelegate
     }
     
     // MARK: - Map annotations
-    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         // Use default view for the users location
         if annotation is MKUserLocation {
             return nil
@@ -80,10 +80,10 @@ class MapViewController: UIViewController, MKMapViewDelegate
         return UITapGestureRecognizer(target: self, action: "tappedAnnotation:")
     }()
     
-    func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!) {
+    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
         view.addGestureRecognizer(self.tapRecognizer)
     }
-    func mapView(mapView: MKMapView!, didDeselectAnnotationView view: MKAnnotationView!) {
+    func mapView(mapView: MKMapView, didDeselectAnnotationView view: MKAnnotationView) {
         view.removeGestureRecognizer(self.tapRecognizer)
     }
     
@@ -94,7 +94,7 @@ class MapViewController: UIViewController, MKMapViewDelegate
                 let mainAppVC = self.presentingViewController as! MainAppViewController
                 mainAppVC.searchFromNewClosestStation(station)
                 mainAppVC.dismissViewControllerAnimated(true, completion: nil)
-                self.trackEvent("Station", action: "change_from_map", label: "\(station.title) (\(station.id))", value: 1)
+                self.trackEvent("Station", action: "change_from_map", label: "\(station.title!) (\(station.id))", value: 1)
             }
         }
     }

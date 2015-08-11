@@ -25,8 +25,7 @@ public class LocateStation: NSObject, CLLocationManagerDelegate
         assert(nil != metroStationsFilePath, "The file metro_stations.json must be included in the framework")
         let metroStationsData = NSData(contentsOfFile: metroStationsFilePath!)
         assert(nil != metroStationsData, "metro_stations.json must contain valid data")
-        var JSONError: NSError?
-        let responseDict = NSJSONSerialization.JSONObjectWithData(metroStationsData!, options: NSJSONReadingOptions.AllowFragments, error: &JSONError) as! NSDictionary
+        let responseDict = try! NSJSONSerialization.JSONObjectWithData(metroStationsData!, options: NSJSONReadingOptions.AllowFragments) as! NSDictionary
         // Add all stations with both metros and trains
         if let metroAndTrainStationsList = responseDict["metro_and_train_stations"] as! [NSDictionary]? {
             for stationInfo in metroAndTrainStationsList {
@@ -71,14 +70,15 @@ public class LocateStation: NSObject, CLLocationManagerDelegate
     }
     
     // MARK: - Get location of the user
-    public func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+    public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.locationManager.stopUpdatingLocation()
-        let location = locations.last as! CLLocation
-        self.findClosestStationFromLocationAndFetchDepartures(location)
+        if let location = locations.last {
+            self.findClosestStationFromLocationAndFetchDepartures(location)
+        }
     }
 
     public func findClosestStationFromLocation(location: CLLocation) -> [Station] {
-        var closestStationsSorted = self.findStationsSortedClosestToLatitude(location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let closestStationsSorted = self.findStationsSortedClosestToLatitude(location.coordinate.latitude, longitude: location.coordinate.longitude)
         return closestStationsSorted
     }
 
@@ -93,17 +93,15 @@ public class LocateStation: NSObject, CLLocationManagerDelegate
         }
     }
     
-    public func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-        println("ERROR - location manager: \(error)")
+    public func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("ERROR - location manager: \(error)")
     }
 
     // Compare distance from all known stations, return closest one
     public func findStationsSortedClosestToLatitude(latitude: Double, longitude: Double) -> [Station] {
-        var userLocation = CLLocation(latitude: latitude, longitude: longitude)
-        var closest: Station? = self.stationList.first
-        
+        let userLocation = CLLocation(latitude: latitude, longitude: longitude)
         var sortedStationList: [Station] = self.stationList
-        sortedStationList.sort({ $0.distanceFromLocation(userLocation) < $1.distanceFromLocation(userLocation) })
+        sortedStationList.sortInPlace({ $0.distanceFromLocation(userLocation) < $1.distanceFromLocation(userLocation) })
         // Only return 4 stations
         return Array(sortedStationList[0...3])
     }

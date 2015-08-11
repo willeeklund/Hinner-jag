@@ -31,7 +31,7 @@ public enum StationType: Int {
 public class Station: CLLocation, MKAnnotation
 {
     public var id: Int = 0
-    public var title: String = ""
+    public var title: String? = ""
     public var from_central_direction: Int?
     public var stationType: StationType?
     
@@ -105,7 +105,7 @@ public class Station: CLLocation, MKAnnotation
         self.stationType = usedStationType
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 }

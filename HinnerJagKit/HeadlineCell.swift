@@ -11,7 +11,7 @@ import UIKit
 import MapKit
 import HinnerJagKit
 
-class HeadlineCell: UITableViewCell
+public class HeadlineCell: UITableViewCell
 {
     var controller: HinnerJagTableViewController?
     @IBOutlet weak var headerLabel: UILabel!
@@ -30,7 +30,7 @@ class HeadlineCell: UITableViewCell
         }
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -38,7 +38,7 @@ class HeadlineCell: UITableViewCell
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
-    internal class func createCellForTableView(
+    public class func createCellForTableView(
         tableView: UITableView,
         controller: HinnerJagTableViewController,
         closestStation: Station?,

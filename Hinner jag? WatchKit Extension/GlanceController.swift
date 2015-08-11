@@ -52,8 +52,8 @@ class GlanceController: InterfaceController {
     }
 
     override func fillTableWithContent() {
-        var (header1, details1) = self.getGroupLabels(0)
-        var (header2, details2) = self.getGroupLabels(1)
+        let (header1, details1) = self.getGroupLabels(0)
+        let (header2, details2) = self.getGroupLabels(1)
         
         // Set value on the labels
         if let headerRow = self.tableView.rowControllerAtIndex(0) as! TravelHeaderRow? {

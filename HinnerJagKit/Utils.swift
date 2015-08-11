@@ -40,7 +40,7 @@ public class Utils
                 continue
             }
             let mappingName = "\(dept.transportMode) - \(dept.lineName) - riktning \(dept.direction)"
-            if let depList = departuresDict[mappingName] {
+            if let _ = departuresDict[mappingName] {
                 departuresDict[mappingName]?.append(dept)
             } else {
                 mappingDict[largestUsedMapping++] = mappingName
@@ -56,7 +56,7 @@ public class Utils
             return "Söker efter plats..."
         } else {
             let distFormat = Utils.distanceFormat(station!.distanceFromLocation(location!))
-            return "Närmast: \(station!.title) (\(distFormat))"
+            return "Närmast: \(station!.title!) (\(distFormat))"
         }
     }
     
@@ -68,8 +68,8 @@ public class Utils
 
         switch dist {
         case _ where dist >= 1000:
-            var dist100 = Int(dist / 100)
-            var distKm = Double(dist100) / 10.0
+            let dist100 = Int(dist / 100)
+            let distKm = Double(dist100) / 10.0
             distString = "\(distKm)km"
         default: break
         }
@@ -79,7 +79,7 @@ public class Utils
     
     // MARK: - Keep track of preferred travel type for the user
     public class func getPreferredTravelType() -> StationType {
-        var preferredTravelTypeInteger = NSUserDefaults.standardUserDefaults().integerForKey("preferredTravelType")
+        let preferredTravelTypeInteger = NSUserDefaults.standardUserDefaults().integerForKey("preferredTravelType")
         return StationType(rawValue: preferredTravelTypeInteger)!
     }
     

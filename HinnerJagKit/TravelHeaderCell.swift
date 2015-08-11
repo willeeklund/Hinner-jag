@@ -10,17 +10,17 @@ import Foundation
 import UIKit
 import HinnerJagKit
 
-class TravelHeaderCell: UITableViewCell
+public class TravelHeaderCell: UITableViewCell
 {
     
     @IBOutlet weak var trainImage: UIImageView!
     @IBOutlet weak var headerLabel: UILabel!
     
-    required init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    required override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    required public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     

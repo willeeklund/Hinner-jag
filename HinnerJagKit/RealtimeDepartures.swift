@@ -31,7 +31,7 @@ public class RealtimeDepartures
     }
     
     public func departuresFromStation(station: Station, callback: ([Departure]?, error: NSError?) -> ()) {
-        var realtimeApiQueue = dispatch_queue_create("realtime API queue", nil)
+        let realtimeApiQueue = dispatch_queue_create("realtime API queue", nil)
         dispatch_async(realtimeApiQueue, {
             if self.debugJsonData {
                 self.fetchDummyDepartureJsonData(station, callback: callback)
@@ -43,9 +43,9 @@ public class RealtimeDepartures
     
     // MARK: - Fetch departure JSON data
     func fetchDummyDepartureJsonData(station: Station, callback: ([Departure]?, error: NSError?) -> ()) {
-        println("Please note that dummy data is used for departures")
+        print("Please note that dummy data is used for departures")
         // Used dummy data file
-        var testFile = "test_departures"
+        let testFile = "test_departures"
 //        testFile = "test_departures_9510_karlberg"
 //        testFile = "test_departures_9530_stockholms_sodra"
 //        testFile = "test_departures_9520_sodertalje_centrum"
@@ -60,7 +60,7 @@ public class RealtimeDepartures
     }
     
     func performRealtimeApiReqForStation(station: Station, callback: ([Departure]?, error: NSError?) -> ()) {
-        println("stationId = \(station.id)")
+        print("stationId = \(station.id)")
         let request = NSURLRequest(URL: NSURL(string: "\(self.apiServer)/api/realtimedepartures/\(station.id).json")!)
         let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
             if error == nil {
@@ -76,9 +76,8 @@ public class RealtimeDepartures
     
     // MARK: - Parse JSON data into Departures
     func parseJsonDataToDepartures(data: NSData?, station: Station, callback: ([Departure]?, error: NSError?) -> ()) {
-        var JSONError: NSError?
-        let responseDict = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments, error: &JSONError) as! NSDictionary
-        if JSONError == nil {
+        do {
+            let responseDict = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments)
             if let allTypes = responseDict["ResponseData"] as! NSDictionary? {
                 var departureList = [Departure]()
                 // Add Metro departures
@@ -97,7 +96,7 @@ public class RealtimeDepartures
                     callback(departureList, error: nil)
                 })
             }
-        } else {
+        } catch let JSONError as NSError {
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 callback(nil, error: JSONError)
             })

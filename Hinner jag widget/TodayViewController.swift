@@ -11,13 +11,13 @@ import NotificationCenter
 import HinnerJagKit
 import CoreLocation
 
-class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLocationManagerDelegate, UITableViewDelegate {
+class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLocationManagerDelegate {
     // MARK: - Variables
     var locationManager: CLLocationManager! = CLLocationManager()
     var linkColor = UIColor(red: 8.0/255.0, green: 206.0/255.0, blue: 253.0/255.0, alpha: 1)
     
     // MARK: - Life cycle
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.locationManager.delegate = self
         self.locationManager.requestWhenInUseAuthorization()
@@ -26,14 +26,14 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
     }
     
     // MARK: - Get location of the user
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.locationManager.stopUpdatingLocation()
-        let location = locations.last as! CLLocation
+        let location = locations.last!
         self.locateStation.findClosestStationFromLocationAndFetchDepartures(location)
     }
 
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-        println("ERROR - location manager. \(error)")
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("ERROR - location manager. \(error)")
     }
     
     override func getLastLocation() -> CLLocation? {
@@ -54,10 +54,10 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
     
     override func viewWillAppear(animated: Bool) {
         self.locationManager.startUpdatingLocation()
-        if nil != self.locationManager.location {
+        if let locationManagerLocation = self.locationManager.location {
             // Less than 5 minutes ago, use old location
-            if -300.0 < self.locationManager.location.timestamp.timeIntervalSinceNow {
-                let sortedStations = self.locateStation.findClosestStationFromLocation(self.locationManager.location)
+            if -300.0 < locationManagerLocation.timestamp.timeIntervalSinceNow {
+                let sortedStations = self.locateStation.findClosestStationFromLocation(locationManagerLocation)
                 let oldStation = sortedStations.first
                 self.closestStation = oldStation
                 self.updateUI()
@@ -140,16 +140,16 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
         if indexPath.section == 0 {
             // Section for changing closest station manually
             let reuseId = "chooseStation"
-            var cell = tableView.dequeueReusableCellWithIdentifier(reuseId) as! UITableViewCell?
+            var cell = tableView.dequeueReusableCellWithIdentifier(reuseId) 
             if cell == nil {
                 cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: reuseId)
             }
             let usedRow = indexPath.row + 1
             if usedRow < self.closestSortedStations.count {
                 let station = self.closestSortedStations[usedRow]
-                var dist = station.distanceFromLocation(self.locateStation.locationManager.location)
+                let dist = station.distanceFromLocation(self.locateStation.locationManager.location!)
                 let distFormat = Utils.distanceFormat(dist)
-                cell?.textLabel?.text = "    \(station.title) (\(distFormat))"
+                cell?.textLabel?.text = "    \(station.title!) (\(distFormat))"
                 cell?.textLabel?.textColor = self.linkColor
                 cell?.textLabel?.font = UIFont(name: "Arial", size: 18.0)
             }
@@ -160,7 +160,7 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
     }
     
     // MARK: - Today widget specific stuff
-    func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)!) {
+    func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
         completionHandler(NCUpdateResult.NewData)
     }
     

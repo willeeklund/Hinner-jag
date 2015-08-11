@@ -15,7 +15,7 @@ extension UIViewController {
     func gaSetup() {
         let tracker = GAI.sharedInstance().defaultTracker
         if tracker != nil {
-            println("Have already initialized tracker")
+            print("Have already initialized tracker")
             return
         }
         let hinnerJagKitBundle = NSBundle(forClass: LocateStation.classForCoder())

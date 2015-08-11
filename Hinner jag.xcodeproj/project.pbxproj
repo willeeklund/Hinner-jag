@@ -30,23 +30,24 @@
 		0211B24C1AAE4BB000947C45 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0211B24B1AAE4BB000947C45 /* TodayViewController.swift */; };
 		0211B24E1AAE4BB000947C45 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0211B24D1AAE4BB000947C45 /* MainInterface.storyboard */; };
 		0211B2511AAE4BB000947C45 /* Hinner jag widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0211B2441AAE4BB000947C45 /* Hinner jag widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		0227AD221AC8224200572CD2 /* HeadlineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022DE4831AC8188F000E9462 /* HeadlineCell.swift */; };
-		0227AD231AC8224400572CD2 /* HeadlineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022DE4831AC8188F000E9462 /* HeadlineCell.swift */; };
-		022DE4871AC819AD000E9462 /* HinnerJagTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022DE4861AC819AD000E9462 /* HinnerJagTableViewController.swift */; };
 		0236B3D11ABE218300EDF6C8 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB11ABA42EB003ACD06 /* libGoogleAnalyticsServices.a */; };
 		0236B3D21ABE219600EDF6C8 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB11ABA42EB003ACD06 /* libGoogleAnalyticsServices.a */; };
 		0236B3D31ABE21A600EDF6C8 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB11ABA42EB003ACD06 /* libGoogleAnalyticsServices.a */; };
 		023F4B7A1AE8C05A00706872 /* test_departures_9510_karlberg.json in Resources */ = {isa = PBXBuildFile; fileRef = 023F4B791AE8C05A00706872 /* test_departures_9510_karlberg.json */; };
 		023F4B7C1AEA15F500706872 /* test_departures_9520_sodertalje_centrum.json in Resources */ = {isa = PBXBuildFile; fileRef = 023F4B7B1AEA15F500706872 /* test_departures_9520_sodertalje_centrum.json */; };
 		023F4B7E1AEA168100706872 /* test_departures_9530_stockholms_sodra.json in Resources */ = {isa = PBXBuildFile; fileRef = 023F4B7D1AEA168100706872 /* test_departures_9530_stockholms_sodra.json */; };
-		023F4B7F1AEA965600706872 /* HeadlineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022DE4831AC8188F000E9462 /* HeadlineCell.swift */; };
-		023F4B801AEA965C00706872 /* TravelHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DDF8481ABDAFAE00A9AF12 /* TravelHeaderCell.swift */; };
 		025C989A1AD2947A0096FC79 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025C98991AD2947A0096FC79 /* MapViewController.swift */; };
 		026C9F8D1AD2E85500B75285 /* Hinner jag WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 02F2FF331AB48BB8001A1F90 /* Hinner jag WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		02873E041AE423C600D17610 /* GAIExtendViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B11BAE1ABA4165003ACD06 /* GAIExtendViewControllers.swift */; };
-		02873E051AE4257E00D17610 /* GAIExtendViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B11BAE1ABA4165003ACD06 /* GAIExtendViewControllers.swift */; };
-		02873E061AE4258000D17610 /* GAIExtendViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B11BAE1ABA4165003ACD06 /* GAIExtendViewControllers.swift */; };
 		0289760F1ABE164B00A67E9B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0211B1ED1AAE37B600947C45 /* Images.xcassets */; };
+		029149161B7A7F4100DAE8BD /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0236B3CF1ABE213B00EDF6C8 /* libGoogleAnalyticsServices.a */; };
+		029149171B7A7F7E00DAE8BD /* TravelHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DDF8481ABDAFAE00A9AF12 /* TravelHeaderCell.swift */; };
+		029149181B7A7F8000DAE8BD /* TravelHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DDF8481ABDAFAE00A9AF12 /* TravelHeaderCell.swift */; };
+		029149191B7A7FA800DAE8BD /* GAIExtendViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B11BAE1ABA4165003ACD06 /* GAIExtendViewControllers.swift */; };
+		0291491A1B7A7FA900DAE8BD /* GAIExtendViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B11BAE1ABA4165003ACD06 /* GAIExtendViewControllers.swift */; };
+		0291491C1B7A833300DAE8BD /* HinnerJagTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022DE4861AC819AD000E9462 /* HinnerJagTableViewController.swift */; };
+		0291491D1B7A833400DAE8BD /* HinnerJagTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022DE4861AC819AD000E9462 /* HinnerJagTableViewController.swift */; };
+		0291491E1B7A835500DAE8BD /* HeadlineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022DE4831AC8188F000E9462 /* HeadlineCell.swift */; };
+		0291491F1B7A835600DAE8BD /* HeadlineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022DE4831AC8188F000E9462 /* HeadlineCell.swift */; };
 		0295DD441AC7F6E500D850BA /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0295DD431AC7F6E500D850BA /* Utils.swift */; };
 		02B11BA21ABA3D02003ACD06 /* GAI.h in Headers */ = {isa = PBXBuildFile; fileRef = 02B11B981ABA3D02003ACD06 /* GAI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		02B11BA31ABA3D02003ACD06 /* GAIDictionaryBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 02B11B991ABA3D02003ACD06 /* GAIDictionaryBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -72,8 +73,6 @@
 		02C592A51B013FD4002A88E4 /* test_departures_9325_sundbyberg.json in Resources */ = {isa = PBXBuildFile; fileRef = 02C592A41B013FD4002A88E4 /* test_departures_9325_sundbyberg.json */; };
 		02C592A71B0140A5002A88E4 /* test_departures_9180_farsta_strand.json in Resources */ = {isa = PBXBuildFile; fileRef = 02C592A61B0140A5002A88E4 /* test_departures_9180_farsta_strand.json */; };
 		02D4E8431AB61DDC00FD597F /* Hinner_jag_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D4E8421AB61DDC00FD597F /* Hinner_jag_Tests.swift */; };
-		02DDF84C1ABDB18A00A9AF12 /* TravelHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DDF8481ABDAFAE00A9AF12 /* TravelHeaderCell.swift */; };
-		02DDF84D1ABDB18D00A9AF12 /* TravelHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DDF8481ABDAFAE00A9AF12 /* TravelHeaderCell.swift */; };
 		02DDF84E1ABDB19200A9AF12 /* TravelDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DDF84A1ABDAFBB00A9AF12 /* TravelDetailsCell.swift */; };
 		02DDF84F1ABDB19400A9AF12 /* TravelDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DDF84A1ABDAFBB00A9AF12 /* TravelDetailsCell.swift */; };
 		02E90DA81AB0FBAF00FD5DB7 /* HinnerJagKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0211B20B1AAE37FB00947C45 /* HinnerJagKit.framework */; };
@@ -286,6 +285,7 @@
 				0236B3D21ABE219600EDF6C8 /* libGoogleAnalyticsServices.a in Frameworks */,
 				02B11BB81ABA4331003ACD06 /* libz.dylib in Frameworks */,
 				02B11BB61ABA431E003ACD06 /* SystemConfiguration.framework in Frameworks */,
+				029149161B7A7F4100DAE8BD /* libGoogleAnalyticsServices.a in Frameworks */,
 				02B11BB41ABA430B003ACD06 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -758,6 +758,8 @@
 		0211B1D61AAE37B600947C45 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Wilhelm Eklund";
 				TargetAttributes = {
@@ -900,15 +902,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				029149181B7A7F8000DAE8BD /* TravelHeaderCell.swift in Sources */,
 				02ED99B61AD2FEC700CB6C9E /* BWWalkthroughPageViewController.swift in Sources */,
+				0291491C1B7A833300DAE8BD /* HinnerJagTableViewController.swift in Sources */,
 				0211B1E91AAE37B600947C45 /* MainAppViewController.swift in Sources */,
-				02873E051AE4257E00D17610 /* GAIExtendViewControllers.swift in Sources */,
 				02ED99B71AD2FEC700CB6C9E /* BWWalkthroughViewController.swift in Sources */,
+				0291491E1B7A835500DAE8BD /* HeadlineCell.swift in Sources */,
+				0291491A1B7A7FA900DAE8BD /* GAIExtendViewControllers.swift in Sources */,
 				02DDF84E1ABDB19200A9AF12 /* TravelDetailsCell.swift in Sources */,
-				02DDF84C1ABDB18A00A9AF12 /* TravelHeaderCell.swift in Sources */,
 				0211B1E71AAE37B600947C45 /* Hinner_jag_.xcdatamodeld in Sources */,
 				0211B1E41AAE37B600947C45 /* AppDelegate.swift in Sources */,
-				0227AD221AC8224200572CD2 /* HeadlineCell.swift in Sources */,
 				025C989A1AD2947A0096FC79 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -918,14 +921,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0295DD441AC7F6E500D850BA /* Utils.swift in Sources */,
-				02873E041AE423C600D17610 /* GAIExtendViewControllers.swift in Sources */,
-				023F4B801AEA965C00706872 /* TravelHeaderCell.swift in Sources */,
-				022DE4871AC819AD000E9462 /* HinnerJagTableViewController.swift in Sources */,
 				0211B22C1AAE383500947C45 /* Station.swift in Sources */,
 				0211B2301AAE389A00947C45 /* LocateStation.swift in Sources */,
 				0211B2321AAE38B100947C45 /* Departure.swift in Sources */,
 				0211B22E1AAE387500947C45 /* RealtimeDepartures.swift in Sources */,
-				023F4B7F1AEA965600706872 /* HeadlineCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -941,11 +940,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				029149191B7A7FA800DAE8BD /* GAIExtendViewControllers.swift in Sources */,
+				0291491F1B7A835600DAE8BD /* HeadlineCell.swift in Sources */,
 				0211B24C1AAE4BB000947C45 /* TodayViewController.swift in Sources */,
-				0227AD231AC8224400572CD2 /* HeadlineCell.swift in Sources */,
-				02873E061AE4258000D17610 /* GAIExtendViewControllers.swift in Sources */,
+				0291491D1B7A833400DAE8BD /* HinnerJagTableViewController.swift in Sources */,
 				02DDF84F1ABDB19400A9AF12 /* TravelDetailsCell.swift in Sources */,
-				02DDF84D1ABDB18D00A9AF12 /* TravelHeaderCell.swift in Sources */,
+				029149171B7A7F7E00DAE8BD /* TravelHeaderCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1075,6 +1075,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_BUILD_NUMBER = 15;
 				CURRENT_PROJECT_VERSION = 1.3;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GA_TRACKING_ID = off;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1124,6 +1125,7 @@
 				COPY_PHASE_STRIP = YES;
 				CURRENT_BUILD_NUMBER = 15;
 				CURRENT_PROJECT_VERSION = 1.3;
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GA_TRACKING_ID = "UA-60944711-1";
@@ -1147,6 +1149,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Hinner jag?/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1164,6 +1167,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Hinner jag?/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -29,6 +29,9 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
     // Helpers to keep state
     var typesOfRows: [String] = [String]()
     var groupFromIndex = Dictionary<Int, Int>()
+    // Save away latest position in UserDefaults
+    let latestStationLatKey = "latestStationLat"
+    let latestStationLongKey = "latestStationLong"
 
     @IBOutlet weak var closestStationLabel: WKInterfaceLabel!
     @IBOutlet weak var tableView: WKInterfaceTable!
@@ -36,7 +39,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
     // MARK: - Initilization
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
-        println("awaking - finally!")
+        print("awaking - finally!")
         self.locationManager.delegate = self
         self.locationManager.requestWhenInUseAuthorization()
         self.locateStation.delegate = self
@@ -60,11 +63,11 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
     // MARK: - Update UI
     func updateUI() {
         if 0 == self.departuresDict.count {
-            println("updateUI() - missing departuresDict")
+            print("updateUI() - missing departuresDict")
         } else if 0 == self.mappingDict.count {
-            println("updateUI() - missing mappingDict")
+            print("updateUI() - missing mappingDict")
         } else {
-            println("updateUI() - has both")
+            print("updateUI() - has both")
         }
         if nil == self.closestStation {
             self.closestStationLabel.setText("Söker plats...")
@@ -99,12 +102,12 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
     }
     
     func fillTableWithContent() {
-        println("fillTableWithContent() -  InterfaceController")
+        print("fillTableWithContent() -  InterfaceController")
         // Create table rows and fill with content
         var currentHeaderIndex: Int?
         var currentGroupIndex: Int?
         var currentGroupDepartures = [Departure]()
-        for (index, rowType) in enumerate(self.typesOfRows) {
+        for (index, rowType) in self.typesOfRows.enumerate() {
             if "header" == rowType {
                 if let header = self.tableView.rowControllerAtIndex(index) as! TravelHeaderRow? {
                     // Set label for header row
@@ -179,7 +182,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
     func locateStationFoundSortedStations(stationsSorted: [Station], withDepartures departures: [Departure]?, error: NSError?) {
         self.closestStation = stationsSorted.first
         if nil == departures {
-            println("No departures were found. Error: \(error)")
+            print("No departures were found. Error: \(error)")
         }
         self.fetchedDepartures = departures
         self.createMappingFromFetchedDepartures()
@@ -198,15 +201,15 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
     }
 
     // MARK: - Get location of the user
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        println("didUpdateLocations")
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("didUpdateLocations")
         self.locationManager.stopUpdatingLocation()
-        let location = locations.last as! CLLocation
+        let location = locations.last!
         self.locateStation.findClosestStationFromLocationAndFetchDepartures(location)
     }
     
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-        println("ERROR - location manager. \(error)")
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("ERROR - location manager. \(error)")
     }
     
     // MARK: - Google Analytics
@@ -217,7 +220,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
     func gaSetup() {
         let tracker = GAI.sharedInstance().defaultTracker
         if tracker != nil {
-            println("Have already initialized tracker")
+            print("Have already initialized tracker")
             return
         }
         let hinnerJagKitBundle = NSBundle(forClass: LocateStation.classForCoder())

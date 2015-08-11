@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import MapKit
+import HinnerJagKit
 
 public class HinnerJagTableViewController: UITableViewController, LocateStationDelegate
 {
@@ -44,14 +45,14 @@ public class HinnerJagTableViewController: UITableViewController, LocateStationD
         self.closestSortedStations = stationsSorted
         self.fetchedDepartures = departures
         if nil != station {
-            println("Now we are using the location callback. \(station!)")
+            print("Now we are using the location callback. \(station!)")
             self.trackEvent("Station", action: "found", label: "\(station!.title) (\(station!.id))", value: 1)
         } else {
             self.trackEvent("Station", action: "not_found", label: "", value: nil)
         }
         
         if nil == departures {
-            println("No departures were found. Error: \(error)")
+            print("No departures were found. Error: \(error)")
             self.trackEvent("Departures", action: "not_found", label: "", value: nil)
             return
         }
@@ -82,11 +83,11 @@ public class HinnerJagTableViewController: UITableViewController, LocateStationD
         self.shownStationType = type
         self.createMappingFromFetchedDepartures()
         self.trackEvent("TravelType", action: "changePreferred", label: "\(type.description())", value: 1)
-        println("Preferred travel type \(type.description())")
+        print("Preferred travel type \(type.description())")
     }
     
     // MARK: - Lifecycle stuff
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 //        self.gaSetup()
     }
@@ -131,18 +132,18 @@ public class HinnerJagTableViewController: UITableViewController, LocateStationD
             return
         }
         let usedRow = indexPath.row + 1
-        println("Did select section: \(indexPath.section) row: \(usedRow)")
+        print("Did select section: \(indexPath.section) row: \(usedRow)")
         if usedRow < self.closestSortedStations.count {
             let station = self.closestSortedStations[usedRow]
             searchFromNewClosestStation(station)
-            self.trackEvent("Station", action: "change_from_table", label: "\(station.title) (\(station.id))", value: 1)
+            self.trackEvent("Station", action: "change_from_table", label: "\(station.title!) (\(station.id))", value: 1)
         }
         self.selectChosenStation = false
     }
     
     public func searchFromNewClosestStation(newStation: Station) {
         self.closestStation = newStation
-        println("Selected station: \(self.closestStation!)")
+        print("Selected station: \(self.closestStation!)")
         self.locateStation.findClosestStationFromLocationAndFetchDepartures(self.closestStation!)
         self.departuresDict = Dictionary<String, [Departure]>()
     }

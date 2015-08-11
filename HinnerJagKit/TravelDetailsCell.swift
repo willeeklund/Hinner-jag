@@ -16,7 +16,7 @@ class TravelDetailsCell: UITableViewCell
     @IBOutlet weak var remainingTimeLabel: UILabel!
     @IBOutlet weak var destinationLabel: UILabel!
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
