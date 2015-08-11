@@ -50,9 +50,16 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
     // MARK: - Will activate
     override func willActivate() {
         super.willActivate()
-        println("willActivate()")
+        print("willActivate()")
+        // Read latest station coordinates from UserDefaults
+        let latestStationLat = NSUserDefaults.standardUserDefaults().doubleForKey(latestStationLatKey)
+        let latestStationLong = NSUserDefaults.standardUserDefaults().doubleForKey(latestStationLongKey)
+        if 0.0 != latestStationLat && 0.0 != latestStationLong {
+            let location = CLLocation(latitude: latestStationLat, longitude: latestStationLong)
+            print("Latest location was \(location)")
+            self.locateStation.findClosestStationFromLocationAndFetchDepartures(location)
+        }
         // Reset UI
-        self.closestStation = nil
         self.departuresDict = Dictionary<String, [Departure]>() // This will updateUI()
         // Start updating location
         self.locationManager.startUpdatingLocation()
@@ -206,6 +213,9 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
         self.locationManager.stopUpdatingLocation()
         let location = locations.last!
         self.locateStation.findClosestStationFromLocationAndFetchDepartures(location)
+        // Save latest coordinates
+        NSUserDefaults.standardUserDefaults().setDouble(location.coordinate.latitude, forKey: latestStationLatKey)
+        NSUserDefaults.standardUserDefaults().setDouble(location.coordinate.longitude, forKey: latestStationLongKey)
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
