@@ -27,8 +27,7 @@ fetchDeparturesFromSiteId = function (siteId, callback) {
       content.ResponseData.StopPointDeviations = [];
       callback(err, content);
     } catch(err) {
-      console.log('SL_api_url'.green, SL_api_url);
-      console.log('requestResult body'.yellow, requestResult.body);
+      console.log('Error parsing response from Realtimedepartures'.red);
       callback(err, {});
     }
   });
