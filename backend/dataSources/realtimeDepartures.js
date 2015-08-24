@@ -18,6 +18,8 @@ fetchDeparturesFromSiteId = function (siteId, callback) {
       console.log('requestResult from SL'.red, requestResult);
       return;
     }
+    console.log('SL_api_url'.green, SL_api_url);
+    console.log('requestResult'.yellow, requestResult);
     var content = JSON.parse(requestResult.body);
     // Remove all fields except Metros and Trains
     content.ResponseData.Buses = [];
