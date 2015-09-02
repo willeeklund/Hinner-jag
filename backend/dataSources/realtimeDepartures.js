@@ -28,7 +28,12 @@ fetchDeparturesFromSiteId = function (siteId, callback) {
       callback(err, content);
     } catch(err) {
       console.log('Error parsing response from Realtimedepartures'.red);
-      callback(err, {});
+      callback(err, {
+        ResponseData: {
+          Metros: [],
+          Trains: []
+        }
+      });
     }
   });
 };
