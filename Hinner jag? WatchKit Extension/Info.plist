@@ -41,6 +41,6 @@
 	<key>WKAppBundleIdentifier</key>
 	<string>${BUNDLE_ID}</string>
 	<key>WKCompanionAppBundleIdentifier </key>
-	<string>${BUNDLE_ID}</string>
+	<string>com.wilhelmeklund.Hinner-jag${BUNDLE_ID_SUFFIX}</string>
 </dict>
 </plist>

@@ -35,9 +35,9 @@ class HinnerJagKitTests: XCTestCase {
     }
     
     func testLocatingAbrahamsberg() {
-        var locateStation = LocateStation()
+        let locateStation = LocateStation()
         let closestSortedStations: [Station] = locateStation.findStationsSortedClosestToLatitude(59.3365630909855, longitude: 17.9531728536484)
-        var closest = closestSortedStations.first
+        let closest = closestSortedStations.first
         
         XCTAssert(nil != closest, "Can find a station")
         XCTAssert(closest!.title == "Abrahamsberg", "Can find Abrahamsbergs station")
@@ -45,7 +45,7 @@ class HinnerJagKitTests: XCTestCase {
     }
     
     func testMetroStationListIsValid() {
-        var locateStation = LocateStation()
+        let locateStation = LocateStation()
         XCTAssert(locateStation.stationList.count >= 100, "At least 100 stations could be parsed from metro_stations.json")
     }
     
@@ -53,7 +53,7 @@ class HinnerJagKitTests: XCTestCase {
         let expectation = self.expectationWithDescription("Can fetch from the API")
         let realtimeDepartures = RealtimeDepartures()
         var depList: [Departure]?
-        var abDict = NSMutableDictionary()
+        let abDict = NSMutableDictionary()
         abDict.setValue(9110, forKey: "siteid")
         abDict.setValue("Abrahamsberg fake", forKey: "sitename")
         abDict.setValue("Metro", forKey: "stationType")
@@ -66,7 +66,7 @@ class HinnerJagKitTests: XCTestCase {
             depList = departures
             XCTAssert(departures != nil, "We got some departures")
             XCTAssert(departures!.count > 0, "At least one departure")
-            let (mappingDict, departuresDict) = Utils.getMappingFromDepartures(departures!, station: abrahamsbergStation, mappingStart: 0)
+            let (_, departuresDict) = Utils.getMappingFromDepartures(departures!, station: abrahamsbergStation, mappingStart: 0)
             XCTAssert(departuresDict.count == 2, "There are exactly 2 groups of departures from Abrahamsberg")
             expectation.fulfill()
         }
