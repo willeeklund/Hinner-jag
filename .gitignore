@@ -3,4 +3,5 @@ node_modules
 Exports/
 npm-debug.log
 newrelic_agent.log
+build/
 
