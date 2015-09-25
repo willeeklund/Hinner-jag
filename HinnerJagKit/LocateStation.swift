@@ -83,7 +83,7 @@ public class LocateStation: NSObject, CLLocationManagerDelegate
     }
 
     public func findClosestStationFromLocationAndFetchDepartures(location: CLLocation) {
-        var closestStationsSorted: [Station] = self.findClosestStationFromLocation(location)
+        let closestStationsSorted: [Station] = self.findClosestStationFromLocation(location)
 
         self.realtimeDeparturesObj.departuresFromStation(closestStationsSorted.first!) {
             (departures: [Departure]?, error: NSError?) -> () in
