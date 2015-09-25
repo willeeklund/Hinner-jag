@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Complication - HinnerJagWatchOS2.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
+		<key>Glance - HinnerJagWatchOS2.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>Hinner jag WatchKit App.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>Hinner jag widget.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>Hinner jag.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>HinnerJagKit.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>HinnerJagWatchOS2.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>Notification - HinnerJagWatchOS2.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>0211B1DD1AAE37B600947C45</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0211B20A1AAE37FB00947C45</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0211B2141AAE37FC00947C45</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0211B2431AAE4BB000947C45</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0291492C1B7A89BA00DAE8BD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>029149561B7A9BF000DAE8BD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>02C2234C1B8EE5FF007A162E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>02D4E83D1AB61DDC00FD597F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>02F2FF411AB48BB8001A1F90</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

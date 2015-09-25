@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>08775E68-D06C-4AFB-9024-CBF2148AF63C</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Hinner jag</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>59BA8F1B7B77D35A80EC36F02C3EB7A0DE71B065</key>
+		<string>https://git.heroku.com/hinner-jag.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Hinner jag.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>59BA8F1B7B77D35A80EC36F02C3EB7A0DE71B065</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://git.heroku.com/hinner-jag.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>59BA8F1B7B77D35A80EC36F02C3EB7A0DE71B065</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>59BA8F1B7B77D35A80EC36F02C3EB7A0DE71B065</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Hinner%20jag%3F</string>
+		</dict>
+	</array>
+</dict>
+</plist>
