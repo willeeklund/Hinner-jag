@@ -24,7 +24,7 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
-		<key>Hinner jag.xcscheme</key>
+		<key>Hinner jag.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -33,6 +33,11 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
+		</dict>
+		<key>HinnerJagWatchKit.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
 		</dict>
 		<key>HinnerJagWatchOS2.xcscheme</key>
 		<dict>
@@ -67,6 +72,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>0227D91A1BDFFE3D00E734BB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>0291492C1B7A89BA00DAE8BD</key>
 		<dict>
 			<key>primary</key>
@@ -78,6 +88,11 @@
 			<true/>
 		</dict>
 		<key>02C2234C1B8EE5FF007A162E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>02CE162E1BD9594F009F788E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

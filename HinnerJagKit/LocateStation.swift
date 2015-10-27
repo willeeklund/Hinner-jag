@@ -13,7 +13,7 @@ public protocol LocateStationDelegate {
     func locateStationFoundSortedStations(stationsSorted: [Station], withDepartures departures: [Departure]?, error: NSError?)
 }
 
-public class LocateStation: NSObject, CLLocationManagerDelegate
+public class LocateStationBase: NSObject, CLLocationManagerDelegate
 {
     public var delegate: LocateStationDelegate?
     
@@ -65,9 +65,7 @@ public class LocateStation: NSObject, CLLocationManagerDelegate
         self.locationManager.requestWhenInUseAuthorization()
     }
     
-    public func startUpdatingLocation() {
-        self.locationManager.startUpdatingLocation()
-    }
+    public func startUpdatingLocation() {}
     
     // MARK: - Get location of the user
     public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
