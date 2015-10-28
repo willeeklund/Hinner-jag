@@ -54,7 +54,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             case .UtilitarianLarge:
                 template = nil
             case .CircularSmall:
-                let modularTemplate = CLKComplicationTemplateCircularSmallRingImage()
+                let modularTemplate = CLKComplicationTemplateCircularSmallSimpleImage()
                 modularTemplate.imageProvider = imageProviderTrain
                 modularTemplate.tintColor = tintColor
                 template = modularTemplate
@@ -108,7 +108,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             case .UtilitarianLarge:
                 template = nil
             case .CircularSmall:
-                let modularTemplate = CLKComplicationTemplateCircularSmallRingImage()
+                let modularTemplate = CLKComplicationTemplateCircularSmallSimpleImage()
                 modularTemplate.imageProvider = imageProviderTrain
                 modularTemplate.tintColor = tintColor
                 template = modularTemplate
