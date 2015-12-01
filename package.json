@@ -34,6 +34,7 @@
     "newcap": true,
     "quotmark": "single",
     "trailing": true,
+    "strict": false,
     "undef": true,
     "unused": true,
     "curly": true,

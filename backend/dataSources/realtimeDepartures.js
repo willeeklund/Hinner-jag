@@ -18,14 +18,23 @@ fetchDeparturesFromSiteId = function (siteId, callback) {
       console.log('requestResult from SL'.red, requestResult);
       return;
     }
-    var content = JSON.parse(requestResult.body);
-    // Remove all fields except Metros and Trains
-    content.ResponseData.Buses = [];
-    content.ResponseData.Ships = [];
-    content.ResponseData.Trams = [];
-    content.ResponseData.StopPointDeviations = [];
-
-    callback(err, content);
+    try {
+      var content = JSON.parse(requestResult.body);
+      // Remove all fields except Metros and Trains
+      content.ResponseData.Buses = [];
+      content.ResponseData.Ships = [];
+      content.ResponseData.Trams = [];
+      content.ResponseData.StopPointDeviations = [];
+      callback(err, content);
+    } catch(err) {
+      console.log('Error parsing response from Realtimedepartures'.red);
+      callback(err, {
+        ResponseData: {
+          Metros: [],
+          Trains: []
+        }
+      });
+    }
   });
 };
 
