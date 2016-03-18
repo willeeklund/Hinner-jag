@@ -9,9 +9,10 @@
 import UIKit
 import CoreData
 import HinnerJagKit
+import WatchConnectivity
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
 
     var window: UIWindow?
 
@@ -99,7 +100,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
 
     // MARK: - Core Data Saving support
-
     func saveContext () {
         if let moc = self.managedObjectContext {
             var error: NSError? = nil
@@ -116,6 +116,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    // MARK: - Watch Connectivity delegate
+    @available(iOS 9.0, *)
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
+        // Google analytics track screen name
+        if let screenName = message["trackScreenName"] as? String {
+            sendScreenViewToGA(screenName)
+            replyHandler(["msg": "Tracked screen view of '\(screenName)' in GA"])
+        }
+    }
+    
+    func sendScreenViewToGA(name: String) {
+        let tracker = GAI.sharedInstance().defaultTracker
+        if nil == tracker {
+            return
+        }
+        tracker.set(kGAIScreenName, value: name)
+        let eventTracker: NSDictionary = GAIDictionaryBuilder.createScreenView().build()
+        tracker.send(eventTracker as! [NSObject : AnyObject])
+    }
 
 }
-

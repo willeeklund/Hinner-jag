@@ -24,7 +24,7 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setScreeName("MainAppViewController")
+        self.setScreenName("MainAppViewController")
         self.departuresDict = Dictionary<String, [Departure]>()
         self.closestStation = nil
         self.startWalkthroughTimer()

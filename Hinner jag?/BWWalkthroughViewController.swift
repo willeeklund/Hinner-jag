@@ -83,7 +83,7 @@ At the moment it's only used to perform custom animations on didScroll.
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setScreeName("WalkthroughViewController")
+        self.setScreenName("WalkthroughViewController")
         
         // Initialize UIScrollView
         

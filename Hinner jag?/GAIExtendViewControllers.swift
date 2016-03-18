@@ -31,7 +31,7 @@ extension UIViewController {
         }
     }
     
-    func setScreeName(name: String) {
+    func setScreenName(name: String) {
         self.title = name
         self.sendScreenView()
     }

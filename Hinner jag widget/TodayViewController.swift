@@ -43,7 +43,7 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setScreeName("TodayViewController")
+        self.setScreenName("TodayViewController")
         self.tableView.delegate = self
         
         // Reset

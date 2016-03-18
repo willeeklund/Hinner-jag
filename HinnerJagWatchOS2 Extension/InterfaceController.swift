@@ -9,6 +9,7 @@
 import WatchKit
 import Foundation
 import HinnerJagWatchKit
+import WatchConnectivity
 
 class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, LocateStationDelegate {
     // MARK: - Variables
@@ -219,7 +220,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
     
     // MARK: - Google Analytics
     func setGAScreenName() {
-        self.setScreeName("WatchAppInterfaceController")
+        self.setScreenName("WatchAppInterfaceController")
     }
     
     func gaSetup() {
@@ -241,13 +242,17 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
 //        }
     }
     
-    func setScreeName(name: String) {
+    func setScreenName(name: String) {
 //        let tracker = GAI.sharedInstance().defaultTracker
 //        if nil == tracker {
 //            return
 //        }
 //        tracker.set(kGAIScreenName, value: name)
 //        tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
+
+        sendMessageToPhone([
+            "trackScreenName": name
+        ])
     }
     
     func trackEvent(category: String, action: String, label: String, value: NSNumber?) {
@@ -257,5 +262,38 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
 //        }
 //        let trackDictionary = GAIDictionaryBuilder.createEventWithCategory(category, action: action, label: label, value: value).build()
 //        tracker.send(trackDictionary as [NSObject : AnyObject])
+
+        // Send to iOS app using Watch Connectivity
+        let valueToSend: NSNumber
+        if let value = value {
+            valueToSend = value
+        } else {
+            valueToSend = 0.0
+        }
+        let eventInfo: [String: AnyObject] = [
+            "category": category,
+            "action": action,
+            "label": label,
+            "value": valueToSend
+        ]
+        sendMessageToPhone([
+            "trackEvent": eventInfo
+        ])
+    }
+    
+    func sendMessageToPhone(message: [String: AnyObject]) {
+        // Send to iOS app using Watch Connectivity
+        if true == WCSession.defaultSession().reachable {
+            let session = WCSession.defaultSession()
+            session.sendMessage(message, replyHandler: { reply in
+                if let msg = reply["msg"] as? String {
+                    print("Message from iPhone: \(msg)")
+                }
+                }, errorHandler: { error in
+                    print("Error: \(error)")
+            })
+        } else {
+            print("Could not reach iPhone using WCSession in setScreenName")
+        }
     }
 }

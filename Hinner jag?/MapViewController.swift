@@ -25,7 +25,7 @@ class MapViewController: UIViewController, MKMapViewDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setScreeName("MapViewController")
+        self.setScreenName("MapViewController")
         self.mapView.delegate = self
         if nil != self.locateStation {
             for station in self.locateStation!.stationList {
