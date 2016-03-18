@@ -61,7 +61,8 @@ public class RealtimeDepartures
     
     func performRealtimeApiReqForStation(station: Station, callback: ([Departure]?, error: NSError?) -> ()) {
         print("stationId = \(station.id)")
-        let request = NSURLRequest(URL: NSURL(string: "\(self.apiServer)/api/realtimedepartures/\(station.id).json")!)
+        let urlString = "https://api.sl.se/api2/realtimedepartures.json?key=\(realtimeKey)&timewindow=60&siteid=\(station.id)"
+        let request = NSURLRequest(URL: NSURL(string: urlString)!)
         let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
             if error == nil {
                 self.parseJsonDataToDepartures(data, station: station, callback: callback)

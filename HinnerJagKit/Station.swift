@@ -50,7 +50,7 @@ public class Station: CLLocation, MKAnnotation
     
     override public var description: String {
         get {
-            return "\(self.typeOfStation()) \(self.id): \(self.title) at (\(self.coordinate.latitude), \(self.coordinate.longitude))"
+            return "\(self.typeOfStation()) \(self.id): \(self.title!) at (\(self.coordinate.latitude), \(self.coordinate.longitude))"
         }
     }
     

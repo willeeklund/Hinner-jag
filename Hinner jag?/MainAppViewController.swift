@@ -75,9 +75,11 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
             let usedRow = indexPath.row + 1
             if usedRow < self.closestSortedStations.count {
                 let station = self.closestSortedStations[usedRow]
-                let dist = station.distanceFromLocation(self.locateStation.locationManager.location!)
-                let distFormat = Utils.distanceFormat(dist)
-                cell?.textLabel?.text = "    \(station.title!) (\(distFormat))"
+                if let location = self.locateStation.locationManager.location {
+                    let dist = station.distanceFromLocation(location)
+                    let distFormat = Utils.distanceFormat(dist)
+                    cell?.textLabel?.text = "    \(station.title!) (\(distFormat))"
+                }
                 cell?.textLabel?.textColor = UIColor(red: 0, green: 0.478431, blue: 1.0, alpha: 1.0)
             }
 
