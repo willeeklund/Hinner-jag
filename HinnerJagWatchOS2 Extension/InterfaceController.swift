@@ -71,8 +71,21 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
     // MARK: - Update UI
     func updateUI() {
         if nil == self.closestStation {
-            self.closestStationLabel.setText("Söker plats...")
+            self.closestStationLabel.setText("Söker plats")
             self.tableView.setNumberOfRows(0, withRowType: "header")
+            var timerCount = 0
+            NSTimer.schedule(repeatInterval: 1) { (timer) in
+                timerCount++
+                print("Interval round \(timerCount)")
+                // Check if still no station is selected
+                if nil == self.closestStation {
+                    let points = String(count: timerCount, repeatedValue: "." as Character)
+                    self.closestStationLabel.setText("Söker plats\(points)")
+                } else {
+                    timer.invalidate()
+                    print("Stopped interval after \(timerCount) seconds")
+                }
+            }
             return
         }
         

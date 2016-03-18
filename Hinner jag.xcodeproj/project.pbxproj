@@ -56,6 +56,9 @@
 		023F4B7A1AE8C05A00706872 /* test_departures_9510_karlberg.json in Resources */ = {isa = PBXBuildFile; fileRef = 023F4B791AE8C05A00706872 /* test_departures_9510_karlberg.json */; };
 		023F4B7C1AEA15F500706872 /* test_departures_9520_sodertalje_centrum.json in Resources */ = {isa = PBXBuildFile; fileRef = 023F4B7B1AEA15F500706872 /* test_departures_9520_sodertalje_centrum.json */; };
 		023F4B7E1AEA168100706872 /* test_departures_9530_stockholms_sodra.json in Resources */ = {isa = PBXBuildFile; fileRef = 023F4B7D1AEA168100706872 /* test_departures_9530_stockholms_sodra.json */; };
+		0248BCB11C9CB5E500F0F05A /* NSTimerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0248BCB01C9CB5E500F0F05A /* NSTimerExtension.swift */; };
+		0248BCB21C9CB63100F0F05A /* NSTimerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0248BCB01C9CB5E500F0F05A /* NSTimerExtension.swift */; };
+		0248BCB31C9CB6AE00F0F05A /* NSTimerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0248BCB01C9CB5E500F0F05A /* NSTimerExtension.swift */; };
 		025C989A1AD2947A0096FC79 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025C98991AD2947A0096FC79 /* MapViewController.swift */; };
 		026C9F8D1AD2E85500B75285 /* Hinner jag WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 02F2FF331AB48BB8001A1F90 /* Hinner jag WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0289760F1ABE164B00A67E9B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0211B1ED1AAE37B600947C45 /* Images.xcassets */; };
@@ -321,6 +324,7 @@
 		023F4B791AE8C05A00706872 /* test_departures_9510_karlberg.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test_departures_9510_karlberg.json; sourceTree = "<group>"; };
 		023F4B7B1AEA15F500706872 /* test_departures_9520_sodertalje_centrum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test_departures_9520_sodertalje_centrum.json; sourceTree = "<group>"; };
 		023F4B7D1AEA168100706872 /* test_departures_9530_stockholms_sodra.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test_departures_9530_stockholms_sodra.json; sourceTree = "<group>"; };
+		0248BCB01C9CB5E500F0F05A /* NSTimerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSTimerExtension.swift; sourceTree = "<group>"; };
 		025C98991AD2947A0096FC79 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		028EB6611AAF97E6004C508C /* Hinner jag?.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Hinner jag?.entitlements"; sourceTree = "<group>"; };
 		028EB6621AAF983C004C508C /* Hinner jag widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Hinner jag widget.entitlements"; sourceTree = "<group>"; };
@@ -534,6 +538,7 @@
 		0211B20C1AAE37FB00947C45 /* HinnerJagKit */ = {
 			isa = PBXGroup;
 			children = (
+				0248BCAF1C9CB5BB00F0F05A /* Extensions */,
 				022DE4851AC8199B000E9462 /* Controllers */,
 				02DDF8451ABDABFB00A9AF12 /* Views */,
 				02B11B971ABA3CCE003ACD06 /* Google Analytics */,
@@ -633,6 +638,14 @@
 				022DE4861AC819AD000E9462 /* HinnerJagTableViewController.swift */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		0248BCAF1C9CB5BB00F0F05A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0248BCB01C9CB5E500F0F05A /* NSTimerExtension.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		025C989B1AD294820096FC79 /* Controllers */ = {
@@ -1237,6 +1250,7 @@
 				0211B2301AAE389A00947C45 /* LocateStation.swift in Sources */,
 				0227D9301BDFFF9E00E734BB /* LocateStationIOS.swift in Sources */,
 				0211B2321AAE38B100947C45 /* Departure.swift in Sources */,
+				0248BCB11C9CB5E500F0F05A /* NSTimerExtension.swift in Sources */,
 				0211B22E1AAE387500947C45 /* RealtimeDepartures.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1272,6 +1286,7 @@
 				0227D92B1BDFFEDB00E734BB /* Departure.swift in Sources */,
 				0227D9281BDFFE8800E734BB /* LocateStation.swift in Sources */,
 				0227D9321BE0001700E734BB /* LocateStationWatch.swift in Sources */,
+				0248BCB21C9CB63100F0F05A /* NSTimerExtension.swift in Sources */,
 				022238BA1BE0031200E32EBD /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1280,6 +1295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0248BCB31C9CB6AE00F0F05A /* NSTimerExtension.swift in Sources */,
 				02C223651B8EE600007A162E /* NotificationController.swift in Sources */,
 				02C223631B8EE600007A162E /* ExtensionDelegate.swift in Sources */,
 				02C223691B8EE600007A162E /* ComplicationController.swift in Sources */,
