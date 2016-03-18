@@ -51,14 +51,14 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
     override func willActivate() {
         super.willActivate()
         print("willActivate()")
-        // Read latest station coordinates from UserDefaults
-        let latestStationLat = NSUserDefaults.standardUserDefaults().doubleForKey(latestStationLatKey)
-        let latestStationLong = NSUserDefaults.standardUserDefaults().doubleForKey(latestStationLongKey)
-        if 0.0 != latestStationLat && 0.0 != latestStationLong {
-            let location = CLLocation(latitude: latestStationLat, longitude: latestStationLong)
-            print("Latest location was \(location)")
-            self.locateStation.findClosestStationFromLocationAndFetchDepartures(location)
-        }
+//        // Read latest station coordinates from UserDefaults
+//        let latestStationLat = NSUserDefaults.standardUserDefaults().doubleForKey(latestStationLatKey)
+//        let latestStationLong = NSUserDefaults.standardUserDefaults().doubleForKey(latestStationLongKey)
+//        if 0.0 != latestStationLat && 0.0 != latestStationLong {
+//            let location = CLLocation(latitude: latestStationLat, longitude: latestStationLong)
+//            print("Latest location was \(location)")
+//            self.locateStation.findClosestStationFromLocationAndFetchDepartures(location)
+//        }
         // Reset UI
         self.departuresDict = Dictionary<String, [Departure]>() // This will updateUI()
         // Start updating location
@@ -69,13 +69,6 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
     
     // MARK: - Update UI
     func updateUI() {
-//        if 0 == self.departuresDict.count {
-//            print("updateUI() - missing departuresDict")
-//        } else if 0 == self.mappingDict.count {
-//            print("updateUI() - missing mappingDict")
-//        } else {
-//            print("updateUI() - has both")
-//        }
         if nil == self.closestStation {
             self.closestStationLabel.setText("Söker plats...")
             self.tableView.setNumberOfRows(0, withRowType: "header")
