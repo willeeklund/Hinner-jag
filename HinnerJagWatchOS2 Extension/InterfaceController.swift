@@ -36,6 +36,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
     
     @IBOutlet weak var closestStationLabel: WKInterfaceLabel!
     @IBOutlet weak var tableView: WKInterfaceTable!
+    @IBOutlet var fetchingDataLabel: WKInterfaceLabel!
     
     // MARK: - Initilization
     override func awakeWithContext(context: AnyObject?) {
@@ -86,6 +87,8 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
                     print("Stopped interval after \(timerCount) seconds")
                 }
             }
+            // We are not fetching data until we have found our location
+            self.fetchingDataLabel.setHidden(true)
             return
         }
         
@@ -101,6 +104,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
         // Calculate type for the rows
         self.typesOfRows = [String]()
         self.groupFromIndex = Dictionary<Int, Int>()
+        var hasDetails = false
         
         for (index, mappingName) in self.mappingDict {
             // TODO: Calculate startIndexGroup2 in dynamic way, and change variable name
@@ -110,9 +114,13 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
             if let depList = self.departuresDict[mappingName] {
                 for _ in 1...depList.count {
                     self.typesOfRows.append("details")
+                    hasDetails = true
                 }
             }
         }
+        // If we found any details about departures,
+        // hide "Loading data" label
+        self.fetchingDataLabel.setHidden(hasDetails)
     }
     
     func fillTableWithContent() {
