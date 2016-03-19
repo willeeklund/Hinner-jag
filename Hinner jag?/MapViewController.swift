@@ -34,6 +34,7 @@ class MapViewController: UIViewController, MKMapViewDelegate
             self.mapView.showsUserLocation = true
         }
         if self.chosenStation != nil {
+            // Delta will set zoom level
             let delta = 0.02
             let region = MKCoordinateRegion(center: self.chosenStation!.coordinate, span: MKCoordinateSpan(latitudeDelta: delta, longitudeDelta: delta))
             self.mapView.setRegion(region, animated: true)

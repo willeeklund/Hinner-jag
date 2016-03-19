@@ -22,16 +22,19 @@ public class Utils
         if station.stationType == .MetroAndTrain {
             // If we can have multiple types at thie station, only incluce one of them
             switch Utils.getPreferredTravelType() {
+            case .Metro: shownTransportTypes = ["METRO"]
             case .Train: shownTransportTypes = ["TRAIN"]
             default: shownTransportTypes = ["METRO"]
             }
         } else if station.stationType == .Metro {
-            shownTransportTypes = ["METRO"]
+            shownTransportTypes = ["METRO", "BUS"]
         } else if station.stationType == .Train {
             shownTransportTypes = ["TRAIN"]
+        } else if station.stationType == .Bus {
+            shownTransportTypes = ["BUS"]
         } else {
             // Otherwise we can include all, only one will be present
-            shownTransportTypes = ["METRO", "TRAIN"]
+            shownTransportTypes = ["METRO", "TRAIN", "BUS"]
         }
         
         for dept in departures {

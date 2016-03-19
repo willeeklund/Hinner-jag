@@ -81,9 +81,10 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
             height += rowHeight * CGFloat(self.tableView(self.tableView, numberOfRowsInSection: i) + 1)
             i++
         }
+        height = max(height, 180)
         self.preferredContentSize = CGSizeMake(0, height)
     }
-        
+    
     // MARK: - Table stuff
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

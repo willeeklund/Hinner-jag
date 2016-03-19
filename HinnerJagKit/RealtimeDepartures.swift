@@ -94,6 +94,14 @@ public class RealtimeDepartures
                         departureList.append(Departure(dict: item, station: station))
                     }
                 }
+                // Add Bus departures
+                if let buses = allTypes["Buses"] as! [NSDictionary]? {
+                    for item in buses {
+                        // Check that we only get the bus lines we care about for this station
+                        // TODO: Get list of ignored bus lines from CoreData for this station, use blacklist
+                        departureList.append(Departure(dict: item, station: station))
+                    }
+                }
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     callback(departureList, error: nil)
                 })

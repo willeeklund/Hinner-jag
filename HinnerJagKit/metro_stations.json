@@ -1006,5 +1006,19 @@
       "latitude": 58.9016603614973,
       "longitude": 17.9521630219049
     }
+  ],
+  "bus_stations": [
+    {
+      "siteid": 3610,
+      "sitename": "Voltavägen",
+      "latitude": 59.3470696993968,
+      "longitude": 17.9672687763761
+    },
+    {
+      "siteid": 3614,
+      "sitename": "Norra Ulvsunda",
+      "latitude": 59.3507394700690,
+      "longitude": 17.9626886392460
+    }
   ]
 }

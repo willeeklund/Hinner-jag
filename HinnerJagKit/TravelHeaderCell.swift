@@ -36,21 +36,34 @@ public class TravelHeaderCell: UITableViewCell
             let directionSuffix = self.createDirectionSuffix(sectionString, departuresDict: departuresDict)
             
             // Metro groups
-            if sectionString.rangeOfString("gröna") != nil {
-                imageName = "train_green"
-                directionLabel = "Grön linje"
-            } else if sectionString.rangeOfString("röda") != nil {
-                imageName = "train_red"
-                directionLabel = "Röd linje"
-            } else if sectionString.rangeOfString("blå") != nil {
-                imageName = "train_blue"
-                directionLabel = "Blå linje"
+            if sectionString.rangeOfString("METRO") != nil {
+                if sectionString.rangeOfString("gröna") != nil {
+                    imageName = "train_green"
+                    directionLabel = "Grön linje"
+                } else if sectionString.rangeOfString("röda") != nil {
+                    imageName = "train_red"
+                    directionLabel = "Röd linje"
+                } else if sectionString.rangeOfString("blå") != nil {
+                    imageName = "train_blue"
+                    directionLabel = "Blå linje"
+                } else {
+                    print("Can not decide direction label for '\(sectionString)'")
+                    directionLabel = "Tunnelbana"
+                }
             }
             // Train groups
             else if sectionString.rangeOfString("TRAIN") != nil {
-                // TODO: Better image of pendeltåg
                 imageName = "train_purple"
                 directionLabel = ""
+            }
+            // Bus groups
+            else if sectionString.rangeOfString("BUS") != nil {
+                imageName = "bus"
+                directionLabel = "Buss"
+                if let depList = departuresDict[sectionString] {
+                    let firstDep = depList[0]
+                    directionLabel = "Buss \(firstDep.lineNumber)"
+                }
             }
             
             // Set image
@@ -67,10 +80,15 @@ public class TravelHeaderCell: UITableViewCell
     
     internal class func createDirectionSuffix(sectionString: String, departuresDict: Dictionary<String, [Departure]>) -> String {
         let suffixDestination: String
-        if sectionString.rangeOfString("TRAIN") != nil {
-            suffixDestination = "Sthlm"
-        } else {
+        if sectionString.rangeOfString("METRO") != nil {
             suffixDestination = "T-centralen"
+        } else if sectionString.rangeOfString("TRAIN") != nil {
+            suffixDestination = "Sthlm"
+        } else if sectionString.rangeOfString("BUS") != nil {
+            // No direction suffix for buses
+            return ""
+        } else {
+            suffixDestination = ""
         }
         if let depList = departuresDict[sectionString] {
             let firstDep = depList[0]

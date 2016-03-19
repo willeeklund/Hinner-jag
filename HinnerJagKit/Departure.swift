@@ -14,7 +14,7 @@ public class Departure: NSObject
     public var destination: String = ""
     public var remainingTime: String = ""
     public var direction: Int = 0
-    public var lineNumber: Int = 0
+    public var lineNumber: String = ""
     public var lineName: String = ""
     public var transportMode: String = ""
     public var from_central_direction: Int?
@@ -37,7 +37,7 @@ public class Departure: NSObject
         if let dir = dict["JourneyDirection"] as? Int {
             self.direction = dir
         }
-        if let nbr = dict["LineNumber"] as? Int {
+        if let nbr = dict["LineNumber"] as? String {
             self.lineNumber = nbr
         }
         if let name = dict["GroupOfLine"] as? String {
@@ -45,6 +45,10 @@ public class Departure: NSObject
         }
         if let type = dict["TransportMode"] as? String {
             self.transportMode = type
+            if "BUS" == type {
+                // This is currently used when creating groups of departures
+                lineName = "\(lineName) nr \(lineNumber)"
+            }
         }
         self.from_central_direction = station.from_central_direction
         self.stationType = station.stationType

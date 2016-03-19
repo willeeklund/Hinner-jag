@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="obH-mF-fGV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="obH-mF-fGV">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -21,7 +22,7 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" pitchEnabled="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNT-BO-owL">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e7q-bG-9cD">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e7q-bG-9cD">
                                 <rect key="frame" x="494" y="28" width="90" height="30"/>
                                 <color key="backgroundColor" red="0.01176470588" green="0.50588235290000005" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -117,7 +118,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Aktivera vår Today Widget genom att att dra ned från toppen av skärmen. Klicka på &quot;Ändra&quot;." selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITv-wo-L2b">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" text="Aktivera vår Today Widget genom att att dra ned från toppen av skärmen. Klicka på &quot;Ändra&quot;." selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITv-wo-L2b">
                                 <rect key="frame" x="16" y="90" width="568" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="qdP-b2-k0I"/>
@@ -135,7 +136,7 @@
                                 <color key="textColor" red="0.01176470588" green="0.50588235290000005" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intro1" translatesAutoresizingMaskIntoConstraints="NO" id="6zz-NZ-FIJ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="intro1" translatesAutoresizingMaskIntoConstraints="NO" id="6zz-NZ-FIJ">
                                 <rect key="frame" x="16" y="178" width="568" height="352"/>
                             </imageView>
                         </subviews>
@@ -166,8 +167,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeadlineCell" rowHeight="125" id="jIE-yi-3eW" customClass="HeadlineCell" customModule="Hinner_jag" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="22" width="600" height="125"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jIE-yi-3eW" id="L1B-Wu-1kt">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="125"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hinner jag?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hnz-Oe-n2e">
@@ -197,7 +200,7 @@
                                                 <action selector="showWalkthroughButtonPressed:" destination="obH-mF-fGV" eventType="touchUpInside" id="9ms-pO-dtI"/>
                                             </connections>
                                         </button>
-                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3bR-ME-P5W">
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3bR-ME-P5W">
                                             <rect key="frame" x="425" y="57" width="167" height="29"/>
                                             <segments>
                                                 <segment title="Tunnelbana"/>
@@ -267,8 +270,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TravelHeaderCell" id="8tD-IG-LxG" customClass="TravelHeaderCell" customModule="Hinner_jag">
+                                <rect key="frame" x="0.0" y="147" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8tD-IG-LxG" id="WXI-Cc-nVc">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uld-2U-egR">
@@ -313,8 +318,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TravelDetailsCell" id="aFb-2l-7vx" customClass="TravelDetailsCell" customModule="Hinner_jag">
+                                <rect key="frame" x="0.0" y="191" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aFb-2l-7vx" id="cKF-Ui-Ifo">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eyq-gf-bvT">
@@ -377,7 +384,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Klicka på plus-tecknet vid &quot;Hinner jag med t-banan&quot;." selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZc-9C-kke">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" text="Klicka på plus-tecknet vid &quot;Hinner jag med t-banan&quot;." selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZc-9C-kke">
                                 <rect key="frame" x="16" y="90" width="568" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="M2S-AY-8ok"/>
@@ -385,7 +392,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lägg till widgeten" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkR-7o-DJi">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Lägg till widgeten" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkR-7o-DJi">
                                 <rect key="frame" x="208" y="20" width="184" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="21E-4R-GZN"/>
@@ -394,7 +401,7 @@
                                 <color key="textColor" red="0.01176470588" green="0.50588235290000005" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intro2" translatesAutoresizingMaskIntoConstraints="NO" id="1db-Pe-aCO">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="intro2" translatesAutoresizingMaskIntoConstraints="NO" id="1db-Pe-aCO">
                                 <rect key="frame" x="16" y="178" width="568" height="352"/>
                             </imageView>
                         </subviews>
@@ -427,7 +434,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Spara genom att klicka på &quot;Klar&quot; uppe i högra hörnet." selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1R-HC-CpH">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" text="Spara genom att klicka på &quot;Klar&quot; uppe i högra hörnet." selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1R-HC-CpH">
                                 <rect key="frame" x="16" y="90" width="568" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="qu3-rX-wy9"/>
@@ -445,7 +452,7 @@
                                 <color key="textColor" red="0.01176470588" green="0.50588235290000005" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intro3" translatesAutoresizingMaskIntoConstraints="NO" id="Eie-9y-Nff">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="intro3" translatesAutoresizingMaskIntoConstraints="NO" id="Eie-9y-Nff">
                                 <rect key="frame" x="16" y="178" width="568" height="352"/>
                             </imageView>
                         </subviews>
@@ -478,7 +485,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Nu kan du när som helst använda widgeten genom att dra ned i skärmens övre ände. På ett par sekunder ser du närmaste station!" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tp0-JU-h93">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" text="Nu kan du när som helst använda widgeten genom att dra ned i skärmens övre ände. På ett par sekunder ser du närmaste station!" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tp0-JU-h93">
                                 <rect key="frame" x="16" y="90" width="568" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="3B8-qu-sQI"/>
@@ -496,7 +503,7 @@
                                 <color key="textColor" red="0.01176470588" green="0.50588235290000005" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intro4" translatesAutoresizingMaskIntoConstraints="NO" id="bg6-3l-xym">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="intro4" translatesAutoresizingMaskIntoConstraints="NO" id="bg6-3l-xym">
                                 <rect key="frame" x="16" y="178" width="568" height="352"/>
                             </imageView>
                         </subviews>
@@ -529,7 +536,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MB0-NX-DGA">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MB0-NX-DGA">
                                 <rect key="frame" x="16" y="90" width="568" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="pQZ-yT-hHE"/>
@@ -538,10 +545,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intro5" translatesAutoresizingMaskIntoConstraints="NO" id="j0o-9u-lvm">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="intro5" translatesAutoresizingMaskIntoConstraints="NO" id="j0o-9u-lvm">
                                 <rect key="frame" x="16" y="178" width="568" height="352"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Byt station" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7oV-wi-upX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Byt station" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7oV-wi-upX">
                                 <rect key="frame" x="244" y="20" width="112" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Bbv-Bs-xL7"/>
