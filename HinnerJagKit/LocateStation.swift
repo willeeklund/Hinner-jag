@@ -59,6 +59,14 @@ public class LocateStationBase: NSObject, CLLocationManagerDelegate
                 tmpList.append(Station(dict: info))
             }
         }
+        // Add all Tram stations
+        if let tramStationsList = responseDict["tram_stations"] as! [NSDictionary]? {
+            for stationInfo in tramStationsList {
+                var info: NSMutableDictionary = stationInfo.mutableCopy() as! NSMutableDictionary
+                info.setValue("Tram", forKey: "stationType")
+                tmpList.append(Station(dict: info))
+            }
+        }
 
         return tmpList
     }()

@@ -18,12 +18,6 @@ public class RealtimeDepartures
     // MARK: - Variables
     let session: NSURLSession
     let realtimeKey = "bebfe14511a74ca5aef16db943ae8589"
-    lazy var apiServer: String = {
-        if self.debugBackend {
-            return "http://localhost:3000"
-        }
-        return "https://hinner-jag.herokuapp.com"
-    }()
     
     public init() {
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
@@ -99,6 +93,12 @@ public class RealtimeDepartures
                     for item in buses {
                         // Check that we only get the bus lines we care about for this station
                         // TODO: Get list of ignored bus lines from CoreData for this station, use blacklist
+                        departureList.append(Departure(dict: item, station: station))
+                    }
+                }
+                // Add Tram departures
+                if let trams = allTypes["Trams"] as! [NSDictionary]? {
+                    for item in trams {
                         departureList.append(Departure(dict: item, station: station))
                     }
                 }

@@ -15,6 +15,7 @@ public enum StationType: Int {
     case Train = 1
     case MetroAndTrain = 2
     case Bus = 3
+    case Tram = 4
     
     public func description() -> String {
         if self == .Metro {
@@ -23,6 +24,8 @@ public enum StationType: Int {
             return "*Train*"
         } else if self == .Bus {
             return "*Bus*"
+        } else if self == .Tram {
+            return "*Tram*"
         } else if self == .MetroAndTrain {
             return "*MetroAndTrain*"
         } else {
@@ -48,6 +51,7 @@ public class Station: CLLocation, MKAnnotation
         case .Metro: return "Metro station"
         case .Train: return "Train station"
         case .Bus:   return "Bus station"
+        case .Tram:  return "Tram station"
         case .MetroAndTrain: return "Metro and train station"
         }
     }
@@ -91,6 +95,8 @@ public class Station: CLLocation, MKAnnotation
                 usedStationType = .Metro
             } else if "Bus" == dictStationTypeString {
                 usedStationType = .Bus
+            } else if "Tram" == dictStationTypeString {
+                usedStationType = .Tram
             } else if "MetroAndTrain" == dictStationTypeString {
                 usedStationType = .MetroAndTrain
             }

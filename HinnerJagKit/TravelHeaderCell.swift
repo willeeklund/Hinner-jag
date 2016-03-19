@@ -65,6 +65,11 @@ public class TravelHeaderCell: UITableViewCell
                     directionLabel = "Buss \(firstDep.lineNumber)"
                 }
             }
+            // Bus groups
+            else if sectionString.rangeOfString("TRAM") != nil {
+                imageName = "train_orange"
+                directionLabel = "Tvärbana"
+            }
             
             // Set image
             if nil != imageName {
@@ -84,8 +89,11 @@ public class TravelHeaderCell: UITableViewCell
             suffixDestination = "T-centralen"
         } else if sectionString.rangeOfString("TRAIN") != nil {
             suffixDestination = "Sthlm"
-        } else if sectionString.rangeOfString("BUS") != nil {
-            // No direction suffix for buses
+        } else if
+            sectionString.rangeOfString("BUS") != nil
+            || sectionString.rangeOfString("TRAM") != nil
+        {
+            // No direction suffix for buses or trams
             return ""
         } else {
             suffixDestination = ""

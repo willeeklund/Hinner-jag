@@ -27,14 +27,14 @@ public class Utils
             default: shownTransportTypes = ["METRO"]
             }
         } else if station.stationType == .Metro {
-            shownTransportTypes = ["METRO", "BUS"]
+            shownTransportTypes = ["METRO", "BUS", "TRAM"]
         } else if station.stationType == .Train {
             shownTransportTypes = ["TRAIN"]
-        } else if station.stationType == .Bus {
-            shownTransportTypes = ["BUS"]
+        } else if station.stationType == .Bus || station.stationType == .Tram {
+            shownTransportTypes = ["BUS", "TRAM"]
         } else {
             // Otherwise we can include all, only one will be present
-            shownTransportTypes = ["METRO", "TRAIN", "BUS"]
+            shownTransportTypes = ["METRO", "TRAIN", "BUS", "TRAM"]
         }
         
         for dept in departures {
