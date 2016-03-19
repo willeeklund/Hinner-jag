@@ -39,9 +39,12 @@ public class HinnerJagTableViewController: UITableViewController, LocateStationD
     // MARK: - Locate station
     public var locateStation: LocateStation = LocateStation()
     
+    public func locateStationFoundClosestStation(station: Station?) {
+        self.closestStation = station
+    }
+    
     public func locateStationFoundSortedStations(stationsSorted: [Station], withDepartures departures: [Departure]?, error: NSError?) {
         let station = stationsSorted.first
-        self.closestStation = station
         self.closestSortedStations = stationsSorted
         self.fetchedDepartures = departures
         if nil != station {

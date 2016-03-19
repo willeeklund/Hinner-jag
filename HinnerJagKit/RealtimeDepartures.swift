@@ -67,6 +67,7 @@ public class RealtimeDepartures
             if error == nil {
                 self.parseJsonDataToDepartures(data, station: station, callback: callback)
             } else {
+                print("Error from SL: \(error)")
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     callback(nil, error: error)
                 })
@@ -96,6 +97,9 @@ public class RealtimeDepartures
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     callback(departureList, error: nil)
                 })
+            } else {
+                print("Weird, expected 'ResponseData' in the response from SL")
+                callback(nil, error: nil)
             }
         } catch let JSONError as NSError {
             dispatch_async(dispatch_get_main_queue(), { () -> Void in

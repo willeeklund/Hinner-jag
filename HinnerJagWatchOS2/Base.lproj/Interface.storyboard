@@ -63,7 +63,7 @@
                                 <label alignment="left" text="Söker plats..." id="7tw-hq-tZX"/>
                             </items>
                         </group>
-                        <label alignment="left" text="Hämtar avgångar från SL..." numberOfLines="2" id="NDz-my-5Ga"/>
+                        <label alignment="left" text="Hämtar avgångar från SL..." numberOfLines="6" id="NDz-my-5Ga"/>
                         <table alignment="left" id="IfG-UP-KPt">
                             <items>
                                 <tableRow identifier="header" selectable="NO" id="Zm3-Ae-JW0" customClass="TravelHeaderRow" customModule="HinnerJagWatchOS2_Extension">

@@ -51,14 +51,6 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
     override func willActivate() {
         super.willActivate()
         print("willActivate()")
-        // Read latest station coordinates from UserDefaults
-        let latestStationLat = NSUserDefaults.standardUserDefaults().doubleForKey(latestStationLatKey)
-        let latestStationLong = NSUserDefaults.standardUserDefaults().doubleForKey(latestStationLongKey)
-        if 0.0 != latestStationLat && 0.0 != latestStationLong {
-            let location = CLLocation(latitude: latestStationLat, longitude: latestStationLong)
-            print("Latest location was \(location)")
-            self.locateStation.findClosestStationFromLocationAndFetchDepartures(location)
-        }
         // Reset UI
         self.departuresDict = Dictionary<String, [Departure]>() // This will updateUI()
         // Start updating location
@@ -186,8 +178,11 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
     }
     
     // MARK: - Locate station delegate protocol
+    func locateStationFoundClosestStation(station: Station?) {
+        self.closestStation = station
+    }
+    
     func locateStationFoundSortedStations(stationsSorted: [Station], withDepartures departures: [Departure]?, error: NSError?) {
-        self.closestStation = stationsSorted.first
         if nil == departures {
             print("No departures were found. Error: \(error)")
         }

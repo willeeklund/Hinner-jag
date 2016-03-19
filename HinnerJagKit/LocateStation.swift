@@ -10,6 +10,7 @@ import Foundation
 import CoreLocation
 
 public protocol LocateStationDelegate {
+    func locateStationFoundClosestStation(station: Station?)
     func locateStationFoundSortedStations(stationsSorted: [Station], withDepartures departures: [Departure]?, error: NSError?)
 }
 
@@ -82,6 +83,7 @@ public class LocateStationBase: NSObject, CLLocationManagerDelegate
 
     public func findClosestStationFromLocationAndFetchDepartures(location: CLLocation) {
         let closestStationsSorted: [Station] = self.findClosestStationFromLocation(location)
+        self.delegate?.locateStationFoundClosestStation(closestStationsSorted.first!)
 
         self.realtimeDeparturesObj.departuresFromStation(closestStationsSorted.first!) {
             (departures: [Departure]?, error: NSError?) -> () in

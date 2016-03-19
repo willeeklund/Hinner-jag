@@ -53,14 +53,6 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
     override func willActivate() {
         super.willActivate()
         print("willActivate()")
-//        // Read latest station coordinates from UserDefaults
-//        let latestStationLat = NSUserDefaults.standardUserDefaults().doubleForKey(latestStationLatKey)
-//        let latestStationLong = NSUserDefaults.standardUserDefaults().doubleForKey(latestStationLongKey)
-//        if 0.0 != latestStationLat && 0.0 != latestStationLong {
-//            let location = CLLocation(latitude: latestStationLat, longitude: latestStationLong)
-//            print("Latest location was \(location)")
-//            self.locateStation.findClosestStationFromLocationAndFetchDepartures(location)
-//        }
         // Reset UI
         self.departuresDict = Dictionary<String, [Departure]>() // This will updateUI()
         // Start updating location
@@ -72,39 +64,27 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
     // MARK: - Update UI
     func updateUI() {
         if nil == self.closestStation {
-            self.closestStationLabel.setText("Söker plats")
-            self.tableView.setNumberOfRows(0, withRowType: "header")
-            var timerCount = 0
-            NSTimer.schedule(repeatInterval: 1) { (timer) in
-                timerCount++
-                print("Interval round \(timerCount)")
-                // Check if still no station is selected
-                if nil == self.closestStation {
-                    let points = String(count: timerCount, repeatedValue: "." as Character)
-                    self.closestStationLabel.setText("Söker plats\(points)")
-                } else {
-                    timer.invalidate()
-                    print("Stopped interval after \(timerCount) seconds")
-                }
-            }
-            // We are not fetching data until we have found our location
-            self.fetchingDataLabel.setHidden(true)
+            self.intervalCheckForStation()
             return
         }
         
         self.closestStationLabel.setText(self.closestStation!.title)
+
+        self.searchingForLocationTimer?.invalidate()
+        self.searchingForLocationTimer = nil
+        print("Stop station interval now, we have the station")
         
         self.calculateTypesOfRows()
         self.tableView.setNumberOfRows(self.typesOfRows.count, withRowType: "header")
         self.tableView.setRowTypes(self.typesOfRows)
         self.fillTableWithContent()
+        self.intervalCheckForDepartures()
     }
     
     func calculateTypesOfRows() {
         // Calculate type for the rows
         self.typesOfRows = [String]()
         self.groupFromIndex = Dictionary<Int, Int>()
-        var hasDetails = false
         
         for (index, mappingName) in self.mappingDict {
             // TODO: Calculate startIndexGroup2 in dynamic way, and change variable name
@@ -114,13 +94,9 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
             if let depList = self.departuresDict[mappingName] {
                 for _ in 1...depList.count {
                     self.typesOfRows.append("details")
-                    hasDetails = true
                 }
             }
         }
-        // If we found any details about departures,
-        // hide "Loading data" label
-        self.fetchingDataLabel.setHidden(hasDetails)
     }
     
     func fillTableWithContent() {
@@ -200,9 +176,91 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
         }
     }
     
+    // MARK: - Timers to indicate time for user with dots
+    var searchingForLocationTimer: NSTimer?
+    var searchingForDeparturesTimer: NSTimer?
+    
+    func intervalCheckForStation() {
+        let fetchingLocationText = "Söker plats"
+        self.closestStationLabel.setText(fetchingLocationText)
+        self.tableView.setNumberOfRows(0, withRowType: "header")
+        // We are not fetching data until we have found our location
+        self.fetchingDataLabel.setHidden(true)
+        // Interval to see when we find the station
+        var timerStationCount = 0
+        self.searchingForLocationTimer = NSTimer.schedule(repeatInterval: 1) { (timer) in
+            // Only keep one timer instance going
+            if timer != self.searchingForLocationTimer {
+                // If not the same timer, remove it
+                timer.invalidate()
+                return
+            }
+            timerStationCount++
+            // Check if still no station is selected
+            if nil == self.closestStation {
+                let dots = String(count: timerStationCount, repeatedValue: "." as Character)
+                self.closestStationLabel.setText("\(fetchingLocationText)\(dots)")
+            } else {
+                self.searchingForLocationTimer?.invalidate()
+                self.searchingForLocationTimer = nil
+                print("Stopped station interval after \(timerStationCount) seconds")
+            }
+        }
+    }
+    
+    func intervalCheckForDepartures() {
+        // If we have not fetched departures, count to 10 dots
+        if nil == self.fetchedDepartures {
+            // If we found any details about departures,
+            // hide "Loading data" label
+            let fetchingDataText = "Hämtar avgångar från \(self.closestStation!.title!)"
+            self.fetchingDataLabel.setText(fetchingDataText)
+            self.fetchingDataLabel.setHidden(false)
+            // Interval to see when we find the departures
+            var timerDeparturesCount = 0
+            self.searchingForDeparturesTimer = NSTimer.schedule(repeatInterval: 1) { (timer) in
+                // Keep single timer
+                if timer != self.searchingForDeparturesTimer {
+                    // If not the same timer, remove it
+                    print("Illegal timer -> invalidate")
+                    timer.invalidate()
+                    return
+                }
+                timerDeparturesCount++
+                // Check if still no station is selected
+                if timerDeparturesCount < 10 {
+                    let points = String(count: timerDeparturesCount, repeatedValue: "." as Character)
+                    self.fetchingDataLabel.setText("\(fetchingDataText)\(points)")
+                } else {
+                    self.searchingForDeparturesTimer?.invalidate()
+                    self.searchingForDeparturesTimer = nil
+                    print("Stopped departures interval after \(timerDeparturesCount) seconds")
+                }
+            }
+        } else {
+            print("Now we have fetched departures from SL")
+            // We have the result from SL, stop counting dots
+            self.searchingForDeparturesTimer?.invalidate()
+            self.searchingForDeparturesTimer = nil
+            
+            if self.fetchedDepartures?.count > 0 {
+                // We have departures, hide info label
+                self.fetchingDataLabel.setHidden(true)
+            } else {
+                // We have the info from SL but it does not contain any departures
+                self.fetchingDataLabel.setText("SL har inte realtidsinfo om några avgångar från \(self.closestStation!.title!) för tillfället.")
+            }
+        }
+    }
+    
     // MARK: - Locate station delegate protocol
+    func locateStationFoundClosestStation(station: Station?) {
+        self.fetchedDepartures = nil
+        self.closestStation = station
+        self.departuresDict = Dictionary<String, [Departure]>()
+    }
+    
     func locateStationFoundSortedStations(stationsSorted: [Station], withDepartures departures: [Departure]?, error: NSError?) {
-        self.closestStation = stationsSorted.first
         if nil == departures {
             print("No departures were found. Error: \(error)")
         }
@@ -229,7 +287,12 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
         self.locationManager.stopUpdatingLocation()
         let location = locations.last!
         print("location = \(location)")
-        self.locateStation.findClosestStationFromLocationAndFetchDepartures(location)
+        // Do not restart the location-finder again if we are already fetching data from server
+        if nil == self.searchingForDeparturesTimer {
+            self.locateStation.findClosestStationFromLocationAndFetchDepartures(location)
+        } else {
+            print("Ignoring double location fetching")
+        }
         // Save latest coordinates
         NSUserDefaults.standardUserDefaults().setDouble(location.coordinate.latitude, forKey: latestStationLatKey)
         NSUserDefaults.standardUserDefaults().setDouble(location.coordinate.longitude, forKey: latestStationLongKey)
