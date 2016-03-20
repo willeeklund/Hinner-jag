@@ -11,6 +11,8 @@ import MapKit
 
 public class Utils
 {
+    // MARK: - Transport types
+    
     // By casting the result of an Array.map first into a Set and then into Array,
     // duplicates of the same transport type are removed
     public class func uniqueTransportTypesFromDepartures(departures: [Departure]) -> [TransportType] {
@@ -35,8 +37,10 @@ public class Utils
         }
     }
     
+    // MARK: - Mapping departures
+    
     // Group departures and make a way to convert integers into mapping keys
-    public class func getMappingFromDepartures(departures: [Departure], station: Station, mappingStart: Int = 0) -> (Dictionary <Int, String>, Dictionary<String, [Departure]>) {
+    public class func getMappingFromDepartures(departures: [Departure], mappingStart: Int = 0) -> (Dictionary <Int, String>, Dictionary<String, [Departure]>) {
         var largestUsedMapping: Int = mappingStart
         var mappingDict = Dictionary <Int, String>()
         var departuresDict = Dictionary <String, [Departure]>()

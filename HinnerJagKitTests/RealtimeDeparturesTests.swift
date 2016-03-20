@@ -11,7 +11,7 @@ import XCTest
 @testable import HinnerJagKit
 
 class RealtimeDeparturesTests: XCTestCase {
-    var realtimeDepartures: RealtimeDepartures?
+    var realtimeDepartures = RealtimeDepartures()
     var stationFarstaStrand: Station?
     let hinnerJagKitBundle = NSBundle(forClass: LocateStation.classForCoder())
     
@@ -45,11 +45,11 @@ class RealtimeDeparturesTests: XCTestCase {
         let testFile = "test_departures_9180_farsta_strand"
         let testDeparturesData = readTestFile(testFile)
         var depList: [Departure]?
-        realtimeDepartures!.parseJsonDataToDepartures(testDeparturesData, station: stationFarstaStrand!) { (departures: [Departure]?, error: NSError?) in
+        realtimeDepartures.parseJsonDataToDepartures(testDeparturesData, station: stationFarstaStrand!) { (departures: [Departure]?, error: NSError?) in
             depList = departures
             XCTAssert(departures != nil, "We got some departures")
             XCTAssert(departures!.count > 0, "At least one departure")
-            let (_, departuresDict) = Utils.getMappingFromDepartures(departures!, station: self.stationFarstaStrand!, mappingStart: 0)
+            let (_, departuresDict) = Utils.getMappingFromDepartures(departures!, mappingStart: 0)
             XCTAssert(departuresDict.count == 1, "There are exactly 2 groups of departures from Abrahamsberg")
             expectation.fulfill()
         }
@@ -63,7 +63,7 @@ class RealtimeDeparturesTests: XCTestCase {
         let testDeparturesData = "No useful data".dataUsingEncoding(NSUTF8StringEncoding)
         
         var depList: [Departure]?
-        realtimeDepartures!.parseJsonDataToDepartures(testDeparturesData, station: stationFarstaStrand!) { (departures: [Departure]?, error: NSError?) in
+        realtimeDepartures.parseJsonDataToDepartures(testDeparturesData, station: stationFarstaStrand!) { (departures: [Departure]?, error: NSError?) in
             depList = departures
             XCTAssert(error != nil, "We got an error message")
             expectation.fulfill()

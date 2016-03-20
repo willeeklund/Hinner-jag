@@ -66,7 +66,7 @@ class HinnerJagKitTests: XCTestCase {
             depList = departures
             XCTAssert(departures != nil, "We got some departures")
             XCTAssert(departures!.count > 0, "At least one departure")
-            let (_, departuresDict) = Utils.getMappingFromDepartures(departures!, station: abrahamsbergStation, mappingStart: 0)
+            let (_, departuresDict) = Utils.getMappingFromDepartures(departures!, mappingStart: 0)
             XCTAssert(departuresDict.count == 2, "There are exactly 2 groups of departures from Abrahamsberg")
             expectation.fulfill()
         }

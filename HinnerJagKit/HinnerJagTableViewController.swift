@@ -66,7 +66,10 @@ public class HinnerJagTableViewController: UITableViewController, LocateStationD
     // MARK: - Create mapping from fetched departures
     public func createMappingFromFetchedDepartures() {
         if nil != self.fetchedDepartures && nil != self.closestStation {
-            (self.mappingDict, self.departuresDict) = Utils.getMappingFromDepartures(self.fetchedDepartures!, station: self.closestStation!, mappingStart: 1)
+            (self.mappingDict, self.departuresDict) = Utils.getMappingFromDepartures(
+                self.fetchedDepartures!,
+                mappingStart: 1
+            )
         }
     }
     
