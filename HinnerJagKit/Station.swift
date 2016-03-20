@@ -10,28 +10,11 @@ import Foundation
 import CoreLocation
 import MapKit
 
-public enum StationType: Int {
-    case Metro = 0
-    case Train = 1
-    case MetroAndTrain = 2
-    case Bus = 3
-    case Tram = 4
-    
-    public func description() -> String {
-        if self == .Metro {
-            return "*Metro*"
-        } else if self == .Train {
-            return "*Train*"
-        } else if self == .Bus {
-            return "*Bus*"
-        } else if self == .Tram {
-            return "*Tram*"
-        } else if self == .MetroAndTrain {
-            return "*MetroAndTrain*"
-        } else {
-            return "*Unknown*"
-        }
-    }
+public enum TransportType: String {
+    case Metro = "METRO"
+    case Train = "TRAIN"
+    case Bus = "BUS"
+    case Tram = "TRAM"
 }
 
 public class Station: CLLocation, MKAnnotation
@@ -39,26 +22,10 @@ public class Station: CLLocation, MKAnnotation
     public var id: Int = 0
     public var title: String? = ""
     public var from_central_direction: Int?
-    public var stationType: StationType?
-    
-    private func typeOfStation() -> String {
-        // StationType has not been set
-        if nil == self.stationType {
-            return "Station"
-        }
-        // Description of station type
-        switch self.stationType! {
-        case .Metro: return "Metro station"
-        case .Train: return "Train station"
-        case .Bus:   return "Bus station"
-        case .Tram:  return "Tram station"
-        case .MetroAndTrain: return "Metro and train station"
-        }
-    }
     
     override public var description: String {
         get {
-            return "\(self.typeOfStation()) \(self.id): \(self.title!) at (\(self.coordinate.latitude), \(self.coordinate.longitude))"
+            return "Station \(self.id): \(self.title!) at (\(self.coordinate.latitude), \(self.coordinate.longitude))"
         }
     }
     
@@ -87,34 +54,17 @@ public class Station: CLLocation, MKAnnotation
             self.from_central_direction = dictFromCentralDirection
         }
         
-        var usedStationType: StationType?
-        if let dictStationTypeString = dict["stationType"] as? String {
-            if "Train" == dictStationTypeString {
-                usedStationType = .Train
-            } else if "Metro" == dictStationTypeString {
-                usedStationType = .Metro
-            } else if "Bus" == dictStationTypeString {
-                usedStationType = .Bus
-            } else if "Tram" == dictStationTypeString {
-                usedStationType = .Tram
-            } else if "MetroAndTrain" == dictStationTypeString {
-                usedStationType = .MetroAndTrain
-            }
-        }
-        
         // Assert that we got real data
         assert(0.0 != usedLatitude, "Must set real latitude")
         assert(0.0 != usedLongitude, "Must set real longitude")
         assert(usedLatitude != usedLongitude, "We suspect coding error if latitude == longitude")
         assert(0   != usedId, "Must set real id")
         assert(""  != usedTitle, "Must set real title")
-        assert(nil != usedStationType, "Every station must have a station type specified")
 
         // Create instance
         super.init(coordinate: CLLocationCoordinate2D(latitude: usedLatitude, longitude: usedLongitude), altitude: 0.0, horizontalAccuracy: 0.0, verticalAccuracy: 0.0, timestamp: NSDate())
         self.id = usedId
         self.title = usedTitle
-        self.stationType = usedStationType
     }
     
     required public init?(coder aDecoder: NSCoder) {

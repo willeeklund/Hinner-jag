@@ -24,12 +24,24 @@ public class HeadlineCell: UITableViewCell
         }
     }
     
+    var uniqueTransportTypes = [TransportType]()
     @IBAction func stationTypeSegmentChanged(sender: UISegmentedControl) {
         if nil != self.controller {
-            self.controller!.setPreferredTravelType(StationType(rawValue: sender.selectedSegmentIndex)!)
+            self.controller!.setPreferredTransportType(self.uniqueTransportTypes[sender.selectedSegmentIndex])
         }
     }
     
+    // MARK: - Human readable name for transport type
+    class func transportTypeStringToName(transportType: TransportType) -> String {
+        switch transportType {
+        case .Metro: return "Tunnelbana"
+        case .Train: return "Pendeltåg"
+        case .Bus: return "Buss"
+        case .Tram: return "Tvärbana"
+        }
+    }
+    
+    // MARK: - Init
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -43,22 +55,36 @@ public class HeadlineCell: UITableViewCell
         controller: HinnerJagTableViewController,
         closestStation: Station?,
         location: CLLocation?,
-        shouldShowStationTypeSegment: Bool,
-        shownStationType: StationType
+        departures: [Departure]?
     ) -> HeadlineCell? {
         let reuseId = "HeadlineCell"
         var cell = tableView.dequeueReusableCellWithIdentifier(reuseId) as? HeadlineCell
         if nil == cell {
             cell = HeadlineCell()
         }
+        cell?.controller = controller
         // Text on button
         let closestStationLabel = Utils.getLabelTextForClosestStation(closestStation, ownLocation: location)
         cell?.closestStationButton.setTitle(closestStationLabel, forState: .Normal)
-        // Segment control for travel type
-        cell?.stationTypeSegment.hidden = !shouldShowStationTypeSegment
-        cell?.stationTypeSegment.selectedSegmentIndex = shownStationType.rawValue
-    
-        cell?.controller = controller
+        // Customize segmented control for travel types of the departures
+        cell?.stationTypeSegment.hidden = (nil == departures)
+        if nil != departures {
+            cell?.uniqueTransportTypes = Utils.uniqueTransportTypesFromDepartures(departures!)
+            if cell?.uniqueTransportTypes.count < 2 {
+                cell?.stationTypeSegment.hidden = true
+                return cell! as HeadlineCell
+            }
+            // Dynamic segment labels
+            let namesList = cell?.uniqueTransportTypes.map() { type in HeadlineCell.transportTypeStringToName(type) }
+            cell?.stationTypeSegment.removeAllSegments()
+            var i = 0
+            for segmentName in namesList! {
+                cell?.stationTypeSegment.insertSegmentWithTitle(segmentName, atIndex: i++, animated: false)
+            }
+            // Show selected segment
+            let currentTransportType = Utils.currentTransportType(departures!)
+            cell?.stationTypeSegment.selectedSegmentIndex = (cell?.uniqueTransportTypes.indexOf(currentTransportType)!)!
+        }
         return cell! as HeadlineCell
     }
 }

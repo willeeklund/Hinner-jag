@@ -16,9 +16,9 @@ public class Departure: NSObject
     public var direction: Int = 0
     public var lineNumber: String = ""
     public var lineName: String = ""
-    public var transportMode: String = ""
+    public var transportType: TransportType?
     public var from_central_direction: Int?
-    public var stationType: StationType?
+    public var siteId = 0
     
     override public var description: String {
         get {
@@ -29,29 +29,31 @@ public class Departure: NSObject
     public init(dict: NSDictionary, station: Station) {
         super.init()
         if let dest = dict["Destination"] as? String {
-            self.destination = dest
+            destination = dest
         }
         if let time = dict["DisplayTime"] as? String {
-            self.remainingTime = time
+            remainingTime = time
         }
         if let dir = dict["JourneyDirection"] as? Int {
-            self.direction = dir
+            direction = dir
         }
         if let nbr = dict["LineNumber"] as? String {
-            self.lineNumber = nbr
+            lineNumber = nbr
         }
         if let name = dict["GroupOfLine"] as? String {
-            self.lineName = name
+            lineName = name
         }
         if let type = dict["TransportMode"] as? String {
-            self.transportMode = type
-            if "BUS" == type {
+            transportType = TransportType(rawValue: type)
+            if nil != transportType && .Bus == transportType {
                 // This is currently used when creating groups of departures
                 lineName = "\(lineName) nr \(lineNumber)"
             }
         }
+        if let SiteId = dict["SiteId"] as? Int {
+            siteId = SiteId
+        }
         self.from_central_direction = station.from_central_direction
-        self.stationType = station.stationType
     }
     
 }

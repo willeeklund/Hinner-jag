@@ -27,11 +27,6 @@ public class HinnerJagTableViewController: UITableViewController, LocateStationD
             self.updateUI()
         }
     }
-    public var shownStationType: StationType = Utils.getPreferredTravelType() {
-        didSet {
-            self.updateUI()
-        }
-    }
 
     public var closestStation: Station?
     public var closestSortedStations: [Station] = [Station]()
@@ -81,12 +76,11 @@ public class HinnerJagTableViewController: UITableViewController, LocateStationD
     }
     
     // MARK: - Select preferred travel type from a segment
-    public func setPreferredTravelType(type: StationType) {
-        Utils.setPreferredTravelType(type)
-        self.shownStationType = type
+    public func setPreferredTransportType(type: TransportType) {
+        Utils.setPreferredTransportType(type)
         self.createMappingFromFetchedDepartures()
-        self.trackEvent("TravelType", action: "changePreferred", label: "\(type.description())", value: 1)
-        print("Preferred travel type \(type.description())")
+        self.trackEvent("TravelType", action: "changePreferred", label: "\(type)", value: 1)
+        print("Preferred travel type \(type)")
     }
     
     // MARK: - Lifecycle stuff
@@ -108,7 +102,13 @@ public class HinnerJagTableViewController: UITableViewController, LocateStationD
     }
     
     public func shouldShowStationTypeSegment() -> Bool {
-        return self.closestStation != nil && self.closestStation!.stationType == .MetroAndTrain
+        // If we do not have departures or we only have one type of departures,
+        // do not show the segmented control
+        if nil == fetchedDepartures {
+            return false
+        }
+        let uniqueTransportTypes = Utils.uniqueTransportTypesFromDepartures(fetchedDepartures!)
+        return uniqueTransportTypes.count > 1
     }
     
     // MARK: - Table stuff
@@ -142,6 +142,25 @@ public class HinnerJagTableViewController: UITableViewController, LocateStationD
             self.trackEvent("Station", action: "change_from_table", label: "\(station.title!) (\(station.id))", value: 1)
         }
         self.selectChosenStation = false
+    }
+    
+    override public func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            return HeadlineCell.createCellForTableView(
+                tableView,
+                controller: self,
+                closestStation: self.closestStation,
+                location: self.getLastLocation(),
+                departures: fetchedDepartures
+            )
+        } else {
+            return TravelHeaderCell.createCellForIndexPath(
+                section,
+                tableView: tableView,
+                mappingDict: self.mappingDict,
+                departuresDict: self.departuresDict
+            )
+        }
     }
     
     public func searchFromNewClosestStation(newStation: Station) {

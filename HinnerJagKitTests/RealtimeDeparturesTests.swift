@@ -22,7 +22,6 @@ class RealtimeDeparturesTests: XCTestCase {
         let dict = NSMutableDictionary()
         dict.setValue(9180, forKey: "siteid")
         dict.setValue("Farsta strand fake", forKey: "sitename")
-        dict.setValue("Metro", forKey: "stationType")
         dict.setValue(59.2355276839029, forKey: "latitude")
         dict.setValue(18.1012808998205, forKey: "longitude")
         dict.setValue(2, forKey: "from_central_direction")

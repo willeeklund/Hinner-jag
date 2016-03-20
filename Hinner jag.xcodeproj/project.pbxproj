@@ -71,6 +71,7 @@
 		0291491D1B7A833400DAE8BD /* HinnerJagTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022DE4861AC819AD000E9462 /* HinnerJagTableViewController.swift */; };
 		0291491E1B7A835500DAE8BD /* HeadlineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022DE4831AC8188F000E9462 /* HeadlineCell.swift */; };
 		0291491F1B7A835600DAE8BD /* HeadlineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022DE4831AC8188F000E9462 /* HeadlineCell.swift */; };
+		0295BEB41C9DCA12005669EB /* UtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0295BEB31C9DCA12005669EB /* UtilsTests.swift */; };
 		0295DD441AC7F6E500D850BA /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0295DD431AC7F6E500D850BA /* Utils.swift */; };
 		02B11BA21ABA3D02003ACD06 /* GAI.h in Headers */ = {isa = PBXBuildFile; fileRef = 02B11B981ABA3D02003ACD06 /* GAI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		02B11BA31ABA3D02003ACD06 /* GAIDictionaryBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 02B11B991ABA3D02003ACD06 /* GAIDictionaryBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -328,6 +329,8 @@
 		025C98991AD2947A0096FC79 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		028EB6611AAF97E6004C508C /* Hinner jag?.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Hinner jag?.entitlements"; sourceTree = "<group>"; };
 		028EB6621AAF983C004C508C /* Hinner jag widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Hinner jag widget.entitlements"; sourceTree = "<group>"; };
+		0295BEB21C9DB630005669EB /* SegmentedControl.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = SegmentedControl.playground; sourceTree = "<group>"; };
+		0295BEB31C9DCA12005669EB /* UtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilsTests.swift; sourceTree = "<group>"; };
 		0295DD431AC7F6E500D850BA /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		02B11B981ABA3D02003ACD06 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
 		02B11B991ABA3D02003ACD06 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
@@ -513,6 +516,7 @@
 		0211B1E01AAE37B600947C45 /* Hinner jag */ = {
 			isa = PBXGroup;
 			children = (
+				0295BEAE1C9DB2C6005669EB /* Playground */,
 				02ED99B31AD2FEB500CB6C9E /* Walkthrough */,
 				025C989B1AD294820096FC79 /* Controllers */,
 				0211B1EA1AAE37B600947C45 /* Main.storyboard */,
@@ -568,6 +572,7 @@
 			isa = PBXGroup;
 			children = (
 				0211B21E1AAE37FC00947C45 /* HinnerJagKitTests.swift */,
+				0295BEB31C9DCA12005669EB /* UtilsTests.swift */,
 				02C0B85D1C1768FC00FF00A1 /* RealtimeDeparturesTests.swift */,
 				0211B21C1AAE37FC00947C45 /* Supporting Files */,
 			);
@@ -655,6 +660,14 @@
 				025C98991AD2947A0096FC79 /* MapViewController.swift */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		0295BEAE1C9DB2C6005669EB /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				0295BEB21C9DB630005669EB /* SegmentedControl.playground */,
+			);
+			name = Playground;
 			sourceTree = "<group>";
 		};
 		02B11B971ABA3CCE003ACD06 /* Google Analytics */ = {
@@ -1262,6 +1275,7 @@
 			files = (
 				0211B21F1AAE37FC00947C45 /* HinnerJagKitTests.swift in Sources */,
 				02C0B85E1C1768FC00FF00A1 /* RealtimeDeparturesTests.swift in Sources */,
+				0295BEB41C9DCA12005669EB /* UtilsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

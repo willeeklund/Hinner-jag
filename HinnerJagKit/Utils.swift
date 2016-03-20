@@ -11,40 +11,51 @@ import MapKit
 
 public class Utils
 {
+    // By casting the result of an Array.map first into a Set and then into Array,
+    // duplicates of the same transport type are removed
+    public class func uniqueTransportTypesFromDepartures(departures: [Departure]) -> [TransportType] {
+        return Array(Set(departures.map({ dept in dept.transportType! })))
+    }
+    
+    public class func currentTransportType(departures: [Departure]) -> TransportType {
+        let uniqueTransportTypes = uniqueTransportTypesFromDepartures(departures)
+        // If we have one of them as preferred, filter on that
+        let preferredTransportType = getPreferredTransportType()
+        if nil != preferredTransportType && uniqueTransportTypes.contains(preferredTransportType!) {
+            return preferredTransportType!
+        } else {
+            // If there was no preferred, check if there is Metro,
+            // otherwise use the first one from the list
+            // of transport types existing in this departure list
+            if uniqueTransportTypes.contains(.Metro) {
+                return .Metro
+            } else {
+                return uniqueTransportTypes.first!
+            }
+        }
+    }
+    
     // Group departures and make a way to convert integers into mapping keys
     public class func getMappingFromDepartures(departures: [Departure], station: Station, mappingStart: Int = 0) -> (Dictionary <Int, String>, Dictionary<String, [Departure]>) {
         var largestUsedMapping: Int = mappingStart
         var mappingDict = Dictionary <Int, String>()
         var departuresDict = Dictionary <String, [Departure]>()
         
-        let shownTransportTypes: Set<String>
-        
-        if station.stationType == .MetroAndTrain {
-            // If we can have multiple types at thie station, only incluce one of them
-            switch Utils.getPreferredTravelType() {
-            case .Metro: shownTransportTypes = ["METRO"]
-            case .Train: shownTransportTypes = ["TRAIN"]
-            default: shownTransportTypes = ["METRO"]
-            }
-        } else if station.stationType == .Metro {
-            shownTransportTypes = ["METRO", "BUS", "TRAM"]
-        } else if station.stationType == .Train {
-            shownTransportTypes = ["TRAIN"]
-        } else if station.stationType == .Bus || station.stationType == .Tram {
-            shownTransportTypes = ["BUS", "TRAM"]
-        } else {
-            // Otherwise we can include all, only one will be present
-            shownTransportTypes = ["METRO", "TRAIN", "BUS", "TRAM"]
+        // List of unique transport types available in list of departures
+        let uniqueTransportTypes = Utils.uniqueTransportTypesFromDepartures(departures)
+        if 0 == uniqueTransportTypes.count {
+            return (mappingDict, departuresDict)
         }
+        let currentTransportType = Utils.currentTransportType(departures)
         
-        for dept in departures {
-            // Only map up the departures of shown type
-            if !shownTransportTypes.contains(dept.transportMode) {
-                continue
-            }
-            let mappingName = "\(dept.transportMode) - \(dept.lineName) - riktning \(dept.direction)"
+        // Only use the departures of the preferred type
+        for dept in departures.filter({ dept in nil != dept.transportType && currentTransportType == dept.transportType! }) {
+            let mappingName = "\(dept.transportType!.rawValue) - \(dept.lineName) - riktning \(dept.direction)"
             if let _ = departuresDict[mappingName] {
-                departuresDict[mappingName]?.append(dept)
+                // Only add 4 departures to each group
+                if departuresDict[mappingName]!.count < 4 {
+                    departuresDict[mappingName]!.append(dept)
+                }
             } else {
                 mappingDict[largestUsedMapping++] = mappingName
                 departuresDict[mappingName] = [Departure]()
@@ -81,13 +92,18 @@ public class Utils
     }
     
     // MARK: - Keep track of preferred travel type for the user
-    public class func getPreferredTravelType() -> StationType {
-        let preferredTravelTypeInteger = NSUserDefaults.standardUserDefaults().integerForKey("preferredTravelType")
-        return StationType(rawValue: preferredTravelTypeInteger)!
+    static let preferredTransportTypeKey = "preferredTransportTypeKey"
+    public class func getPreferredTransportType() -> TransportType? {
+        let preferredTravelTypeString = NSUserDefaults.standardUserDefaults().stringForKey(Utils.preferredTransportTypeKey)
+        if nil != preferredTravelTypeString {
+            return TransportType(rawValue: preferredTravelTypeString!)
+        } else {
+            return nil
+        }
     }
     
-    public class func setPreferredTravelType(type: StationType) {
-        NSUserDefaults.standardUserDefaults().setInteger(type.rawValue, forKey: "preferredTravelType")
+    public class func setPreferredTransportType(type: TransportType) {
+        NSUserDefaults.standardUserDefaults().setValue(type.rawValue, forKey: Utils.preferredTransportTypeKey)
         NSUserDefaults.standardUserDefaults().synchronize()
     }
 }

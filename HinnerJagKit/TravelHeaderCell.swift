@@ -24,7 +24,12 @@ public class TravelHeaderCell: UITableViewCell
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
-    internal class func createCellForIndexPath(section: Int, tableView: UITableView, mappingDict: Dictionary <Int, String>, departuresDict: Dictionary<String, [Departure]>) -> TravelHeaderCell {
+    internal class func createCellForIndexPath(
+        section: Int,
+        tableView: UITableView,
+        mappingDict: Dictionary <Int, String>,
+        departuresDict: Dictionary<String, [Departure]>
+    ) -> TravelHeaderCell {
         let reuseId = "TravelHeaderCell"
         var cell = tableView.dequeueReusableCellWithIdentifier(reuseId) as? TravelHeaderCell
         if nil == cell {
@@ -83,7 +88,10 @@ public class TravelHeaderCell: UITableViewCell
         return cell! as TravelHeaderCell
     }
     
-    internal class func createDirectionSuffix(sectionString: String, departuresDict: Dictionary<String, [Departure]>) -> String {
+    internal class func createDirectionSuffix(
+        sectionString: String,
+        departuresDict: Dictionary<String, [Departure]>
+    ) -> String {
         let suffixDestination: String
         if sectionString.rangeOfString("METRO") != nil {
             suffixDestination = "T-centralen"
@@ -104,9 +112,10 @@ public class TravelHeaderCell: UITableViewCell
             if firstDep.from_central_direction != nil {
                 var truthValue = firstDep.from_central_direction! == firstDep.direction
                 
-                // If both metros and trains station, reverse direction suffix for train departures
-                let isBothMetroAndTrains = firstDep.stationType != nil && firstDep.stationType! == .MetroAndTrain
-                if isBothMetroAndTrains && "TRAIN" == firstDep.transportMode {
+                // If both metros and trains station, reverse direction suffix for train departures.
+                // This is a hardcoded list of the siteids for stations with both subways and trains.
+                let isBothMetroAndTrains = [9001, 9325, 9180].contains(firstDep.siteId)
+                if isBothMetroAndTrains && nil != firstDep.transportType && .Train == firstDep.transportType! {
                     truthValue = !truthValue
                 }
                 
@@ -117,7 +126,7 @@ public class TravelHeaderCell: UITableViewCell
                 }
             } else {
                 // This probably means we are at T-centralen
-                if "TRAIN" == firstDep.transportMode {
+                if nil != firstDep.transportType && .Train == firstDep.transportType! {
                     return firstDep.lineName
                 }
             }

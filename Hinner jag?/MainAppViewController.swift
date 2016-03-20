@@ -46,23 +46,6 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
     
     // MARK: - Table stuff
     
-    // Header for table
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 {
-            return HeadlineCell.createCellForTableView(
-                tableView,
-                controller: self,
-                closestStation: self.closestStation,
-                location: self.getLastLocation(),
-                shouldShowStationTypeSegment: self.shouldShowStationTypeSegment(),
-                shownStationType: self.shownStationType
-            )
-        } else {
-            return TravelHeaderCell.createCellForIndexPath(section, tableView: tableView, mappingDict: self.mappingDict, departuresDict: self.departuresDict)
-        }
-    }
-    
-    
     // Cell in table
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 0 {

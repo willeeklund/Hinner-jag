@@ -58,9 +58,6 @@ class MapViewController: UIViewController, MKMapViewDelegate
             view?.canShowCallout = true
             // TODO: Change to different color depending on metro or train
             if let station = annotation as? Station {
-                if station.stationType == .Train {
-                    view?.pinColor = .Purple
-                }
                 if station == self.chosenStation {
                     view?.pinColor = .Green
                 }
