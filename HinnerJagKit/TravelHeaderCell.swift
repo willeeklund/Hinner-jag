@@ -36,46 +36,8 @@ public class TravelHeaderCell: UITableViewCell
             cell = TravelHeaderCell()
         }
         if let sectionString = mappingDict[section] {
-            var imageName: String?
-            var directionLabel: String = ""
-            let directionSuffix = self.createDirectionSuffix(sectionString, departuresDict: departuresDict)
-            
-            // Metro groups
-            if sectionString.rangeOfString("METRO") != nil {
-                if sectionString.rangeOfString("gröna") != nil {
-                    imageName = "train_green"
-                    directionLabel = "Grön linje"
-                } else if sectionString.rangeOfString("röda") != nil {
-                    imageName = "train_red"
-                    directionLabel = "Röd linje"
-                } else if sectionString.rangeOfString("blå") != nil {
-                    imageName = "train_blue"
-                    directionLabel = "Blå linje"
-                } else {
-                    print("Can not decide direction label for '\(sectionString)'")
-                    directionLabel = "Tunnelbana"
-                }
-            }
-            // Train groups
-            else if sectionString.rangeOfString("TRAIN") != nil {
-                imageName = "train_purple"
-                directionLabel = ""
-            }
-            // Bus groups
-            else if sectionString.rangeOfString("BUS") != nil {
-                imageName = "bus"
-                directionLabel = "Buss"
-                if let depList = departuresDict[sectionString] {
-                    let firstDep = depList[0]
-                    directionLabel = "Buss \(firstDep.lineNumber)"
-                }
-            }
-            // Bus groups
-            else if sectionString.rangeOfString("TRAM") != nil {
-                imageName = "train_orange"
-                directionLabel = "Tvärbana"
-            }
-            
+            let directionSuffix = Departure.createDirectionSuffix(sectionString, departuresDict: departuresDict)
+            let (directionLabel, imageName) = Departure.createLabelAndImageNameFromSection(sectionString, departuresDict: departuresDict)
             // Set image
             if nil != imageName {
                 cell?.trainImage.image = UIImage(named: imageName!)
@@ -88,50 +50,4 @@ public class TravelHeaderCell: UITableViewCell
         return cell! as TravelHeaderCell
     }
     
-    internal class func createDirectionSuffix(
-        sectionString: String,
-        departuresDict: Dictionary<String, [Departure]>
-    ) -> String {
-        let suffixDestination: String
-        if sectionString.rangeOfString("METRO") != nil {
-            suffixDestination = "T-centralen"
-        } else if sectionString.rangeOfString("TRAIN") != nil {
-            suffixDestination = "Sthlm"
-        } else if
-            sectionString.rangeOfString("BUS") != nil
-            || sectionString.rangeOfString("TRAM") != nil
-        {
-            // No direction suffix for buses or trams
-            return ""
-        } else {
-            suffixDestination = ""
-        }
-        if let depList = departuresDict[sectionString] {
-            let firstDep = depList[0]
-            
-            if firstDep.from_central_direction != nil {
-                var truthValue = firstDep.from_central_direction! == firstDep.direction
-                
-                // If both metros and trains station, reverse direction suffix for train departures.
-                // This is a hardcoded list of the siteids for stations with both subways and trains.
-                let isBothMetroAndTrains = [9001, 9325, 9180].contains(firstDep.siteId)
-                if isBothMetroAndTrains && nil != firstDep.transportType && .Train == firstDep.transportType! {
-                    truthValue = !truthValue
-                }
-                
-                if truthValue {
-                    return "från \(suffixDestination)"
-                } else {
-                    return "mot \(suffixDestination)"
-                }
-            } else {
-                // This probably means we are at T-centralen
-                if nil != firstDep.transportType && .Train == firstDep.transportType! {
-                    return firstDep.lineName
-                }
-            }
-        }
-        // If not departures were received or there is no 'from_central_direction'
-        return ""
-    }
 }
