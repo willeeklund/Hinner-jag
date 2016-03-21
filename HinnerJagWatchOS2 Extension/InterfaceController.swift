@@ -115,46 +115,22 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
                     currentGroupIndex = self.groupFromIndex[index]
                     if nil != currentGroupIndex {
                         if let mapName = self.mappingDict[currentGroupIndex!] {
-                            var headerSuffix = ""
                             if let depGroup = self.departuresDict[mapName] {
                                 currentGroupDepartures = depGroup
-                                if let firstDeparture = depGroup.first {
-                                    if firstDeparture.from_central_direction != nil {
-                                        if firstDeparture.from_central_direction! == firstDeparture.direction {
-                                            headerSuffix = "från T-centralen"
-                                        } else {
-                                            headerSuffix = "mot T-centralen"
-                                        }
-                                    }
-                                }
                             }
-                            
-                            let directionLabel: String
-                            let imageName: String
-                            let textColor: UIColor
-                            if mapName.rangeOfString("gröna") != nil {
-                                imageName = "logo_green"
-                                directionLabel = "Grön linje"
-                                textColor = UIColor.greenColor()
-                            } else if mapName.rangeOfString("röda") != nil {
-                                imageName = "logo_red"
-                                directionLabel = "Röd linje"
-                                textColor = UIColor.redColor()
-                            } else if mapName.rangeOfString("blå") != nil {
-                                imageName = "logo_blue"
-                                directionLabel = "Blå linje"
-                                textColor = UIColor.blueColor()
-                            } else {
-                                imageName = "logo_green"
-                                directionLabel = "Okänd linje"
-                                textColor = UIColor.whiteColor()
-                            }
+                            // Use Departure class methods to calculate the header label look
+                            let headerSuffix = Departure.createDirectionSuffix(mapName, departuresDict: self.departuresDict)
+                            let (directionLabel, imageName, textColor) = Departure.createLabelAndImageNameFromSection(mapName, departuresDict: self.departuresDict)
+                            // Header label
                             header.headerLabel.setTextColor(textColor)
-                            header.trainImage.setImage(UIImage(named: imageName))
                             if "" != headerSuffix {
                                 header.headerLabel.setText(headerSuffix)
                             } else {
                                 header.headerLabel.setText(directionLabel)
+                            }
+                            // Image
+                            if nil != imageName {
+                                header.trainImage.setImage(UIImage(named: imageName!))
                             }
                         }
                     }
@@ -271,9 +247,6 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
     }
     
     func createMappingFromFetchedDepartures() {
-        print("createMappingFromFetchedDepartures()")
-        Utils.setPreferredTransportType(.Bus)
-        print("Prefer bus departures test")
         if nil != self.fetchedDepartures && nil != self.closestStation {
             (self.mappingDict, self.departuresDict) = Utils.getMappingFromDepartures(
                 self.fetchedDepartures!,

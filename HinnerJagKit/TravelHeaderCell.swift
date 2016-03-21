@@ -37,7 +37,7 @@ public class TravelHeaderCell: UITableViewCell
         }
         if let sectionString = mappingDict[section] {
             let directionSuffix = Departure.createDirectionSuffix(sectionString, departuresDict: departuresDict)
-            let (directionLabel, imageName) = Departure.createLabelAndImageNameFromSection(sectionString, departuresDict: departuresDict)
+            let (directionLabel, imageName, _) = Departure.createLabelAndImageNameFromSection(sectionString, departuresDict: departuresDict)
             // Set image
             if nil != imageName {
                 cell?.trainImage.image = UIImage(named: imageName!)

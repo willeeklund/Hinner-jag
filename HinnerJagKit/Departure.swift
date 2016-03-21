@@ -102,38 +102,38 @@ public class Departure: NSObject
             return ""
     }
     
-    public class func createLabelAndImageNameFromSection(sectionString: String, departuresDict: Dictionary<String, [Departure]>) -> (String, String?) {
+    public class func createLabelAndImageNameFromSection(sectionString: String, departuresDict: Dictionary<String, [Departure]>) -> (String, String?, UIColor?) {
         // Metro groups
         if sectionString.rangeOfString("METRO") != nil {
             if sectionString.rangeOfString("gröna") != nil {
-                return ("Grön linje", "train_green")
+                return ("Grön linje", "train_green", UIColor.greenColor())
             } else if sectionString.rangeOfString("röda") != nil {
-                return ("Röd linje", "train_red")
+                return ("Röd linje", "train_red", UIColor.redColor())
             } else if sectionString.rangeOfString("blå") != nil {
-                return ("Blå linje", "train_blue")
+                return ("Blå linje", "train_blue", UIColor.blueColor())
             } else {
                 print("Can not decide direction label for '\(sectionString)'")
-                return ("Tunnelbana", nil)
+                return ("Tunnelbana", nil, nil)
             }
         }
             // Train groups
         else if sectionString.rangeOfString("TRAIN") != nil {
-            return ("", "train_purple")
+            return ("", "train_purple", UIColor.purpleColor())
         }
             // Bus groups
         else if sectionString.rangeOfString("BUS") != nil {
             if let depList = departuresDict[sectionString] {
                 let firstDep = depList[0]
-                return ("Buss \(firstDep.lineNumber)", "bus")
+                return ("Buss \(firstDep.lineNumber)", "bus", nil)
             } else {
-                return ("Buss", "bus")
+                return ("Buss", "bus", nil)
             }
         }
             // Tram groups
         else if sectionString.rangeOfString("TRAM") != nil {
-            return ("Tvärbana", "train_orange")
+            return ("Tvärbana", "train_orange", UIColor.orangeColor())
         }
-        return ("Okänd", nil)
+        return ("Okänd", nil, nil)
     }
     
 }
