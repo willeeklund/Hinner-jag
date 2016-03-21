@@ -89,9 +89,11 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
         for (index, mappingName) in self.mappingDict {
             // TODO: Calculate startIndexGroup2 in dynamic way, and change variable name
             self.groupFromIndex[typesOfRows.count] = index
-            
-            self.typesOfRows.append("header")
             if let depList = self.departuresDict[mappingName] {
+                if depList.count > 0 {
+                    // Only add the header if we have departures in the list
+                    self.typesOfRows.append("header")
+                }
                 for _ in 1...depList.count {
                     self.typesOfRows.append("details")
                 }
@@ -269,6 +271,9 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
     }
     
     func createMappingFromFetchedDepartures() {
+        print("createMappingFromFetchedDepartures()")
+        Utils.setPreferredTransportType(.Bus)
+        print("Prefer bus departures test")
         if nil != self.fetchedDepartures && nil != self.closestStation {
             (self.mappingDict, self.departuresDict) = Utils.getMappingFromDepartures(
                 self.fetchedDepartures!,
