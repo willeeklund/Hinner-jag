@@ -79,7 +79,7 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
         var i = 0;
         while i < self.numberOfSectionsInTableView(self.tableView) {
             height += rowHeight * CGFloat(self.tableView(self.tableView, numberOfRowsInSection: i) + 1)
-            i++
+            i += 1
         }
         height = max(height, 180)
         self.preferredContentSize = CGSizeMake(0, height)

@@ -83,13 +83,17 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
         self.setupTransportTypePicker()
     }
     
+    /**
+    Calculate type for the rows
+     
+    Using the class properties mappingDict and departuresDict we can generate a list
+    describing which type of rows should be shown in our table
+    */
     func calculateTypesOfRows() {
-        // Calculate type for the rows
         self.typesOfRows = [String]()
         self.groupFromIndex = Dictionary<Int, Int>()
         
         for (index, mappingName) in self.mappingDict {
-            // TODO: Calculate startIndexGroup2 in dynamic way, and change variable name
             self.groupFromIndex[typesOfRows.count] = index
             if let depList = self.departuresDict[mappingName] {
                 if depList.count > 0 {
@@ -103,9 +107,12 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
         }
     }
     
+    /** 
+    Create table rows and fill with content
+     
+    This is based on the list typesOfRows calculated previously
+    */
     func fillTableWithContent() {
-        print("fillTableWithContent() -  InterfaceController")
-        // Create table rows and fill with content
         var currentHeaderIndex: Int?
         var currentGroupIndex: Int?
         var currentGroupDepartures = [Departure]()
@@ -205,7 +212,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
                 timer.invalidate()
                 return
             }
-            timerStationCount++
+            timerStationCount += 1
             // Check if still no station is selected
             if nil == self.closestStation {
                 let dots = String(count: timerStationCount, repeatedValue: "." as Character)
@@ -236,7 +243,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
                     timer.invalidate()
                     return
                 }
-                timerDeparturesCount++
+                timerDeparturesCount += 1
                 // Check if still no station is selected
                 if timerDeparturesCount < 10 {
                     let points = String(count: timerDeparturesCount, repeatedValue: "." as Character)

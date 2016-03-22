@@ -69,7 +69,8 @@ public class HeadlineCell: UITableViewCell
             cell?.stationTypeSegment.removeAllSegments()
             var i = 0
             for segmentName in namesList! {
-                cell?.stationTypeSegment.insertSegmentWithTitle(segmentName, atIndex: i++, animated: false)
+                cell?.stationTypeSegment.insertSegmentWithTitle(segmentName, atIndex: i, animated: false)
+                i += 1
             }
             // Show selected segment
             let currentTransportType = Utils.currentTransportType(departures!)

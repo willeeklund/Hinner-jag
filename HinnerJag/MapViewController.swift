@@ -62,7 +62,7 @@ class MapViewController: UIViewController, MKMapViewDelegate
                     view?.pinColor = .Green
                 }
             }
-
+            
             // TODO: Set left accessory view to show which lines exist at this station
             // var imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 46, height: 46))
             // imageView.image = UIImage(named: "train_green")
@@ -75,7 +75,7 @@ class MapViewController: UIViewController, MKMapViewDelegate
     
     // MARK: - Tapping annotation will select that station
     lazy var tapRecognizer: UITapGestureRecognizer = {
-        return UITapGestureRecognizer(target: self, action: "tappedAnnotation:")
+        return UITapGestureRecognizer(target: self, action: #selector(MapViewController.tappedAnnotation(_:)))
     }()
     
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
@@ -96,5 +96,5 @@ class MapViewController: UIViewController, MKMapViewDelegate
             }
         }
     }
-
+    
 }

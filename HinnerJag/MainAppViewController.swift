@@ -51,7 +51,7 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
         if indexPath.section == 0 {
             // Section for changing closest station manually
             let reuseId = "chooseStation"
-            var cell = tableView.dequeueReusableCellWithIdentifier(reuseId) 
+            var cell = tableView.dequeueReusableCellWithIdentifier(reuseId)
             if cell == nil {
                 cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: reuseId)
             }
@@ -65,7 +65,7 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
                 }
                 cell?.textLabel?.textColor = UIColor(red: 0, green: 0.478431, blue: 1.0, alpha: 1.0)
             }
-
+            
             return cell! as UITableViewCell
         } else {
             // Travel details
@@ -96,7 +96,7 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
     
     // MARK: - Introduction walkthrough of the app
     func startWalkthroughTimer() {
-        NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "checkIfHasSeenWalkthrough", userInfo: nil, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(MainAppViewController.checkIfHasSeenWalkthrough), userInfo: nil, repeats: false)
     }
     
     func checkIfHasSeenWalkthrough() {

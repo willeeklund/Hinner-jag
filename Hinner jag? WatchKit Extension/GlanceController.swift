@@ -33,7 +33,7 @@ class GlanceController: InterfaceController {
                         detailsText += ", "
                     }
                     detailsText += "\(departure.remainingTime)"
-                    counter++
+                    counter += 1
                 }
             }
         }

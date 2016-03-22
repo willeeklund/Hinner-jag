@@ -10,10 +10,10 @@ import UIKit
 // MARK: - Protocols -
 
 /**
-Walkthrough Delegate:
-This delegate performs basic operations such as dismissing the Walkthrough or call whatever action on page change.
-Probably the Walkthrough is presented by this delegate.
-**/
+ Walkthrough Delegate:
+ This delegate performs basic operations such as dismissing the Walkthrough or call whatever action on page change.
+ Probably the Walkthrough is presented by this delegate.
+ **/
 
 @objc protocol BWWalkthroughViewControllerDelegate{
     
@@ -21,14 +21,14 @@ Probably the Walkthrough is presented by this delegate.
     @objc optional func walkthroughNextButtonPressed()               //
     @objc optional func walkthroughPrevButtonPressed()               //
     @objc optional func walkthroughPageDidChange(pageNumber:Int)     // Called when current page changes
-
+    
 }
 
-/** 
-Walkthrough Page:
-The walkthrough page represents any page added to the Walkthrough.
-At the moment it's only used to perform custom animations on didScroll.
-**/
+/**
+ Walkthrough Page:
+ The walkthrough page represents any page added to the Walkthrough.
+ At the moment it's only used to perform custom animations on didScroll.
+ **/
 @objc protocol BWWalkthroughPage{
     // While sliding to the "next" slide (from right to left), the "current" slide changes its offset from 1.0 to 2.0 while the "next" slide changes it from 0.0 to 1.0
     // While sliding to the "previous" slide (left to right), the current slide changes its offset from 1.0 to 0.0 while the "previous" slide changes it from 2.0 to 1.0
@@ -80,7 +80,7 @@ At the moment it's only used to perform custom animations on didScroll.
         // Controllers as empty array
         controllers = Array()
     }
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setScreenName("WalkthroughViewController")
@@ -133,17 +133,17 @@ At the moment it's only used to perform custom animations on didScroll.
         }
     }
     
-    // TODO: If you want to implement a "skip" option 
+    // TODO: If you want to implement a "skip" option
     // connect a button to this IBAction and implement the delegate with the skipWalkthrough
     @IBAction func close(sender: AnyObject){
         delegate?.walkthroughCloseButtonPressed?()
     }
     
     /**
-    addViewController
-    Add a new page to the walkthrough. 
-    To have information about the current position of the page in the walkthrough add a UIVIewController which implements BWWalkthroughPage    
-    */
+     addViewController
+     Add a new page to the walkthrough.
+     To have information about the current position of the page in the walkthrough add a UIVIewController which implements BWWalkthroughPage
+     */
     func addViewController(vc:UIViewController)->Void{
         
         controllers.append(vc)
@@ -184,10 +184,10 @@ At the moment it's only used to perform custom animations on didScroll.
             scrollview.addConstraints(lastViewConstraint as! [NSLayoutConstraint])
         }
     }
-
-    /** 
-    Update the UI to reflect the current walkthrough situation 
-    **/
+    
+    /**
+     Update the UI to reflect the current walkthrough situation
+     **/
     
     private func updateUI(){
         
@@ -218,10 +218,10 @@ At the moment it's only used to perform custom animations on didScroll.
     
     func scrollViewDidScroll(sv: UIScrollView) {
         
-        for var i=0; i < controllers.count; i++ {
+        for i in 0 ..< controllers.count {
             
             if let vc = controllers[i] as? BWWalkthroughPage{
-            
+                
                 let mx = ((scrollview.contentOffset.x + view.bounds.size.width) - (view.bounds.size.width * CGFloat(i))) / view.bounds.size.width
                 
                 // While sliding to the "next" slide (from right to left), the "current" slide changes its offset from 1.0 to 2.0 while the "next" slide changes it from 0.0 to 1.0

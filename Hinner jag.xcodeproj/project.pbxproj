@@ -11,12 +11,6 @@
 		0203EB1F1B0A8FAB00A233F0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB31ABA430B003ACD06 /* CoreData.framework */; };
 		0203EB201B0A8FAE00A233F0 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB71ABA4331003ACD06 /* libz.dylib */; };
 		0203EB211B0A8FB200A233F0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB51ABA431E003ACD06 /* SystemConfiguration.framework */; };
-		0211B1E41AAE37B600947C45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0211B1E31AAE37B600947C45 /* AppDelegate.swift */; };
-		0211B1E71AAE37B600947C45 /* Hinner_jag_.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0211B1E51AAE37B600947C45 /* Hinner_jag_.xcdatamodeld */; };
-		0211B1E91AAE37B600947C45 /* MainAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0211B1E81AAE37B600947C45 /* MainAppViewController.swift */; };
-		0211B1EC1AAE37B600947C45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0211B1EA1AAE37B600947C45 /* Main.storyboard */; };
-		0211B1EE1AAE37B600947C45 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0211B1ED1AAE37B600947C45 /* Images.xcassets */; };
-		0211B1F11AAE37B600947C45 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0211B1EF1AAE37B600947C45 /* LaunchScreen.xib */; };
 		0211B2101AAE37FB00947C45 /* HinnerJagKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0211B20F1AAE37FB00947C45 /* HinnerJagKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0211B2161AAE37FC00947C45 /* HinnerJagKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0211B20B1AAE37FB00947C45 /* HinnerJagKit.framework */; };
 		0211B21F1AAE37FC00947C45 /* HinnerJagKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0211B21E1AAE37FC00947C45 /* HinnerJagKitTests.swift */; };
@@ -59,9 +53,15 @@
 		0248BCB11C9CB5E500F0F05A /* NSTimerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0248BCB01C9CB5E500F0F05A /* NSTimerExtension.swift */; };
 		0248BCB21C9CB63100F0F05A /* NSTimerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0248BCB01C9CB5E500F0F05A /* NSTimerExtension.swift */; };
 		0248BCB31C9CB6AE00F0F05A /* NSTimerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0248BCB01C9CB5E500F0F05A /* NSTimerExtension.swift */; };
-		025C989A1AD2947A0096FC79 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025C98991AD2947A0096FC79 /* MapViewController.swift */; };
 		026C9F8D1AD2E85500B75285 /* Hinner jag WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 02F2FF331AB48BB8001A1F90 /* Hinner jag WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		0289760F1ABE164B00A67E9B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0211B1ED1AAE37B600947C45 /* Images.xcassets */; };
+		028143551CA1E82700A6D4D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028143541CA1E82700A6D4D7 /* AppDelegate.swift */; };
+		028143571CA1E8C500A6D4D7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028143561CA1E8C500A6D4D7 /* MapViewController.swift */; };
+		028143591CA1E91200A6D4D7 /* MainAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028143581CA1E91200A6D4D7 /* MainAppViewController.swift */; };
+		0281435B1CA1E95700A6D4D7 /* BWWalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281435A1CA1E95700A6D4D7 /* BWWalkthroughViewController.swift */; };
+		0281435D1CA1E97D00A6D4D7 /* BWWalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281435C1CA1E97D00A6D4D7 /* BWWalkthroughPageViewController.swift */; };
+		028143621CA1EA8200A6D4D7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 028143611CA1EA8200A6D4D7 /* Images.xcassets */; };
+		028143631CA1EAA000A6D4D7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 028143611CA1EA8200A6D4D7 /* Images.xcassets */; };
+		028143651CA1EBB800A6D4D7 /* HinnerJag.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 028143641CA1EBB800A6D4D7 /* HinnerJag.xcdatamodeld */; };
 		029149161B7A7F4100DAE8BD /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0236B3CF1ABE213B00EDF6C8 /* libGoogleAnalyticsServices.a */; };
 		029149171B7A7F7E00DAE8BD /* TravelHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DDF8481ABDAFAE00A9AF12 /* TravelHeaderCell.swift */; };
 		029149181B7A7F8000DAE8BD /* TravelHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DDF8481ABDAFAE00A9AF12 /* TravelHeaderCell.swift */; };
@@ -73,6 +73,8 @@
 		0291491F1B7A835600DAE8BD /* HeadlineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022DE4831AC8188F000E9462 /* HeadlineCell.swift */; };
 		0295BEB41C9DCA12005669EB /* UtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0295BEB31C9DCA12005669EB /* UtilsTests.swift */; };
 		0295DD441AC7F6E500D850BA /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0295DD431AC7F6E500D850BA /* Utils.swift */; };
+		0298C7B51CA1ED0C0051C870 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0298C7B31CA1ED0C0051C870 /* Main.storyboard */; };
+		0299D1931CA1ECD00027AB10 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0299D1911CA1ECD00027AB10 /* LaunchScreen.xib */; };
 		02B11BA21ABA3D02003ACD06 /* GAI.h in Headers */ = {isa = PBXBuildFile; fileRef = 02B11B981ABA3D02003ACD06 /* GAI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		02B11BA31ABA3D02003ACD06 /* GAIDictionaryBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 02B11B991ABA3D02003ACD06 /* GAIDictionaryBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		02B11BA41ABA3D02003ACD06 /* GAIEcommerceFields.h in Headers */ = {isa = PBXBuildFile; fileRef = 02B11B9A1ABA3D02003ACD06 /* GAIEcommerceFields.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -111,8 +113,6 @@
 		02DDF84E1ABDB19200A9AF12 /* TravelDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DDF84A1ABDAFBB00A9AF12 /* TravelDetailsCell.swift */; };
 		02DDF84F1ABDB19400A9AF12 /* TravelDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DDF84A1ABDAFBB00A9AF12 /* TravelDetailsCell.swift */; };
 		02E90DA81AB0FBAF00FD5DB7 /* HinnerJagKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0211B20B1AAE37FB00947C45 /* HinnerJagKit.framework */; };
-		02ED99B61AD2FEC700CB6C9E /* BWWalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ED99B41AD2FEC700CB6C9E /* BWWalkthroughPageViewController.swift */; };
-		02ED99B71AD2FEC700CB6C9E /* BWWalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ED99B51AD2FEC700CB6C9E /* BWWalkthroughViewController.swift */; };
 		02F2FF391AB48BB8001A1F90 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F2FF381AB48BB8001A1F90 /* InterfaceController.swift */; };
 		02F2FF3B1AB48BB8001A1F90 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F2FF3A1AB48BB8001A1F90 /* NotificationController.swift */; };
 		02F2FF3D1AB48BB8001A1F90 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F2FF3C1AB48BB8001A1F90 /* GlanceController.swift */; };
@@ -138,7 +138,7 @@
 			containerPortal = 0211B1D61AAE37B600947C45 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 0211B1DD1AAE37B600947C45;
-			remoteInfo = "Hinner jag?";
+			remoteInfo = HinnerJag;
 		};
 		0211B2201AAE37FC00947C45 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -160,6 +160,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 0227D91A1BDFFE3D00E734BB;
 			remoteInfo = HinnerJagWatchKit;
+		};
+		025747A31CA1D0760071C319 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0211B1D61AAE37B600947C45 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 02C223581B8EE600007A162E;
+			remoteInfo = "HinnerJagWatchOS2 Extension";
 		};
 		026C9F8E1AD2E87D00B75285 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -290,13 +297,7 @@
 
 /* Begin PBXFileReference section */
 		0211B1DE1AAE37B600947C45 /* Hinner jag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hinner jag.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0211B1E21AAE37B600947C45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0211B1E31AAE37B600947C45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0211B1E61AAE37B600947C45 /* Hinner_jag_.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hinner_jag_.xcdatamodel; sourceTree = "<group>"; };
-		0211B1E81AAE37B600947C45 /* MainAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppViewController.swift; sourceTree = "<group>"; };
-		0211B1EB1AAE37B600947C45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0211B1ED1AAE37B600947C45 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		0211B1F01AAE37B600947C45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		0211B1E21AAE37B600947C45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = HinnerJag/Info.plist; sourceTree = "<group>"; };
 		0211B20B1AAE37FB00947C45 /* HinnerJagKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HinnerJagKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0211B20E1AAE37FB00947C45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0211B20F1AAE37FB00947C45 /* HinnerJagKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HinnerJagKit.h; sourceTree = "<group>"; };
@@ -326,12 +327,19 @@
 		023F4B7B1AEA15F500706872 /* test_departures_9520_sodertalje_centrum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test_departures_9520_sodertalje_centrum.json; sourceTree = "<group>"; };
 		023F4B7D1AEA168100706872 /* test_departures_9530_stockholms_sodra.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test_departures_9530_stockholms_sodra.json; sourceTree = "<group>"; };
 		0248BCB01C9CB5E500F0F05A /* NSTimerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSTimerExtension.swift; sourceTree = "<group>"; };
-		025C98991AD2947A0096FC79 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		028EB6611AAF97E6004C508C /* Hinner jag?.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Hinner jag?.entitlements"; sourceTree = "<group>"; };
+		028143541CA1E82700A6D4D7 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = HinnerJag/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
+		028143561CA1E8C500A6D4D7 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = HinnerJag/MapViewController.swift; sourceTree = SOURCE_ROOT; };
+		028143581CA1E91200A6D4D7 /* MainAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainAppViewController.swift; path = HinnerJag/MainAppViewController.swift; sourceTree = SOURCE_ROOT; };
+		0281435A1CA1E95700A6D4D7 /* BWWalkthroughViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BWWalkthroughViewController.swift; path = HinnerJag/BWWalkthroughViewController.swift; sourceTree = SOURCE_ROOT; };
+		0281435C1CA1E97D00A6D4D7 /* BWWalkthroughPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BWWalkthroughPageViewController.swift; path = HinnerJag/BWWalkthroughPageViewController.swift; sourceTree = SOURCE_ROOT; };
+		028143611CA1EA8200A6D4D7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = HinnerJag/Images.xcassets; sourceTree = SOURCE_ROOT; };
+		028EB6611AAF97E6004C508C /* HinnerJag.entitlements */ = {isa = PBXFileReference; lastKnownFileType = file; name = HinnerJag.entitlements; path = HinnerJag/HinnerJag.entitlements; sourceTree = "<group>"; };
 		028EB6621AAF983C004C508C /* Hinner jag widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Hinner jag widget.entitlements"; sourceTree = "<group>"; };
-		0295BEB21C9DB630005669EB /* SegmentedControl.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = SegmentedControl.playground; sourceTree = "<group>"; };
+		0295BEB21C9DB630005669EB /* SegmentedControl.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = SegmentedControl.playground; path = HinnerJag/SegmentedControl.playground; sourceTree = "<group>"; };
 		0295BEB31C9DCA12005669EB /* UtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilsTests.swift; sourceTree = "<group>"; };
 		0295DD431AC7F6E500D850BA /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		0298C7B41CA1ED0C0051C870 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HinnerJag/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0299D1921CA1ECD00027AB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = HinnerJag/Base.lproj/LaunchScreen.xib; sourceTree = SOURCE_ROOT; };
 		02B11B981ABA3D02003ACD06 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
 		02B11B991ABA3D02003ACD06 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
 		02B11B9A1ABA3D02003ACD06 /* GAIEcommerceFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceFields.h; sourceTree = "<group>"; };
@@ -342,7 +350,7 @@
 		02B11B9F1ABA3D02003ACD06 /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
 		02B11BA01ABA3D02003ACD06 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
 		02B11BA11ABA3D02003ACD06 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
-		02B11BAE1ABA4165003ACD06 /* GAIExtendViewControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GAIExtendViewControllers.swift; path = "../Hinner jag?/GAIExtendViewControllers.swift"; sourceTree = "<group>"; };
+		02B11BAE1ABA4165003ACD06 /* GAIExtendViewControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GAIExtendViewControllers.swift; path = ../HinnerJag/GAIExtendViewControllers.swift; sourceTree = "<group>"; };
 		02B11BB11ABA42EB003ACD06 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		02B11BB31ABA430B003ACD06 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		02B11BB51ABA431E003ACD06 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -371,8 +379,6 @@
 		02D4E8421AB61DDC00FD597F /* Hinner_jag_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hinner_jag_Tests.swift; sourceTree = "<group>"; };
 		02DDF8481ABDAFAE00A9AF12 /* TravelHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelHeaderCell.swift; sourceTree = "<group>"; };
 		02DDF84A1ABDAFBB00A9AF12 /* TravelDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelDetailsCell.swift; sourceTree = "<group>"; };
-		02ED99B41AD2FEC700CB6C9E /* BWWalkthroughPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BWWalkthroughPageViewController.swift; sourceTree = "<group>"; };
-		02ED99B51AD2FEC700CB6C9E /* BWWalkthroughViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BWWalkthroughViewController.swift; sourceTree = "<group>"; };
 		02F2FF331AB48BB8001A1F90 /* Hinner jag WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Hinner jag WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		02F2FF361AB48BB8001A1F90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02F2FF371AB48BB8001A1F90 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
@@ -519,21 +525,20 @@
 				0295BEAE1C9DB2C6005669EB /* Playground */,
 				02ED99B31AD2FEB500CB6C9E /* Walkthrough */,
 				025C989B1AD294820096FC79 /* Controllers */,
-				0211B1EA1AAE37B600947C45 /* Main.storyboard */,
-				0211B1ED1AAE37B600947C45 /* Images.xcassets */,
-				0211B1EF1AAE37B600947C45 /* LaunchScreen.xib */,
+				0298C7B31CA1ED0C0051C870 /* Main.storyboard */,
+				028143611CA1EA8200A6D4D7 /* Images.xcassets */,
 				0211B1E11AAE37B600947C45 /* Supporting Files */,
 			);
-			name = "Hinner jag";
-			path = "Hinner jag?";
+			path = "Hinner jag";
 			sourceTree = "<group>";
 		};
 		0211B1E11AAE37B600947C45 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				0211B1E51AAE37B600947C45 /* Hinner_jag_.xcdatamodeld */,
-				028EB6611AAF97E6004C508C /* Hinner jag?.entitlements */,
-				0211B1E31AAE37B600947C45 /* AppDelegate.swift */,
+				0299D1911CA1ECD00027AB10 /* LaunchScreen.xib */,
+				028EB6611AAF97E6004C508C /* HinnerJag.entitlements */,
+				028143641CA1EBB800A6D4D7 /* HinnerJag.xcdatamodeld */,
+				028143541CA1E82700A6D4D7 /* AppDelegate.swift */,
 				0211B1E21AAE37B600947C45 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -656,8 +661,8 @@
 		025C989B1AD294820096FC79 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0211B1E81AAE37B600947C45 /* MainAppViewController.swift */,
-				025C98991AD2947A0096FC79 /* MapViewController.swift */,
+				028143561CA1E8C500A6D4D7 /* MapViewController.swift */,
+				028143581CA1E91200A6D4D7 /* MainAppViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -768,8 +773,8 @@
 		02ED99B31AD2FEB500CB6C9E /* Walkthrough */ = {
 			isa = PBXGroup;
 			children = (
-				02ED99B41AD2FEC700CB6C9E /* BWWalkthroughPageViewController.swift */,
-				02ED99B51AD2FEC700CB6C9E /* BWWalkthroughViewController.swift */,
+				0281435A1CA1E95700A6D4D7 /* BWWalkthroughViewController.swift */,
+				0281435C1CA1E97D00A6D4D7 /* BWWalkthroughPageViewController.swift */,
 			);
 			name = Walkthrough;
 			sourceTree = "<group>";
@@ -871,6 +876,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				025747A41CA1D0760071C319 /* PBXTargetDependency */,
 				026C9F911AD2E88300B75285 /* PBXTargetDependency */,
 				026C9F8F1AD2E87D00B75285 /* PBXTargetDependency */,
 				0211B2211AAE37FC00947C45 /* PBXTargetDependency */,
@@ -878,7 +884,7 @@
 				02C2236E1B8EE600007A162E /* PBXTargetDependency */,
 			);
 			name = "Hinner jag";
-			productName = "Hinner jag?";
+			productName = "Hinner jag";
 			productReference = 0211B1DE1AAE37B600947C45 /* Hinner jag.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -1053,7 +1059,7 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Wilhelm Eklund";
 				TargetAttributes = {
 					0211B1DD1AAE37B600947C45 = {
@@ -1085,6 +1091,7 @@
 					};
 					0227D91A1BDFFE3D00E734BB = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = AAA3F77UH3;
 					};
 					02C2234C1B8EE5FF007A162E = {
 						CreatedOnToolsVersion = 7.0;
@@ -1140,9 +1147,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0211B1EC1AAE37B600947C45 /* Main.storyboard in Resources */,
-				0211B1F11AAE37B600947C45 /* LaunchScreen.xib in Resources */,
-				0211B1EE1AAE37B600947C45 /* Images.xcassets in Resources */,
+				0298C7B51CA1ED0C0051C870 /* Main.storyboard in Resources */,
+				028143621CA1EA8200A6D4D7 /* Images.xcassets in Resources */,
+				0299D1931CA1ECD00027AB10 /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1173,7 +1180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0211B24E1AAE4BB000947C45 /* MainInterface.storyboard in Resources */,
-				0289760F1ABE164B00A67E9B /* Images.xcassets in Resources */,
+				028143631CA1EAA000A6D4D7 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1241,17 +1248,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				028143591CA1E91200A6D4D7 /* MainAppViewController.swift in Sources */,
+				028143651CA1EBB800A6D4D7 /* HinnerJag.xcdatamodeld in Sources */,
+				028143571CA1E8C500A6D4D7 /* MapViewController.swift in Sources */,
+				028143551CA1E82700A6D4D7 /* AppDelegate.swift in Sources */,
 				029149181B7A7F8000DAE8BD /* TravelHeaderCell.swift in Sources */,
-				02ED99B61AD2FEC700CB6C9E /* BWWalkthroughPageViewController.swift in Sources */,
 				0291491C1B7A833300DAE8BD /* HinnerJagTableViewController.swift in Sources */,
-				0211B1E91AAE37B600947C45 /* MainAppViewController.swift in Sources */,
-				02ED99B71AD2FEC700CB6C9E /* BWWalkthroughViewController.swift in Sources */,
 				0291491E1B7A835500DAE8BD /* HeadlineCell.swift in Sources */,
+				0281435D1CA1E97D00A6D4D7 /* BWWalkthroughPageViewController.swift in Sources */,
 				0291491A1B7A7FA900DAE8BD /* GAIExtendViewControllers.swift in Sources */,
+				0281435B1CA1E95700A6D4D7 /* BWWalkthroughViewController.swift in Sources */,
 				02DDF84E1ABDB19200A9AF12 /* TravelDetailsCell.swift in Sources */,
-				0211B1E71AAE37B600947C45 /* Hinner_jag_.xcdatamodeld in Sources */,
-				0211B1E41AAE37B600947C45 /* AppDelegate.swift in Sources */,
-				025C989A1AD2947A0096FC79 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1369,6 +1376,11 @@
 			target = 0227D91A1BDFFE3D00E734BB /* HinnerJagWatchKit */;
 			targetProxy = 0227D9201BDFFE3D00E734BB /* PBXContainerItemProxy */;
 		};
+		025747A41CA1D0760071C319 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 02C223581B8EE600007A162E /* HinnerJagWatchOS2 Extension */;
+			targetProxy = 025747A31CA1D0760071C319 /* PBXContainerItemProxy */;
+		};
 		026C9F8F1AD2E87D00B75285 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 02F2FF321AB48BB8001A1F90 /* Hinner jag WatchKit Extension */;
@@ -1412,18 +1424,19 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		0211B1EA1AAE37B600947C45 /* Main.storyboard */ = {
+		0298C7B31CA1ED0C0051C870 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				0211B1EB1AAE37B600947C45 /* Base */,
+				0298C7B41CA1ED0C0051C870 /* Base */,
 			);
 			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
-		0211B1EF1AAE37B600947C45 /* LaunchScreen.xib */ = {
+		0299D1911CA1ECD00027AB10 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				0211B1F01AAE37B600947C45 /* Base */,
+				0299D1921CA1ECD00027AB10 /* Base */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
@@ -1469,7 +1482,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_BUILD_NUMBER = 1;
+				CURRENT_BUILD_NUMBER = 2;
 				CURRENT_PROJECT_VERSION = 2.0;
 				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1492,7 +1505,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "6caede0d-29ab-47d1-b111-a53a95bec185";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1521,7 +1534,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_BUILD_NUMBER = 1;
+				CURRENT_BUILD_NUMBER = 2;
 				CURRENT_PROJECT_VERSION = 2.0;
 				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1536,7 +1549,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "6caede0d-29ab-47d1-b111-a53a95bec185";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1549,7 +1562,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "Hinner jag?/Info.plist";
+				INFOPLIST_FILE = HinnerJag/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1568,7 +1581,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "Hinner jag?/Info.plist";
+				INFOPLIST_FILE = HinnerJag/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1586,6 +1599,8 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1604,6 +1619,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wilhelmeklund.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1618,6 +1634,8 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1632,6 +1650,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wilhelmeklund.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1656,7 +1675,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wilhelmeklund.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hinner jag?.app/Hinner jag?";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hinner jag.app/Hinner jag";
 			};
 			name = Debug;
 		};
@@ -1672,7 +1691,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wilhelmeklund.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hinner jag?.app/Hinner jag?";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hinner jag.app/Hinner jag";
 			};
 			name = Release;
 		};
@@ -1680,6 +1699,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Hinner jag widget/Hinner jag widget.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1693,6 +1714,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "${BUNDLE_ID}.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1702,6 +1724,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Hinner jag widget/Hinner jag widget.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Hinner jag widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -1711,6 +1735,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "${BUNDLE_ID}.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1720,6 +1745,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
@@ -1732,6 +1759,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wilhelmeklund.HinnerJagWatchKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -1744,6 +1772,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1757,6 +1787,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wilhelmeklund.HinnerJagWatchKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -1769,6 +1800,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1778,8 +1810,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wilhelmeklund.Hinner-jag.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos2.1;
+				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos";
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -1789,6 +1822,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
@@ -1798,8 +1832,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wilhelmeklund.Hinner-jag.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos2.1;
+				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos";
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -1809,6 +1844,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1817,7 +1855,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wilhelmeklund.Hinner-jag.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos2.1;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
@@ -1828,6 +1867,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
@@ -1836,7 +1878,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wilhelmeklund.Hinner-jag.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos2.1;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
@@ -1887,6 +1930,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_NAME_PREFIX = "--";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1896,6 +1941,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID).watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
@@ -1906,12 +1952,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				IBSC_MODULE = Hinner_jag__WatchKit_Extension;
 				INFOPLIST_FILE = "Hinner jag? WatchKit App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID).watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
@@ -1921,6 +1970,8 @@
 		02F2FF551AB48BB8001A1F90 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1935,6 +1986,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "${BUNDLE_ID}.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1942,6 +1994,8 @@
 		02F2FF561AB48BB8001A1F90 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Hinner jag? WatchKit Extension/Info.plist";
@@ -1953,6 +2007,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "${BUNDLE_ID}.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -2062,13 +2117,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		0211B1E51AAE37B600947C45 /* Hinner_jag_.xcdatamodeld */ = {
+		028143641CA1EBB800A6D4D7 /* HinnerJag.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				0211B1E61AAE37B600947C45 /* Hinner_jag_.xcdatamodel */,
 			);
-			currentVersion = 0211B1E61AAE37B600947C45 /* Hinner_jag_.xcdatamodel */;
-			path = Hinner_jag_.xcdatamodeld;
+			name = HinnerJag.xcdatamodeld;
+			path = ../HinnerJag/HinnerJag.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
