@@ -69,6 +69,7 @@ public class Utils
         return (mappingDict, departuresDict)
     }
     
+    // MARK: - Small tranformation methods
     public class func getLabelTextForClosestStation(station: Station?, ownLocation location: CLLocation?) -> String {
         if nil == station || nil == location {
             return "Söker efter plats..."
@@ -93,6 +94,16 @@ public class Utils
         }
 
         return distString
+    }
+    
+    // Human readable name for transport type
+    public class func transportTypeStringToName(transportType: TransportType) -> String {
+        switch transportType {
+        case .Metro: return "T-bana"
+        case .Train: return "Pendeltåg"
+        case .Bus: return "Buss"
+        case .Tram: return "Tvärbana"
+        }
     }
     
     // MARK: - Keep track of preferred travel type for the user

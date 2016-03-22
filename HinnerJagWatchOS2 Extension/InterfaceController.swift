@@ -37,6 +37,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
     @IBOutlet weak var closestStationLabel: WKInterfaceLabel!
     @IBOutlet weak var tableView: WKInterfaceTable!
     @IBOutlet var fetchingDataLabel: WKInterfaceLabel!
+    @IBOutlet var transportTypePicker: WKInterfacePicker!
     
     // MARK: - Initilization
     override func awakeWithContext(context: AnyObject?) {
@@ -79,6 +80,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
         self.tableView.setRowTypes(self.typesOfRows)
         self.fillTableWithContent()
         self.intervalCheckForDepartures()
+        self.setupTransportTypePicker()
     }
     
     func calculateTypesOfRows() {
@@ -152,6 +154,36 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
                 }
             }
         }
+    }
+    
+    // MARK: - Select transport type
+    var uniqueTransportTypes = [TransportType]()
+    func setupTransportTypePicker() {
+        if nil == fetchedDepartures {
+            transportTypePicker.setHidden(true)
+            return
+        }
+        uniqueTransportTypes = Utils.uniqueTransportTypesFromDepartures(fetchedDepartures!)
+        let currentTransportType = Utils.currentTransportType(fetchedDepartures!)
+        var selectedIndex = 0
+        var pickerItems = [WKPickerItem]()
+        for (index, type) in uniqueTransportTypes.enumerate() {
+            let item = WKPickerItem()
+            item.title = Utils.transportTypeStringToName(type)
+            pickerItems.append(item)
+            if type == currentTransportType {
+                selectedIndex = index
+            }
+        }
+        transportTypePicker.setItems(pickerItems)
+        transportTypePicker.setSelectedItemIndex(selectedIndex)
+        transportTypePicker.setHidden(false)
+    }
+    
+    @IBAction func didChangeTransportType(index: Int) {
+        let newType = uniqueTransportTypes[index]
+        Utils.setPreferredTransportType(newType)
+        createMappingFromFetchedDepartures()
     }
     
     // MARK: - Timers to indicate time for user with dots

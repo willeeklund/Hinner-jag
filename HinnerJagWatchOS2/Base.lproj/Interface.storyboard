@@ -64,6 +64,11 @@
                             </items>
                         </group>
                         <label alignment="left" text="Hämtar avgångar från SL..." numberOfLines="6" id="NDz-my-5Ga"/>
+                        <picker height="90" alignment="left" hidden="YES" accessibilityLabel="Transport sätt" focusStyle="sequence" id="UeJ-1S-W96">
+                            <connections>
+                                <action selector="didChangeTransportType:" destination="hMK-RC-hDZ" id="Ujb-eo-TSs"/>
+                            </connections>
+                        </picker>
                         <table alignment="left" id="IfG-UP-KPt">
                             <items>
                                 <tableRow identifier="header" selectable="NO" id="Zm3-Ae-JW0" customClass="TravelHeaderRow" customModule="HinnerJagWatchOS2_Extension">
@@ -103,6 +108,7 @@
                         <outlet property="closestStationLabel" destination="7tw-hq-tZX" id="p75-Ip-BNo"/>
                         <outlet property="fetchingDataLabel" destination="NDz-my-5Ga" id="OHs-1X-MGB"/>
                         <outlet property="tableView" destination="IfG-UP-KPt" id="mro-Dc-ASJ"/>
+                        <outlet property="transportTypePicker" destination="UeJ-1S-W96" id="ezp-Wc-ghQ"/>
                     </connections>
                 </controller>
             </objects>

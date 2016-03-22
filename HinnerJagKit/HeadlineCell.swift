@@ -31,16 +31,6 @@ public class HeadlineCell: UITableViewCell
         }
     }
     
-    // MARK: - Human readable name for transport type
-    class func transportTypeStringToName(transportType: TransportType) -> String {
-        switch transportType {
-        case .Metro: return "Tunnelbana"
-        case .Train: return "Pendeltåg"
-        case .Bus: return "Buss"
-        case .Tram: return "Tvärbana"
-        }
-    }
-    
     // MARK: - Init
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -75,7 +65,7 @@ public class HeadlineCell: UITableViewCell
                 return cell! as HeadlineCell
             }
             // Dynamic segment labels
-            let namesList = cell?.uniqueTransportTypes.map() { type in HeadlineCell.transportTypeStringToName(type) }
+            let namesList = cell?.uniqueTransportTypes.map() { type in Utils.transportTypeStringToName(type) }
             cell?.stationTypeSegment.removeAllSegments()
             var i = 0
             for segmentName in namesList! {
