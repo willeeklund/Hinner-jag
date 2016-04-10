@@ -99,6 +99,7 @@ public class HinnerJagTableViewController: UITableViewController, LocateStationD
     
     // MARK: - Update UI
     public func updateUI() {
+        headlineCell?.stationTypeSegment.hidden = true
         dispatch_async(dispatch_get_main_queue(), {
             self.tableView.reloadData()
         })
@@ -146,16 +147,18 @@ public class HinnerJagTableViewController: UITableViewController, LocateStationD
         }
         self.selectChosenStation = false
     }
-    
+
+    var headlineCell: HeadlineCell?
     override public func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
-            return HeadlineCell.createCellForTableView(
+            headlineCell = HeadlineCell.createCellForTableView(
                 tableView,
                 controller: self,
                 closestStation: self.closestStation,
                 location: self.getLastLocation(),
                 departures: fetchedDepartures
             )
+            return headlineCell!
         } else {
             return TravelHeaderCell.createCellForIndexPath(
                 section,

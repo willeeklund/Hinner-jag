@@ -89,7 +89,7 @@ public class LocateStationBase: NSObject, CLLocationManagerDelegate
         let userLocation = CLLocation(latitude: latitude, longitude: longitude)
         var sortedStationList: [Station] = self.stationList
         sortedStationList.sortInPlace({ $0.distanceFromLocation(userLocation) < $1.distanceFromLocation(userLocation) })
-        // Only return 4 stations
-        return Array(sortedStationList[0...3])
+        // Only return 6 stations
+        return Array(sortedStationList[0...5])
     }
 }

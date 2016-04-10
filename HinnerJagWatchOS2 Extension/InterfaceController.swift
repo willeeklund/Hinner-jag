@@ -66,6 +66,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
     func updateUI() {
         if nil == self.closestStation {
             self.intervalCheckForStation()
+            transportTypePicker.setHidden(true)
             return
         }
         
