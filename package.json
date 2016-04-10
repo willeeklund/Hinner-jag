@@ -1,6 +1,6 @@
 {
   "name": "Hinner-jag",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "Will I make it in time for the Sthlm subway?",
   "main": "Gruntfile.js",
   "engines": {
@@ -14,6 +14,7 @@
     "browserify": "^3.41.0",
     "colors": "~0.6.2",
     "csv": "^0.4.1",
+    "excel-parser": "^0.2.2",
     "express": "~2.0",
     "hbs": "~2.4",
     "memory-cache": "0.0.5",
