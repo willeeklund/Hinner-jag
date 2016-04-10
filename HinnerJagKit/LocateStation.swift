@@ -27,44 +27,15 @@ public class LocateStationBase: NSObject, CLLocationManagerDelegate
         let metroStationsData = NSData(contentsOfFile: metroStationsFilePath!)
         assert(nil != metroStationsData, "metro_stations.json must contain valid data")
         let responseDict = try! NSJSONSerialization.JSONObjectWithData(metroStationsData!, options: NSJSONReadingOptions.AllowFragments) as! NSDictionary
-        // Add all stations with both metros and trains
-        if let metroAndTrainStationsList = responseDict["metro_and_train_stations"] as! [NSDictionary]? {
-            for stationInfo in metroAndTrainStationsList {
-                var info: NSMutableDictionary = stationInfo.mutableCopy() as! NSMutableDictionary
-                info.setValue("MetroAndTrain", forKey: "stationType")
-                tmpList.append(Station(dict: info))
-            }
-        }
-        // Add all Metro stations
-        if let metroStationsList = responseDict["metro_stations"] as! [NSDictionary]? {
-            for stationInfo in metroStationsList {
-                var info: NSMutableDictionary = stationInfo.mutableCopy() as! NSMutableDictionary
-                info.setValue("Metro", forKey: "stationType")
-                tmpList.append(Station(dict: info))
-            }
-        }
-        // Add all Train stations
-        if let trainStationsList = responseDict["train_stations"] as! [NSDictionary]? {
-            for stationInfo in trainStationsList {
-                var info: NSMutableDictionary = stationInfo.mutableCopy() as! NSMutableDictionary
-                info.setValue("Train", forKey: "stationType")
-                tmpList.append(Station(dict: info))
-            }
-        }
-        // Add all Bus stations
-        if let busStationsList = responseDict["bus_stations"] as! [NSDictionary]? {
-            for stationInfo in busStationsList {
-                var info: NSMutableDictionary = stationInfo.mutableCopy() as! NSMutableDictionary
-                info.setValue("Bus", forKey: "stationType")
-                tmpList.append(Station(dict: info))
-            }
-        }
-        // Add all Tram stations
-        if let tramStationsList = responseDict["tram_stations"] as! [NSDictionary]? {
-            for stationInfo in tramStationsList {
-                var info: NSMutableDictionary = stationInfo.mutableCopy() as! NSMutableDictionary
-                info.setValue("Tram", forKey: "stationType")
-                tmpList.append(Station(dict: info))
+        // Choose types of stations to include
+        let stationTypes = ["METROSTN", "RAILWSTN", "TRAMSTN", "FERRYBER", "BUSTERM_special"]
+        for type in stationTypes {
+            // Add stations
+            if let metroStationsList = responseDict[type] as! [NSDictionary]? {
+                for stationInfo in metroStationsList {
+                    var info: NSMutableDictionary = stationInfo.mutableCopy() as! NSMutableDictionary
+                    tmpList.append(Station(dict: info))
+                }
             }
         }
 

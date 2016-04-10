@@ -104,7 +104,7 @@ public class Departure: NSObject
     
     public class func createLabelAndImageNameFromSection(sectionString: String, departuresDict: Dictionary<String, [Departure]>) -> (String, String?, UIColor?) {
         // Metro groups
-        if sectionString.rangeOfString("METRO") != nil {
+        if sectionString.rangeOfString(TransportType.getRawValue(.Metro)) != nil {
             if sectionString.rangeOfString("gröna") != nil {
                 return ("Grön linje", "train_green", UIColor.greenColor())
             } else if sectionString.rangeOfString("röda") != nil {
@@ -113,25 +113,29 @@ public class Departure: NSObject
                 return ("Blå linje", "train_blue", UIColor.blueColor())
             } else {
                 print("Can not decide direction label for '\(sectionString)'")
-                return ("Tunnelbana", nil, nil)
+                return (Utils.transportTypeStringToName(.Metro), nil, nil)
             }
         }
-            // Train groups
-        else if sectionString.rangeOfString("TRAIN") != nil {
-            return ("", "train_purple", UIColor.purpleColor())
+        // Train groups
+        else if sectionString.rangeOfString(TransportType.getRawValue(.Train)) != nil {
+            return (Utils.transportTypeStringToName(.Train), "train_purple", UIColor.purpleColor())
         }
-            // Bus groups
-        else if sectionString.rangeOfString("BUS") != nil {
+        // Bus groups
+        else if sectionString.rangeOfString(TransportType.getRawValue(.Bus)) != nil {
             if let depList = departuresDict[sectionString] {
                 let firstDep = depList[0]
-                return ("Buss \(firstDep.lineNumber)", "bus", nil)
+                return ("\(Utils.transportTypeStringToName(.Bus)) \(firstDep.lineNumber)", "bus", nil)
             } else {
-                return ("Buss", "bus", nil)
+                return (Utils.transportTypeStringToName(.Bus), "bus", nil)
             }
         }
-            // Tram groups
-        else if sectionString.rangeOfString("TRAM") != nil {
-            return ("Tvärbana", "train_orange", UIColor.orangeColor())
+        // Tram groups
+        else if sectionString.rangeOfString(TransportType.getRawValue(.Tram)) != nil {
+            return (Utils.transportTypeStringToName(.Tram), "train_orange", UIColor.orangeColor())
+        }
+        // Ship groups
+        else if sectionString.rangeOfString(TransportType.getRawValue(.Ship)) != nil {
+            return (Utils.transportTypeStringToName(.Ship), "anchor", UIColor.blueColor())
         }
         return ("Okänd", nil, nil)
     }

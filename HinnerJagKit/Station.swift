@@ -15,6 +15,11 @@ public enum TransportType: String {
     case Train = "TRAIN"
     case Bus = "BUS"
     case Tram = "TRAM"
+    case Ship = "SHIP"
+
+    public static func getRawValue(type: TransportType) -> String {
+        return type.rawValue
+    }
 }
 
 public class Station: CLLocation, MKAnnotation

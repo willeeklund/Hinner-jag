@@ -148,8 +148,9 @@ public class Utils
         switch transportType {
         case .Metro: return "T-bana"
         case .Train: return "Pendeltåg"
-        case .Bus: return "Buss"
-        case .Tram: return "Tvärbana"
+        case .Bus:   return "Buss"
+        case .Tram:  return "Tvärbana"
+        case .Ship: return "Färja"
         }
     }
     

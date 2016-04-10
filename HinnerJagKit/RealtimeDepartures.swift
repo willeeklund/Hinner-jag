@@ -76,30 +76,13 @@ public class RealtimeDepartures
             let responseDict = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments)
             if let allTypes = responseDict["ResponseData"] as! NSDictionary? {
                 var departureList = [Departure]()
-                // Add Metro departures
-                if let metros = allTypes["Metros"] as! [NSDictionary]? {
-                    for item in metros {
-                        departureList.append(Departure(dict: item, station: station))
-                    }
-                }
-                // Add Train ("pendeltåg") departures
-                if let metros = allTypes["Trains"] as! [NSDictionary]? {
-                    for item in metros {
-                        departureList.append(Departure(dict: item, station: station))
-                    }
-                }
-                // Add Bus departures
-                if let buses = allTypes["Buses"] as! [NSDictionary]? {
-                    for item in buses {
-                        // Check that we only get the bus lines we care about for this station
-                        // TODO: Get list of ignored bus lines from CoreData for this station, use blacklist
-                        departureList.append(Departure(dict: item, station: station))
-                    }
-                }
-                // Add Tram departures
-                if let trams = allTypes["Trams"] as! [NSDictionary]? {
-                    for item in trams {
-                        departureList.append(Departure(dict: item, station: station))
+                // Add departure for the sections we want to use
+                let transportTypeSection = ["Metros", "Trains", "Buses", "Trams", "Ships"]
+                for section in transportTypeSection {
+                    if let chosenSection = allTypes[section] as! [NSDictionary]? {
+                        for item in chosenSection {
+                            departureList.append(Departure(dict: item, station: station))
+                        }
                     }
                 }
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in

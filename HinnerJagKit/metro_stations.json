@@ -1,5 +1,5 @@
 {
-  "metro_and_train_stations": [
+  "METROSTN": [
     {
       "siteid": 9001,
       "sitename": "T-Centralen",
@@ -21,9 +21,7 @@
       "from_central_direction_trains": 1,
       "latitude": 59.2355276839029,
       "longitude": 18.1012808998205
-    }
-  ],
-  "metro_stations": [
+    },
     {
       "siteid": 9110,
       "sitename": "Abrahamsberg",
@@ -704,7 +702,7 @@
       "longitude": 18.0763846822514
     }
   ],
-  "train_stations": [
+  "RAILWSTN": [
     {
       "siteid": 9500,
       "sitename": "Märsta",
@@ -1007,7 +1005,7 @@
       "longitude": 17.9521630219049
     }
   ],
-  "tram_stations": [
+  "TRAMSTN": [
     {
       "siteid": 9248,
       "sitename": "Aga",
@@ -2113,7 +2111,2289 @@
       "longitude": 18.2352802394055
     }
   ],
-  "bus_stations": [
+  "FERRYBER": [
+    {
+      "siteid": 3166,
+      "sitename": "Adelsö färjeläge",
+      "StopAreaNumber": 15832,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3847500754616,
+      "longitude": 17.5259847735785
+    },
+    {
+      "siteid": 312,
+      "sitename": "Allmänna gränd",
+      "StopAreaNumber": 312,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3240804897732,
+      "longitude": 18.0946170248055
+    },
+    {
+      "siteid": 508,
+      "sitename": "Almvik",
+      "StopAreaNumber": 508,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.6214102248847,
+      "longitude": 18.8904832443158
+    },
+    {
+      "siteid": 153,
+      "sitename": "Alsvik",
+      "StopAreaNumber": 153,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4377694806383,
+      "longitude": 18.657032698974
+    },
+    {
+      "siteid": 8580,
+      "sitename": "Ankarudden",
+      "StopAreaNumber": 602,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 58.8012530293858,
+      "longitude": 17.8356428115407
+    },
+    {
+      "siteid": 170,
+      "sitename": "Arbodaö",
+      "StopAreaNumber": 170,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3774347400536,
+      "longitude": 18.7294145117179
+    },
+    {
+      "siteid": 539,
+      "sitename": "Arholma",
+      "StopAreaNumber": 539,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.8512332251953,
+      "longitude": 19.1074135408376
+    },
+    {
+      "siteid": 104,
+      "sitename": "Aspö",
+      "StopAreaNumber": 104,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.2157454470392,
+      "longitude": 18.753322503205
+    },
+    {
+      "siteid": 512,
+      "sitename": "Bergshyddan",
+      "StopAreaNumber": 512,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.6459275292212,
+      "longitude": 18.9282419228809
+    },
+    {
+      "siteid": 135,
+      "sitename": "Bernhardsro",
+      "StopAreaNumber": 135,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4273268923524,
+      "longitude": 18.419174763622
+    },
+    {
+      "siteid": 130,
+      "sitename": "Bjurön",
+      "StopAreaNumber": 130,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4390551391783,
+      "longitude": 18.4397750351671
+    },
+    {
+      "siteid": 136,
+      "sitename": "Björknäs",
+      "StopAreaNumber": 136,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4271500575797,
+      "longitude": 18.4244137443706
+    },
+    {
+      "siteid": 1004330,
+      "sitename": "Björkvik",
+      "StopAreaNumber": 278,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.2209401181861,
+      "longitude": 18.539853734586
+    },
+    {
+      "siteid": 4330,
+      "sitename": "Björkviks brygga",
+      "StopAreaNumber": 278,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.2209401181861,
+      "longitude": 18.539853734586
+    },
+    {
+      "siteid": 219,
+      "sitename": "Björkösund",
+      "StopAreaNumber": 219,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.0490628034137,
+      "longitude": 18.3412615721687
+    },
+    {
+      "siteid": 841,
+      "sitename": "Björnholmen",
+      "StopAreaNumber": 841,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4587076041297,
+      "longitude": 18.6383821294664
+    },
+    {
+      "siteid": 836,
+      "sitename": "Björnhuvud",
+      "StopAreaNumber": 836,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.5311167377609,
+      "longitude": 18.5383675972565
+    },
+    {
+      "siteid": 1420,
+      "sitename": "Blockhusudden",
+      "StopAreaNumber": 8006,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3209154888182,
+      "longitude": 18.1513988836779
+    },
+    {
+      "siteid": 4565,
+      "sitename": "Boda brygga",
+      "StopAreaNumber": 187,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.370085649458,
+      "longitude": 18.6050831607966
+    },
+    {
+      "siteid": 909,
+      "sitename": "Boo",
+      "StopAreaNumber": 909,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.306897461556,
+      "longitude": 18.2922866809512
+    },
+    {
+      "siteid": 503,
+      "sitename": "Brokholmen",
+      "StopAreaNumber": 503,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.5884611176021,
+      "longitude": 18.8324261762044
+    },
+    {
+      "siteid": 1006239,
+      "sitename": "Bromskär",
+      "StopAreaNumber": 556,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.6261359486647,
+      "longitude": 18.9884563786834
+    },
+    {
+      "siteid": 6239,
+      "sitename": "Bromskärs brygga",
+      "StopAreaNumber": 556,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.6261359486647,
+      "longitude": 18.9884563786834
+    },
+    {
+      "siteid": 826,
+      "sitename": "Brottö",
+      "StopAreaNumber": 826,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.465644173814,
+      "longitude": 18.7275566292378
+    },
+    {
+      "siteid": 506,
+      "sitename": "Bruket",
+      "StopAreaNumber": 506,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.6041810772701,
+      "longitude": 18.8675478262531
+    },
+    {
+      "siteid": 112,
+      "sitename": "Bunkvik",
+      "StopAreaNumber": 112,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.1774157392466,
+      "longitude": 18.6698907208097
+    },
+    {
+      "siteid": 1008400,
+      "sitename": "Dalarö (Hotellbryggan)",
+      "StopAreaNumber": 209,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.129479989503,
+      "longitude": 18.4052307774399
+    },
+    {
+      "siteid": 213,
+      "sitename": "Dalarö Skans",
+      "StopAreaNumber": 213,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.1132023788479,
+      "longitude": 18.3919297280415
+    },
+    {
+      "siteid": 184,
+      "sitename": "Dragedet",
+      "StopAreaNumber": 184,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4432629110695,
+      "longitude": 18.8864962204297
+    },
+    {
+      "siteid": 509,
+      "sitename": "Duvnäs",
+      "StopAreaNumber": 509,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.6275518377582,
+      "longitude": 18.8936361955966
+    },
+    {
+      "siteid": 257,
+      "sitename": "Edesön",
+      "StopAreaNumber": 257,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.1501901038441,
+      "longitude": 18.4567871155114
+    },
+    {
+      "siteid": 428,
+      "sitename": "Edholma",
+      "StopAreaNumber": 428,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.412413699463,
+      "longitude": 18.3526437436966
+    },
+    {
+      "siteid": 403,
+      "sitename": "Edlunda",
+      "StopAreaNumber": 403,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3751403189961,
+      "longitude": 18.3185576343861
+    },
+    {
+      "siteid": 821,
+      "sitename": "Edö",
+      "StopAreaNumber": 821,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.466597016905,
+      "longitude": 18.6328304420424
+    },
+    {
+      "siteid": 822,
+      "sitename": "Edö ö",
+      "StopAreaNumber": 822,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4650726313311,
+      "longitude": 18.6673629873647
+    },
+    {
+      "siteid": 3000,
+      "sitename": "Ekerö centrum",
+      "StopAreaNumber": 8015,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.2920769072691,
+      "longitude": 17.8133556423353
+    },
+    {
+      "siteid": 269,
+      "sitename": "Ekholmen",
+      "StopAreaNumber": 269,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.1669926235117,
+      "longitude": 18.6623186421176
+    },
+    {
+      "siteid": 279,
+      "sitename": "Eknö",
+      "StopAreaNumber": 279,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.305669126222,
+      "longitude": 18.8508310187876
+    },
+    {
+      "siteid": 962,
+      "sitename": "Ekudden",
+      "StopAreaNumber": 962,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3899478093735,
+      "longitude": 18.091063944671
+    },
+    {
+      "siteid": 802,
+      "sitename": "Elgö",
+      "StopAreaNumber": 802,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4561796126327,
+      "longitude": 18.4044663138763
+    },
+    {
+      "siteid": 567,
+      "sitename": "Enskär",
+      "StopAreaNumber": 567,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.5844671520138,
+      "longitude": 19.1384819124278
+    },
+    {
+      "siteid": 545,
+      "sitename": "Fejan",
+      "StopAreaNumber": 545,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.7437391713211,
+      "longitude": 19.1669050078359
+    },
+    {
+      "siteid": 1451,
+      "sitename": "Finnboda hamn",
+      "StopAreaNumber": 8002,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3160902503677,
+      "longitude": 18.1244702195966
+    },
+    {
+      "siteid": 824,
+      "sitename": "Finnhamn",
+      "StopAreaNumber": 824,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4827794918645,
+      "longitude": 18.8267911393421
+    },
+    {
+      "siteid": 228,
+      "sitename": "Fiversätraö",
+      "StopAreaNumber": 228,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.0708759637665,
+      "longitude": 18.5162725945759
+    },
+    {
+      "siteid": 952,
+      "sitename": "Fjäderholmarna",
+      "StopAreaNumber": 952,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3275350083536,
+      "longitude": 18.1796027942421
+    },
+    {
+      "siteid": 958,
+      "sitename": "Fjäderholmarna Västra",
+      "StopAreaNumber": 958,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.329469855238,
+      "longitude": 18.1759242126579
+    },
+    {
+      "siteid": 231,
+      "sitename": "Fjärdlång",
+      "StopAreaNumber": 231,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.0354923321943,
+      "longitude": 18.5104885173001
+    },
+    {
+      "siteid": 318,
+      "sitename": "Fotografiska",
+      "StopAreaNumber": 318,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3180900454698,
+      "longitude": 18.0858746274368
+    },
+    {
+      "siteid": 410,
+      "sitename": "Fredriksberg",
+      "StopAreaNumber": 410,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3999912789635,
+      "longitude": 18.3338178089986
+    },
+    {
+      "siteid": 1170,
+      "sitename": "Frihamnen",
+      "StopAreaNumber": 8007,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3456815810759,
+      "longitude": 18.1313108112437
+    },
+    {
+      "siteid": 436,
+      "sitename": "Frösvik",
+      "StopAreaNumber": 436,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4032716597704,
+      "longitude": 18.1539200065001
+    },
+    {
+      "siteid": 404,
+      "sitename": "Furuholmen",
+      "StopAreaNumber": 404,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3722171599155,
+      "longitude": 18.3359736479235
+    },
+    {
+      "siteid": 525,
+      "sitename": "Furusund",
+      "StopAreaNumber": 525,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.6580514030733,
+      "longitude": 18.9166420411113
+    },
+    {
+      "siteid": 214,
+      "sitename": "Fåglarö",
+      "StopAreaNumber": 214,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.1040519818542,
+      "longitude": 18.3986083976186
+    },
+    {
+      "siteid": 524,
+      "sitename": "Fårgångsö",
+      "StopAreaNumber": 524,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.6431367314289,
+      "longitude": 18.8179766332773
+    },
+    {
+      "siteid": 1003166,
+      "sitename": "Färjeläget",
+      "StopAreaNumber": 15832,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3847500754616,
+      "longitude": 17.5259847735785
+    },
+    {
+      "siteid": 164,
+      "sitename": "Galtholmen",
+      "StopAreaNumber": 164,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3849056010878,
+      "longitude": 18.690390942734
+    },
+    {
+      "siteid": 118,
+      "sitename": "Gatan",
+      "StopAreaNumber": 118,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.2944957181915,
+      "longitude": 18.7563939049874
+    },
+    {
+      "siteid": 543,
+      "sitename": "Gisslingö",
+      "StopAreaNumber": 543,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.7728771349599,
+      "longitude": 19.1544268526904
+    },
+    {
+      "siteid": 160,
+      "sitename": "Gistholmen",
+      "StopAreaNumber": 160,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4519523333177,
+      "longitude": 18.745709719634
+    },
+    {
+      "siteid": 504,
+      "sitename": "Glyxnäs",
+      "StopAreaNumber": 504,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.591513825606,
+      "longitude": 18.8549335036151
+    },
+    {
+      "siteid": 177,
+      "sitename": "Granholmen",
+      "StopAreaNumber": 177,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3728675952059,
+      "longitude": 18.8772728427547
+    },
+    {
+      "siteid": 538,
+      "sitename": "Granö",
+      "StopAreaNumber": 538,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.8362892763348,
+      "longitude": 19.088584935718
+    },
+    {
+      "siteid": 809,
+      "sitename": "Grundvik",
+      "StopAreaNumber": 809,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4604529762578,
+      "longitude": 18.5193736538799
+    },
+    {
+      "siteid": 202,
+      "sitename": "Gruvbryggan",
+      "StopAreaNumber": 202,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 58.970485836242,
+      "longitude": 18.3252254537058
+    },
+    {
+      "siteid": 552,
+      "sitename": "Gräddö",
+      "StopAreaNumber": 552,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.7678665084438,
+      "longitude": 19.0319373492587
+    },
+    {
+      "siteid": 207,
+      "sitename": "Gränö",
+      "StopAreaNumber": 207,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.1913364395594,
+      "longitude": 18.4544434980021
+    },
+    {
+      "siteid": 530,
+      "sitename": "Gräskö",
+      "StopAreaNumber": 530,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.6847552141555,
+      "longitude": 19.0169548218559
+    },
+    {
+      "siteid": 163,
+      "sitename": "Gällnö",
+      "StopAreaNumber": 163,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.390209586679,
+      "longitude": 18.6393714056889
+    },
+    {
+      "siteid": 165,
+      "sitename": "Gällnönäs",
+      "StopAreaNumber": 165,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3965098662142,
+      "longitude": 18.7058020135075
+    },
+    {
+      "siteid": 838,
+      "sitename": "Gärdsvik",
+      "StopAreaNumber": 838,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.5490319476274,
+      "longitude": 18.6600485117261
+    },
+    {
+      "siteid": 127,
+      "sitename": "Hagede",
+      "StopAreaNumber": 127,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3461038268253,
+      "longitude": 18.8994766291002
+    },
+    {
+      "siteid": 141,
+      "sitename": "Halleberg",
+      "StopAreaNumber": 141,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4260379384289,
+      "longitude": 18.4603549377339
+    },
+    {
+      "siteid": 126,
+      "sitename": "Harö",
+      "StopAreaNumber": 126,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3391077758351,
+      "longitude": 18.9005456618631
+    },
+    {
+      "siteid": 121,
+      "sitename": "Hasselkobben",
+      "StopAreaNumber": 121,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3145839902619,
+      "longitude": 18.8329331457385
+    },
+    {
+      "siteid": 4140,
+      "sitename": "Hasseludden",
+      "StopAreaNumber": 903,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3487209527896,
+      "longitude": 18.2442265231817
+    },
+    {
+      "siteid": 122,
+      "sitename": "Hasselö",
+      "StopAreaNumber": 122,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3165126317772,
+      "longitude": 18.8450008807874
+    },
+    {
+      "siteid": 521,
+      "sitename": "Hemmarö",
+      "StopAreaNumber": 521,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.6480496579549,
+      "longitude": 18.7960231615817
+    },
+    {
+      "siteid": 154,
+      "sitename": "Hjälmö",
+      "StopAreaNumber": 154,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4197299095745,
+      "longitude": 18.6777038247565
+    },
+    {
+      "siteid": 8400,
+      "sitename": "Hotellbryggan",
+      "StopAreaNumber": 209,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.129479989503,
+      "longitude": 18.4052307774399
+    },
+    {
+      "siteid": 1002736,
+      "sitename": "Hummelmora",
+      "StopAreaNumber": 820,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.455525594655,
+      "longitude": 18.5993025389219
+    },
+    {
+      "siteid": 2736,
+      "sitename": "Hummelmora brygga",
+      "StopAreaNumber": 820,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.455525594655,
+      "longitude": 18.5993025389219
+    },
+    {
+      "siteid": 825,
+      "sitename": "Husarö",
+      "StopAreaNumber": 825,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.5020134291064,
+      "longitude": 18.844112250283
+    },
+    {
+      "siteid": 2929,
+      "sitename": "Håknäs brygga",
+      "StopAreaNumber": 553,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.7799636044382,
+      "longitude": 18.9516662717671
+    },
+    {
+      "siteid": 162,
+      "sitename": "Hägerö",
+      "StopAreaNumber": 162,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3976852048034,
+      "longitude": 18.6172405954864
+    },
+    {
+      "siteid": 8040,
+      "sitename": "Hässelmara",
+      "StopAreaNumber": 215,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.0893109394047,
+      "longitude": 18.4157682273476
+    },
+    {
+      "siteid": 1008040,
+      "sitename": "Hässelmara (Ornö)",
+      "StopAreaNumber": 215,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.0893109394047,
+      "longitude": 18.4157682273476
+    },
+    {
+      "siteid": 423,
+      "sitename": "Hästholmen",
+      "StopAreaNumber": 423,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3652165511595,
+      "longitude": 18.4409449952002
+    },
+    {
+      "siteid": 408,
+      "sitename": "Höganäs",
+      "StopAreaNumber": 408,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3869466382418,
+      "longitude": 18.342388077064
+    },
+    {
+      "siteid": 523,
+      "sitename": "Högmarsö",
+      "StopAreaNumber": 523,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.6459871668306,
+      "longitude": 18.8174515414836
+    },
+    {
+      "siteid": 124,
+      "sitename": "Idholmen",
+      "StopAreaNumber": 124,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.2990604253744,
+      "longitude": 18.8568613190155
+    },
+    {
+      "siteid": 536,
+      "sitename": "Idö",
+      "StopAreaNumber": 536,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.799481703618,
+      "longitude": 19.1148788510101
+    },
+    {
+      "siteid": 105,
+      "sitename": "Idöborg",
+      "StopAreaNumber": 105,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.2042855337483,
+      "longitude": 18.7576059070945
+    },
+    {
+      "siteid": 210,
+      "sitename": "Jutholmen",
+      "StopAreaNumber": 210,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.1252964968044,
+      "longitude": 18.4091765712782
+    },
+    {
+      "siteid": 107,
+      "sitename": "Kalkberget",
+      "StopAreaNumber": 107,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.1913776316616,
+      "longitude": 18.7194125189386
+    },
+    {
+      "siteid": 208,
+      "sitename": "Kalvholmen",
+      "StopAreaNumber": 208,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.1889136243339,
+      "longitude": 18.452575593353
+    },
+    {
+      "siteid": 532,
+      "sitename": "Kapellskär",
+      "StopAreaNumber": 532,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.7180395441213,
+      "longitude": 19.0710975110934
+    },
+    {
+      "siteid": 151,
+      "sitename": "Karklö",
+      "StopAreaNumber": 151,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4165605153646,
+      "longitude": 18.6290795453961
+    },
+    {
+      "siteid": 157,
+      "sitename": "Karlshem",
+      "StopAreaNumber": 157,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4343355212608,
+      "longitude": 18.6894682106145
+    },
+    {
+      "siteid": 432,
+      "sitename": "Karlsudd",
+      "StopAreaNumber": 432,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3814345542607,
+      "longitude": 18.3321015931175
+    },
+    {
+      "siteid": 411,
+      "sitename": "Kastellet",
+      "StopAreaNumber": 411,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4020863477783,
+      "longitude": 18.3595123392708
+    },
+    {
+      "siteid": 951,
+      "sitename": "Klippudden",
+      "StopAreaNumber": 951,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3458053767685,
+      "longitude": 18.2238148046898
+    },
+    {
+      "siteid": 422,
+      "sitename": "Knutsholmen",
+      "StopAreaNumber": 422,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3763746176398,
+      "longitude": 18.434982020184
+    },
+    {
+      "siteid": 6267,
+      "sitename": "Kolsvik",
+      "StopAreaNumber": 510,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.6344150382641,
+      "longitude": 18.9000851253377
+    },
+    {
+      "siteid": 176,
+      "sitename": "Korsö",
+      "StopAreaNumber": 176,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3814790128158,
+      "longitude": 18.8142141535347
+    },
+    {
+      "siteid": 128,
+      "sitename": "Koviksudde",
+      "StopAreaNumber": 128,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3633039646327,
+      "longitude": 18.3422061674697
+    },
+    {
+      "siteid": 603,
+      "sitename": "Krokskär",
+      "StopAreaNumber": 603,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 58.7863711972986,
+      "longitude": 17.8443218709307
+    },
+    {
+      "siteid": 1455,
+      "sitename": "Kvarnholmen",
+      "StopAreaNumber": 8008,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3176396586878,
+      "longitude": 18.1370626017171
+    },
+    {
+      "siteid": 225,
+      "sitename": "Kymmendö",
+      "StopAreaNumber": 225,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.1112757911196,
+      "longitude": 18.4894593591404
+    },
+    {
+      "siteid": 6260,
+      "sitename": "Köpmanholm",
+      "StopAreaNumber": 515,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.6600542078186,
+      "longitude": 18.9298755584298
+    },
+    {
+      "siteid": 2740,
+      "sitename": "Laggarsvik",
+      "StopAreaNumber": 812,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4962716909639,
+      "longitude": 18.5231853917912
+    },
+    {
+      "siteid": 604,
+      "sitename": "Landsort",
+      "StopAreaNumber": 604,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 58.7445736879299,
+      "longitude": 17.8644030983304
+    },
+    {
+      "siteid": 801,
+      "sitename": "Lervik",
+      "StopAreaNumber": 801,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4520299770833,
+      "longitude": 18.3850094775894
+    },
+    {
+      "siteid": 1009055,
+      "sitename": "Lidingö/Dalénum",
+      "StopAreaNumber": 8005,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3431860640087,
+      "longitude": 18.1524072790004
+    },
+    {
+      "siteid": 534,
+      "sitename": "Lidö",
+      "StopAreaNumber": 534,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.7699003357271,
+      "longitude": 19.078996368228
+    },
+    {
+      "siteid": 138,
+      "sitename": "Lilla Betsö",
+      "StopAreaNumber": 138,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4284617623739,
+      "longitude": 18.4333285842884
+    },
+    {
+      "siteid": 133,
+      "sitename": "Lilla Saxaren",
+      "StopAreaNumber": 133,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4520051649946,
+      "longitude": 18.4721100798063
+    },
+    {
+      "siteid": 4570,
+      "sitename": "Lillsved",
+      "StopAreaNumber": 146,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4132266567329,
+      "longitude": 18.4960883027081
+    },
+    {
+      "siteid": 1002745,
+      "sitename": "Linanäs",
+      "StopAreaNumber": 810,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4727376706516,
+      "longitude": 18.5116573172344
+    },
+    {
+      "siteid": 2745,
+      "sitename": "Linanäs brygga",
+      "StopAreaNumber": 810,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4727376706516,
+      "longitude": 18.5116573172344
+    },
+    {
+      "siteid": 416,
+      "sitename": "Ljungbergsgården",
+      "StopAreaNumber": 416,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3664961479107,
+      "longitude": 18.4058371664025
+    },
+    {
+      "siteid": 131,
+      "sitename": "Losten",
+      "StopAreaNumber": 131,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4539674809195,
+      "longitude": 18.4453629421053
+    },
+    {
+      "siteid": 158,
+      "sitename": "Lådna",
+      "StopAreaNumber": 158,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4337891673159,
+      "longitude": 18.7019754332613
+    },
+    {
+      "siteid": 551,
+      "sitename": "Lågarö",
+      "StopAreaNumber": 551,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.7750067888593,
+      "longitude": 18.9252275093215
+    },
+    {
+      "siteid": 119,
+      "sitename": "Långvik",
+      "StopAreaNumber": 119,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.2964164795759,
+      "longitude": 18.7718734487232
+    },
+    {
+      "siteid": 1008039,
+      "sitename": "Lättinge (Ornö)",
+      "StopAreaNumber": 218,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.0446772037543,
+      "longitude": 18.3651652383677
+    },
+    {
+      "siteid": 8039,
+      "sitename": "Lättinge brygga",
+      "StopAreaNumber": 218,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.0446772037543,
+      "longitude": 18.3651652383677
+    },
+    {
+      "siteid": 531,
+      "sitename": "Marö",
+      "StopAreaNumber": 531,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.7016104128349,
+      "longitude": 19.0551336792783
+    },
+    {
+      "siteid": 229,
+      "sitename": "Mefjärd",
+      "StopAreaNumber": 229,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.0620814071211,
+      "longitude": 18.4800208976375
+    },
+    {
+      "siteid": 123,
+      "sitename": "Mjölkkilen",
+      "StopAreaNumber": 123,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3027065817615,
+      "longitude": 18.8430658890797
+    },
+    {
+      "siteid": 803,
+      "sitename": "Mjölkö",
+      "StopAreaNumber": 803,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4655505789215,
+      "longitude": 18.4182264628775
+    },
+    {
+      "siteid": 956,
+      "sitename": "Mor Annas brygga",
+      "StopAreaNumber": 956,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3897692608331,
+      "longitude": 18.1376872928046
+    },
+    {
+      "siteid": 116,
+      "sitename": "Mörtö",
+      "StopAreaNumber": 116,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.1625293846832,
+      "longitude": 18.6290101659594
+    },
+    {
+      "siteid": 117,
+      "sitename": "Mörtö södra",
+      "StopAreaNumber": 117,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.1526031092949,
+      "longitude": 18.6162316208761
+    },
+    {
+      "siteid": 1004220,
+      "sitename": "N Lagnö",
+      "StopAreaNumber": 129,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3553873403695,
+      "longitude": 18.4116534808533
+    },
+    {
+      "siteid": 4031,
+      "sitename": "Nacka strand",
+      "StopAreaNumber": 902,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3181130283856,
+      "longitude": 18.1569153872402
+    },
+    {
+      "siteid": 550,
+      "sitename": "Nationalparken Ängsö",
+      "StopAreaNumber": 550,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.6217043384986,
+      "longitude": 18.7540513077396
+    },
+    {
+      "siteid": 418,
+      "sitename": "Norehill",
+      "StopAreaNumber": 418,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3840368603157,
+      "longitude": 18.3940480952045
+    },
+    {
+      "siteid": 805,
+      "sitename": "Norra Betsö",
+      "StopAreaNumber": 805,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4708677047633,
+      "longitude": 18.4436810899908
+    },
+    {
+      "siteid": 148,
+      "sitename": "Norra Grinda",
+      "StopAreaNumber": 148,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4191472442258,
+      "longitude": 18.5588723838114
+    },
+    {
+      "siteid": 823,
+      "sitename": "Norra Ingmarsö",
+      "StopAreaNumber": 823,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4771624857638,
+      "longitude": 18.7490134601695
+    },
+    {
+      "siteid": 4220,
+      "sitename": "Norra Lagnö",
+      "StopAreaNumber": 129,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3553873403695,
+      "longitude": 18.4116534808533
+    },
+    {
+      "siteid": 173,
+      "sitename": "Norra Stavsudda",
+      "StopAreaNumber": 173,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4041633704657,
+      "longitude": 18.779970460179
+    },
+    {
+      "siteid": 150,
+      "sitename": "Norra Svartsö",
+      "StopAreaNumber": 150,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4588779810136,
+      "longitude": 18.6766495337387
+    },
+    {
+      "siteid": 414,
+      "sitename": "Norra Tynningö",
+      "StopAreaNumber": 414,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3930425748182,
+      "longitude": 18.3764399217833
+    },
+    {
+      "siteid": 6230,
+      "sitename": "Norrsund (Blidö färjeläge)",
+      "StopAreaNumber": 513,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.6489720403202,
+      "longitude": 18.9380548669965
+    },
+    {
+      "siteid": 554,
+      "sitename": "Norrtälje hamn",
+      "StopAreaNumber": 554,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.7578005849832,
+      "longitude": 18.7111931723923
+    },
+    {
+      "siteid": 222,
+      "sitename": "Norrö",
+      "StopAreaNumber": 222,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 58.9050955756286,
+      "longitude": 18.1499354142779
+    },
+    {
+      "siteid": 526,
+      "sitename": "Norröra",
+      "StopAreaNumber": 526,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.6425991988034,
+      "longitude": 19.0205709464962
+    },
+    {
+      "siteid": 220,
+      "sitename": "Nåttarö",
+      "StopAreaNumber": 220,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 58.8818220305286,
+      "longitude": 18.109748114491
+    },
+    {
+      "siteid": 103,
+      "sitename": "Nämdöböte",
+      "StopAreaNumber": 103,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.2088268465829,
+      "longitude": 18.7399218125326
+    },
+    {
+      "siteid": 828,
+      "sitename": "Nässlingen",
+      "StopAreaNumber": 828,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4837870667026,
+      "longitude": 18.6703947731577
+    },
+    {
+      "siteid": 203,
+      "sitename": "Näsudden",
+      "StopAreaNumber": 203,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 58.9615726003289,
+      "longitude": 18.2933999519569
+    },
+    {
+      "siteid": 230,
+      "sitename": "Ornö Kyrka",
+      "StopAreaNumber": 230,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.0520352803057,
+      "longitude": 18.4332670216148
+    },
+    {
+      "siteid": 226,
+      "sitename": "Ornöboda",
+      "StopAreaNumber": 226,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.1118035567419,
+      "longitude": 18.4839120440079
+    },
+    {
+      "siteid": 440,
+      "sitename": "Orrlunda",
+      "StopAreaNumber": 440,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3768946417171,
+      "longitude": 18.4068092927002
+    },
+    {
+      "siteid": 110,
+      "sitename": "Orrön",
+      "StopAreaNumber": 110,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.180580390128,
+      "longitude": 18.7005545561398
+    },
+    {
+      "siteid": 2874,
+      "sitename": "Oskar Fredriksborg",
+      "StopAreaNumber": 39643,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3956553577928,
+      "longitude": 18.4408430822731
+    },
+    {
+      "siteid": 166,
+      "sitename": "Puttisholmen",
+      "StopAreaNumber": 166,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3765457044533,
+      "longitude": 18.6324577470814
+    },
+    {
+      "siteid": 419,
+      "sitename": "Ramsö",
+      "StopAreaNumber": 419,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3905319168029,
+      "longitude": 18.39892753988
+    },
+    {
+      "siteid": 421,
+      "sitename": "Ramsöberg",
+      "StopAreaNumber": 421,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3845466852158,
+      "longitude": 18.4189261962145
+    },
+    {
+      "siteid": 970,
+      "sitename": "Riddarholmen",
+      "StopAreaNumber": 8012,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3243807700826,
+      "longitude": 18.0618812829909
+    },
+    {
+      "siteid": 2860,
+      "sitename": "Rindö smedja",
+      "StopAreaNumber": 39640,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4035022814025,
+      "longitude": 18.3647092413807
+    },
+    {
+      "siteid": 433,
+      "sitename": "Rindö västra",
+      "StopAreaNumber": 433,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4029990664801,
+      "longitude": 18.3651820685802
+    },
+    {
+      "siteid": 413,
+      "sitename": "Rindöbaden",
+      "StopAreaNumber": 413,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.397016567275,
+      "longitude": 18.3762126759049
+    },
+    {
+      "siteid": 406,
+      "sitename": "Risberga",
+      "StopAreaNumber": 406,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3702893518071,
+      "longitude": 18.3625235130154
+    },
+    {
+      "siteid": 904,
+      "sitename": "Riset",
+      "StopAreaNumber": 904,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.360076426501,
+      "longitude": 18.2854287711057
+    },
+    {
+      "siteid": 542,
+      "sitename": "Roholmen",
+      "StopAreaNumber": 542,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.7557552882044,
+      "longitude": 19.1268054701099
+    },
+    {
+      "siteid": 232,
+      "sitename": "Rosenön",
+      "StopAreaNumber": 232,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.1640323182088,
+      "longitude": 18.4685454463298
+    },
+    {
+      "siteid": 223,
+      "sitename": "Rånö",
+      "StopAreaNumber": 223,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 58.9192558682959,
+      "longitude": 18.1781232657869
+    },
+    {
+      "siteid": 1006107,
+      "sitename": "Räfsnäs",
+      "StopAreaNumber": 541,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.7520066696068,
+      "longitude": 19.0811254885463
+    },
+    {
+      "siteid": 6107,
+      "sitename": "Räfsnäs brygga",
+      "StopAreaNumber": 541,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.7520066696068,
+      "longitude": 19.0811254885463
+    },
+    {
+      "siteid": 529,
+      "sitename": "Rödlöga",
+      "StopAreaNumber": 529,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.5942222381266,
+      "longitude": 19.1722290596535
+    },
+    {
+      "siteid": 237,
+      "sitename": "Rögrund",
+      "StopAreaNumber": 237,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.1658119186504,
+      "longitude": 18.5842545461349
+    },
+    {
+      "siteid": 1442,
+      "sitename": "Saltsjöqvarn",
+      "StopAreaNumber": 8001,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3150977797545,
+      "longitude": 18.1110698677939
+    },
+    {
+      "siteid": 111,
+      "sitename": "Sand",
+      "StopAreaNumber": 111,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.1822693333906,
+      "longitude": 18.6932766823772
+    },
+    {
+      "siteid": 125,
+      "sitename": "Sandhamn",
+      "StopAreaNumber": 125,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.2884957073876,
+      "longitude": 18.915734575726
+    },
+    {
+      "siteid": 806,
+      "sitename": "Seglarö",
+      "StopAreaNumber": 806,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4829539838381,
+      "longitude": 18.4676997285624
+    },
+    {
+      "siteid": 832,
+      "sitename": "Siaröfortet",
+      "StopAreaNumber": 832,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.5557232722785,
+      "longitude": 18.6227477017686
+    },
+    {
+      "siteid": 1006719,
+      "sitename": "Simpnäs",
+      "StopAreaNumber": 540,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.8698379330116,
+      "longitude": 19.0771726522777
+    },
+    {
+      "siteid": 6719,
+      "sitename": "Simpnäs brygga",
+      "StopAreaNumber": 540,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.8698379330116,
+      "longitude": 19.0771726522777
+    },
+    {
+      "siteid": 145,
+      "sitename": "Sippsö",
+      "StopAreaNumber": 145,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4219119141564,
+      "longitude": 18.4938872862978
+    },
+    {
+      "siteid": 501,
+      "sitename": "Själbottna",
+      "StopAreaNumber": 501,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.5661009454925,
+      "longitude": 18.7840210878242
+    },
+    {
+      "siteid": 3140,
+      "sitename": "Sjöängen",
+      "StopAreaNumber": 15831,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3913587927794,
+      "longitude": 17.5359003101269
+    },
+    {
+      "siteid": 427,
+      "sitename": "Skarpöborg",
+      "StopAreaNumber": 427,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4140230244086,
+      "longitude": 18.3713526652251
+    },
+    {
+      "siteid": 305,
+      "sitename": "Skeppsbron",
+      "StopAreaNumber": 305,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3290068679171,
+      "longitude": 18.07582870694
+    },
+    {
+      "siteid": 314,
+      "sitename": "Skeppsholmen",
+      "StopAreaNumber": 314,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3250499696652,
+      "longitude": 18.0890067210151
+    },
+    {
+      "siteid": 316,
+      "sitename": "Skeppsholmen västra",
+      "StopAreaNumber": 316,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3245190314314,
+      "longitude": 18.0811652249209
+    },
+    {
+      "siteid": 9054,
+      "sitename": "Skogshem & Wijk",
+      "StopAreaNumber": 8004,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3647705043258,
+      "longitude": 18.2282429973683
+    },
+    {
+      "siteid": 424,
+      "sitename": "Skogsö södra",
+      "StopAreaNumber": 424,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3680504710523,
+      "longitude": 18.4429243979361
+    },
+    {
+      "siteid": 425,
+      "sitename": "Skogsö udde",
+      "StopAreaNumber": 425,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3662051739237,
+      "longitude": 18.4337902633614
+    },
+    {
+      "siteid": 813,
+      "sitename": "Skuggan",
+      "StopAreaNumber": 813,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4965706430736,
+      "longitude": 18.5377109210605
+    },
+    {
+      "siteid": 137,
+      "sitename": "Skäggaudd",
+      "StopAreaNumber": 137,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4239115453406,
+      "longitude": 18.4242340352804
+    },
+    {
+      "siteid": 156,
+      "sitename": "Skälvik",
+      "StopAreaNumber": 156,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.443831012658,
+      "longitude": 18.6808411234307
+    },
+    {
+      "siteid": 142,
+      "sitename": "Skärmaräng",
+      "StopAreaNumber": 142,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4204101846652,
+      "longitude": 18.4676859651028
+    },
+    {
+      "siteid": 1004420,
+      "sitename": "Sollenkroka",
+      "StopAreaNumber": 168,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.373096170463,
+      "longitude": 18.6988213473382
+    },
+    {
+      "siteid": 4420,
+      "sitename": "Sollenkroka brygga",
+      "StopAreaNumber": 168,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.373096170463,
+      "longitude": 18.6988213473382
+    },
+    {
+      "siteid": 169,
+      "sitename": "Sollenkrokaö",
+      "StopAreaNumber": 169,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3778298130648,
+      "longitude": 18.7073043021511
+    },
+    {
+      "siteid": 109,
+      "sitename": "Solvik",
+      "StopAreaNumber": 109,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.1845738250655,
+      "longitude": 18.7003148324133
+    },
+    {
+      "siteid": 1006281,
+      "sitename": "Solö",
+      "StopAreaNumber": 520,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.6743758295847,
+      "longitude": 18.764752205016
+    },
+    {
+      "siteid": 6281,
+      "sitename": "Solö brygga",
+      "StopAreaNumber": 520,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.6743758295847,
+      "longitude": 18.764752205016
+    },
+    {
+      "siteid": 204,
+      "sitename": "Spränga",
+      "StopAreaNumber": 204,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 58.957710339393,
+      "longitude": 18.2943560506387
+    },
+    {
+      "siteid": 971,
+      "sitename": "Stadshusbron",
+      "StopAreaNumber": 8014,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3268885862092,
+      "longitude": 18.053050984763
+    },
+    {
+      "siteid": 1205,
+      "sitename": "Stadshuset",
+      "StopAreaNumber": 8014,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3268885862092,
+      "longitude": 18.053050984763
+    },
+    {
+      "siteid": 815,
+      "sitename": "Staveström",
+      "StopAreaNumber": 815,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4301810669849,
+      "longitude": 18.5785964604042
+    },
+    {
+      "siteid": 1004400,
+      "sitename": "Stavsnäs",
+      "StopAreaNumber": 101,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.2865104979693,
+      "longitude": 18.7048262994286
+    },
+    {
+      "siteid": 4400,
+      "sitename": "Stavsnäs vinterhamn",
+      "StopAreaNumber": 101,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.2865104979693,
+      "longitude": 18.7048262994286
+    },
+    {
+      "siteid": 426,
+      "sitename": "Stegesund",
+      "StopAreaNumber": 426,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4131412487347,
+      "longitude": 18.3677798509913
+    },
+    {
+      "siteid": 4580,
+      "sitename": "Stenslätten",
+      "StopAreaNumber": 39642,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3967244866947,
+      "longitude": 18.4488156464645
+    },
+    {
+      "siteid": 2752,
+      "sitename": "Stensvik",
+      "StopAreaNumber": 819,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.448793886981,
+      "longitude": 18.5784449754188
+    },
+    {
+      "siteid": 953,
+      "sitename": "Sticklinge brygga",
+      "StopAreaNumber": 953,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3905460094984,
+      "longitude": 18.1096424576263
+    },
+    {
+      "siteid": 409,
+      "sitename": "Stora Ekholmen",
+      "StopAreaNumber": 409,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3937292949281,
+      "longitude": 18.3450432449097
+    },
+    {
+      "siteid": 139,
+      "sitename": "Stora Isskär",
+      "StopAreaNumber": 139,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4271749533961,
+      "longitude": 18.440138342282
+    },
+    {
+      "siteid": 185,
+      "sitename": "Stora Kalholmen",
+      "StopAreaNumber": 185,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4552501234026,
+      "longitude": 18.8224454969454
+    },
+    {
+      "siteid": 134,
+      "sitename": "Stora Saxaren",
+      "StopAreaNumber": 134,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4502840092064,
+      "longitude": 18.4829281456051
+    },
+    {
+      "siteid": 212,
+      "sitename": "Stora Segelholmen",
+      "StopAreaNumber": 212,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.1137936195731,
+      "longitude": 18.4126525947524
+    },
+    {
+      "siteid": 808,
+      "sitename": "Stora Timrarö",
+      "StopAreaNumber": 808,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4969002841063,
+      "longitude": 18.4844652406088
+    },
+    {
+      "siteid": 437,
+      "sitename": "Storholmen norra",
+      "StopAreaNumber": 437,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3987447872676,
+      "longitude": 18.135433552774
+    },
+    {
+      "siteid": 434,
+      "sitename": "Storholmen södra",
+      "StopAreaNumber": 434,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3933431849943,
+      "longitude": 18.1341824500176
+    },
+    {
+      "siteid": 435,
+      "sitename": "Storholmen östra",
+      "StopAreaNumber": 435,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3969277454957,
+      "longitude": 18.1446414369818
+    },
+    {
+      "siteid": 132,
+      "sitename": "Storkrån",
+      "StopAreaNumber": 132,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4549319926308,
+      "longitude": 18.4549465930081
+    },
+    {
+      "siteid": 818,
+      "sitename": "Strömsholm",
+      "StopAreaNumber": 818,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4438949592772,
+      "longitude": 18.588766598327
+    },
+    {
+      "siteid": 102,
+      "sitename": "Styrsvik",
+      "StopAreaNumber": 102,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.2802666088178,
+      "longitude": 18.7313783519481
+    },
+    {
+      "siteid": 6222,
+      "sitename": "Stämmarsund",
+      "StopAreaNumber": 511,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.6364679979303,
+      "longitude": 18.9207280287431
+    },
+    {
+      "siteid": 115,
+      "sitename": "Sunnansund",
+      "StopAreaNumber": 115,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.1709140699329,
+      "longitude": 18.6391142125911
+    },
+    {
+      "siteid": 528,
+      "sitename": "Svartlöga",
+      "StopAreaNumber": 528,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.5802053403169,
+      "longitude": 19.0669479208123
+    },
+    {
+      "siteid": 851,
+      "sitename": "Särsö",
+      "StopAreaNumber": 851,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4915056631384,
+      "longitude": 18.8451987028285
+    },
+    {
+      "siteid": 161,
+      "sitename": "Söderboudd",
+      "StopAreaNumber": 161,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4554433011069,
+      "longitude": 18.7398554486359
+    },
+    {
+      "siteid": 2800,
+      "sitename": "Söderhamnsplan",
+      "StopAreaNumber": 401,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4018219344077,
+      "longitude": 18.3555824310926
+    },
+    {
+      "siteid": 193,
+      "sitename": "Söderholm",
+      "StopAreaNumber": 193,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3870609769841,
+      "longitude": 18.8074191772229
+    },
+    {
+      "siteid": 178,
+      "sitename": "Södermöja",
+      "StopAreaNumber": 178,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4037246346685,
+      "longitude": 18.874535338982
+    },
+    {
+      "siteid": 227,
+      "sitename": "Söderviken",
+      "StopAreaNumber": 227,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.1025147166115,
+      "longitude": 18.4840079702399
+    },
+    {
+      "siteid": 522,
+      "sitename": "Söderäng",
+      "StopAreaNumber": 522,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.6400243363813,
+      "longitude": 18.790696243916
+    },
+    {
+      "siteid": 527,
+      "sitename": "Söderöra",
+      "StopAreaNumber": 527,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.6271673067114,
+      "longitude": 19.0117343381849
+    },
+    {
+      "siteid": 147,
+      "sitename": "Södra Grinda",
+      "StopAreaNumber": 147,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4072558956095,
+      "longitude": 18.552903828534
+    },
+    {
+      "siteid": 827,
+      "sitename": "Södra Ingmarsö",
+      "StopAreaNumber": 827,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.46534292492,
+      "longitude": 18.7509677256454
+    },
+    {
+      "siteid": 175,
+      "sitename": "Södra Stavsudda",
+      "StopAreaNumber": 175,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3882434594568,
+      "longitude": 18.8102883575597
+    },
+    {
+      "siteid": 174,
+      "sitename": "Södra Träskö",
+      "StopAreaNumber": 174,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3828672553905,
+      "longitude": 18.7909388460676
+    },
+    {
+      "siteid": 3002,
+      "sitename": "Tappström",
+      "StopAreaNumber": 8015,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.2920769072691,
+      "longitude": 17.8133556423353
+    },
+    {
+      "siteid": 905,
+      "sitename": "Tegelön",
+      "StopAreaNumber": 905,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3636793053303,
+      "longitude": 18.3223720495349
+    },
+    {
+      "siteid": 277,
+      "sitename": "Telegrafholmen",
+      "StopAreaNumber": 277,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.2924969310753,
+      "longitude": 18.9136941591101
+    },
+    {
+      "siteid": 546,
+      "sitename": "Tjockö norra",
+      "StopAreaNumber": 546,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.7550014506067,
+      "longitude": 19.1210865961336
+    },
+    {
+      "siteid": 533,
+      "sitename": "Tjockö ångbåtsbrygga",
+      "StopAreaNumber": 533,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.7457670027639,
+      "longitude": 19.1118054397937
+    },
+    {
+      "siteid": 1008580,
+      "sitename": "Torö (Ankarudden)",
+      "StopAreaNumber": 602,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 58.8012530293858,
+      "longitude": 17.8356428115407
+    },
+    {
+      "siteid": 961,
+      "sitename": "Tranholmen",
+      "StopAreaNumber": 961,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3765672597557,
+      "longitude": 18.0921169578623
+    },
+    {
+      "siteid": 8073,
+      "sitename": "Trinntorp",
+      "StopAreaNumber": 702,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.2298128153285,
+      "longitude": 18.3605880220891
+    },
+    {
+      "siteid": 152,
+      "sitename": "Trångholmen",
+      "StopAreaNumber": 152,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4288948070418,
+      "longitude": 18.6467663196118
+    },
+    {
+      "siteid": 155,
+      "sitename": "Trädgårdarna",
+      "StopAreaNumber": 155,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4314375534537,
+      "longitude": 18.6758753820834
+    },
+    {
+      "siteid": 172,
+      "sitename": "Träskö-Gåln",
+      "StopAreaNumber": 172,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3844817015507,
+      "longitude": 18.7733333235022
+    },
+    {
+      "siteid": 159,
+      "sitename": "Träskökvarn",
+      "StopAreaNumber": 159,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.441991780443,
+      "longitude": 18.6998551728059
+    },
+    {
+      "siteid": 535,
+      "sitename": "Tyvö",
+      "StopAreaNumber": 535,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.7719796278146,
+      "longitude": 19.1243032032809
+    },
+    {
+      "siteid": 114,
+      "sitename": "Uvö",
+      "StopAreaNumber": 114,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.1748408194636,
+      "longitude": 18.6489054612439
+    },
+    {
+      "siteid": 6248,
+      "sitename": "Vagnsunda",
+      "StopAreaNumber": 502,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.575491566185,
+      "longitude": 18.7846212104725
+    },
+    {
+      "siteid": 407,
+      "sitename": "Vasholmen",
+      "StopAreaNumber": 407,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3842420568947,
+      "longitude": 18.3433830293488
+    },
+    {
+      "siteid": 1002800,
+      "sitename": "Vaxholm",
+      "StopAreaNumber": 401,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4018219344077,
+      "longitude": 18.3555824310926
+    },
+    {
+      "siteid": 420,
+      "sitename": "Vegabryggan",
+      "StopAreaNumber": 420,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3909836321753,
+      "longitude": 18.4064627654989
+    },
+    {
+      "siteid": 833,
+      "sitename": "Vettersö",
+      "StopAreaNumber": 833,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.5631413788007,
+      "longitude": 18.70786318811
+    },
+    {
+      "siteid": 149,
+      "sitename": "Viggsö",
+      "StopAreaNumber": 149,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4087367962717,
+      "longitude": 18.5354062858068
+    },
+    {
+      "siteid": 431,
+      "sitename": "Vikingsborg",
+      "StopAreaNumber": 431,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4220738781707,
+      "longitude": 18.3606126174794
+    },
+    {
+      "siteid": 143,
+      "sitename": "Vårholma",
+      "StopAreaNumber": 143,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4242966202414,
+      "longitude": 18.4717629606303
+    },
+    {
+      "siteid": 144,
+      "sitename": "Vårlunda",
+      "StopAreaNumber": 144,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4233466234446,
+      "longitude": 18.4830737509156
+    },
+    {
+      "siteid": 814,
+      "sitename": "Väsbystrand",
+      "StopAreaNumber": 814,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4991174790736,
+      "longitude": 18.551182971189
+    },
+    {
+      "siteid": 108,
+      "sitename": "Västanvik",
+      "StopAreaNumber": 108,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.1874610661524,
+      "longitude": 18.706983275853
+    },
+    {
+      "siteid": 2801,
+      "sitename": "Västerhamnsplan",
+      "StopAreaNumber": 39641,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.400392103566,
+      "longitude": 18.3496982831865
+    },
+    {
+      "siteid": 120,
+      "sitename": "Västra Skarprunmarn",
+      "StopAreaNumber": 120,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3055673225399,
+      "longitude": 18.8138626311419
+    },
+    {
+      "siteid": 430,
+      "sitename": "Ytterby brygga",
+      "StopAreaNumber": 430,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4249942746144,
+      "longitude": 18.3554748400249
+    },
+    {
+      "siteid": 171,
+      "sitename": "Ytterö",
+      "StopAreaNumber": 171,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3825767362309,
+      "longitude": 18.7721808609451
+    },
+    {
+      "siteid": 514,
+      "sitename": "Yxlö",
+      "StopAreaNumber": 514,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.6322310959353,
+      "longitude": 18.8637888419188
+    },
+    {
+      "siteid": 6254,
+      "sitename": "Yxlövik",
+      "StopAreaNumber": 507,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.6155559487805,
+      "longitude": 18.8708704435498
+    },
+    {
+      "siteid": 438,
+      "sitename": "Åkershov",
+      "StopAreaNumber": 438,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.3747279901409,
+      "longitude": 18.4118702298513
+    },
+    {
+      "siteid": 224,
+      "sitename": "Ålö",
+      "StopAreaNumber": 224,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 58.9199618907057,
+      "longitude": 18.1914909545419
+    },
+    {
+      "siteid": 831,
+      "sitename": "Ålön",
+      "StopAreaNumber": 831,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.5170855775707,
+      "longitude": 18.5444960304354
+    },
+    {
+      "siteid": 8320,
+      "sitename": "Årsta brygga",
+      "StopAreaNumber": 201,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.0819967720379,
+      "longitude": 18.1735238691601
+    },
+    {
+      "siteid": 2767,
+      "sitename": "Åsättra brygga",
+      "StopAreaNumber": 829,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.5045203657738,
+      "longitude": 18.6380883804017
+    },
+    {
+      "siteid": 113,
+      "sitename": "Ängsholmen",
+      "StopAreaNumber": 113,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.1725660718774,
+      "longitude": 18.6559775730929
+    },
+    {
+      "siteid": 206,
+      "sitename": "Ängsö",
+      "StopAreaNumber": 206,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.1948837399659,
+      "longitude": 18.4425336522704
+    },
+    {
+      "siteid": 830,
+      "sitename": "Äpplarö",
+      "StopAreaNumber": 830,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4853646659724,
+      "longitude": 18.7253230049665
+    },
+    {
+      "siteid": 811,
+      "sitename": "Öran",
+      "StopAreaNumber": 811,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.4818207684325,
+      "longitude": 18.5097711375446
+    },
+    {
+      "siteid": 816,
+      "sitename": "Örsö",
+      "StopAreaNumber": 816,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.431813303322,
+      "longitude": 18.585887735286
+    },
+    {
+      "siteid": 106,
+      "sitename": "Östanvik",
+      "StopAreaNumber": 106,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.1973533499037,
+      "longitude": 18.7400578888828
+    },
+    {
+      "siteid": 2710,
+      "sitename": "Östanå färjeläge",
+      "StopAreaNumber": 842,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.5483776907188,
+      "longitude": 18.5759963413151
+    },
+    {
+      "siteid": 555,
+      "sitename": "Östernäs",
+      "StopAreaNumber": 555,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.7021170893958,
+      "longitude": 18.9938399593923
+    },
+    {
+      "siteid": 1006728,
+      "sitename": "Östersjö",
+      "StopAreaNumber": 537,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.8337623042317,
+      "longitude": 19.0778781968773
+    },
+    {
+      "siteid": 6728,
+      "sitename": "Östersjö brygga",
+      "StopAreaNumber": 537,
+      "StopAreaTypeCode": "FERRYBER",
+      "latitude": 59.8337623042317,
+      "longitude": 19.0778781968773
+    }
+  ],
+  "BUSTERM": [
     {
       "siteid": 4432,
       "sitename": "Abborrkroksvägen",
@@ -44657,6 +46937,16 @@
       "StopAreaTypeCode": "BUSTERM",
       "latitude": 59.3123854537075,
       "longitude": 18.1830432544997
+    }
+  ],
+  "BUSTERM_special": [
+    {
+      "siteid": 3610,
+      "sitename": "Voltavägen",
+      "StopAreaNumber": 12157,
+      "StopAreaTypeCode": "BUSTERM",
+      "latitude": 59.3472662779316,
+      "longitude": 17.9662439341321
     }
   ]
 }
