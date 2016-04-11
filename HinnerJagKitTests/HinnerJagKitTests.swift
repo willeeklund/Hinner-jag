@@ -44,6 +44,14 @@ class HinnerJagKitTests: XCTestCase {
         XCTAssert(closest!.id == 9110, "Can find correct SiteId for Abrahamsberg")
     }
     
+    func testMeasureFindClosestStation() {
+        let locateStation = LocateStation()
+        print("There are \(locateStation.stationList.count) stations to sort")
+        self.measureBlock() {
+            locateStation.findStationsSortedClosestToLatitude(59.3365630909855, longitude: 17.9531728536484)
+        }
+    }
+    
     func testMetroStationListIsValid() {
         let locateStation = LocateStation()
         XCTAssert(locateStation.stationList.count >= 100, "At least 100 stations could be parsed from metro_stations.json")

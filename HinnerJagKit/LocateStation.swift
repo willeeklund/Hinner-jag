@@ -88,8 +88,21 @@ public class LocateStationBase: NSObject, CLLocationManagerDelegate
     public func findStationsSortedClosestToLatitude(latitude: Double, longitude: Double) -> [Station] {
         let userLocation = CLLocation(latitude: latitude, longitude: longitude)
         var sortedStationList: [Station] = self.stationList
+        let optimalNumberOfStations = 5
+        // If no station were within 5km, sort entire list
+        var smallerList = sortedStationList.filter({station in return station.distanceFromLocation(userLocation) < 5000})
+        if optimalNumberOfStations < smallerList.count {
+            sortedStationList = smallerList
+        }
+        if smallerList.count >= 20 {
+            smallerList = sortedStationList.filter({station in return station.distanceFromLocation(userLocation) < 1500})
+            if optimalNumberOfStations < smallerList.count {
+                sortedStationList = smallerList
+            }
+        }
         sortedStationList.sortInPlace({ $0.distanceFromLocation(userLocation) < $1.distanceFromLocation(userLocation) })
+        
         // Only return 6 stations
-        return Array(sortedStationList[0...5])
+        return Array(sortedStationList[0...min(optimalNumberOfStations, sortedStationList.count - 1)])
     }
 }
