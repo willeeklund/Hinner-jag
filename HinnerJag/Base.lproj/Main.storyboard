@@ -269,7 +269,7 @@
                                     <outlet property="stationTypeSegment" destination="3bR-ME-P5W" id="6Fx-w1-Sqg"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TravelHeaderCell" id="8tD-IG-LxG" customClass="TravelHeaderCell" customModule="Hinner_jag">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TravelHeaderCell" id="8tD-IG-LxG" customClass="TravelHeaderCell" customModule="Hinner_jag">
                                 <rect key="frame" x="0.0" y="147" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8tD-IG-LxG" id="WXI-Cc-nVc">
@@ -277,7 +277,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uld-2U-egR">
-                                            <rect key="frame" x="46" y="5" width="546" height="33"/>
+                                            <rect key="frame" x="46" y="5" width="508" height="33"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="98" id="BsV-TL-ZfJ"/>
                                             </constraints>
@@ -292,19 +292,27 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8wO-hw-zNr">
                                             <rect key="frame" x="8" y="7" width="30" height="30"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="30" id="Elf-MJ-fmM"/>
+                                                <constraint firstAttribute="width" constant="30" id="EB6-nn-y3O"/>
                                             </constraints>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q8q-q3-3F2">
+                                            <rect key="frame" x="562" y="7" width="30" height="30"/>
+                                            <state key="normal" title="star" image="star_empty"/>
+                                        </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="8wO-hw-zNr" secondAttribute="bottom" constant="-1.5" id="Gs4-WX-E9v"/>
+                                        <constraint firstItem="Q8q-q3-3F2" firstAttribute="leading" secondItem="uld-2U-egR" secondAttribute="trailing" constant="8" symbolic="YES" id="2qW-xU-fUB"/>
+                                        <constraint firstItem="8wO-hw-zNr" firstAttribute="leading" secondItem="WXI-Cc-nVc" secondAttribute="leadingMargin" id="67L-b7-J0E"/>
+                                        <constraint firstItem="Q8q-q3-3F2" firstAttribute="top" secondItem="8wO-hw-zNr" secondAttribute="top" id="A35-ny-AVN"/>
+                                        <constraint firstItem="Q8q-q3-3F2" firstAttribute="trailing" secondItem="WXI-Cc-nVc" secondAttribute="trailingMargin" id="MOc-qc-egu"/>
+                                        <constraint firstItem="Q8q-q3-3F2" firstAttribute="bottom" secondItem="8wO-hw-zNr" secondAttribute="bottom" id="SZt-pw-Q7z"/>
                                         <constraint firstItem="uld-2U-egR" firstAttribute="leading" secondItem="WXI-Cc-nVc" secondAttribute="leadingMargin" id="Vaz-YA-wlu"/>
-                                        <constraint firstItem="uld-2U-egR" firstAttribute="trailing" secondItem="WXI-Cc-nVc" secondAttribute="trailingMargin" id="YiD-q2-Z91"/>
-                                        <constraint firstItem="uld-2U-egR" firstAttribute="top" secondItem="WXI-Cc-nVc" secondAttribute="topMargin" constant="-3" id="b5Z-wt-qWU"/>
-                                        <constraint firstItem="uld-2U-egR" firstAttribute="leading" secondItem="8wO-hw-zNr" secondAttribute="trailing" constant="8" symbolic="YES" id="nf7-je-BUu"/>
-                                        <constraint firstItem="uld-2U-egR" firstAttribute="centerY" secondItem="WXI-Cc-nVc" secondAttribute="centerY" id="owa-9w-Vku"/>
-                                        <constraint firstItem="8wO-hw-zNr" firstAttribute="leading" secondItem="WXI-Cc-nVc" secondAttribute="leadingMargin" id="wGV-i0-MJ5"/>
-                                        <constraint firstItem="8wO-hw-zNr" firstAttribute="top" secondItem="WXI-Cc-nVc" secondAttribute="topMargin" constant="-1" id="xoe-OQ-zAz"/>
+                                        <constraint firstItem="8wO-hw-zNr" firstAttribute="top" secondItem="WXI-Cc-nVc" secondAttribute="topMargin" constant="-1" id="et4-ei-Iq6"/>
+                                        <constraint firstItem="uld-2U-egR" firstAttribute="leading" secondItem="8wO-hw-zNr" secondAttribute="trailing" constant="8" symbolic="YES" id="gie-rZ-EAl"/>
+                                        <constraint firstItem="uld-2U-egR" firstAttribute="centerY" secondItem="8wO-hw-zNr" secondAttribute="centerY" id="kjd-XX-S9w"/>
+                                        <constraint firstItem="uld-2U-egR" firstAttribute="top" secondItem="WXI-Cc-nVc" secondAttribute="topMargin" constant="-3" id="mma-VT-Eg8"/>
+                                        <constraint firstItem="uld-2U-egR" firstAttribute="centerX" secondItem="WXI-Cc-nVc" secondAttribute="centerX" id="nBS-5f-5bU"/>
+                                        <constraint firstItem="8wO-hw-zNr" firstAttribute="centerY" secondItem="WXI-Cc-nVc" secondAttribute="centerY" id="xTb-bT-Z9p"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
@@ -314,6 +322,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="headerLabel" destination="uld-2U-egR" id="NVz-1F-0JG"/>
+                                    <outlet property="starButton" destination="Q8q-q3-3F2" id="j7G-39-gkC"/>
                                     <outlet property="trainImage" destination="8wO-hw-zNr" id="4Ce-KC-rna"/>
                                 </connections>
                             </tableViewCell>
@@ -582,5 +591,6 @@
         <image name="intro3" width="640" height="960"/>
         <image name="intro4" width="640" height="960"/>
         <image name="intro5" width="640" height="960"/>
+        <image name="star_empty" width="300" height="300"/>
     </resources>
 </document>

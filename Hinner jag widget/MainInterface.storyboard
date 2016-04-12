@@ -69,7 +69,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jjt-ae-Mx4">
-                                            <rect key="frame" x="36" y="3" width="284" height="19"/>
+                                            <rect key="frame" x="36" y="3" width="243" height="19"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" red="0.78182212752525249" green="0.78182212752525249" blue="0.78182212752525249" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -77,22 +77,33 @@
                                         <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="train_blue" highlightedImage="train_blue" translatesAutoresizingMaskIntoConstraints="NO" id="QGx-gb-GH5">
                                             <rect key="frame" x="8" y="4" width="16" height="17"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="16" id="O0U-Ra-ym5"/>
+                                                <constraint firstAttribute="width" constant="16" id="M7V-va-3Mw"/>
                                             </constraints>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LAw-5z-Em8">
+                                            <rect key="frame" x="287" y="0.0" width="25" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="25" id="fBv-p4-s71"/>
+                                            </constraints>
+                                            <state key="normal" backgroundImage="star_empty"/>
+                                        </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="Jjt-ae-Mx4" secondAttribute="trailing" id="49M-DR-jF2"/>
-                                        <constraint firstItem="Jjt-ae-Mx4" firstAttribute="leading" secondItem="QGx-gb-GH5" secondAttribute="trailing" constant="12" id="F3O-Me-g6J"/>
-                                        <constraint firstItem="Jjt-ae-Mx4" firstAttribute="top" secondItem="ZRr-RP-twh" secondAttribute="topMargin" constant="-5" id="THE-zG-6W5"/>
-                                        <constraint firstItem="QGx-gb-GH5" firstAttribute="leading" secondItem="ZRr-RP-twh" secondAttribute="leadingMargin" id="UVx-dD-6jZ"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="Jjt-ae-Mx4" secondAttribute="bottom" constant="-3" id="XVN-qZ-dHx"/>
-                                        <constraint firstItem="Jjt-ae-Mx4" firstAttribute="centerY" secondItem="QGx-gb-GH5" secondAttribute="centerY" id="kGz-PO-3ts"/>
-                                        <constraint firstItem="QGx-gb-GH5" firstAttribute="top" secondItem="ZRr-RP-twh" secondAttribute="topMargin" constant="-4" id="tqF-35-X2L"/>
+                                        <constraint firstItem="QGx-gb-GH5" firstAttribute="top" secondItem="ZRr-RP-twh" secondAttribute="topMargin" constant="-4" id="BlZ-Bh-Onj"/>
+                                        <constraint firstItem="Jjt-ae-Mx4" firstAttribute="top" secondItem="ZRr-RP-twh" secondAttribute="topMargin" constant="-5" id="HR3-Jz-fP4"/>
+                                        <constraint firstItem="Jjt-ae-Mx4" firstAttribute="centerY" secondItem="QGx-gb-GH5" secondAttribute="centerY" id="K8a-Hj-4n1"/>
+                                        <constraint firstItem="LAw-5z-Em8" firstAttribute="top" secondItem="ZRr-RP-twh" secondAttribute="top" id="L0S-hK-sVg"/>
+                                        <constraint firstItem="Jjt-ae-Mx4" firstAttribute="centerY" secondItem="LAw-5z-Em8" secondAttribute="centerY" id="OP8-Ut-sEi"/>
+                                        <constraint firstItem="LAw-5z-Em8" firstAttribute="trailing" secondItem="ZRr-RP-twh" secondAttribute="trailingMargin" id="PQB-Ky-aOv"/>
+                                        <constraint firstItem="QGx-gb-GH5" firstAttribute="leading" secondItem="ZRr-RP-twh" secondAttribute="leadingMargin" id="Suw-In-qOn"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="QGx-gb-GH5" secondAttribute="bottom" constant="-2" id="Yxx-6D-8Zm"/>
+                                        <constraint firstItem="Jjt-ae-Mx4" firstAttribute="leading" secondItem="QGx-gb-GH5" secondAttribute="trailing" constant="12" id="eNU-yp-0BN"/>
+                                        <constraint firstItem="LAw-5z-Em8" firstAttribute="leading" secondItem="Jjt-ae-Mx4" secondAttribute="trailing" constant="8" symbolic="YES" id="hmw-Z0-Kai"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="headerLabel" destination="Jjt-ae-Mx4" id="tnr-mU-TNh"/>
+                                    <outlet property="starButton" destination="LAw-5z-Em8" id="ANg-6n-ijB"/>
                                     <outlet property="trainImage" destination="QGx-gb-GH5" id="0Ng-sS-EMg"/>
                                 </connections>
                             </tableViewCell>
@@ -150,6 +161,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="star_empty" width="300" height="300"/>
         <image name="train_blue" width="300" height="300"/>
     </resources>
 </document>
