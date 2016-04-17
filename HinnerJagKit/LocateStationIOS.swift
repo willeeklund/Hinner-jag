@@ -12,5 +12,4 @@ public class LocateStation: LocateStationBase {
     public override func startUpdatingLocation() {
         self.locationManager.startUpdatingLocation()
     }
-
 }

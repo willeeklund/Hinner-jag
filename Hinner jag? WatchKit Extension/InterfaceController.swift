@@ -18,7 +18,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
             self.updateUI()
         }
     }
-    var closestStation: Station? {
+    var closestStation: Site? {
         didSet {
             self.updateUI()
         }
@@ -118,8 +118,8 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
                             if let depGroup = self.departuresDict[mapName] {
                                 currentGroupDepartures = depGroup
                                 if let firstDeparture = depGroup.first {
-                                    if firstDeparture.from_central_direction != nil {
-                                        if firstDeparture.from_central_direction! == firstDeparture.direction {
+                                    if firstDeparture.fromCentralDirection != nil {
+                                        if firstDeparture.fromCentralDirection! == firstDeparture.direction {
                                             headerSuffix = "från T-centralen"
                                         } else {
                                             headerSuffix = "mot T-centralen"
@@ -178,11 +178,11 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
     }
     
     // MARK: - Locate station delegate protocol
-    func locateStationFoundClosestStation(station: Station?) {
+    func locateStationFoundClosestStation(station: Site?) {
         self.closestStation = station
     }
     
-    func locateStationFoundSortedStations(stationsSorted: [Station], withDepartures departures: [Departure]?, error: NSError?) {
+    func locateStationFoundSortedStations(stationsSorted: [Site], withDepartures departures: [Departure]?, error: NSError?) {
         if nil == departures {
             print("No departures were found. Error: \(error)")
         }

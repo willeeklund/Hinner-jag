@@ -6,41 +6,26 @@
 //  Copyright (c) 2015 Wilhelm Eklund. All rights reserved.
 //
 
+import UIKit
 import Foundation
 import CoreLocation
+import CoreData
 
 public protocol LocateStationDelegate {
-    func locateStationFoundClosestStation(station: Station?)
-    func locateStationFoundSortedStations(stationsSorted: [Station], withDepartures departures: [Departure]?, error: NSError?)
+    func locateStationFoundClosestStation(station: Site?)
+    func locateStationFoundSortedStations(stationsSorted: [Site], withDepartures departures: [Departure]?, error: NSError?)
 }
 
 public class LocateStationBase: NSObject, CLLocationManagerDelegate
 {
     public var delegate: LocateStationDelegate?
     
-    public lazy var stationList: [Station] = {
-        var tmpList = [Station]()
-        // Read bundled metro_stations.json and create station objects from it
-        let hinnerJagKitBundle = NSBundle(forClass: self.classForCoder)
-        let metroStationsFilePath = hinnerJagKitBundle.pathForResource("metro_stations", ofType: "json")
-        assert(nil != metroStationsFilePath, "The file metro_stations.json must be included in the framework")
-        let metroStationsData = NSData(contentsOfFile: metroStationsFilePath!)
-        assert(nil != metroStationsData, "metro_stations.json must contain valid data")
-        let responseDict = try! NSJSONSerialization.JSONObjectWithData(metroStationsData!, options: NSJSONReadingOptions.AllowFragments) as! NSDictionary
-        // Choose types of stations to include
-        let stationTypes = ["METROSTN", "RAILWSTN", "TRAMSTN", "FERRYBER", "BUSTERM_special"]
-        for type in stationTypes {
-            // Add stations
-            if let metroStationsList = responseDict[type] as! [NSDictionary]? {
-                for stationInfo in metroStationsList {
-                    var info: NSMutableDictionary = stationInfo.mutableCopy() as! NSMutableDictionary
-                    tmpList.append(Station(dict: info))
-                }
-            }
-        }
-
-        return tmpList
+    public lazy var stationList: [Site] = {
+        return Site.getAllSites()
     }()
+    public func updateStationList() {
+        self.stationList = Site.getAllSites()
+    }
     
     public var locationManager: CLLocationManager! = CLLocationManager()
     
@@ -63,20 +48,28 @@ public class LocateStationBase: NSObject, CLLocationManagerDelegate
         }
     }
 
-    public func findClosestStationFromLocation(location: CLLocation) -> [Station] {
+    public func findClosestStationFromLocation(location: CLLocation) -> [Site] {
         let closestStationsSorted = self.findStationsSortedClosestToLatitude(location.coordinate.latitude, longitude: location.coordinate.longitude)
         return closestStationsSorted
     }
-
+    
     public func findClosestStationFromLocationAndFetchDepartures(location: CLLocation) {
-        let closestStationsSorted: [Station] = self.findClosestStationFromLocation(location)
-        self.delegate?.locateStationFoundClosestStation(closestStationsSorted.first!)
+        let closestStationsSorted: [Site] = self.findClosestStationFromLocation(location)
+        self.findDeparturesFromStation(closestStationsSorted.first!, stationList: closestStationsSorted)
+    }
 
-        self.realtimeDeparturesObj.departuresFromStation(closestStationsSorted.first!) {
+    public func findDeparturesFromStation(station: Site, stationList: [Site]?) {
+        var usedStationList = stationList
+        self.delegate?.locateStationFoundClosestStation(station)
+        self.realtimeDeparturesObj.departuresFromStation(station) {
             (departures: [Departure]?, error: NSError?) -> () in
             // When we check that the user is reasonably close to ANY station,
             // this is a good place to send back possible errors
-            self.delegate?.locateStationFoundSortedStations(closestStationsSorted, withDepartures: departures, error: nil)
+            if nil == stationList {
+                let usedLocation = CLLocation(coordinate: station.coordinate, altitude: 1, horizontalAccuracy: 1, verticalAccuracy: 1, timestamp: NSDate())
+                usedStationList = self.findClosestStationFromLocation(usedLocation)
+            }
+            self.delegate?.locateStationFoundSortedStations(usedStationList!, withDepartures: departures, error: nil)
         }
     }
     
@@ -85,12 +78,15 @@ public class LocateStationBase: NSObject, CLLocationManagerDelegate
     }
 
     // Compare distance from all known stations, return closest one
-    public func findStationsSortedClosestToLatitude(latitude: Double, longitude: Double) -> [Station] {
+    public func findStationsSortedClosestToLatitude(latitude: Double, longitude: Double) -> [Site] {
         let userLocation = CLLocation(latitude: latitude, longitude: longitude)
-        var sortedStationList: [Station] = self.stationList
+        var sortedStationList: [Site] = self.stationList
         let optimalNumberOfStations = 5
         // If no station were within 5km, sort entire list
-        var smallerList = sortedStationList.filter({station in return station.distanceFromLocation(userLocation) < 5000})
+        var smallerList = sortedStationList.filter({station in
+            // Only use the active stations
+            return station.isActive && station.distanceFromLocation(userLocation) < 5000
+        })
         if optimalNumberOfStations < smallerList.count {
             sortedStationList = smallerList
         }

@@ -106,12 +106,16 @@ public class Utils
     }
     
     // MARK: - Small tranformation methods
-    public class func getLabelTextForClosestStation(station: Station?, ownLocation location: CLLocation?) -> String {
+    public class func getLabelTextForClosestStation(station: Site?, ownLocation location: CLLocation?) -> String {
         if nil == station || nil == location {
             return "Söker efter plats..."
         } else {
             let distFormat = Utils.distanceFormat(station!.distanceFromLocation(location!))
-            return "Närmast: \(station!.title!) (\(distFormat))"
+            if nil != station!.title {
+                return "Närmast: \(station!.title!) (\(distFormat))"
+            } else {
+                return "Närmast: \(distFormat) bort..."
+            }
         }
     }
     

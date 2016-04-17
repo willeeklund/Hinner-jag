@@ -11,12 +11,12 @@
 		0203EB1F1B0A8FAB00A233F0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB31ABA430B003ACD06 /* CoreData.framework */; };
 		0203EB201B0A8FAE00A233F0 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB71ABA4331003ACD06 /* libz.dylib */; };
 		0203EB211B0A8FB200A233F0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB51ABA431E003ACD06 /* SystemConfiguration.framework */; };
+		0210D46F1CBE0A360097D5D9 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0210D46D1CBE0A360097D5D9 /* DataModel.xcdatamodeld */; };
 		0211B2101AAE37FB00947C45 /* HinnerJagKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0211B20F1AAE37FB00947C45 /* HinnerJagKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0211B2161AAE37FC00947C45 /* HinnerJagKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0211B20B1AAE37FB00947C45 /* HinnerJagKit.framework */; };
 		0211B21F1AAE37FC00947C45 /* HinnerJagKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0211B21E1AAE37FC00947C45 /* HinnerJagKitTests.swift */; };
 		0211B2221AAE37FC00947C45 /* HinnerJagKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0211B20B1AAE37FB00947C45 /* HinnerJagKit.framework */; };
 		0211B2231AAE37FC00947C45 /* HinnerJagKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0211B20B1AAE37FB00947C45 /* HinnerJagKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0211B22C1AAE383500947C45 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0211B22B1AAE383500947C45 /* Station.swift */; };
 		0211B22E1AAE387500947C45 /* RealtimeDepartures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0211B22D1AAE387500947C45 /* RealtimeDepartures.swift */; };
 		0211B2301AAE389A00947C45 /* LocateStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0211B22F1AAE389A00947C45 /* LocateStation.swift */; };
 		0211B2321AAE38B100947C45 /* Departure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0211B2311AAE38B100947C45 /* Departure.swift */; };
@@ -39,10 +39,8 @@
 		0227D9221BDFFE3D00E734BB /* HinnerJagWatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0227D91B1BDFFE3D00E734BB /* HinnerJagWatchKit.framework */; };
 		0227D9231BDFFE3D00E734BB /* HinnerJagWatchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0227D91B1BDFFE3D00E734BB /* HinnerJagWatchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0227D9281BDFFE8800E734BB /* LocateStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0211B22F1AAE389A00947C45 /* LocateStation.swift */; };
-		0227D9291BDFFE9C00E734BB /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0211B22B1AAE383500947C45 /* Station.swift */; };
 		0227D92A1BDFFED400E734BB /* RealtimeDepartures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0211B22D1AAE387500947C45 /* RealtimeDepartures.swift */; };
 		0227D92B1BDFFEDB00E734BB /* Departure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0211B2311AAE38B100947C45 /* Departure.swift */; };
-		0227D9301BDFFF9E00E734BB /* LocateStationIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0227D92F1BDFFF9E00E734BB /* LocateStationIOS.swift */; };
 		0227D9321BE0001700E734BB /* LocateStationWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0227D9311BE0001700E734BB /* LocateStationWatch.swift */; };
 		0230E36B1CBC24E80021D962 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0230E3691CBC24E80021D962 /* Main.storyboard */; };
 		0236B3D11ABE218300EDF6C8 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B11BB11ABA42EB003ACD06 /* libGoogleAnalyticsServices.a */; };
@@ -55,6 +53,15 @@
 		0248BCB21C9CB63100F0F05A /* NSTimerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0248BCB01C9CB5E500F0F05A /* NSTimerExtension.swift */; };
 		0248BCB31C9CB6AE00F0F05A /* NSTimerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0248BCB01C9CB5E500F0F05A /* NSTimerExtension.swift */; };
 		026C9F8D1AD2E85500B75285 /* Hinner jag WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 02F2FF331AB48BB8001A1F90 /* Hinner jag WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		027BA9BF1CC2AFD7007085E5 /* TransportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05BA21CBEE01100BDF4DE /* TransportType.swift */; };
+		027BA9C21CC2B180007085E5 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05B861CBEB58A00BDF4DE /* CoreDataStore.swift */; };
+		027BA9C31CC2BA2B007085E5 /* Site.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05B8C1CBED1B400BDF4DE /* Site.swift */; };
+		027BA9C41CC2BA3E007085E5 /* Site+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05B8B1CBED1B400BDF4DE /* Site+CoreDataProperties.swift */; };
+		027BA9C51CC2BA44007085E5 /* JourneyPattern+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05B8D1CBED1B400BDF4DE /* JourneyPattern+CoreDataProperties.swift */; };
+		027BA9C61CC2BA48007085E5 /* JourneyPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05B8E1CBED1B400BDF4DE /* JourneyPattern.swift */; };
+		027BA9C71CC2BA4C007085E5 /* Line+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05B8F1CBED1B400BDF4DE /* Line+CoreDataProperties.swift */; };
+		027BA9C81CC2BA50007085E5 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05B901CBED1B400BDF4DE /* Line.swift */; };
+		027BA9C91CC2BA57007085E5 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0210D46D1CBE0A360097D5D9 /* DataModel.xcdatamodeld */; };
 		028143551CA1E82700A6D4D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028143541CA1E82700A6D4D7 /* AppDelegate.swift */; };
 		028143571CA1E8C500A6D4D7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028143561CA1E8C500A6D4D7 /* MapViewController.swift */; };
 		028143591CA1E91200A6D4D7 /* MainAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028143581CA1E91200A6D4D7 /* MainAppViewController.swift */; };
@@ -62,7 +69,6 @@
 		0281435D1CA1E97D00A6D4D7 /* BWWalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281435C1CA1E97D00A6D4D7 /* BWWalkthroughPageViewController.swift */; };
 		028143621CA1EA8200A6D4D7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 028143611CA1EA8200A6D4D7 /* Images.xcassets */; };
 		028143631CA1EAA000A6D4D7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 028143611CA1EA8200A6D4D7 /* Images.xcassets */; };
-		028143651CA1EBB800A6D4D7 /* HinnerJag.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 028143641CA1EBB800A6D4D7 /* HinnerJag.xcdatamodeld */; };
 		029149161B7A7F4100DAE8BD /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0236B3CF1ABE213B00EDF6C8 /* libGoogleAnalyticsServices.a */; };
 		029149171B7A7F7E00DAE8BD /* TravelHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DDF8481ABDAFAE00A9AF12 /* TravelHeaderCell.swift */; };
 		029149181B7A7F8000DAE8BD /* TravelHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DDF8481ABDAFAE00A9AF12 /* TravelHeaderCell.swift */; };
@@ -109,6 +115,15 @@
 		02C592A51B013FD4002A88E4 /* test_departures_9325_sundbyberg.json in Resources */ = {isa = PBXBuildFile; fileRef = 02C592A41B013FD4002A88E4 /* test_departures_9325_sundbyberg.json */; };
 		02C592A71B0140A5002A88E4 /* test_departures_9180_farsta_strand.json in Resources */ = {isa = PBXBuildFile; fileRef = 02C592A61B0140A5002A88E4 /* test_departures_9180_farsta_strand.json */; };
 		02CE16291BD952E5009F788E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02CE16281BD952E5009F788E /* Assets.xcassets */; };
+		02D05B871CBEB58A00BDF4DE /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05B861CBEB58A00BDF4DE /* CoreDataStore.swift */; };
+		02D05B881CBEB64000BDF4DE /* LocateStationIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0227D92F1BDFFF9E00E734BB /* LocateStationIOS.swift */; };
+		02D05B911CBED1B400BDF4DE /* Site+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05B8B1CBED1B400BDF4DE /* Site+CoreDataProperties.swift */; };
+		02D05B921CBED1B400BDF4DE /* Site.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05B8C1CBED1B400BDF4DE /* Site.swift */; };
+		02D05B931CBED1B400BDF4DE /* JourneyPattern+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05B8D1CBED1B400BDF4DE /* JourneyPattern+CoreDataProperties.swift */; };
+		02D05B941CBED1B400BDF4DE /* JourneyPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05B8E1CBED1B400BDF4DE /* JourneyPattern.swift */; };
+		02D05B951CBED1B400BDF4DE /* Line+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05B8F1CBED1B400BDF4DE /* Line+CoreDataProperties.swift */; };
+		02D05B961CBED1B400BDF4DE /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05B901CBED1B400BDF4DE /* Line.swift */; };
+		02D05BA31CBEE01100BDF4DE /* TransportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05BA21CBEE01100BDF4DE /* TransportType.swift */; };
 		02D4E8431AB61DDC00FD597F /* Hinner_jag_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D4E8421AB61DDC00FD597F /* Hinner_jag_Tests.swift */; };
 		02DDF84E1ABDB19200A9AF12 /* TravelDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DDF84A1ABDAFBB00A9AF12 /* TravelDetailsCell.swift */; };
 		02DDF84F1ABDB19400A9AF12 /* TravelDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DDF84A1ABDAFBB00A9AF12 /* TravelDetailsCell.swift */; };
@@ -296,6 +311,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0210D46E1CBE0A360097D5D9 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		0211B1DE1AAE37B600947C45 /* Hinner jag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hinner jag.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0211B1E21AAE37B600947C45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = HinnerJag/Info.plist; sourceTree = "<group>"; };
 		0211B20B1AAE37FB00947C45 /* HinnerJagKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HinnerJagKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -304,7 +320,6 @@
 		0211B2151AAE37FC00947C45 /* HinnerJagKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HinnerJagKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0211B21D1AAE37FC00947C45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0211B21E1AAE37FC00947C45 /* HinnerJagKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HinnerJagKitTests.swift; sourceTree = "<group>"; };
-		0211B22B1AAE383500947C45 /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		0211B22D1AAE387500947C45 /* RealtimeDepartures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealtimeDepartures.swift; sourceTree = "<group>"; };
 		0211B22F1AAE389A00947C45 /* LocateStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocateStation.swift; sourceTree = "<group>"; };
 		0211B2311AAE38B100947C45 /* Departure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Departure.swift; sourceTree = "<group>"; };
@@ -374,6 +389,14 @@
 		02C592A61B0140A5002A88E4 /* test_departures_9180_farsta_strand.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test_departures_9180_farsta_strand.json; sourceTree = "<group>"; };
 		02CE16281BD952E5009F788E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02CE16421BD9776E009F788E /* HinnerJagWatchOS2 Extension-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HinnerJagWatchOS2 Extension-Bridging-Header.h"; sourceTree = "<group>"; };
+		02D05B861CBEB58A00BDF4DE /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStore.swift; path = HinnerJagKit/CoreDataStore.swift; sourceTree = "<group>"; };
+		02D05B8B1CBED1B400BDF4DE /* Site+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Site+CoreDataProperties.swift"; path = "HinnerJagKit/Site+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		02D05B8C1CBED1B400BDF4DE /* Site.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Site.swift; path = HinnerJagKit/Site.swift; sourceTree = "<group>"; };
+		02D05B8D1CBED1B400BDF4DE /* JourneyPattern+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "JourneyPattern+CoreDataProperties.swift"; path = "HinnerJagKit/JourneyPattern+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		02D05B8E1CBED1B400BDF4DE /* JourneyPattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JourneyPattern.swift; path = HinnerJagKit/JourneyPattern.swift; sourceTree = "<group>"; };
+		02D05B8F1CBED1B400BDF4DE /* Line+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Line+CoreDataProperties.swift"; path = "HinnerJagKit/Line+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		02D05B901CBED1B400BDF4DE /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Line.swift; path = HinnerJagKit/Line.swift; sourceTree = "<group>"; };
+		02D05BA21CBEE01100BDF4DE /* TransportType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportType.swift; sourceTree = "<group>"; };
 		02D4E83E1AB61DDC00FD597F /* Hinner jag Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hinner jag Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		02D4E8411AB61DDC00FD597F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02D4E8421AB61DDC00FD597F /* Hinner_jag_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hinner_jag_Tests.swift; sourceTree = "<group>"; };
@@ -537,7 +560,6 @@
 			children = (
 				0299D1911CA1ECD00027AB10 /* LaunchScreen.xib */,
 				028EB6611AAF97E6004C508C /* HinnerJag.entitlements */,
-				028143641CA1EBB800A6D4D7 /* HinnerJag.xcdatamodeld */,
 				028143541CA1E82700A6D4D7 /* AppDelegate.swift */,
 				0211B1E21AAE37B600947C45 /* Info.plist */,
 			);
@@ -547,13 +569,14 @@
 		0211B20C1AAE37FB00947C45 /* HinnerJagKit */ = {
 			isa = PBXGroup;
 			children = (
+				02D05B971CBED1BD00BDF4DE /* CoreData */,
 				0248BCAF1C9CB5BB00F0F05A /* Extensions */,
 				022DE4851AC8199B000E9462 /* Controllers */,
 				02DDF8451ABDABFB00A9AF12 /* Views */,
 				02B11B971ABA3CCE003ACD06 /* Google Analytics */,
 				02F755BA1AB621210088D6C8 /* metro_stations.json */,
 				0211B20F1AAE37FB00947C45 /* HinnerJagKit.h */,
-				0211B22B1AAE383500947C45 /* Station.swift */,
+				02D05BA21CBEE01100BDF4DE /* TransportType.swift */,
 				0211B22D1AAE387500947C45 /* RealtimeDepartures.swift */,
 				0211B22F1AAE389A00947C45 /* LocateStation.swift */,
 				0227D92F1BDFFF9E00E734BB /* LocateStationIOS.swift */,
@@ -741,6 +764,22 @@
 				02C2235F1B8EE600007A162E /* PushNotificationPayload.apns */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		02D05B971CBED1BD00BDF4DE /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				02D05B861CBEB58A00BDF4DE /* CoreDataStore.swift */,
+				0210D46D1CBE0A360097D5D9 /* DataModel.xcdatamodeld */,
+				02D05B8B1CBED1B400BDF4DE /* Site+CoreDataProperties.swift */,
+				02D05B8C1CBED1B400BDF4DE /* Site.swift */,
+				02D05B8D1CBED1B400BDF4DE /* JourneyPattern+CoreDataProperties.swift */,
+				02D05B8E1CBED1B400BDF4DE /* JourneyPattern.swift */,
+				02D05B8F1CBED1B400BDF4DE /* Line+CoreDataProperties.swift */,
+				02D05B901CBED1B400BDF4DE /* Line.swift */,
+			);
+			name = CoreData;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		02D4E83F1AB61DDC00FD597F /* Hinner jag Tests */ = {
@@ -1249,7 +1288,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				028143591CA1E91200A6D4D7 /* MainAppViewController.swift in Sources */,
-				028143651CA1EBB800A6D4D7 /* HinnerJag.xcdatamodeld in Sources */,
 				028143571CA1E8C500A6D4D7 /* MapViewController.swift in Sources */,
 				028143551CA1E82700A6D4D7 /* AppDelegate.swift in Sources */,
 				029149181B7A7F8000DAE8BD /* TravelHeaderCell.swift in Sources */,
@@ -1266,12 +1304,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02D05B951CBED1B400BDF4DE /* Line+CoreDataProperties.swift in Sources */,
 				0295DD441AC7F6E500D850BA /* Utils.swift in Sources */,
-				0211B22C1AAE383500947C45 /* Station.swift in Sources */,
+				02D05BA31CBEE01100BDF4DE /* TransportType.swift in Sources */,
+				0210D46F1CBE0A360097D5D9 /* DataModel.xcdatamodeld in Sources */,
+				02D05B911CBED1B400BDF4DE /* Site+CoreDataProperties.swift in Sources */,
+				02D05B931CBED1B400BDF4DE /* JourneyPattern+CoreDataProperties.swift in Sources */,
 				0211B2301AAE389A00947C45 /* LocateStation.swift in Sources */,
-				0227D9301BDFFF9E00E734BB /* LocateStationIOS.swift in Sources */,
+				02D05B941CBED1B400BDF4DE /* JourneyPattern.swift in Sources */,
 				0211B2321AAE38B100947C45 /* Departure.swift in Sources */,
 				0248BCB11C9CB5E500F0F05A /* NSTimerExtension.swift in Sources */,
+				02D05B871CBEB58A00BDF4DE /* CoreDataStore.swift in Sources */,
+				02D05B881CBEB64000BDF4DE /* LocateStationIOS.swift in Sources */,
+				02D05B961CBED1B400BDF4DE /* Line.swift in Sources */,
+				02D05B921CBED1B400BDF4DE /* Site.swift in Sources */,
 				0211B22E1AAE387500947C45 /* RealtimeDepartures.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1303,12 +1349,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				027BA9C71CC2BA4C007085E5 /* Line+CoreDataProperties.swift in Sources */,
+				027BA9C41CC2BA3E007085E5 /* Site+CoreDataProperties.swift in Sources */,
 				0227D92A1BDFFED400E734BB /* RealtimeDepartures.swift in Sources */,
-				0227D9291BDFFE9C00E734BB /* Station.swift in Sources */,
+				027BA9C91CC2BA57007085E5 /* DataModel.xcdatamodeld in Sources */,
 				0227D92B1BDFFEDB00E734BB /* Departure.swift in Sources */,
+				027BA9C51CC2BA44007085E5 /* JourneyPattern+CoreDataProperties.swift in Sources */,
+				027BA9C21CC2B180007085E5 /* CoreDataStore.swift in Sources */,
+				027BA9C61CC2BA48007085E5 /* JourneyPattern.swift in Sources */,
 				0227D9281BDFFE8800E734BB /* LocateStation.swift in Sources */,
 				0227D9321BE0001700E734BB /* LocateStationWatch.swift in Sources */,
+				027BA9BF1CC2AFD7007085E5 /* TransportType.swift in Sources */,
 				0248BCB21C9CB63100F0F05A /* NSTimerExtension.swift in Sources */,
+				027BA9C81CC2BA50007085E5 /* Line.swift in Sources */,
+				027BA9C31CC2BA2B007085E5 /* Site.swift in Sources */,
 				022238BA1BE0031200E32EBD /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2114,12 +2168,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		028143641CA1EBB800A6D4D7 /* HinnerJag.xcdatamodeld */ = {
+		0210D46D1CBE0A360097D5D9 /* DataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				0210D46E1CBE0A360097D5D9 /* DataModel.xcdatamodel */,
 			);
-			name = HinnerJag.xcdatamodeld;
-			path = ../HinnerJag/HinnerJag.xcdatamodeld;
+			currentVersion = 0210D46E1CBE0A360097D5D9 /* DataModel.xcdatamodel */;
+			name = DataModel.xcdatamodeld;
+			path = HinnerJagKit/DataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

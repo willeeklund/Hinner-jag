@@ -8,6 +8,7 @@
 
 import UIKit
 import XCTest
+import CoreData
 import HinnerJagKit
 
 class HinnerJagKitTests: XCTestCase {
@@ -18,7 +19,11 @@ class HinnerJagKitTests: XCTestCase {
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        // Empty CoreData
+        for site in Site.getAllSites() {
+            CoreDataStore.managedObjectContext.deleteObject(site)
+        }
+        CoreDataStore.saveContext()
         super.tearDown()
     }
     
@@ -27,21 +32,15 @@ class HinnerJagKitTests: XCTestCase {
         XCTAssert(true, "Pass")
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
     func testLocatingAbrahamsberg() {
         let locateStation = LocateStation()
-        let closestSortedStations: [Station] = locateStation.findStationsSortedClosestToLatitude(59.3365630909855, longitude: 17.9531728536484)
+        let closestSortedStations: [Site] = locateStation.findStationsSortedClosestToLatitude(59.3365630909855, longitude: 17.9531728536484)
         let closest = closestSortedStations.first
         
         XCTAssert(nil != closest, "Can find a station")
-        XCTAssert(closest!.title == "Abrahamsberg", "Can find Abrahamsbergs station")
-        XCTAssert(closest!.id == 9110, "Can find correct SiteId for Abrahamsberg")
+        print("closest title = \(closest!.title!)")
+        XCTAssert(closest!.title! == "Abrahamsberg", "Can find Abrahamsbergs station")
+        XCTAssert(closest!.siteId == 9110, "Can find correct SiteId for Abrahamsberg")
     }
     
     func testMeasureFindClosestStation() {
@@ -54,6 +53,7 @@ class HinnerJagKitTests: XCTestCase {
     
     func testMetroStationListIsValid() {
         let locateStation = LocateStation()
+        print("locateStation.stationList.count = \(locateStation.stationList.count)")
         XCTAssert(locateStation.stationList.count >= 100, "At least 100 stations could be parsed from metro_stations.json")
     }
     
@@ -62,14 +62,14 @@ class HinnerJagKitTests: XCTestCase {
         let realtimeDepartures = RealtimeDepartures()
         var depList: [Departure]?
         let abDict = NSMutableDictionary()
-        abDict.setValue(9110, forKey: "siteid")
-        abDict.setValue("Abrahamsberg fake", forKey: "sitename")
-        abDict.setValue("Metro", forKey: "stationType")
+        abDict.setValue(9110, forKey: "SiteId")
+        abDict.setValue("Abrahamsberg fake", forKey: "SiteName")
+        abDict.setValue("METROSTN", forKey: "StopAreaTypeCode")
         abDict.setValue(59.3365630909855, forKey: "latitude")
         abDict.setValue(17.9531728536484, forKey: "longitude")
         abDict.setValue(1, forKey: "from_central_direction")
 
-        let abrahamsbergStation = Station(dict: abDict)
+        let abrahamsbergStation = Site(dict: abDict)
         realtimeDepartures.departuresFromStation(abrahamsbergStation) { (departures: [Departure]?, error: NSError?) in
             depList = departures
             XCTAssert(departures != nil, "We got some departures")

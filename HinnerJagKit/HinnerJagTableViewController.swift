@@ -28,23 +28,23 @@ public class HinnerJagTableViewController: UITableViewController, LocateStationD
         }
     }
 
-    public var closestStation: Station?
-    public var closestSortedStations: [Station] = [Station]()
+    public var closestStation: Site?
+    public var closestSortedStations: [Site] = [Site]()
     
     // MARK: - Locate station
     public var locateStation: LocateStation = LocateStation()
     
-    public func locateStationFoundClosestStation(station: Station?) {
+    public func locateStationFoundClosestStation(station: Site?) {
         self.closestStation = station
     }
     
-    public func locateStationFoundSortedStations(stationsSorted: [Station], withDepartures departures: [Departure]?, error: NSError?) {
+    public func locateStationFoundSortedStations(stationsSorted: [Site], withDepartures departures: [Departure]?, error: NSError?) {
         let station = stationsSorted.first
         self.closestSortedStations = stationsSorted
         self.fetchedDepartures = departures
         if nil != station {
             print("Now we are using the location callback. \(station!)")
-            self.trackEvent("Station", action: "found", label: "\(station!.title) (\(station!.id))", value: 1)
+            self.trackEvent("Station", action: "found", label: "\(station!.title) (\(station!.siteId))", value: 1)
         } else {
             self.trackEvent("Station", action: "not_found", label: "", value: nil)
         }
@@ -143,7 +143,7 @@ public class HinnerJagTableViewController: UITableViewController, LocateStationD
         if usedRow < self.closestSortedStations.count {
             let station = self.closestSortedStations[usedRow]
             searchFromNewClosestStation(station)
-            self.trackEvent("Station", action: "change_from_table", label: "\(station.title!) (\(station.id))", value: 1)
+            self.trackEvent("Station", action: "change_from_table", label: "\(station.title!) (\(station.siteId))", value: 1)
         }
         self.selectChosenStation = false
     }
@@ -169,10 +169,12 @@ public class HinnerJagTableViewController: UITableViewController, LocateStationD
         }
     }
     
-    public func searchFromNewClosestStation(newStation: Station) {
+    public func searchFromNewClosestStation(newStation: Site) {
         self.closestStation = newStation
         print("Selected station: \(self.closestStation!)")
-        self.locateStation.findClosestStationFromLocationAndFetchDepartures(self.closestStation!)
+        // Instead of searching through the active stations to find the closest,
+        // just trigger fetching departures for selected station
+        self.locateStation.findDeparturesFromStation(newStation, stationList: nil)
         self.departuresDict = Dictionary<String, [Departure]>()
     }
 }

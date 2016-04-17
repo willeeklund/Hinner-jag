@@ -20,7 +20,7 @@ stoppointFromData = function (data) {
 siteFromData = function (data) {
     var site = {};
     firstRowSites.forEach(function (name, index) {
-        if (['SiteId', 'SiteName', 'StopAreaNumber'].indexOf(name) !== -1) {
+        if (['SiteId', 'SiteName', 'StopAreaNumber', 'StopAreaTypeCode'].indexOf(name) !== -1) {
             // Make SiteId and SiteName lowercase
             if (['SiteId', 'SiteName'].indexOf(name) !== -1) {
                 name = name.toLowerCase()

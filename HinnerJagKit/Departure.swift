@@ -17,7 +17,7 @@ public class Departure: NSObject
     public var lineNumber: String = ""
     public var lineName: String = ""
     public var transportType: TransportType?
-    public var from_central_direction: Int?
+    public var fromCentralDirection: Int?
     public var siteId = 0
     
     override public var description: String {
@@ -26,7 +26,7 @@ public class Departure: NSObject
         }
     }
     
-    public init(dict: NSDictionary, station: Station) {
+    public init(dict: NSDictionary, station: Site) {
         super.init()
         if let dest = dict["Destination"] as? String {
             destination = dest
@@ -53,7 +53,7 @@ public class Departure: NSObject
         if let SiteId = dict["SiteId"] as? Int {
             siteId = SiteId
         }
-        self.from_central_direction = station.from_central_direction
+        self.fromCentralDirection = Int(station.fromCentralDirection)
     }
     
     public class func createDirectionSuffix(
@@ -76,8 +76,8 @@ public class Departure: NSObject
             }
             if let depList = departuresDict[sectionString] {
                 let firstDep = depList[0]
-                if firstDep.from_central_direction != nil {
-                    var truthValue = firstDep.from_central_direction! == firstDep.direction
+                if firstDep.fromCentralDirection != nil {
+                    var truthValue = firstDep.fromCentralDirection! == firstDep.direction
                     
                     // If both metros and trains station, reverse direction suffix for train departures.
                     // This is a hardcoded list of the siteids for stations with both subways and trains.
@@ -98,13 +98,13 @@ public class Departure: NSObject
                     }
                 }
             }
-            // If not departures were received or there is no 'from_central_direction'
+            // If not departures were received or there is no 'fromCentralDirection'
             return ""
     }
     
     public class func createLabelAndImageNameFromSection(sectionString: String, departuresDict: Dictionary<String, [Departure]>) -> (String, String?, UIColor?) {
         // Metro groups
-        if sectionString.rangeOfString(TransportType.getRawValue(.Metro)) != nil {
+        if sectionString.rangeOfString(TransportType.Metro.rawValue) != nil {
             if sectionString.rangeOfString("gröna") != nil {
                 return ("Grön linje", "train_green", UIColor.greenColor())
             } else if sectionString.rangeOfString("röda") != nil {
@@ -117,11 +117,11 @@ public class Departure: NSObject
             }
         }
         // Train groups
-        else if sectionString.rangeOfString(TransportType.getRawValue(.Train)) != nil {
+        else if sectionString.rangeOfString(TransportType.Train.rawValue) != nil {
             return (Utils.transportTypeStringToName(.Train), "train_purple", UIColor.purpleColor())
         }
         // Bus groups
-        else if sectionString.rangeOfString(TransportType.getRawValue(.Bus)) != nil {
+        else if sectionString.rangeOfString(TransportType.Bus.rawValue) != nil {
             if let depList = departuresDict[sectionString] {
                 let firstDep = depList[0]
                 return ("\(Utils.transportTypeStringToName(.Bus)) \(firstDep.lineNumber)", "bus", nil)
@@ -130,11 +130,11 @@ public class Departure: NSObject
             }
         }
         // Tram groups
-        else if sectionString.rangeOfString(TransportType.getRawValue(.Tram)) != nil {
+        else if sectionString.rangeOfString(TransportType.Tram.rawValue) != nil {
             return (Utils.transportTypeStringToName(.Tram), "train_orange", UIColor.orangeColor())
         }
         // Ship groups
-        else if sectionString.rangeOfString(TransportType.getRawValue(.Ship)) != nil {
+        else if sectionString.rangeOfString(TransportType.Ship.rawValue) != nil {
             return (Utils.transportTypeStringToName(.Ship), "anchor", UIColor.blueColor())
         }
         return ("Okänd", nil, nil)

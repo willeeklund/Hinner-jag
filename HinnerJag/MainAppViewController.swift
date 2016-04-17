@@ -37,7 +37,7 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
     }
     
     // MARK: - Locate station delegate protocol
-    override func locateStationFoundSortedStations(stationsSorted: [Station], withDepartures departures: [Departure]?, error: NSError?) {
+    override func locateStationFoundSortedStations(stationsSorted: [Site], withDepartures departures: [Departure]?, error: NSError?) {
         super.locateStationFoundSortedStations(stationsSorted, withDepartures: departures, error: error)
         dispatch_async(dispatch_get_main_queue(), {
             self.refreshControl!.endRefreshing()

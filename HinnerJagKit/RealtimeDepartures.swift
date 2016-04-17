@@ -24,7 +24,7 @@ public class RealtimeDepartures
         self.session = NSURLSession(configuration: configuration);
     }
     
-    public func departuresFromStation(station: Station, callback: ([Departure]?, error: NSError?) -> ()) {
+    public func departuresFromStation(station: Site, callback: ([Departure]?, error: NSError?) -> ()) {
         let realtimeApiQueue = dispatch_queue_create("realtime API queue", nil)
         dispatch_async(realtimeApiQueue, {
             if self.debugJsonData {
@@ -36,7 +36,7 @@ public class RealtimeDepartures
     }
     
     // MARK: - Fetch departure JSON data
-    func fetchDummyDepartureJsonData(station: Station, callback: ([Departure]?, error: NSError?) -> ()) {
+    func fetchDummyDepartureJsonData(station: Site, callback: ([Departure]?, error: NSError?) -> ()) {
         print("Please note that dummy data is used for departures")
         // Used dummy data file
         let testFile = "test_departures"
@@ -53,9 +53,9 @@ public class RealtimeDepartures
         self.parseJsonDataToDepartures(testDeparturesData, station: station, callback: callback)
     }
     
-    func performRealtimeApiReqForStation(station: Station, callback: ([Departure]?, error: NSError?) -> ()) {
-        print("stationId = \(station.id)")
-        let urlString = "https://api.sl.se/api2/realtimedepartures.json?key=\(realtimeKey)&timewindow=60&siteid=\(station.id)"
+    func performRealtimeApiReqForStation(station: Site, callback: ([Departure]?, error: NSError?) -> ()) {
+        print("stationId = \(station.siteId)")
+        let urlString = "https://api.sl.se/api2/realtimedepartures.json?key=\(realtimeKey)&timewindow=60&siteid=\(station.siteId)"
         let request = NSURLRequest(URL: NSURL(string: urlString)!)
         let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
             if error == nil {
@@ -71,7 +71,7 @@ public class RealtimeDepartures
     }
     
     // MARK: - Parse JSON data into Departures
-    func parseJsonDataToDepartures(data: NSData?, station: Station, callback: ([Departure]?, error: NSError?) -> ()) {
+    func parseJsonDataToDepartures(data: NSData?, station: Site, callback: ([Departure]?, error: NSError?) -> ()) {
         do {
             let responseDict = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments)
             if let allTypes = responseDict["ResponseData"] as! NSDictionary? {

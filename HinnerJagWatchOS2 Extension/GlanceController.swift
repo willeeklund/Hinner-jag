@@ -20,8 +20,8 @@ class GlanceController: InterfaceController {
                 var counter = 0
                 for departure in groupList {
                     if 0 == counter {
-                        if departure.from_central_direction != nil {
-                            if departure.from_central_direction! == departure.direction {
+                        if departure.fromCentralDirection != nil {
+                            if departure.fromCentralDirection! == departure.direction {
                                 headerText = "Från T-centralen"
                             } else {
                                 headerText = "Mot T-centralen"

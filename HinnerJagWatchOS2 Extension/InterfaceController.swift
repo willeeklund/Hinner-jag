@@ -19,7 +19,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
             self.updateUI()
         }
     }
-    var closestStation: Station? {
+    var closestStation: Site? {
         didSet {
             self.updateUI()
         }
@@ -272,13 +272,13 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
     }
     
     // MARK: - Locate station delegate protocol
-    func locateStationFoundClosestStation(station: Station?) {
+    func locateStationFoundClosestStation(station: Site?) {
         self.fetchedDepartures = nil
         self.closestStation = station
         self.departuresDict = Dictionary<String, [Departure]>()
     }
     
-    func locateStationFoundSortedStations(stationsSorted: [Station], withDepartures departures: [Departure]?, error: NSError?) {
+    func locateStationFoundSortedStations(stationsSorted: [Site], withDepartures departures: [Departure]?, error: NSError?) {
         if nil == departures {
             print("No departures were found. Error: \(error)")
         }

@@ -15,7 +15,7 @@ class MapViewController: UIViewController, MKMapViewDelegate
     @IBOutlet weak var mapView: MKMapView!
     
     var locateStation: LocateStation?
-    var chosenStation: Station?
+    var chosenStation: Site?
     
     // MARK: - Lifecycle stuff
     required init?(coder aDecoder: NSCoder) {
@@ -28,17 +28,18 @@ class MapViewController: UIViewController, MKMapViewDelegate
         self.setScreenName("MapViewController")
         self.mapView.delegate = self
         if nil != self.locateStation {
-            for station in self.locateStation!.stationList {
-                self.mapView.addAnnotation(station)
-            }
+            self.mapView.addAnnotations(self.locateStation!.stationList)
             self.mapView.showsUserLocation = true
         }
+        var usedCoordinate = CLLocationCoordinate2D(latitude: 59.33, longitude: 18.06)
         if self.chosenStation != nil {
             // Delta will set zoom level
-            let delta = 0.02
-            let region = MKCoordinateRegion(center: self.chosenStation!.coordinate, span: MKCoordinateSpan(latitudeDelta: delta, longitudeDelta: delta))
-            self.mapView.setRegion(region, animated: true)
+            usedCoordinate = self.chosenStation!.coordinate
         }
+        let delta = 0.02
+        let region = MKCoordinateRegion(center: usedCoordinate, span: MKCoordinateSpan(latitudeDelta: delta, longitudeDelta: delta))
+        
+        self.mapView.setRegion(region, animated: true)
     }
     
     @IBAction func closeMap(sender: UIButton) {
@@ -51,26 +52,50 @@ class MapViewController: UIViewController, MKMapViewDelegate
         if annotation is MKUserLocation {
             return nil
         }
-        let reuseId = "MapViewController"
+        let reuseId = "PinAnnotation"
         var view = self.mapView?.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
         if nil == view {
             view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            view?.canShowCallout = true
-            // TODO: Change to different color depending on metro or train
-            if let station = annotation as? Station {
-                if station == self.chosenStation {
+        }
+        view?.canShowCallout = true
+        // Set pin color and correct image
+        if let station = annotation as? Site {
+            // Set right accessory view to show if station is active
+            let accessoryButton = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+            view?.rightCalloutAccessoryView = accessoryButton
+            // Set pin color depending on if the station is active
+            if station.isActive {
+                if #available(iOS 9.0, *) {
+                    view?.pinTintColor = UIColor.greenColor()
+                } else {
                     view?.pinColor = .Green
                 }
+                accessoryButton.setImage(UIImage(named: "star_full"), forState: .Normal)
+            } else {
+                if #available(iOS 9.0, *) {
+                    view?.pinTintColor = UIColor.redColor()
+                } else {
+                    view?.pinColor = .Red
+                }
+                accessoryButton.setImage(UIImage(named: "star_empty"), forState: .Normal)
             }
-            
-            // TODO: Set left accessory view to show which lines exist at this station
-            // var imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 46, height: 46))
-            // imageView.image = UIImage(named: "train_green")
-            // view?.leftCalloutAccessoryView = imageView
-        } else {
-            view?.annotation = annotation
         }
         return view
+    }
+    
+    // MARK: - Call annotation callout to toggle if station is active
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if self.presentingViewController is MainAppViewController && view.annotation is Site {
+            let station = view.annotation as! Site
+            print("Station tapped. \(station.siteId)")
+            // Change active status for this station
+            station.toggleActive()
+            self.trackEvent("Station", action: "toggle_active_from_map", label: "\(station.title!) (\(station.siteId))", value: 1)
+            locateStation?.updateStationList()
+            // Update annotation view for this station
+            mapView.removeAnnotation(station)
+            mapView.addAnnotation(station)
+        }
     }
     
     // MARK: - Tapping annotation will select that station
@@ -87,12 +112,12 @@ class MapViewController: UIViewController, MKMapViewDelegate
     
     func tappedAnnotation(recognizer: UIPanGestureRecognizer) {
         if let view = recognizer.view as? MKAnnotationView {
-            if self.presentingViewController is MainAppViewController && view.annotation is Station {
-                let station = view.annotation as! Station
+            if self.presentingViewController is MainAppViewController && view.annotation is Site {
+                let station = view.annotation as! Site
                 let mainAppVC = self.presentingViewController as! MainAppViewController
                 mainAppVC.searchFromNewClosestStation(station)
                 mainAppVC.dismissViewControllerAnimated(true, completion: nil)
-                self.trackEvent("Station", action: "change_from_map", label: "\(station.title!) (\(station.id))", value: 1)
+                self.trackEvent("Station", action: "change_from_map", label: "\(station.title!) (\(station.siteId))", value: 1)
             }
         }
     }

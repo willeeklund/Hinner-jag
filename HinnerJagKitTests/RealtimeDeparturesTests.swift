@@ -12,7 +12,7 @@ import XCTest
 
 class RealtimeDeparturesTests: XCTestCase {
     var realtimeDepartures = RealtimeDepartures()
-    var stationFarstaStrand: Station?
+    var stationFarstaStrand: Site?
     let hinnerJagKitBundle = NSBundle(forClass: LocateStation.classForCoder())
     
     override func setUp() {
@@ -20,12 +20,12 @@ class RealtimeDeparturesTests: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         realtimeDepartures = RealtimeDepartures()
         let dict = NSMutableDictionary()
-        dict.setValue(9180, forKey: "siteid")
-        dict.setValue("Farsta strand fake", forKey: "sitename")
+        dict.setValue(9180, forKey: "SiteId")
+        dict.setValue("Farsta strand fake", forKey: "SiteName")
         dict.setValue(59.2355276839029, forKey: "latitude")
         dict.setValue(18.1012808998205, forKey: "longitude")
         dict.setValue(2, forKey: "from_central_direction")
-        stationFarstaStrand = Station(dict: dict)
+        stationFarstaStrand = Site(dict: dict)
     }
     
     override func tearDown() {

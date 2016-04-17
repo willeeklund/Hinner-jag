@@ -43,7 +43,7 @@ public class HeadlineCell: UITableViewCell
     public class func createCellForTableView(
         tableView: UITableView,
         controller: HinnerJagTableViewController,
-        closestStation: Station?,
+        closestStation: Site?,
         location: CLLocation?,
         departures: [Departure]?
     ) -> HeadlineCell? {
