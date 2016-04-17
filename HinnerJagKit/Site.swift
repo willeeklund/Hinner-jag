@@ -102,28 +102,33 @@ public class Site: NSManagedObject, MKAnnotation {
     }
     
     class func fillWithSites() -> [Site] {
+        var siteList = [Site]()
         let hinnerJagKitBundle = NSBundle(forClass: CoreDataStore.classForCoder())
         let metroStationsFilePath = hinnerJagKitBundle.pathForResource("metro_stations", ofType: "json")
         assert(nil != metroStationsFilePath, "The file metro_stations.json must be included in the framework")
         let metroStationsData = NSData(contentsOfFile: metroStationsFilePath!)
         assert(nil != metroStationsData, "metro_stations.json must contain valid data")
-        let responseDict = try! NSJSONSerialization.JSONObjectWithData(metroStationsData!, options: NSJSONReadingOptions.AllowFragments) as! NSDictionary
-        // Choose types of stations to include
-        let stationTypes = ["METROSTN", "RAILWSTN", "TRAMSTN", "FERRYBER", "BUSTERM"]
-        var siteList = [Site]()
-        for type in stationTypes {
-            // Add stations
-            if let siteInfoList = responseDict[type] as! [NSDictionary]? {
-                for info in siteInfoList {
-                    siteList.append(Site(dict: info))
+        do {
+            if let responseDict = try NSJSONSerialization.JSONObjectWithData(metroStationsData!, options: .MutableContainers) as? NSDictionary {
+                // Save to context after return
+                defer {
+                    CoreDataStore.saveContext()
+                }
+                // Choose types of stations to include
+                let stationTypes = ["METROSTN", "RAILWSTN", "TRAMSTN", "FERRYBER", "BUSTERM"]
+                
+                for type in stationTypes {
+                    // Add stations
+                    if let siteInfoList = responseDict[type] as? [NSDictionary] {
+                        for info in siteInfoList {
+                            siteList.append(Site(dict: info))
+                        }
+                    }
                 }
             }
+        } catch let error as NSError  {
+            print("Could not parse JSON data: \(error), \(error.userInfo)")
         }
-        saveContext()
         return siteList
-    }
-    
-    class func saveContext() {
-        CoreDataStore.saveContext()
     }
 }

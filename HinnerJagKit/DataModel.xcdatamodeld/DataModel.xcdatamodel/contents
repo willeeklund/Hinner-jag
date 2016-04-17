@@ -5,6 +5,7 @@
         <attribute name="stopAreaNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="Line" representedClassName=".Line" syncable="YES">
+        <attribute name="isActive" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="lineNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="stopAreaTypeCode" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -21,7 +22,7 @@
     </entity>
     <elements>
         <element name="JourneyPattern" positionX="-36" positionY="9" width="128" height="75"/>
-        <element name="Line" positionX="-45" positionY="36" width="128" height="75"/>
+        <element name="Line" positionX="-45" positionY="36" width="128" height="90"/>
         <element name="Site" positionX="-54" positionY="-9" width="128" height="180"/>
     </elements>
 </model>

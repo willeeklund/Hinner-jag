@@ -66,14 +66,30 @@ class MapViewController: UIViewController, MKMapViewDelegate
             // Set pin color depending on if the station is active
             if station.isActive {
                 if #available(iOS 9.0, *) {
-                    view?.pinTintColor = UIColor.greenColor()
+                    if
+                        nil != self.chosenStation
+                        && station == self.chosenStation!
+                    {
+                        view?.pinTintColor = UIColor.blueColor()
+                    } else {
+                        view?.pinTintColor = UIColor.greenColor()
+                    }
                 } else {
                     view?.pinColor = .Green
                 }
                 accessoryButton.setImage(UIImage(named: "star_full"), forState: .Normal)
             } else {
                 if #available(iOS 9.0, *) {
-                    view?.pinTintColor = UIColor.redColor()
+                    if
+                        nil != self.chosenStation
+                            && station == self.chosenStation!
+                    {
+                        view?.pinTintColor = UIColor.purpleColor()
+                    } else if station.isChangedManual {
+                        view?.pinTintColor = UIColor.blackColor()
+                    } else {
+                        view?.pinTintColor = UIColor.redColor()
+                    }
                 } else {
                     view?.pinColor = .Red
                 }
@@ -91,7 +107,8 @@ class MapViewController: UIViewController, MKMapViewDelegate
             // Change active status for this station
             station.toggleActive()
             self.trackEvent("Station", action: "toggle_active_from_map", label: "\(station.title!) (\(station.siteId))", value: 1)
-            locateStation?.updateStationList()
+            // Send notification to update station list
+            NSNotificationCenter.defaultCenter().postNotificationName("LocateStationUpdateStationList", object: nil)
             // Update annotation view for this station
             mapView.removeAnnotation(station)
             mapView.addAnnotation(station)

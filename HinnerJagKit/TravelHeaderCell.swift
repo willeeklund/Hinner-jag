@@ -16,6 +16,7 @@ public class TravelHeaderCell: UITableViewCell
     @IBOutlet weak var trainImage: UIImageView!
     @IBOutlet weak var starButton: UIButton!
     @IBOutlet weak var headerLabel: UILabel!
+    var lineNumber: Int?
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -26,8 +27,16 @@ public class TravelHeaderCell: UITableViewCell
     }
     
     @IBAction func tapStar(sender: AnyObject) {
-        print("We tapped a star")
-        starButton.setImage(UIImage(named: "star_full"), forState: .Normal)
+        // TODO: Make this on a side queue to not block UI
+        if nil != lineNumber {
+            Line.toggleLine(lineNumber!)
+            // Update button image
+            if Line.isLineActive(lineNumber!) {
+                starButton.setImage(UIImage(named: "star_full"), forState: .Normal)
+            } else {
+                starButton.setImage(UIImage(named: "star_empty"), forState: .Normal)
+            }
+        }
     }
     
     internal class func createCellForIndexPath(
@@ -44,14 +53,23 @@ public class TravelHeaderCell: UITableViewCell
         if let sectionString = mappingDict[section] {
             let directionSuffix = Departure.createDirectionSuffix(sectionString, departuresDict: departuresDict)
             let (directionLabel, imageName, _) = Departure.createLabelAndImageNameFromSection(sectionString, departuresDict: departuresDict)
+            // Find Line number
+            cell?.lineNumber = Departure.getLineNumberFromSection(sectionString, departuresDict: departuresDict)
             // Set train image
             if nil != imageName {
                 cell?.trainImage.image = UIImage(named: imageName!)
             }
             // Setup star
-            cell?.starButton.setImage(UIImage(named: "star_empty"), forState: .Normal)
+            if
+                nil != cell
+                && nil != cell!.lineNumber
+                && Line.isLineActive(cell!.lineNumber!)
+            {
+                cell?.starButton.setImage(UIImage(named: "star_full"), forState: .Normal)
+            } else {
+                cell?.starButton.setImage(UIImage(named: "star_empty"), forState: .Normal)
+            }
             cell?.starButton.addTarget(cell!, action: #selector(tapStar), forControlEvents: .TouchUpInside)
-            cell?.starButton.hidden = true
             // Set header text
             cell?.headerLabel?.text = "\(directionLabel) \(directionSuffix)"
         } else {

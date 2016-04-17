@@ -16,5 +16,6 @@ extension Line {
 
     @NSManaged var lineNumber: Int16
     @NSManaged var stopAreaTypeCode: String?
+    @NSManaged var isActive: Bool
 
 }

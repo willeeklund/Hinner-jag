@@ -140,4 +140,13 @@ public class Departure: NSObject
         return ("Okänd", nil, nil)
     }
     
+    public class func getLineNumberFromSection(sectionString: String, departuresDict: Dictionary<String, [Departure]>) -> Int? {
+        if let depList = departuresDict[sectionString] {
+            let firstDep = depList[0]
+            return Int(firstDep.lineNumber)
+        } else {
+            return nil
+        }
+    }
+    
 }

@@ -23,7 +23,7 @@ public class LocateStationBase: NSObject, CLLocationManagerDelegate
     public lazy var stationList: [Site] = {
         return Site.getAllSites()
     }()
-    public func updateStationList() {
+    func updateStationList() {
         self.stationList = Site.getAllSites()
     }
     
@@ -36,6 +36,13 @@ public class LocateStationBase: NSObject, CLLocationManagerDelegate
         super.init()
         self.locationManager.delegate = self
         self.locationManager.requestWhenInUseAuthorization()
+        // Listen for notification to refresh station list
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(updateStationList),
+            name: "LocateStationUpdateStationList",
+            object: nil
+        )
     }
     
     public func startUpdatingLocation() {}
