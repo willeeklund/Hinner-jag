@@ -352,8 +352,12 @@
 		0281435A1CA1E95700A6D4D7 /* BWWalkthroughViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BWWalkthroughViewController.swift; path = HinnerJag/BWWalkthroughViewController.swift; sourceTree = SOURCE_ROOT; };
 		0281435C1CA1E97D00A6D4D7 /* BWWalkthroughPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BWWalkthroughPageViewController.swift; path = HinnerJag/BWWalkthroughPageViewController.swift; sourceTree = SOURCE_ROOT; };
 		028143611CA1EA8200A6D4D7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = HinnerJag/Images.xcassets; sourceTree = SOURCE_ROOT; };
+		0285C8321CC42EEC004A374B /* Hinner jag.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Hinner jag.entitlements"; sourceTree = SOURCE_ROOT; };
 		028EB6611AAF97E6004C508C /* HinnerJag.entitlements */ = {isa = PBXFileReference; lastKnownFileType = file; name = HinnerJag.entitlements; path = HinnerJag/HinnerJag.entitlements; sourceTree = "<group>"; };
 		028EB6621AAF983C004C508C /* Hinner jag widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Hinner jag widget.entitlements"; sourceTree = "<group>"; };
+		02945BBC1CC5630300AC4D71 /* HinnerJagWatchOS2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HinnerJagWatchOS2.entitlements; sourceTree = "<group>"; };
+		02945BBD1CC5631500AC4D71 /* Hinner jag WatchKit App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Hinner jag WatchKit App.entitlements"; sourceTree = SOURCE_ROOT; };
+		02945BBE1CC5633800AC4D71 /* HinnerJagWatchOS2 Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "HinnerJagWatchOS2 Extension.entitlements"; sourceTree = "<group>"; };
 		0295BEB21C9DB630005669EB /* SegmentedControl.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = SegmentedControl.playground; path = HinnerJag/SegmentedControl.playground; sourceTree = "<group>"; };
 		0295BEB31C9DCA12005669EB /* UtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilsTests.swift; sourceTree = "<group>"; };
 		0295DD431AC7F6E500D850BA /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -548,6 +552,7 @@
 		0211B1E01AAE37B600947C45 /* Hinner jag */ = {
 			isa = PBXGroup;
 			children = (
+				0285C8321CC42EEC004A374B /* Hinner jag.entitlements */,
 				0295BEAE1C9DB2C6005669EB /* Playground */,
 				02ED99B31AD2FEB500CB6C9E /* Walkthrough */,
 				025C989B1AD294820096FC79 /* Controllers */,
@@ -746,6 +751,7 @@
 		02C2234E1B8EE600007A162E /* HinnerJagWatchOS2 */ = {
 			isa = PBXGroup;
 			children = (
+				02945BBC1CC5630300AC4D71 /* HinnerJagWatchOS2.entitlements */,
 				02C2234F1B8EE600007A162E /* Interface.storyboard */,
 				02C223521B8EE600007A162E /* Assets.xcassets */,
 				02C223541B8EE600007A162E /* Info.plist */,
@@ -756,6 +762,7 @@
 		02C2235D1B8EE600007A162E /* HinnerJagWatchOS2 Extension */ = {
 			isa = PBXGroup;
 			children = (
+				02945BBE1CC5633800AC4D71 /* HinnerJagWatchOS2 Extension.entitlements */,
 				02CE16281BD952E5009F788E /* Assets.xcassets */,
 				02C223601B8EE600007A162E /* InterfaceController.swift */,
 				02CE16421BD9776E009F788E /* HinnerJagWatchOS2 Extension-Bridging-Header.h */,
@@ -856,6 +863,7 @@
 		02F2FF461AB48BB8001A1F90 /* Hinner jag WatchKit App */ = {
 			isa = PBXGroup;
 			children = (
+				02945BBD1CC5631500AC4D71 /* Hinner jag WatchKit App.entitlements */,
 				02F2FF491AB48BB8001A1F90 /* Interface.storyboard */,
 				02F2FF4C1AB48BB8001A1F90 /* Images.xcassets */,
 				02F2FF471AB48BB8001A1F90 /* Supporting Files */,
@@ -1118,7 +1126,7 @@
 						DevelopmentTeam = AAA3F77UH3;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -1136,7 +1144,7 @@
 						DevelopmentTeam = AAA3F77UH3;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -1147,10 +1155,20 @@
 					02C2234C1B8EE5FF007A162E = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = AAA3F77UH3;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					02C223581B8EE600007A162E = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = AAA3F77UH3;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					02D4E83D1AB61DDC00FD597F = {
 						CreatedOnToolsVersion = 6.2;
@@ -1163,6 +1181,11 @@
 					02F2FF411AB48BB8001A1F90 = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = AAA3F77UH3;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -1627,6 +1650,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Hinner jag.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = HinnerJag/Info.plist;
@@ -1638,6 +1664,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wilhelmeklund.Hinner-jag";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1646,6 +1673,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Hinner jag.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = HinnerJag/Info.plist;
@@ -1657,6 +1687,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wilhelmeklund.Hinner-jag";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -1867,6 +1898,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HinnerJagWatchOS2/HinnerJagWatchOS2.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
@@ -1876,6 +1910,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wilhelmeklund.Hinner-jag.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "watchsimulator watchos";
@@ -1888,6 +1923,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HinnerJagWatchOS2/HinnerJagWatchOS2.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1897,6 +1935,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wilhelmeklund.Hinner-jag.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "watchsimulator watchos";
@@ -1909,6 +1948,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "HinnerJagWatchOS2 Extension/HinnerJagWatchOS2 Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1932,6 +1972,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "HinnerJagWatchOS2 Extension/HinnerJagWatchOS2 Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				COMBINE_HIDPI_IMAGES = YES;

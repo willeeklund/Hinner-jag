@@ -13,10 +13,12 @@ public class CoreDataStore: NSObject {
     
     // MARK: - Core Data stack
     
-    static var applicationDocumentsDirectory: NSURL = {
-        // The directory the application uses to store the Core Data store file. This code uses a directory named "com.wilhelmeklund.Hinner_jag_" in the application's documents Application Support directory.
-        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        return urls[urls.count-1]
+    static var applicationDocumentsDirectory: NSURL? = {
+//        // The directory the application uses to store the Core Data store file. This code uses a directory named "com.wilhelmeklund.Hinner-jag" in the application's documents Application Support directory.
+//        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+//        return urls[urls.count-1]
+        // Store application documents, such as sqlite file for CoreData, in App Group folder
+        return NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.com.wilhelmeklund.HinnerJagGroup")
     }()
     
     static var managedObjectModel: NSManagedObjectModel = {
@@ -31,11 +33,12 @@ public class CoreDataStore: NSObject {
         // The persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         // Create the coordinator and store
         var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: CoreDataStore.managedObjectModel)
-        let url = CoreDataStore.applicationDocumentsDirectory.URLByAppendingPathComponent("Hinner_jag_.sqlite")
-        var error: NSError? = nil
+        // Place to store sqlite file
+        let url = CoreDataStore.applicationDocumentsDirectory?.URLByAppendingPathComponent("HinnerJag.sqlite")
+        assert(nil != url, "URL for App Group ")
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
-            try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
+            try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url!, options: nil)
         } catch var error as NSError {
             coordinator = nil
             // Report any error we got.

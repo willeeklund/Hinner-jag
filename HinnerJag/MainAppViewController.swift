@@ -89,7 +89,6 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.destinationViewController is MapViewController {
             let mapVC: MapViewController = segue.destinationViewController as! MapViewController
-            mapVC.locateStation = self.locateStation
             mapVC.chosenStation = self.closestStation
         }
     }

@@ -20,13 +20,6 @@ public class LocateStationBase: NSObject, CLLocationManagerDelegate
 {
     public var delegate: LocateStationDelegate?
     
-    public lazy var stationList: [Site] = {
-        return Site.getAllSites()
-    }()
-    func updateStationList() {
-        self.stationList = Site.getAllSites()
-    }
-    
     public var locationManager: CLLocationManager! = CLLocationManager()
     
     var realtimeDeparturesObj = RealtimeDepartures()
@@ -36,13 +29,6 @@ public class LocateStationBase: NSObject, CLLocationManagerDelegate
         super.init()
         self.locationManager.delegate = self
         self.locationManager.requestWhenInUseAuthorization()
-        // Listen for notification to refresh station list
-        NSNotificationCenter.defaultCenter().addObserver(
-            self,
-            selector: #selector(updateStationList),
-            name: "LocateStationUpdateStationList",
-            object: nil
-        )
     }
     
     public func startUpdatingLocation() {}
@@ -87,12 +73,12 @@ public class LocateStationBase: NSObject, CLLocationManagerDelegate
     // Compare distance from all known stations, return closest one
     public func findStationsSortedClosestToLatitude(latitude: Double, longitude: Double) -> [Site] {
         let userLocation = CLLocation(latitude: latitude, longitude: longitude)
-        var sortedStationList: [Site] = self.stationList
+        var sortedStationList: [Site] = Site.getAllActiveSites()
         let optimalNumberOfStations = 5
         // If no station were within 5km, sort entire list
         var smallerList = sortedStationList.filter({station in
             // Only use the active stations
-            return station.isActive && station.distanceFromLocation(userLocation) < 5000
+            return station.distanceFromLocation(userLocation) < 5000
         })
         if optimalNumberOfStations < smallerList.count {
             sortedStationList = smallerList

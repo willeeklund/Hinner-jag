@@ -98,9 +98,27 @@ public class Site: NSManagedObject, MKAnnotation {
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
+        // Has not filled CoreData DB with sites before
         return Site.fillWithSites()
     }
-    
+
+    public class func getAllActiveSites() -> [Site] {
+        let fetchRequest = NSFetchRequest(entityName: Site.entityName)
+        fetchRequest.predicate = NSPredicate(format: "isActive = \(true)", argumentArray: nil)
+        do {
+            if let sites = try CoreDataStore.managedObjectContext.executeFetchRequest(fetchRequest) as? [Site] {
+                print("Got \(sites.count) active sites back from DB")
+                if sites.count > 0 {
+                    return sites
+                }
+            }
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        // Has not filled CoreData DB with sites before
+        return Site.fillWithSites()
+    }
+
     class func fillWithSites() -> [Site] {
         var siteList = [Site]()
         let hinnerJagKitBundle = NSBundle(forClass: CoreDataStore.classForCoder())

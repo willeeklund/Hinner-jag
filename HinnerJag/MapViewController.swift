@@ -14,7 +14,6 @@ class MapViewController: UIViewController, MKMapViewDelegate
 {
     @IBOutlet weak var mapView: MKMapView!
     
-    var locateStation: LocateStation?
     var chosenStation: Site?
     
     // MARK: - Lifecycle stuff
@@ -27,10 +26,8 @@ class MapViewController: UIViewController, MKMapViewDelegate
         super.viewDidLoad()
         self.setScreenName("MapViewController")
         self.mapView.delegate = self
-        if nil != self.locateStation {
-            self.mapView.addAnnotations(self.locateStation!.stationList)
-            self.mapView.showsUserLocation = true
-        }
+        self.mapView.addAnnotations(Site.getAllSites())
+        self.mapView.showsUserLocation = true
         var usedCoordinate = CLLocationCoordinate2D(latitude: 59.33, longitude: 18.06)
         if self.chosenStation != nil {
             // Delta will set zoom level
@@ -107,8 +104,6 @@ class MapViewController: UIViewController, MKMapViewDelegate
             // Change active status for this station
             station.toggleActive()
             self.trackEvent("Station", action: "toggle_active_from_map", label: "\(station.title!) (\(station.siteId))", value: 1)
-            // Send notification to update station list
-            NSNotificationCenter.defaultCenter().postNotificationName("LocateStationUpdateStationList", object: nil)
             // Update annotation view for this station
             mapView.removeAnnotation(station)
             mapView.addAnnotation(station)
