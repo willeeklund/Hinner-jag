@@ -37,6 +37,16 @@ public class Line: NSManagedObject {
         return false
     }
 
+    /**
+     Toggle star status of a Line
+     
+     - parameters:
+        - lineNumber: What line number to toggle
+     
+     - returns: Number of Sites that were changed as a result
+     
+     This will only change the value of the Bus stations along this line
+     */
     public class func toggleLine(lineNumber: Int) -> Int {
         // Save to context after return
         defer {
@@ -44,9 +54,11 @@ public class Line: NSManagedObject {
         }
         // Toggle isActive for this Line
         let lines = Line.getLinesForNumber(lineNumber)
+        var newActiveValue: Bool
         if lines.count > 0 {
             // We have line already, toggle isActive value
-            lines.first!.isActive = !lines.first!.isActive
+            newActiveValue = !lines.first!.isActive
+            lines.first!.isActive = newActiveValue
         } else {
             // Must create Line
             let entity =  NSEntityDescription.entityForName(
@@ -56,9 +68,10 @@ public class Line: NSManagedObject {
             assert(nil != entity, "Entity 'JourneyPattern' should never fail")
             let newLine = Line(entity: entity!, insertIntoManagedObjectContext: CoreDataStore.managedObjectContext)
             newLine.lineNumber = Int16(truncatingBitPattern: lineNumber)
-            newLine.isActive = true
+            newActiveValue = true
+            newLine.isActive = newActiveValue
         }
         // Toggle sites on this journey pattern
-        return JourneyPattern.toggleSitesForLine(lineNumber)
+        return JourneyPattern.toggleSitesForLine(lineNumber, to: newActiveValue)
     }
 }

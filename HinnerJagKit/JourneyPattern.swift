@@ -74,17 +74,11 @@ public class JourneyPattern: NSManagedObject {
                 // Add journey patterns
                 if let journeyPatternInfoList = responseDict["journeyPatternList"] as! [NSDictionary]? {
                     for info in journeyPatternInfoList {
-                        if let dictDirectionCode = info["DirectionCode"] as? Int {
-                            // Only add one direction, otherwise toggle will have no effect,
-                            // because all stations will be toggle twice
-                            if 1 == dictDirectionCode {
-                                if let dictLineNumber = info["LineNumber"] as? Int {
-                                    // Only add journey pattern for chosen line
-                                    // This reduces initial wait time
-                                    if dictLineNumber == lineNumber {
-                                        journeyPatternList.append(JourneyPattern(dict: info))
-                                    }
-                                }
+                        if let dictLineNumber = info["LineNumber"] as? Int {
+                            // Only add journey pattern for chosen line
+                            // This reduces initial wait time
+                            if dictLineNumber == lineNumber {
+                                journeyPatternList.append(JourneyPattern(dict: info))
                             }
                         }
                         
@@ -99,8 +93,19 @@ public class JourneyPattern: NSManagedObject {
         return journeyPatternList
     }
     
-    // MARK: - Activate sites on line number
-    public class func toggleSitesForLine(lineNumber: Int) -> Int {
+    // MARK: - Toggle sites on line number
+    /**
+     Set all sites on a line number to a new value
+     
+     - parameters:
+        - lineNumber: What line number to toggle
+        - to: The new value of isActive for these Sites
+     
+     - returns: Number of Sites that were changed as a result
+     
+     This will only change the value of the Bus stations along this line
+    */
+    public class func toggleSitesForLine(lineNumber: Int, to newActiveValue: Bool) -> Int {
         // Save to context after return
         defer {
             CoreDataStore.saveContext()
@@ -120,9 +125,8 @@ public class JourneyPattern: NSManagedObject {
                             && nil != site.stopAreaTypeCode
                             && "BUSTERM" == site.stopAreaTypeCode! // Only toggle bus stations
                         {
-                            site.isActive = !site.isActive
+                            site.isActive = newActiveValue
                             nbrChanged += 1
-                            print("Changed \(site.title!) to \(site.isActive)")
                         }
                     }
                 }

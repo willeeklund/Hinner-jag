@@ -140,12 +140,12 @@ public class Departure: NSObject
         return ("Okänd", nil, nil)
     }
     
-    public class func getLineNumberFromSection(sectionString: String, departuresDict: Dictionary<String, [Departure]>) -> Int? {
+    public class func getLineNumberAndTransportTypeFromSection(sectionString: String, departuresDict: Dictionary<String, [Departure]>) -> (Int?, TransportType?) {
         if let depList = departuresDict[sectionString] {
             let firstDep = depList[0]
-            return Int(firstDep.lineNumber)
+            return (Int(firstDep.lineNumber), firstDep.transportType)
         } else {
-            return nil
+            return (nil, nil)
         }
     }
     
