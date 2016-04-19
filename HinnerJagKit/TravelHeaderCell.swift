@@ -18,6 +18,7 @@ public class TravelHeaderCell: UITableViewCell
     @IBOutlet weak var headerLabel: UILabel!
     var lineNumber: Int?
     var transportType: TransportType?
+    var controller: HinnerJagTableViewController?
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -37,11 +38,14 @@ public class TravelHeaderCell: UITableViewCell
             } else {
                 starButton.setImage(UIImage(named: "star_empty"), forState: .Normal)
             }
+            // Make controller create new mappings from departures and reload table
+            controller?.createMappingFromFetchedDepartures()
         }
     }
     
     internal class func createCellForIndexPath(
         section: Int,
+        controller: HinnerJagTableViewController,
         tableView: UITableView,
         mappingDict: Dictionary <Int, String>,
         departuresDict: Dictionary<String, [Departure]>
@@ -51,6 +55,7 @@ public class TravelHeaderCell: UITableViewCell
         if nil == cell {
             cell = TravelHeaderCell()
         }
+        cell?.controller = controller
         if let sectionString = mappingDict[section] {
             let directionSuffix = Departure.createDirectionSuffix(sectionString, departuresDict: departuresDict)
             let (directionLabel, imageName, _) = Departure.createLabelAndImageNameFromSection(sectionString, departuresDict: departuresDict)

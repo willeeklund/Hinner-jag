@@ -162,6 +162,7 @@ public class HinnerJagTableViewController: UITableViewController, LocateStationD
         } else {
             return TravelHeaderCell.createCellForIndexPath(
                 section,
+                controller: self,
                 tableView: tableView,
                 mappingDict: self.mappingDict,
                 departuresDict: self.departuresDict

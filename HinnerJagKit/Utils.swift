@@ -82,10 +82,15 @@ public class Utils
         
         // Only use the departures of the preferred type
         for dept in departures.filter({ dept in nil != dept.transportType && currentTransportType == dept.transportType! }) {
-            // Do not group by direction for buses
+            // Do not group by direction for buses, instead indicate if Line is favourite
             let directionString: String
             if nil != dept.transportType && .Bus == dept.transportType! {
-                directionString = ""
+                let lineNumberInt = Int(dept.lineNumber)
+                if nil != lineNumberInt && Line.isLineActive(lineNumberInt!) {
+                    directionString = "STAR"
+                } else {
+                    directionString = ""
+                }
             } else {
                 directionString = "riktning \(dept.direction)"
             }
@@ -102,6 +107,30 @@ public class Utils
                 largestUsedMapping += 1
             }
         }
+        
+        // Create array of Strings sorted with the STAR-marked groups first
+        let mappingStringsSorted = mappingDict.values.sort() {
+            let firstStar = $0.rangeOfString("STAR") != nil
+            let secondStar = $1.rangeOfString("STAR") != nil
+            if (firstStar && secondStar) || (!firstStar && !secondStar) {
+                return $0 < $1
+            } else if firstStar {
+                return true
+            } else if secondStar {
+                return false
+            }
+            return $0 < $1
+        }
+        
+        // Reset largestUsedMapping and create new mappingDict
+        largestUsedMapping = mappingStart
+        var newMappingDict = Dictionary<Int, String>()
+        for mappingString in mappingStringsSorted {
+            newMappingDict[largestUsedMapping] = mappingString
+            largestUsedMapping += 1
+        }
+        mappingDict = newMappingDict
+        
         return (mappingDict, departuresDict)
     }
     

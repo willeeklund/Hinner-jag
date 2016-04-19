@@ -358,6 +358,7 @@
 		02945BBC1CC5630300AC4D71 /* HinnerJagWatchOS2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HinnerJagWatchOS2.entitlements; sourceTree = "<group>"; };
 		02945BBD1CC5631500AC4D71 /* Hinner jag WatchKit App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Hinner jag WatchKit App.entitlements"; sourceTree = SOURCE_ROOT; };
 		02945BBE1CC5633800AC4D71 /* HinnerJagWatchOS2 Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "HinnerJagWatchOS2 Extension.entitlements"; sourceTree = "<group>"; };
+		02945BBF1CC56ECA00AC4D71 /* SortMappingDict.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = SortMappingDict.playground; path = HinnerJag/SortMappingDict.playground; sourceTree = SOURCE_ROOT; };
 		0295BEB21C9DB630005669EB /* SegmentedControl.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = SegmentedControl.playground; path = HinnerJag/SegmentedControl.playground; sourceTree = "<group>"; };
 		0295BEB31C9DCA12005669EB /* UtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilsTests.swift; sourceTree = "<group>"; };
 		0295DD431AC7F6E500D850BA /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -710,6 +711,7 @@
 		0295BEAE1C9DB2C6005669EB /* Playground */ = {
 			isa = PBXGroup;
 			children = (
+				02945BBF1CC56ECA00AC4D71 /* SortMappingDict.playground */,
 				0295BEB21C9DB630005669EB /* SegmentedControl.playground */,
 			);
 			name = Playground;
