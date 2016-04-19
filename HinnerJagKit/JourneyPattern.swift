@@ -19,7 +19,6 @@ public class JourneyPattern: NSManagedObject {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
     public init(dict: NSDictionary) {
-        print("JourneyPattern(dict:) \(dict)")
         // Init with shared managed object context
         let entity =  NSEntityDescription.entityForName(
             JourneyPattern.entityName,
@@ -47,7 +46,6 @@ public class JourneyPattern: NSManagedObject {
         fetchRequest.predicate = NSPredicate(format: "lineNumber = \(lineNumber)", argumentArray: nil)
         do {
             if let journeyPatterns = try CoreDataStore.managedObjectContext.executeFetchRequest(fetchRequest) as? [JourneyPattern] {
-                print("Got \(journeyPatterns.count) journeyPatterns back from DB")
                 if journeyPatterns.count > 0 {
                     return journeyPatterns
                 }

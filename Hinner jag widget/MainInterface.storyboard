@@ -16,15 +16,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell opaque="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeadlineCell" rowHeight="60" id="O00-Hc-7L4" customClass="HeadlineCell" customModule="Hinner_jag_widget" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="22" width="320" height="60"/>
+                            <tableViewCell opaque="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeadlineCell" rowHeight="90" id="O00-Hc-7L4" customClass="HeadlineCell" customModule="Hinner_jag_widget" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="22" width="320" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O00-Hc-7L4" id="7Xb-tX-Aqt">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xpu-e3-0mu">
-                                            <rect key="frame" x="8" y="0.0" width="167" height="29"/>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xpu-e3-0mu">
+                                            <rect key="frame" x="8" y="0.0" width="220" height="29"/>
                                             <segments>
                                                 <segment title="Tunnelbana"/>
                                                 <segment title="Pendeltåg"/>
@@ -47,22 +47,33 @@
                                                 <action selector="changeSelectedStation:" destination="O00-Hc-7L4" eventType="touchUpInside" id="cCi-8b-ibR"/>
                                             </connections>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tips: byt station med ett klick" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FKt-vu-9Hq">
+                                            <rect key="frame" x="8" y="61" width="312" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="xpu-e3-0mu" firstAttribute="leading" secondItem="OeZ-JZ-aTY" secondAttribute="leading" id="0Dh-mA-SIG"/>
-                                        <constraint firstAttribute="bottom" secondItem="OeZ-JZ-aTY" secondAttribute="bottom" id="Dkb-DK-GiB"/>
-                                        <constraint firstAttribute="trailing" secondItem="OeZ-JZ-aTY" secondAttribute="trailing" id="ULu-da-de6"/>
-                                        <constraint firstItem="xpu-e3-0mu" firstAttribute="leading" secondItem="7Xb-tX-Aqt" secondAttribute="leadingMargin" id="i4I-Bf-XhV"/>
-                                        <constraint firstItem="xpu-e3-0mu" firstAttribute="top" secondItem="7Xb-tX-Aqt" secondAttribute="top" id="lL0-gp-ckV"/>
+                                        <constraint firstItem="OeZ-JZ-aTY" firstAttribute="leading" secondItem="FKt-vu-9Hq" secondAttribute="leading" id="0CP-tX-2cW"/>
+                                        <constraint firstItem="xpu-e3-0mu" firstAttribute="leading" secondItem="OeZ-JZ-aTY" secondAttribute="leading" id="2Gp-wF-T3c"/>
+                                        <constraint firstItem="xpu-e3-0mu" firstAttribute="leading" secondItem="7Xb-tX-Aqt" secondAttribute="leadingMargin" id="3Gw-4v-FQB"/>
+                                        <constraint firstItem="FKt-vu-9Hq" firstAttribute="bottom" secondItem="7Xb-tX-Aqt" secondAttribute="bottomMargin" id="NIo-d6-gLf"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="xpu-e3-0mu" secondAttribute="trailing" constant="84" id="NiK-pB-DBf"/>
+                                        <constraint firstItem="OeZ-JZ-aTY" firstAttribute="trailing" secondItem="FKt-vu-9Hq" secondAttribute="trailing" id="Py6-i2-6La"/>
+                                        <constraint firstAttribute="trailing" secondItem="OeZ-JZ-aTY" secondAttribute="trailing" id="dZq-Ye-sOH"/>
+                                        <constraint firstItem="FKt-vu-9Hq" firstAttribute="top" secondItem="OeZ-JZ-aTY" secondAttribute="bottom" constant="1" id="sed-hK-AEe"/>
+                                        <constraint firstItem="xpu-e3-0mu" firstAttribute="top" secondItem="7Xb-tX-Aqt" secondAttribute="top" id="yA4-Bt-cJu"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="closestStationButton" destination="OeZ-JZ-aTY" id="wpB-go-Ugg"/>
+                                    <outlet property="infoLabel" destination="FKt-vu-9Hq" id="W0t-xh-2JP"/>
                                     <outlet property="stationTypeSegment" destination="xpu-e3-0mu" id="Xsh-ZL-tn9"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TravelHeaderCell" rowHeight="27" id="jGy-rW-P4M" customClass="TravelHeaderCell" customModule="Hinner_jag_widget" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="82" width="320" height="27"/>
+                                <rect key="frame" x="0.0" y="112" width="320" height="27"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jGy-rW-P4M" id="ZRr-RP-twh">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="27"/>
@@ -108,7 +119,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TravelDetailsCell" rowHeight="25" id="ymP-yz-kBy" customClass="TravelDetailsCell" customModule="Hinner_jag_widget" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="109" width="320" height="25"/>
+                                <rect key="frame" x="0.0" y="139" width="320" height="25"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ymP-yz-kBy" id="VYH-zv-pFr">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="25"/>

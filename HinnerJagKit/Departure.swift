@@ -45,7 +45,7 @@ public class Departure: NSObject
         }
         if let type = dict["TransportMode"] as? String {
             transportType = TransportType(rawValue: type)
-            if nil != transportType && .Bus == transportType {
+            if nil != transportType && .Bus == transportType! {
                 // This is currently used when creating groups of departures
                 lineName = "\(lineName) nr \(lineNumber)"
             }
@@ -67,7 +67,7 @@ public class Departure: NSObject
                 suffixDestination = "Sthlm"
             } else if
                 sectionString.rangeOfString("BUS") != nil
-                    || sectionString.rangeOfString("TRAM") != nil
+                || sectionString.rangeOfString("TRAM") != nil
             {
                 // No direction suffix for buses or trams
                 return ""

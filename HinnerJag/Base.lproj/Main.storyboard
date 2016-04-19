@@ -172,11 +172,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeadlineCell" rowHeight="125" id="jIE-yi-3eW" customClass="HeadlineCell" customModule="Hinner_jag" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="22" width="600" height="125"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeadlineCell" rowHeight="155" id="jIE-yi-3eW" customClass="HeadlineCell" customModule="Hinner_jag" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="22" width="600" height="155"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jIE-yi-3eW" id="L1B-Wu-1kt">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="125"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="155"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hinner jag?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hnz-Oe-n2e">
@@ -207,9 +207,9 @@
                                             </connections>
                                         </button>
                                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3bR-ME-P5W">
-                                            <rect key="frame" x="425" y="57" width="167" height="29"/>
+                                            <rect key="frame" x="392" y="57" width="200" height="29"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="167" id="AIn-5J-fcT"/>
+                                                <constraint firstAttribute="width" constant="200" id="2uF-K2-K6V"/>
                                             </constraints>
                                             <segments>
                                                 <segment title="Tunnelbana"/>
@@ -229,31 +229,40 @@
                                                 <action selector="changeSelectedStation:" destination="jIE-yi-3eW" eventType="touchUpInside" id="Dm5-ah-6FJ"/>
                                             </connections>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tips: lägg till fler stationer via kartan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZp-ky-R6a">
+                                            <rect key="frame" x="8" y="126" width="584" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="3bR-ME-P5W" firstAttribute="trailing" secondItem="3Qg-Up-ODe" secondAttribute="trailing" id="0Hy-hg-LmK"/>
                                         <constraint firstItem="3Qg-Up-ODe" firstAttribute="centerY" secondItem="quh-p3-9qc" secondAttribute="centerY" id="0N0-Jm-8bi"/>
-                                        <constraint firstItem="TQ7-Xc-F0I" firstAttribute="leading" secondItem="L1B-Wu-1kt" secondAttribute="leading" constant="8" id="22f-hx-OGf"/>
                                         <constraint firstItem="TQ7-Xc-F0I" firstAttribute="leading" secondItem="L1B-Wu-1kt" secondAttribute="leadingMargin" id="4K0-Pl-mbf"/>
                                         <constraint firstItem="quh-p3-9qc" firstAttribute="leading" secondItem="L1B-Wu-1kt" secondAttribute="leadingMargin" id="6sw-CJ-GMl"/>
                                         <constraint firstItem="3bR-ME-P5W" firstAttribute="centerX" secondItem="TQ7-Xc-F0I" secondAttribute="centerX" id="DMP-8C-WQi"/>
-                                        <constraint firstItem="TQ7-Xc-F0I" firstAttribute="centerX" secondItem="hnz-Oe-n2e" secondAttribute="centerX" constant="8" id="GHe-aI-mKp"/>
+                                        <constraint firstItem="3bR-ME-P5W" firstAttribute="trailing" secondItem="kZp-ky-R6a" secondAttribute="trailing" id="HFE-YX-fnJ"/>
                                         <constraint firstItem="TQ7-Xc-F0I" firstAttribute="top" secondItem="hnz-Oe-n2e" secondAttribute="bottom" constant="8" symbolic="YES" id="HJL-S1-eAL"/>
                                         <constraint firstItem="TQ7-Xc-F0I" firstAttribute="bottom" secondItem="L1B-Wu-1kt" secondAttribute="bottomMargin" id="N1E-ju-Ada"/>
+                                        <constraint firstItem="TQ7-Xc-F0I" firstAttribute="leading" secondItem="kZp-ky-R6a" secondAttribute="leading" id="N93-nT-Wml"/>
                                         <constraint firstItem="TQ7-Xc-F0I" firstAttribute="leading" secondItem="L1B-Wu-1kt" secondAttribute="leadingMargin" id="NtU-Ox-qqd"/>
                                         <constraint firstItem="hnz-Oe-n2e" firstAttribute="centerX" secondItem="L1B-Wu-1kt" secondAttribute="centerX" id="OUq-lx-sgo"/>
                                         <constraint firstItem="TQ7-Xc-F0I" firstAttribute="leading" secondItem="L1B-Wu-1kt" secondAttribute="leadingMargin" constant="-7" id="QeR-lN-H0N"/>
                                         <constraint firstItem="3bR-ME-P5W" firstAttribute="leading" secondItem="quh-p3-9qc" secondAttribute="leading" id="QkH-j0-CwA"/>
-                                        <constraint firstItem="TQ7-Xc-F0I" firstAttribute="top" secondItem="3bR-ME-P5W" secondAttribute="bottom" constant="5" id="YHt-UU-rSM"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="TQ7-Xc-F0I" secondAttribute="trailing" constant="-16" id="QoU-6j-tLk"/>
+                                        <constraint firstItem="TQ7-Xc-F0I" firstAttribute="leading" secondItem="quh-p3-9qc" secondAttribute="leading" id="Tgw-Ax-zxZ"/>
+                                        <constraint firstItem="kZp-ky-R6a" firstAttribute="bottom" secondItem="L1B-Wu-1kt" secondAttribute="bottomMargin" id="Xoh-hR-cEe"/>
                                         <constraint firstItem="quh-p3-9qc" firstAttribute="leading" secondItem="L1B-Wu-1kt" secondAttribute="leadingMargin" id="d3s-lj-KZu"/>
                                         <constraint firstItem="3bR-ME-P5W" firstAttribute="centerX" secondItem="L1B-Wu-1kt" secondAttribute="centerX" id="f2M-Dl-228"/>
                                         <constraint firstItem="3bR-ME-P5W" firstAttribute="leading" secondItem="L1B-Wu-1kt" secondAttribute="leadingMargin" id="gaQ-hc-wrj"/>
-                                        <constraint firstItem="3bR-ME-P5W" firstAttribute="trailing" secondItem="3Qg-Up-ODe" secondAttribute="trailing" id="p8A-7X-E5F"/>
+                                        <constraint firstItem="kZp-ky-R6a" firstAttribute="top" secondItem="TQ7-Xc-F0I" secondAttribute="bottom" constant="1" id="kSw-ip-aRg"/>
                                         <constraint firstItem="hnz-Oe-n2e" firstAttribute="top" secondItem="L1B-Wu-1kt" secondAttribute="topMargin" constant="14" id="pMO-11-WXJ"/>
                                         <constraint firstItem="3bR-ME-P5W" firstAttribute="bottom" secondItem="L1B-Wu-1kt" secondAttribute="bottomMargin" id="pwr-io-PeD"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="3Qg-Up-ODe" secondAttribute="trailing" id="qZv-rU-8K9"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="TQ7-Xc-F0I" secondAttribute="bottom" constant="-8" id="toX-44-1DX"/>
+                                        <constraint firstItem="3bR-ME-P5W" firstAttribute="trailing" secondItem="3Qg-Up-ODe" secondAttribute="trailing" id="vyn-Lf-lSo"/>
                                         <constraint firstItem="3Qg-Up-ODe" firstAttribute="top" secondItem="hnz-Oe-n2e" secondAttribute="top" id="w1A-Ci-N1K"/>
+                                        <constraint firstItem="TQ7-Xc-F0I" firstAttribute="top" secondItem="3bR-ME-P5W" secondAttribute="bottom" constant="5" id="wQp-7b-x0h"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
@@ -273,13 +282,14 @@
                                     </variation>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="closestStationButton" destination="TQ7-Xc-F0I" id="GuQ-Cq-lE2"/>
+                                    <outlet property="closestStationButton" destination="TQ7-Xc-F0I" id="psi-GC-pmZ"/>
                                     <outlet property="headerLabel" destination="hnz-Oe-n2e" id="6a6-EE-tXw"/>
+                                    <outlet property="infoLabel" destination="kZp-ky-R6a" id="HR2-gQ-JTd"/>
                                     <outlet property="stationTypeSegment" destination="3bR-ME-P5W" id="6Fx-w1-Sqg"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TravelHeaderCell" id="8tD-IG-LxG" customClass="TravelHeaderCell" customModule="Hinner_jag">
-                                <rect key="frame" x="0.0" y="147" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="177" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8tD-IG-LxG" id="WXI-Cc-nVc">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -336,7 +346,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TravelDetailsCell" id="aFb-2l-7vx" customClass="TravelDetailsCell" customModule="Hinner_jag">
-                                <rect key="frame" x="0.0" y="191" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="221" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aFb-2l-7vx" id="cKF-Ui-Ifo">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>

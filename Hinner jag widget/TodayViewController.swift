@@ -39,7 +39,7 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
     override func getLastLocation() -> CLLocation? {
         return self.locationManager.location
     }
-
+    
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,14 +55,18 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
     override func viewWillAppear(animated: Bool) {
         self.locationManager.startUpdatingLocation()
         if let locationManagerLocation = self.locationManager.location {
-            // Less than 5 minutes ago, use old location
-            if -300.0 < locationManagerLocation.timestamp.timeIntervalSinceNow {
+            // Less than 2 minutes ago, use old location
+            if -120.0 < locationManagerLocation.timestamp.timeIntervalSinceNow {
                 let sortedStations = self.locateStation.findClosestStationFromLocation(locationManagerLocation)
                 let oldStation = sortedStations.first
                 self.closestStation = oldStation
                 self.updateUI()
             }
         }
+        // Set random info message
+        NSNotificationCenter.defaultCenter().postNotificationName(HeadlineCell.notificationEventInfoMessage, object: nil, userInfo: [
+            "random": true
+        ])
     }
 
     // MARK: - Update UI
@@ -105,9 +109,9 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             if self.shouldShowStationTypeSegment() {
-                return 60.0
+                return 90.0
             } else {
-                return 27.0
+                return 57.0
             }
         }
         return 27.0

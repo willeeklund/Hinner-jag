@@ -43,7 +43,6 @@ public class HinnerJagTableViewController: UITableViewController, LocateStationD
         self.closestSortedStations = stationsSorted
         self.fetchedDepartures = departures
         if nil != station {
-            print("Now we are using the location callback. \(station!)")
             self.trackEvent("Station", action: "found", label: "\(station!.title) (\(station!.siteId))", value: 1)
         } else {
             self.trackEvent("Station", action: "not_found", label: "", value: nil)

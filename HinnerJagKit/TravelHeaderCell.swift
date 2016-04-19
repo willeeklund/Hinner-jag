@@ -31,15 +31,24 @@ public class TravelHeaderCell: UITableViewCell
     @IBAction func tapStar(sender: AnyObject) {
         // TODO: Make this on a side queue to not block UI
         if nil != lineNumber {
-            Line.toggleLine(lineNumber!)
+            let nbrChanged = Line.toggleLine(lineNumber!)
+            let toggleDirection: String
             // Update button image
             if Line.isLineActive(lineNumber!) {
                 starButton.setImage(UIImage(named: "star_full"), forState: .Normal)
+                toggleDirection = "Lade till"
             } else {
                 starButton.setImage(UIImage(named: "star_empty"), forState: .Normal)
+                toggleDirection = "Tog bort"
             }
             // Make controller create new mappings from departures and reload table
             controller?.createMappingFromFetchedDepartures()
+            // Update HeadlineCell info label. Do it double to be safe.
+            let newMessage = "\(toggleDirection) \(nbrChanged) busstationer på linje \(lineNumber!)"
+            HeadlineCell.infoMessage = newMessage
+            NSNotificationCenter.defaultCenter().postNotificationName(HeadlineCell.notificationEventInfoMessage, object: nil, userInfo: [
+                "message": newMessage
+            ])
         }
     }
     

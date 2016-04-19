@@ -34,6 +34,11 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
     @IBAction func refresh(sender: AnyObject?) {
         print("Refreshing position")
         self.locateStation.startUpdatingLocation()
+        // Update info label with random message
+        NSNotificationCenter.defaultCenter().postNotificationName(HeadlineCell.notificationEventInfoMessage, object: nil, userInfo: [
+            "random": true
+        ])
+
     }
     
     // MARK: - Locate station delegate protocol
@@ -76,9 +81,9 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             if self.shouldShowStationTypeSegment() {
-                return 130.0
+                return 160.0
             } else {
-                return 90.0
+                return 120.0
             }
         } else {
             return 45.0
