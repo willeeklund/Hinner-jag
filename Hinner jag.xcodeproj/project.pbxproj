@@ -118,6 +118,8 @@
 		02F2FF581AB4A1C1001A1F90 /* TravelDetailsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F2FF571AB4A1C1001A1F90 /* TravelDetailsRow.swift */; };
 		02F2FF5B1AB4A4AD001A1F90 /* TravelHeaderRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F2FF5A1AB4A4AD001A1F90 /* TravelHeaderRow.swift */; };
 		02F755BB1AB621210088D6C8 /* metro_stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 02F755BA1AB621210088D6C8 /* metro_stations.json */; };
+		9AFCFFB71CC755CC007065CE /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AFCFFB51CC755CC007065CE /* Crashlytics.framework */; };
+		9AFCFFB81CC755CC007065CE /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AFCFFB61CC755CC007065CE /* Fabric.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -378,6 +380,8 @@
 		02F2FF571AB4A1C1001A1F90 /* TravelDetailsRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelDetailsRow.swift; sourceTree = "<group>"; };
 		02F2FF5A1AB4A4AD001A1F90 /* TravelHeaderRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelHeaderRow.swift; sourceTree = "<group>"; };
 		02F755BA1AB621210088D6C8 /* metro_stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = metro_stations.json; sourceTree = "<group>"; };
+		9AFCFFB51CC755CC007065CE /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		9AFCFFB61CC755CC007065CE /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -385,10 +389,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AFCFFB81CC755CC007065CE /* Fabric.framework in Frameworks */,
 				0236B3D11ABE218300EDF6C8 /* libGoogleAnalyticsServices.a in Frameworks */,
 				02B11BBD1ABA43B9003ACD06 /* libz.dylib in Frameworks */,
 				02B11BBC1ABA43B0003ACD06 /* SystemConfiguration.framework in Frameworks */,
 				02B11BBB1ABA43A6003ACD06 /* CoreData.framework in Frameworks */,
+				9AFCFFB71CC755CC007065CE /* Crashlytics.framework in Frameworks */,
 				0211B2221AAE37FC00947C45 /* HinnerJagKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -577,6 +583,8 @@
 		0211B2451AAE4BB000947C45 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9AFCFFB51CC755CC007065CE /* Crashlytics.framework */,
+				9AFCFFB61CC755CC007065CE /* Fabric.framework */,
 				02B11BB71ABA4331003ACD06 /* libz.dylib */,
 				02B11BB51ABA431E003ACD06 /* SystemConfiguration.framework */,
 				02B11BB31ABA430B003ACD06 /* CoreData.framework */,
@@ -1514,6 +1522,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Hinner jag?/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1533,6 +1545,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Hinner jag?/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
