@@ -40,29 +40,42 @@ public class JourneyPattern: NSManagedObject {
     }
     
     // MARK: - Class functions
-    public class func getJourneyPatternsForLine(lineNumber: Int) -> [JourneyPattern] {
+    public class func getSitesForLine(lineNumber: Int) -> [Site] {
+        var sitesFromLine = [Site]()
         let fetchRequest = NSFetchRequest(entityName: JourneyPattern.entityName)
         // Use predicate to only fetch for this line number
         fetchRequest.predicate = NSPredicate(format: "lineNumber = \(lineNumber)", argumentArray: nil)
         do {
             if let journeyPatterns = try CoreDataStore.managedObjectContext.executeFetchRequest(fetchRequest) as? [JourneyPattern] {
                 if journeyPatterns.count > 0 {
-                    return journeyPatterns
+                    for point in journeyPatterns {
+                        // Find the site for the stopAreaNumber
+                        let fetchRequest = NSFetchRequest(entityName: Site.entityName)
+                        // Use predicate to only fetch for this stopAreaNumber
+                        fetchRequest.predicate = NSPredicate(format: "stopAreaNumber = \(point.stopAreaNumber)", argumentArray: nil)
+                        if let sites = try CoreDataStore.managedObjectContext.executeFetchRequest(fetchRequest) as? [Site] {
+                            sitesFromLine.appendContentsOf(sites)
+                        }
+                    }
                 }
             }
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
-        return JourneyPattern.fillWithJourneyPatternsForLine(lineNumber)
+        if sitesFromLine.count > 0 {
+            return sitesFromLine
+        } else {
+            return JourneyPattern.fillWithJourneyPatternsForLine(lineNumber)
+        }
     }
     
-    class func fillWithJourneyPatternsForLine(lineNumber: Int) -> [JourneyPattern] {
+    class func fillWithJourneyPatternsForLine(lineNumber: Int) -> [Site] {
         let hinnerJagKitBundle = NSBundle(forClass: CoreDataStore.classForCoder())
         let journeyPatternsFilePath = hinnerJagKitBundle.pathForResource("journeypatternpoints", ofType: "json")
         assert(nil != journeyPatternsFilePath, "The file journeypatternpoints.json must be included in the framework")
         let journeyPatternsData = NSData(contentsOfFile: journeyPatternsFilePath!)
         assert(nil != journeyPatternsData, "journeypatternpoints.json must contain valid data")
-        var journeyPatternList = [JourneyPattern]()
+        var sitesFromLine = [Site]()
         do {
             if let responseDict = try NSJSONSerialization.JSONObjectWithData(journeyPatternsData!, options: .MutableContainers) as? NSDictionary {
                 // Save to context after return
@@ -76,10 +89,16 @@ public class JourneyPattern: NSManagedObject {
                             // Only add journey pattern for chosen line
                             // This reduces initial wait time
                             if dictLineNumber == lineNumber {
-                                journeyPatternList.append(JourneyPattern(dict: info))
+                                let point = JourneyPattern(dict: info)
+                                // Find the site for the stopAreaNumber
+                                let fetchRequest = NSFetchRequest(entityName: Site.entityName)
+                                // Use predicate to only fetch for this stopAreaNumber
+                                fetchRequest.predicate = NSPredicate(format: "stopAreaNumber = \(point.stopAreaNumber)", argumentArray: nil)
+                                if let sites = try CoreDataStore.managedObjectContext.executeFetchRequest(fetchRequest) as? [Site] {
+                                    sitesFromLine.appendContentsOf(sites)
+                                }
                             }
                         }
-                        
                     }
                 } else {
                     print("Could not read 'journeyPatternList' from JSON file")
@@ -88,7 +107,7 @@ public class JourneyPattern: NSManagedObject {
         } catch let error as NSError  {
             print("Could not parse JSON data: \(error), \(error.userInfo)")
         }
-        return journeyPatternList
+        return sitesFromLine
     }
     
     // MARK: - Toggle sites on line number
@@ -108,28 +127,28 @@ public class JourneyPattern: NSManagedObject {
         defer {
             CoreDataStore.saveContext()
         }
-        let journeyPatternList = JourneyPattern.getJourneyPatternsForLine(lineNumber)
         var nbrChanged = 0
-        for point in journeyPatternList {
-            // Find the site for the stopAreaNumber
-            let fetchRequest = NSFetchRequest(entityName: Site.entityName)
-            // Use predicate to only fetch for this line number
-            fetchRequest.predicate = NSPredicate(format: "stopAreaNumber = \(point.stopAreaNumber)", argumentArray: nil)
-            do {
-                if let sites = try CoreDataStore.managedObjectContext.executeFetchRequest(fetchRequest) as? [Site] {
-                    for site in sites {
-                        if
-                            !site.isChangedManual // Do not toggle manually edited sites
-                            && nil != site.stopAreaTypeCode
-                            && "BUSTERM" == site.stopAreaTypeCode! // Only toggle bus stations
-                        {
-                            site.isActive = newActiveValue
-                            nbrChanged += 1
-                        }
+        // Create list of all Sites that were added as result of active Lines.
+        // This is only interesting if current aim is to make sites inactive
+        let activatedSitesByOtherLines = Line.sitesActivatedByActiveLines()
+        let sites = JourneyPattern.getSitesForLine(lineNumber)
+        for site in sites {
+            if
+                !site.isChangedManual // Do not toggle manually edited sites
+                    && nil != site.stopAreaTypeCode
+                    && "BUSTERM" == site.stopAreaTypeCode! // Only toggle bus stations
+                    && site.isActive != newActiveValue // We want to change active status
+            {
+                // Check if we wish to make a change for station
+                // If action is to make site inactive, only do that if no other
+                // active bus line goes through it
+                if false == newActiveValue {
+                    if activatedSitesByOtherLines.contains(site) {
+                        continue
                     }
                 }
-            } catch let error as NSError {
-                print("Could not fetch \(error), \(error.userInfo)")
+                site.isActive = newActiveValue
+                nbrChanged += 1
             }
         }
         // Send notification to update station list

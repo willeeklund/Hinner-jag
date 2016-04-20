@@ -15,6 +15,20 @@ public class Line: NSManagedObject {
     static let entityName = "Line"
     
     // MARK: - Class functions
+    class func getActiveLines() -> [Line] {
+        let fetchRequest = NSFetchRequest(entityName: Line.entityName)
+        // Use predicate to only fetch active lines
+        fetchRequest.predicate = NSPredicate(format: "isActive = \(true)", argumentArray: nil)
+        do {
+            if let lines = try CoreDataStore.managedObjectContext.executeFetchRequest(fetchRequest) as? [Line] {
+                return lines
+            }
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        return [Line]()
+    }
+    
     class func getLinesForNumber(lineNumber: Int) -> [Line] {
         let fetchRequest = NSFetchRequest(entityName: Line.entityName)
         // Use predicate to only fetch for this line number
@@ -73,5 +87,17 @@ public class Line: NSManagedObject {
         }
         // Toggle sites on this journey pattern
         return JourneyPattern.toggleSitesForLine(lineNumber, to: newActiveValue)
+    }
+    
+    public class func sitesActivatedByActiveLines() -> [Site] {
+        // Create list of all Sites that were added as result of active Lines.
+        // This is only interesting if current aim is to make sites inactive
+        var activatedSitesByOtherLines = [Site]()
+        for activeLine in Line.getActiveLines() {
+            // Add all these activated sites to activatedSites list
+            let sites = JourneyPattern.getSitesForLine(Int(activeLine.lineNumber))
+            activatedSitesByOtherLines.appendContentsOf(sites)
+        }
+        return activatedSitesByOtherLines
     }
 }

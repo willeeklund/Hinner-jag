@@ -78,7 +78,7 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
     }
     
     func updatePreferredContentSize() {
-        var height: CGFloat = 30.0
+        var height: CGFloat = 80.0
         let rowHeight = CGFloat(self.tableView(self.tableView, heightForHeaderInSection: 1))
         var i = 0;
         while i < self.numberOfSectionsInTableView(self.tableView) {
