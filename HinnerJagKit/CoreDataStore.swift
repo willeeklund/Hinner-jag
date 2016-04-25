@@ -21,26 +21,41 @@ public class CoreDataStore: NSObject {
         return NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.com.wilhelmeklund.HinnerJagGroup")
     }()
     
-    static var managedObjectModel: NSManagedObjectModel = {
+    static var managedObjectModel: NSManagedObjectModel? = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
         //        let modelURL = NSBundle.mainBundle().URLForResource("HinnerJag", withExtension: "momd")!
         let hinnerJagKitBundle = NSBundle(forClass: CoreDataStore.classForCoder())
-        let modelURL = hinnerJagKitBundle.URLForResource("DataModel", withExtension: "momd")!
-        return NSManagedObjectModel(contentsOfURL: modelURL)!
+        let modelURL = hinnerJagKitBundle.URLForResource("DataModel", withExtension: "momd")
+        if nil == modelURL {
+            print("CoreDataStore.managedObjectModel was nil. Could not find 'DataModel.momd'.")
+            return nil
+        }
+        return NSManagedObjectModel(contentsOfURL: modelURL!)
     }()
     
     static var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
         // The persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         // Create the coordinator and store
-        var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: CoreDataStore.managedObjectModel)
-        // Place to store sqlite file
-        let url = CoreDataStore.applicationDocumentsDirectory?.URLByAppendingPathComponent("HinnerJag.sqlite")
-        assert(nil != url, "URL for App Group ")
+        if nil == CoreDataStore.managedObjectModel {
+            print("Error fetching CoreDataStore.managedObjectModel: it was nil")
+            return nil
+        }
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
-            try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url!, options: nil)
+            var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: CoreDataStore.managedObjectModel!)
+            // Place to store sqlite file
+            let sqliteUrl = CoreDataStore.applicationDocumentsDirectory?.URLByAppendingPathComponent("HinnerJag.sqlite")
+            //        assert(nil != sqliteUrl, "Sqlite URL not found in App Group")
+            //        assert(nil != coordinator, "coordinator could not be created")
+            if
+                nil == sqliteUrl || nil == coordinator
+            {
+                print("Either sqlite or coordinator was nil")
+                return nil
+            }
+            try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: sqliteUrl!, options: nil)
+            return coordinator
         } catch var error as NSError {
-            coordinator = nil
             // Report any error we got.
             var dict = [NSObject: AnyObject]()
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
@@ -50,26 +65,28 @@ public class CoreDataStore: NSObject {
             // Replace this with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog("Unresolved error \(error), \(error.userInfo)")
-            abort()
         } catch {
-            fatalError()
+            print("Unknown fatal error occured creating CoreDataStore.persistentStoreCoordinator")
         }
         
-        return coordinator
+        return nil
     }()
     
     static var obj: NSManagedObjectContext?
     
     // MARK: - managedObjectContext
     
-    public static var managedObjectContext: NSManagedObjectContext {
+    public static var managedObjectContext: NSManagedObjectContext? {
         get {
             if nil != CoreDataStore.obj {
                 return CoreDataStore.obj!
             }
             let coordinator = CoreDataStore.persistentStoreCoordinator
-            let managedObjectContext = NSManagedObjectContext()
-            managedObjectContext.persistentStoreCoordinator = coordinator
+            if nil == coordinator {
+                return nil
+            }
+            let managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+            managedObjectContext.persistentStoreCoordinator = coordinator!
             CoreDataStore.obj = managedObjectContext
             return managedObjectContext
         }
@@ -80,7 +97,9 @@ public class CoreDataStore: NSObject {
     */
     public static func saveContext() {
         do {
-            try CoreDataStore.managedObjectContext.save()
+            if nil != CoreDataStore.managedObjectContext {
+                try CoreDataStore.managedObjectContext!.save()
+            }
         } catch let error as NSError  {
             print("Could not save \(error), \(error.userInfo)")
         }

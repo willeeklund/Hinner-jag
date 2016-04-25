@@ -34,7 +34,7 @@ public class Site: NSManagedObject, MKAnnotation {
         // Init with shared managed object context
         let entity =  NSEntityDescription.entityForName(
             Site.entityName,
-            inManagedObjectContext: CoreDataStore.managedObjectContext
+            inManagedObjectContext: CoreDataStore.managedObjectContext!
         )
         assert(nil != entity, "Entity 'Site' should never fail")
         super.init(entity: entity!, insertIntoManagedObjectContext: CoreDataStore.managedObjectContext)
@@ -89,7 +89,7 @@ public class Site: NSManagedObject, MKAnnotation {
     public class func getAllSites() -> [Site] {
         let fetchRequest = NSFetchRequest(entityName: Site.entityName)
         do {
-            if let sites = try CoreDataStore.managedObjectContext.executeFetchRequest(fetchRequest) as? [Site] {
+            if let sites = try CoreDataStore.managedObjectContext!.executeFetchRequest(fetchRequest) as? [Site] {
                 print("Got \(sites.count) sites back from DB")
                 if sites.count > 0 {
                     return sites
@@ -106,7 +106,7 @@ public class Site: NSManagedObject, MKAnnotation {
         let fetchRequest = NSFetchRequest(entityName: Site.entityName)
         fetchRequest.predicate = NSPredicate(format: "isActive = \(true)", argumentArray: nil)
         do {
-            if let sites = try CoreDataStore.managedObjectContext.executeFetchRequest(fetchRequest) as? [Site] {
+            if let sites = try CoreDataStore.managedObjectContext!.executeFetchRequest(fetchRequest) as? [Site] {
                 print("Got \(sites.count) active sites back from DB")
                 if sites.count > 0 {
                     return sites

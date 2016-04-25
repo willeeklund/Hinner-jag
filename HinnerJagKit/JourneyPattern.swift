@@ -19,10 +19,11 @@ public class JourneyPattern: NSManagedObject {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
     public init(dict: NSDictionary) {
+        assert(nil != CoreDataStore.managedObjectContext, "Must be able to create managed object context")
         // Init with shared managed object context
         let entity =  NSEntityDescription.entityForName(
             JourneyPattern.entityName,
-            inManagedObjectContext: CoreDataStore.managedObjectContext
+            inManagedObjectContext: CoreDataStore.managedObjectContext!
         )
         assert(nil != entity, "Entity 'JourneyPattern' should never fail")
         super.init(entity: entity!, insertIntoManagedObjectContext: CoreDataStore.managedObjectContext)
@@ -46,14 +47,14 @@ public class JourneyPattern: NSManagedObject {
         // Use predicate to only fetch for this line number
         fetchRequest.predicate = NSPredicate(format: "lineNumber = \(lineNumber)", argumentArray: nil)
         do {
-            if let journeyPatterns = try CoreDataStore.managedObjectContext.executeFetchRequest(fetchRequest) as? [JourneyPattern] {
+            if let journeyPatterns = try CoreDataStore.managedObjectContext!.executeFetchRequest(fetchRequest) as? [JourneyPattern] {
                 if journeyPatterns.count > 0 {
                     for point in journeyPatterns {
                         // Find the site for the stopAreaNumber
                         let fetchRequest = NSFetchRequest(entityName: Site.entityName)
                         // Use predicate to only fetch for this stopAreaNumber
                         fetchRequest.predicate = NSPredicate(format: "stopAreaNumber = \(point.stopAreaNumber)", argumentArray: nil)
-                        if let sites = try CoreDataStore.managedObjectContext.executeFetchRequest(fetchRequest) as? [Site] {
+                        if let sites = try CoreDataStore.managedObjectContext!.executeFetchRequest(fetchRequest) as? [Site] {
                             sitesFromLine.appendContentsOf(sites)
                         }
                     }
@@ -94,7 +95,7 @@ public class JourneyPattern: NSManagedObject {
                                 let fetchRequest = NSFetchRequest(entityName: Site.entityName)
                                 // Use predicate to only fetch for this stopAreaNumber
                                 fetchRequest.predicate = NSPredicate(format: "stopAreaNumber = \(point.stopAreaNumber)", argumentArray: nil)
-                                if let sites = try CoreDataStore.managedObjectContext.executeFetchRequest(fetchRequest) as? [Site] {
+                                if let sites = try CoreDataStore.managedObjectContext!.executeFetchRequest(fetchRequest) as? [Site] {
                                     sitesFromLine.appendContentsOf(sites)
                                 }
                             }

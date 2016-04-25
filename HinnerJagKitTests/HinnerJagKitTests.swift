@@ -21,7 +21,7 @@ class HinnerJagKitTests: XCTestCase {
     override func tearDown() {
         // Empty CoreData
         for site in Site.getAllSites() {
-            CoreDataStore.managedObjectContext.deleteObject(site)
+            CoreDataStore.managedObjectContext!.deleteObject(site)
         }
         CoreDataStore.saveContext()
         super.tearDown()

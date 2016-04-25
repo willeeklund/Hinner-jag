@@ -20,7 +20,7 @@ public class Line: NSManagedObject {
         // Use predicate to only fetch active lines
         fetchRequest.predicate = NSPredicate(format: "isActive = \(true)", argumentArray: nil)
         do {
-            if let lines = try CoreDataStore.managedObjectContext.executeFetchRequest(fetchRequest) as? [Line] {
+            if let lines = try CoreDataStore.managedObjectContext!.executeFetchRequest(fetchRequest) as? [Line] {
                 return lines
             }
         } catch let error as NSError {
@@ -34,7 +34,7 @@ public class Line: NSManagedObject {
         // Use predicate to only fetch for this line number
         fetchRequest.predicate = NSPredicate(format: "lineNumber = \(lineNumber)", argumentArray: nil)
         do {
-            if let lines = try CoreDataStore.managedObjectContext.executeFetchRequest(fetchRequest) as? [Line] {
+            if let lines = try CoreDataStore.managedObjectContext!.executeFetchRequest(fetchRequest) as? [Line] {
                 return lines
             }
         } catch let error as NSError {
@@ -77,7 +77,7 @@ public class Line: NSManagedObject {
             // Must create Line
             let entity =  NSEntityDescription.entityForName(
                 Line.entityName,
-                inManagedObjectContext: CoreDataStore.managedObjectContext
+                inManagedObjectContext: CoreDataStore.managedObjectContext!
             )
             assert(nil != entity, "Entity 'JourneyPattern' should never fail")
             let newLine = Line(entity: entity!, insertIntoManagedObjectContext: CoreDataStore.managedObjectContext)
