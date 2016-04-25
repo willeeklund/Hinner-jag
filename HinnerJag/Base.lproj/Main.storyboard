@@ -81,7 +81,7 @@
                                     <constraint firstAttribute="width" constant="127" id="tLf-uF-ywn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Klar med intro">
+                                <state key="normal" title="Fortsätt">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -118,16 +118,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Aktivera vår Today Widget genom att att dra ned från toppen av skärmen. Klicka på &quot;Ändra&quot;." selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITv-wo-L2b">
-                                <rect key="frame" x="20" y="90" width="560" height="80"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="qdP-b2-k0I"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITv-wo-L2b">
+                                <rect key="frame" x="20" y="56" width="560" height="498"/>
+                                <mutableString key="text">- Den här appen är för Stockholmaren som vet hur den ska resa.  - Den hittar stationen närmast dig och visar dess avgångar.  - Om du ställer in vår widget (nästa steg) kan du se nästa avgång utan att behöva låsa upp din telefon!  - För att lägga till busstationer kan du favoritmarkera busslinjer. Då läggs alla stationer längs den linjen till.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Intro till appen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgq-0A-gcs">
-                                <rect key="frame" x="220" y="20" width="160" height="35"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Intro till appen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgq-0A-gcs">
+                                <rect key="frame" x="220" y="20" width="166" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="7wl-x5-aI8"/>
                                     <constraint firstAttribute="width" constant="160" id="jub-dW-WnC"/>
@@ -136,27 +134,15 @@
                                 <color key="textColor" red="0.01176470588" green="0.50588235290000005" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intro1" translatesAutoresizingMaskIntoConstraints="NO" id="6zz-NZ-FIJ">
-                                <rect key="frame" x="20" y="178" width="560" height="352"/>
-                            </imageView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="6zz-NZ-FIJ" firstAttribute="top" secondItem="ITv-wo-L2b" secondAttribute="bottom" constant="8" symbolic="YES" id="A7U-Qm-pSa"/>
-                            <constraint firstItem="ITv-wo-L2b" firstAttribute="leading" secondItem="Pxm-xh-rpv" secondAttribute="leadingMargin" id="B6M-ca-wRi"/>
-                            <constraint firstItem="7A6-6k-KDv" firstAttribute="top" secondItem="6zz-NZ-FIJ" secondAttribute="bottom" constant="70" id="EKg-kz-gdH"/>
+                            <constraint firstItem="ITv-wo-L2b" firstAttribute="top" secondItem="cgq-0A-gcs" secondAttribute="bottom" constant="1" id="7w3-aL-BoY"/>
                             <constraint firstItem="cgq-0A-gcs" firstAttribute="top" secondItem="2fd-aP-AnD" secondAttribute="bottom" id="MJo-pj-2a3"/>
-                            <constraint firstItem="ITv-wo-L2b" firstAttribute="top" secondItem="cgq-0A-gcs" secondAttribute="bottom" constant="35" id="MaR-kk-Jv6"/>
-                            <constraint firstItem="6zz-NZ-FIJ" firstAttribute="leading" secondItem="ITv-wo-L2b" secondAttribute="leading" id="UbH-KU-jDG"/>
-                            <constraint firstItem="cgq-0A-gcs" firstAttribute="centerX" secondItem="ITv-wo-L2b" secondAttribute="centerX" id="gIp-iw-9G0"/>
-                            <constraint firstItem="6zz-NZ-FIJ" firstAttribute="trailing" secondItem="ITv-wo-L2b" secondAttribute="trailing" id="gNk-Lm-dGH"/>
+                            <constraint firstItem="7A6-6k-KDv" firstAttribute="top" secondItem="ITv-wo-L2b" secondAttribute="bottom" constant="46" id="gPr-BG-6ov"/>
                             <constraint firstItem="cgq-0A-gcs" firstAttribute="centerX" secondItem="Pxm-xh-rpv" secondAttribute="centerX" id="jQu-Wb-upK"/>
-                            <constraint firstItem="6zz-NZ-FIJ" firstAttribute="leading" secondItem="Pxm-xh-rpv" secondAttribute="leadingMargin" constant="-4" id="zjW-Xl-Phz"/>
+                            <constraint firstItem="ITv-wo-L2b" firstAttribute="trailing" secondItem="Pxm-xh-rpv" secondAttribute="trailingMargin" id="mfo-xj-ZzY"/>
+                            <constraint firstItem="ITv-wo-L2b" firstAttribute="leading" secondItem="Pxm-xh-rpv" secondAttribute="leadingMargin" id="oUk-89-iVC"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="zjW-Xl-Phz"/>
-                            </mask>
-                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v61-iY-ghu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -232,7 +218,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tips: lägg till fler stationer via kartan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZp-ky-R6a">
                                             <rect key="frame" x="8" y="126" width="584" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -400,10 +386,10 @@
             </objects>
             <point key="canvasLocation" x="270" y="332"/>
         </scene>
-        <!--Walkthrough Page View Controller-->
+        <!--Walk Through Video View Controller-->
         <scene sceneID="9Ld-Qj-le2">
             <objects>
-                <viewController storyboardIdentifier="walk2" id="ag9-Ve-lk6" customClass="BWWalkthroughPageViewController" customModule="Hinner_jag" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="walk2" id="ag9-Ve-lk6" customClass="BWWalkThroughVideoViewController" customModule="Hinner_jag" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3cU-LF-eya"/>
                         <viewControllerLayoutGuide type="bottom" id="15q-lt-XRP"/>
@@ -412,14 +398,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Klicka på plus-tecknet vid &quot;Hinner jag med t-banan&quot;." selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZc-9C-kke">
-                                <rect key="frame" x="20" y="90" width="560" height="80"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="M2S-AY-8ok"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lägg till widgeten" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkR-7o-DJi">
                                 <rect key="frame" x="206" y="20" width="188.5" height="35"/>
                                 <constraints>
@@ -429,20 +407,10 @@
                                 <color key="textColor" red="0.01176470588" green="0.50588235290000005" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intro2" translatesAutoresizingMaskIntoConstraints="NO" id="1db-Pe-aCO">
-                                <rect key="frame" x="20" y="178" width="560" height="352"/>
-                            </imageView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="wZc-9C-kke" firstAttribute="leading" secondItem="6vv-AX-QZN" secondAttribute="leadingMargin" id="2NY-cd-iUy"/>
-                            <constraint firstItem="1db-Pe-aCO" firstAttribute="top" secondItem="wZc-9C-kke" secondAttribute="bottom" constant="8" symbolic="YES" id="435-gn-rdi"/>
-                            <constraint firstItem="1db-Pe-aCO" firstAttribute="trailing" secondItem="wZc-9C-kke" secondAttribute="trailing" id="8tk-uy-XSo"/>
                             <constraint firstItem="gkR-7o-DJi" firstAttribute="top" secondItem="3cU-LF-eya" secondAttribute="bottom" id="Ijj-38-68d"/>
-                            <constraint firstItem="gkR-7o-DJi" firstAttribute="centerX" secondItem="wZc-9C-kke" secondAttribute="centerX" id="Nwm-Qh-adU"/>
                             <constraint firstItem="gkR-7o-DJi" firstAttribute="centerX" secondItem="6vv-AX-QZN" secondAttribute="centerX" id="RL2-Hp-UXt"/>
-                            <constraint firstItem="1db-Pe-aCO" firstAttribute="leading" secondItem="wZc-9C-kke" secondAttribute="leading" id="UUX-Ct-5a3"/>
-                            <constraint firstItem="15q-lt-XRP" firstAttribute="top" secondItem="1db-Pe-aCO" secondAttribute="bottom" constant="70" id="eTl-5A-kmY"/>
-                            <constraint firstItem="wZc-9C-kke" firstAttribute="top" secondItem="gkR-7o-DJi" secondAttribute="bottom" constant="35" id="fjt-ou-jE1"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -605,8 +573,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="intro1" width="640" height="960"/>
-        <image name="intro2" width="640" height="960"/>
         <image name="intro3" width="640" height="960"/>
         <image name="intro4" width="640" height="960"/>
         <image name="intro5" width="640" height="960"/>

@@ -62,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         }
         tracker.set(kGAIScreenName, value: name)
         let eventTracker: NSDictionary = GAIDictionaryBuilder.createScreenView().build()
-        tracker.send(eventTracker as! [NSObject : AnyObject])
+        tracker.send(eventTracker as [NSObject : AnyObject])
     }
     
 }

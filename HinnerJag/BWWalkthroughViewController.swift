@@ -136,7 +136,13 @@ import UIKit
     // TODO: If you want to implement a "skip" option
     // connect a button to this IBAction and implement the delegate with the skipWalkthrough
     @IBAction func close(sender: AnyObject){
-        delegate?.walkthroughCloseButtonPressed?()
+        // Go to next if has not seen all pages
+        if (currentPage + 1) < controllers.count {
+            nextPage()
+        } else {
+            // Then close at last page
+            delegate?.walkthroughCloseButtonPressed?()
+        }
     }
     
     /**

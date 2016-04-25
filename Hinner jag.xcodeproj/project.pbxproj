@@ -48,6 +48,9 @@
 		0248BCB11C9CB5E500F0F05A /* NSTimerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0248BCB01C9CB5E500F0F05A /* NSTimerExtension.swift */; };
 		0248BCB21C9CB63100F0F05A /* NSTimerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0248BCB01C9CB5E500F0F05A /* NSTimerExtension.swift */; };
 		0248BCB31C9CB6AE00F0F05A /* NSTimerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0248BCB01C9CB5E500F0F05A /* NSTimerExtension.swift */; };
+		024965321CCEA47F00A1C97A /* BWWalkThroughVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024965311CCEA47F00A1C97A /* BWWalkThroughVideoViewController.swift */; };
+		024965361CCEA69300A1C97A /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 024965351CCEA69300A1C97A /* MediaPlayer.framework */; };
+		024965381CCEB75E00A1C97A /* screen_intro_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 024965371CCEB75E00A1C97A /* screen_intro_2.mp4 */; };
 		0262F4241CC39A3400028D5B /* journeypatternpoints.json in Resources */ = {isa = PBXBuildFile; fileRef = 0262F4231CC39A3400028D5B /* journeypatternpoints.json */; };
 		0262F4251CC39A3400028D5B /* journeypatternpoints.json in Resources */ = {isa = PBXBuildFile; fileRef = 0262F4231CC39A3400028D5B /* journeypatternpoints.json */; };
 		027BA9BF1CC2AFD7007085E5 /* TransportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05BA21CBEE01100BDF4DE /* TransportType.swift */; };
@@ -302,6 +305,9 @@
 		023F4B7B1AEA15F500706872 /* test_departures_9520_sodertalje_centrum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test_departures_9520_sodertalje_centrum.json; sourceTree = "<group>"; };
 		023F4B7D1AEA168100706872 /* test_departures_9530_stockholms_sodra.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test_departures_9530_stockholms_sodra.json; sourceTree = "<group>"; };
 		0248BCB01C9CB5E500F0F05A /* NSTimerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSTimerExtension.swift; sourceTree = "<group>"; };
+		024965311CCEA47F00A1C97A /* BWWalkThroughVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BWWalkThroughVideoViewController.swift; path = HinnerJag/BWWalkThroughVideoViewController.swift; sourceTree = SOURCE_ROOT; };
+		024965351CCEA69300A1C97A /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		024965371CCEB75E00A1C97A /* screen_intro_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = screen_intro_2.mp4; path = Assets/Grafik/Walkthrough/videos/screen_intro_2.mp4; sourceTree = SOURCE_ROOT; };
 		0262F4231CC39A3400028D5B /* journeypatternpoints.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = journeypatternpoints.json; sourceTree = "<group>"; };
 		028143541CA1E82700A6D4D7 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = HinnerJag/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		028143561CA1E8C500A6D4D7 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = HinnerJag/MapViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -374,6 +380,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				024965361CCEA69300A1C97A /* MediaPlayer.framework in Frameworks */,
 				0236B3D11ABE218300EDF6C8 /* libGoogleAnalyticsServices.a in Frameworks */,
 				02B11BBD1ABA43B9003ACD06 /* libz.dylib in Frameworks */,
 				02B11BBC1ABA43B0003ACD06 /* SystemConfiguration.framework in Frameworks */,
@@ -555,6 +562,7 @@
 		0211B2451AAE4BB000947C45 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				024965351CCEA69300A1C97A /* MediaPlayer.framework */,
 				02B11BB71ABA4331003ACD06 /* libz.dylib */,
 				02B11BB51ABA431E003ACD06 /* SystemConfiguration.framework */,
 				02B11BB31ABA430B003ACD06 /* CoreData.framework */,
@@ -763,6 +771,8 @@
 			children = (
 				0281435A1CA1E95700A6D4D7 /* BWWalkthroughViewController.swift */,
 				0281435C1CA1E97D00A6D4D7 /* BWWalkthroughPageViewController.swift */,
+				024965311CCEA47F00A1C97A /* BWWalkThroughVideoViewController.swift */,
+				024965371CCEB75E00A1C97A /* screen_intro_2.mp4 */,
 			);
 			name = Walkthrough;
 			sourceTree = "<group>";
@@ -1049,6 +1059,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0230E36B1CBC24E80021D962 /* Main.storyboard in Resources */,
+				024965381CCEB75E00A1C97A /* screen_intro_2.mp4 in Resources */,
 				028143621CA1EA8200A6D4D7 /* Images.xcassets in Resources */,
 				0299D1931CA1ECD00027AB10 /* LaunchScreen.xib in Resources */,
 			);
@@ -1138,6 +1149,7 @@
 				028143551CA1E82700A6D4D7 /* AppDelegate.swift in Sources */,
 				029149181B7A7F8000DAE8BD /* TravelHeaderCell.swift in Sources */,
 				0291491C1B7A833300DAE8BD /* HinnerJagTableViewController.swift in Sources */,
+				024965321CCEA47F00A1C97A /* BWWalkThroughVideoViewController.swift in Sources */,
 				0291491E1B7A835500DAE8BD /* HeadlineCell.swift in Sources */,
 				0281435D1CA1E97D00A6D4D7 /* BWWalkthroughPageViewController.swift in Sources */,
 				0291491A1B7A7FA900DAE8BD /* GAIExtendViewControllers.swift in Sources */,
@@ -1325,7 +1337,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_ID = "com.wilhelmeklund.Hinner-jag${BUNDLE_ID_SUFFIX}";
 				BUNDLE_ID_SUFFIX = "";
-				BUNDLE_NAME_PREFIX = "Dev-";
+				BUNDLE_NAME_PREFIX = "";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1341,7 +1353,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Wilhelm Eklund (ZJ75WN6E34)";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_BUILD_NUMBER = 6;
+				CURRENT_BUILD_NUMBER = 7;
 				CURRENT_PROJECT_VERSION = 2.0;
 				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1393,7 +1405,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Wilhelm Eklund (AAA3F77UH3)";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_BUILD_NUMBER = 6;
+				CURRENT_BUILD_NUMBER = 7;
 				CURRENT_PROJECT_VERSION = 2.0;
 				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;

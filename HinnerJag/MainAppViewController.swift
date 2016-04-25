@@ -100,7 +100,7 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
     
     // MARK: - Introduction walkthrough of the app
     func startWalkthroughTimer() {
-        NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(MainAppViewController.checkIfHasSeenWalkthrough), userInfo: nil, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(10.0, target: self, selector: #selector(MainAppViewController.checkIfHasSeenWalkthrough), userInfo: nil, repeats: false)
     }
     
     func checkIfHasSeenWalkthrough() {
@@ -117,28 +117,39 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
         self.showWalkthrough()
         self.trackEvent("Walkthrough", action: "show", label: "manual", value: 1)
     }
-    
+
+    var introVideoVC: BWWalkThroughVideoViewController?
     func showWalkthrough() {
         let stb = UIStoryboard(name: "Main", bundle: NSBundle(forClass: self.classForCoder))
         // Create walkthrough view controller
         let walkthrough = stb.instantiateViewControllerWithIdentifier("walk0") as! BWWalkthroughViewController
         let page_one    = stb.instantiateViewControllerWithIdentifier("walk1")
         let page_two    = stb.instantiateViewControllerWithIdentifier("walk2")
-        let page_three  = stb.instantiateViewControllerWithIdentifier("walk3")
-        let page_four   = stb.instantiateViewControllerWithIdentifier("walk4")
-        let page_five   = stb.instantiateViewControllerWithIdentifier("walk5")
+        if page_two is BWWalkThroughVideoViewController {
+            introVideoVC = page_two as! BWWalkThroughVideoViewController
+        }
+//        let page_three  = stb.instantiateViewControllerWithIdentifier("walk3")
+//        let page_four   = stb.instantiateViewControllerWithIdentifier("walk4")
+//        let page_five   = stb.instantiateViewControllerWithIdentifier("walk5")
         // Attach the pages to the walkthrough master
         walkthrough.delegate = self
         walkthrough.addViewController(page_one)
         walkthrough.addViewController(page_two)
-        walkthrough.addViewController(page_three)
-        walkthrough.addViewController(page_four)
-        walkthrough.addViewController(page_five)
+//        walkthrough.addViewController(page_three)
+//        walkthrough.addViewController(page_four)
+//        walkthrough.addViewController(page_five)
         // Show the walkthrough view controller
         self.presentViewController(walkthrough, animated: true, completion: nil)
     }
     
     func walkthroughCloseButtonPressed() {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func walkthroughPageDidChange(pageNumber: Int) {
+        print("walkthroughPageDidChange(\(pageNumber))")
+        if 1 == pageNumber {
+            introVideoVC?.playMovie()
+        }
     }
 }
