@@ -29,6 +29,13 @@ extension UIViewController {
                 }
             }
         }
+        // Listen to GaTrackEvent notification
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(handleGaTrackEvent),
+            name: "GaTrackEvent",
+            object: nil
+        )
     }
     
     func setScreenName(name: String) {
@@ -46,11 +53,40 @@ extension UIViewController {
     }
     
     func trackEvent(category: String, action: String, label: String, value: NSNumber?) {
+//        print("trackEvent(\(category), \(action), \(label), \(value))")
         let tracker = GAI.sharedInstance().defaultTracker
         if nil == tracker {
             return
         }
         let trackDictionary = GAIDictionaryBuilder.createEventWithCategory(category, action: action, label: label, value: value).build()
         tracker.send(trackDictionary as [NSObject : AnyObject])
+    }
+    
+    // MARK: - GaTrackEvent notification listener
+    func handleGaTrackEvent(notification: NSNotification) {
+        // Only track if this view is shown on screen, avoid duplicates
+        if (self.isViewLoaded() && nil != self.view.window) {
+            // Get event details from notification userInfo
+            if let userInfo = notification.userInfo {
+                let category = userInfo["category"] as? String
+                let action = userInfo["action"] as? String
+                let label = userInfo["label"] as? String
+                if
+                    nil != category
+                    && nil != action
+                    && nil != label
+                {
+                    // If we have all mandatory fields, we can track the event
+                    self.trackEvent(
+                        category!,
+                        action: action!,
+                        label: label!,
+                        value: userInfo["value"] as? NSNumber
+                    )
+                }
+            }
+        } else {
+            print("UIViewController is not on screen and should not trackEvent")
+        }
     }
 }

@@ -85,6 +85,17 @@ public class Line: NSManagedObject {
             newActiveValue = true
             newLine.isActive = newActiveValue
         }
+        // Post notification to track Google Analytics event
+        NSNotificationCenter.defaultCenter().postNotificationName(
+            "GaTrackEvent",
+            object: nil,
+            userInfo: [
+                "category": "Line",
+                "action": "toggleLine",
+                "label": "Line \(lineNumber)",
+                "value": (newActiveValue ? 1 : 0)
+            ]
+        )
         // Toggle sites on this journey pattern
         return JourneyPattern.toggleSitesForLine(lineNumber, to: newActiveValue)
     }
