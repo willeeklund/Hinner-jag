@@ -118,10 +118,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITv-wo-L2b">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITv-wo-L2b">
                                 <rect key="frame" x="20" y="56" width="560" height="498"/>
-                                <mutableString key="text">- Den här appen är för Stockholmaren som vet hur den ska resa.  - Den hittar stationen närmast dig och visar dess avgångar.  - Om du ställer in vår widget (nästa steg) kan du se nästa avgång utan att behöva låsa upp din telefon!  - För att lägga till busstationer kan du favoritmarkera busslinjer. Då läggs alla stationer längs den linjen till.</mutableString>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">- Den här appen är till för dig som vet hur du vill resa.  - Appen hittar stationen närmast dig och visar avgångar därifrån.  - Favoritmarkera busslinjer för att lägga till alla busstationer på linjen.  - </string>
+                                        <attributes>
+                                            <font key="NSFont" size="18" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Bäst av allt:">
+                                        <attributes>
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" appen kan visa nästa avgång, innan du låst upp telefonen. I nästa steg visar vi hur!  ">
+                                        <attributes>
+                                            <font key="NSFont" size="18" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Intro till appen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgq-0A-gcs">

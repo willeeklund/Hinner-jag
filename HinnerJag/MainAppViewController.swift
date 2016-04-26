@@ -128,16 +128,10 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
         if page_two is BWWalkThroughVideoViewController {
             introVideoVC = page_two as! BWWalkThroughVideoViewController
         }
-//        let page_three  = stb.instantiateViewControllerWithIdentifier("walk3")
-//        let page_four   = stb.instantiateViewControllerWithIdentifier("walk4")
-//        let page_five   = stb.instantiateViewControllerWithIdentifier("walk5")
         // Attach the pages to the walkthrough master
         walkthrough.delegate = self
         walkthrough.addViewController(page_one)
         walkthrough.addViewController(page_two)
-//        walkthrough.addViewController(page_three)
-//        walkthrough.addViewController(page_four)
-//        walkthrough.addViewController(page_five)
         // Show the walkthrough view controller
         self.presentViewController(walkthrough, animated: true, completion: nil)
     }

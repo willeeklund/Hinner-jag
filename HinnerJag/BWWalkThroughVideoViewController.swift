@@ -15,7 +15,7 @@ class BWWalkThroughVideoViewController: BWWalkthroughPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let path = NSBundle.mainBundle().pathForResource("screen_intro_2", ofType:"mp4") {
+        if let path = NSBundle.mainBundle().pathForResource("screen_intro", ofType:"mp4") {
             let url = NSURL.fileURLWithPath(path)
             self.moviePlayer = MPMoviePlayerController(contentURL: url)
             if let player = self.moviePlayer {
