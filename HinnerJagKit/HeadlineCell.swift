@@ -18,6 +18,7 @@ public class HeadlineCell: UITableViewCell
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var closestStationButton: UIButton!
     @IBOutlet weak var stationTypeSegment: UISegmentedControl!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBAction func changeSelectedStation(sender: UIButton) {
         if nil != self.controller {
@@ -32,8 +33,8 @@ public class HeadlineCell: UITableViewCell
         }
     }
     
+    // MARK: - Info message
     public static var infoMessage: String?
-    public static var notificationEventInfoMessage = "HeadlineCellInfoLabelMessage"
     func changeInfoLabel(notification: NSNotification) {
         // Display "message" from notification userInfo
         if nil != notification.userInfo {
@@ -64,6 +65,21 @@ public class HeadlineCell: UITableViewCell
         let randInt = arc4random_uniform(UInt32(list.count))
         let randMsg = list[Int(randInt)]
         HeadlineCell.infoMessage = randMsg
+    }
+    
+    // MARK: - Activity indicator
+    func toggleActivityIndicator(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            if let showActivityIndicator = userInfo["show"] as? Bool {
+                dispatch_async(dispatch_get_main_queue(), {
+                    if showActivityIndicator {
+                        self.activityIndicator.startAnimating()
+                    } else {
+                        self.activityIndicator.stopAnimating()
+                    }
+                })
+            }
+        }
     }
     
     // MARK: - Init
@@ -112,7 +128,9 @@ public class HeadlineCell: UITableViewCell
             cell?.stationTypeSegment.selectedSegmentIndex = (cell?.uniqueTransportTypes.indexOf(currentTransportType)!)!
         }
         // Change message of infoLabel, and listen for notification about new info
-        NSNotificationCenter.defaultCenter().addObserver(cell!, selector: #selector(changeInfoLabel), name: HeadlineCell.notificationEventInfoMessage, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(cell!, selector: #selector(changeInfoLabel), name: Constants.notificationEventInfoMessage, object: nil)
+        // Listen for notification to toggle activity indicator
+        NSNotificationCenter.defaultCenter().addObserver(cell!, selector: #selector(toggleActivityIndicator), name: Constants.notificationEventActivityIndicator, object: nil)
         HeadlineCell.setRandomInfoMessage()
         cell?.infoLabel.text = HeadlineCell.infoMessage
         

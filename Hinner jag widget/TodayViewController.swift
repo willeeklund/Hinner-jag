@@ -64,7 +64,7 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
             }
         }
         // Set random info message
-        NSNotificationCenter.defaultCenter().postNotificationName(HeadlineCell.notificationEventInfoMessage, object: nil, userInfo: [
+        NSNotificationCenter.defaultCenter().postNotificationName(Constants.notificationEventInfoMessage, object: nil, userInfo: [
             "random": true
         ])
     }

@@ -33,7 +33,7 @@ extension UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(
             self,
             selector: #selector(handleGaTrackEvent),
-            name: "GaTrackEvent",
+            name: Constants.gaTrackEvent,
             object: nil
         )
     }

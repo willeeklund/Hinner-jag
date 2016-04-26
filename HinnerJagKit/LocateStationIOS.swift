@@ -10,6 +10,7 @@ import Foundation
 
 public class LocateStation: LocateStationBase {
     public override func startUpdatingLocation() {
+        super.startUpdatingLocation()
         self.locationManager.startUpdatingLocation()
     }
 }

@@ -80,6 +80,8 @@
 		0295BEB41C9DCA12005669EB /* UtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0295BEB31C9DCA12005669EB /* UtilsTests.swift */; };
 		0295DD441AC7F6E500D850BA /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0295DD431AC7F6E500D850BA /* Utils.swift */; };
 		0299B6941CCFEBAB003CEDE8 /* screen_intro.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 0299B6931CCFEBAB003CEDE8 /* screen_intro.mp4 */; };
+		0299B6A91CD00684003CEDE8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0299B6A81CD00684003CEDE8 /* Constants.swift */; };
+		0299B6AA1CD006DE003CEDE8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0299B6A81CD00684003CEDE8 /* Constants.swift */; };
 		0299D1931CA1ECD00027AB10 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0299D1911CA1ECD00027AB10 /* LaunchScreen.xib */; };
 		02B11BA21ABA3D02003ACD06 /* GAI.h in Headers */ = {isa = PBXBuildFile; fileRef = 02B11B981ABA3D02003ACD06 /* GAI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		02B11BA31ABA3D02003ACD06 /* GAIDictionaryBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 02B11B991ABA3D02003ACD06 /* GAIDictionaryBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -324,6 +326,7 @@
 		0295BEB31C9DCA12005669EB /* UtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilsTests.swift; sourceTree = "<group>"; };
 		0295DD431AC7F6E500D850BA /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		0299B6931CCFEBAB003CEDE8 /* screen_intro.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = screen_intro.mp4; path = Assets/Grafik/Walkthrough/videos/screen_intro.mp4; sourceTree = SOURCE_ROOT; };
+		0299B6A81CD00684003CEDE8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0299D1921CA1ECD00027AB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = HinnerJag/Base.lproj/LaunchScreen.xib; sourceTree = SOURCE_ROOT; };
 		02B11B981ABA3D02003ACD06 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
 		02B11B991ABA3D02003ACD06 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
@@ -526,6 +529,7 @@
 				0227D92F1BDFFF9E00E734BB /* LocateStationIOS.swift */,
 				0211B2311AAE38B100947C45 /* Departure.swift */,
 				0295DD431AC7F6E500D850BA /* Utils.swift */,
+				0299B6A81CD00684003CEDE8 /* Constants.swift */,
 				02B68E531AC5B37100EFAA66 /* TestData */,
 				0211B20D1AAE37FB00947C45 /* Supporting Files */,
 			);
@@ -1169,6 +1173,7 @@
 				02D05B911CBED1B400BDF4DE /* Site+CoreDataProperties.swift in Sources */,
 				02D05B931CBED1B400BDF4DE /* JourneyPattern+CoreDataProperties.swift in Sources */,
 				0211B2301AAE389A00947C45 /* LocateStation.swift in Sources */,
+				0299B6A91CD00684003CEDE8 /* Constants.swift in Sources */,
 				02D05B941CBED1B400BDF4DE /* JourneyPattern.swift in Sources */,
 				0211B2321AAE38B100947C45 /* Departure.swift in Sources */,
 				0248BCB11C9CB5E500F0F05A /* NSTimerExtension.swift in Sources */,
@@ -1214,6 +1219,7 @@
 				0227D92B1BDFFEDB00E734BB /* Departure.swift in Sources */,
 				027BA9C51CC2BA44007085E5 /* JourneyPattern+CoreDataProperties.swift in Sources */,
 				027BA9C21CC2B180007085E5 /* CoreDataStore.swift in Sources */,
+				0299B6AA1CD006DE003CEDE8 /* Constants.swift in Sources */,
 				027BA9C61CC2BA48007085E5 /* JourneyPattern.swift in Sources */,
 				0227D9281BDFFE8800E734BB /* LocateStation.swift in Sources */,
 				0227D9321BE0001700E734BB /* LocateStationWatch.swift in Sources */,

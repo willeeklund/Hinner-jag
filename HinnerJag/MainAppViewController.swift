@@ -35,7 +35,7 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
         print("Refreshing position")
         self.locateStation.startUpdatingLocation()
         // Update info label with random message
-        NSNotificationCenter.defaultCenter().postNotificationName(HeadlineCell.notificationEventInfoMessage, object: nil, userInfo: [
+        NSNotificationCenter.defaultCenter().postNotificationName(Constants.notificationEventInfoMessage, object: nil, userInfo: [
             "random": true
         ])
 

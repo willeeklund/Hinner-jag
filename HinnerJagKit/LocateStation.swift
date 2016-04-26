@@ -31,7 +31,12 @@ public class LocateStationBase: NSObject, CLLocationManagerDelegate
         self.locationManager.requestWhenInUseAuthorization()
     }
     
-    public func startUpdatingLocation() {}
+    public func startUpdatingLocation() {
+        // Show activity indicator
+        NSNotificationCenter.defaultCenter().postNotificationName(Constants.notificationEventActivityIndicator, object: nil, userInfo: [
+            "show": true
+        ])
+    }
     
     // MARK: - Get location of the user
     public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -47,6 +52,10 @@ public class LocateStationBase: NSObject, CLLocationManagerDelegate
     }
     
     public func findClosestStationFromLocationAndFetchDepartures(location: CLLocation) {
+        // Show activity indicator
+        NSNotificationCenter.defaultCenter().postNotificationName(Constants.notificationEventActivityIndicator, object: nil, userInfo: [
+            "show": true
+        ])
         let closestStationsSorted: [Site] = self.findClosestStationFromLocation(location)
         self.findDeparturesFromStation(closestStationsSorted.first!, stationList: closestStationsSorted)
     }
@@ -63,6 +72,10 @@ public class LocateStationBase: NSObject, CLLocationManagerDelegate
                 usedStationList = self.findClosestStationFromLocation(usedLocation)
             }
             self.delegate?.locateStationFoundSortedStations(usedStationList!, withDepartures: departures, error: nil)
+            // Hide activity indicator
+            NSNotificationCenter.defaultCenter().postNotificationName(Constants.notificationEventActivityIndicator, object: nil, userInfo: [
+                "show": false
+            ])
         }
     }
     

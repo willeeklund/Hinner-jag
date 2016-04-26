@@ -87,7 +87,7 @@ public class Line: NSManagedObject {
         }
         // Post notification to track Google Analytics event
         NSNotificationCenter.defaultCenter().postNotificationName(
-            "GaTrackEvent",
+            Constants.gaTrackEvent,
             object: nil,
             userInfo: [
                 "category": "Line",

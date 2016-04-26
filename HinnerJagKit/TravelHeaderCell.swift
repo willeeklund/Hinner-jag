@@ -46,7 +46,7 @@ public class TravelHeaderCell: UITableViewCell
             // Update HeadlineCell info label. Do it double to be safe.
             let newMessage = "\(toggleDirection) \(nbrChanged) busstationer på linje \(lineNumber!)"
             HeadlineCell.infoMessage = newMessage
-            NSNotificationCenter.defaultCenter().postNotificationName(HeadlineCell.notificationEventInfoMessage, object: nil, userInfo: [
+            NSNotificationCenter.defaultCenter().postNotificationName(Constants.notificationEventInfoMessage, object: nil, userInfo: [
                 "message": newMessage
             ])
         }
