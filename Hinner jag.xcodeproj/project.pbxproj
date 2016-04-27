@@ -109,7 +109,6 @@
 		02C223611B8EE600007A162E /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C223601B8EE600007A162E /* InterfaceController.swift */; };
 		02C223631B8EE600007A162E /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C223621B8EE600007A162E /* ExtensionDelegate.swift */; };
 		02C223651B8EE600007A162E /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C223641B8EE600007A162E /* NotificationController.swift */; };
-		02C223671B8EE600007A162E /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C223661B8EE600007A162E /* GlanceController.swift */; };
 		02C223691B8EE600007A162E /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C223681B8EE600007A162E /* ComplicationController.swift */; };
 		02C2236F1B8EE600007A162E /* HinnerJagWatchOS2.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 02C2234D1B8EE600007A162E /* HinnerJagWatchOS2.app */; };
 		02C592A11B013EAD002A88E4 /* test_departures_9720_nynashamn.json in Resources */ = {isa = PBXBuildFile; fileRef = 02C592A01B013EAD002A88E4 /* test_departures_9720_nynashamn.json */; };
@@ -355,7 +354,6 @@
 		02C223601B8EE600007A162E /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		02C223621B8EE600007A162E /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		02C223641B8EE600007A162E /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
-		02C223661B8EE600007A162E /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
 		02C223681B8EE600007A162E /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		02C2236C1B8EE600007A162E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02C592A01B013EAD002A88E4 /* test_departures_9720_nynashamn.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test_departures_9720_nynashamn.json; sourceTree = "<group>"; };
@@ -718,7 +716,6 @@
 				022238B71BE0025400E32EBD /* RowViews */,
 				02C223621B8EE600007A162E /* ExtensionDelegate.swift */,
 				02C223641B8EE600007A162E /* NotificationController.swift */,
-				02C223661B8EE600007A162E /* GlanceController.swift */,
 				02C223681B8EE600007A162E /* ComplicationController.swift */,
 				02C2236C1B8EE600007A162E /* Info.plist */,
 				02C2235E1B8EE600007A162E /* Supporting Files */,
@@ -1264,7 +1261,6 @@
 				02C223691B8EE600007A162E /* ComplicationController.swift in Sources */,
 				02C223611B8EE600007A162E /* InterfaceController.swift in Sources */,
 				022238B91BE0027100E32EBD /* TravelHeaderRow.swift in Sources */,
-				02C223671B8EE600007A162E /* GlanceController.swift in Sources */,
 				022238B61BE0024000E32EBD /* TravelDetailsRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1382,7 +1378,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Wilhelm Eklund (ZJ75WN6E34)";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_BUILD_NUMBER = 8;
+				CURRENT_BUILD_NUMBER = 9;
 				CURRENT_PROJECT_VERSION = 2.0;
 				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1434,7 +1430,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Wilhelm Eklund (AAA3F77UH3)";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_BUILD_NUMBER = 8;
+				CURRENT_BUILD_NUMBER = 9;
 				CURRENT_PROJECT_VERSION = 2.0;
 				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
