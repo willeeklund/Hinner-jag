@@ -63,6 +63,8 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
                 self.updateUI()
             }
         }
+        // Check if user has used this today widget before
+        checkHasUsedBefore()
         // Set random info message
         NSNotificationCenter.defaultCenter().postNotificationName(Constants.notificationEventInfoMessage, object: nil, userInfo: [
             "random": true
@@ -155,5 +157,15 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
     
     func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> (UIEdgeInsets) {
             return UIEdgeInsetsZero
+    }
+    
+    // MARK: - Check if first time using today widget
+    func checkHasUsedBefore() {
+        let hasSeenTodayWidgetKey = "hasSeenTodayWidget"
+        if !NSUserDefaults.standardUserDefaults().boolForKey(hasSeenTodayWidgetKey) {
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: hasSeenTodayWidgetKey)
+            self.trackEvent("TodayWidget", action: "show", label: "first time", value: 1)
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
     }
 }

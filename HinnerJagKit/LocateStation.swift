@@ -52,15 +52,15 @@ public class LocateStationBase: NSObject, CLLocationManagerDelegate
     }
     
     public func findClosestStationFromLocationAndFetchDepartures(location: CLLocation) {
-        // Show activity indicator
-        NSNotificationCenter.defaultCenter().postNotificationName(Constants.notificationEventActivityIndicator, object: nil, userInfo: [
-            "show": true
-        ])
         let closestStationsSorted: [Site] = self.findClosestStationFromLocation(location)
         self.findDeparturesFromStation(closestStationsSorted.first!, stationList: closestStationsSorted)
     }
 
     public func findDeparturesFromStation(station: Site, stationList: [Site]?) {
+        // Show activity indicator
+        NSNotificationCenter.defaultCenter().postNotificationName(Constants.notificationEventActivityIndicator, object: nil, userInfo: [
+            "show": true
+        ])
         var usedStationList = stationList
         self.delegate?.locateStationFoundClosestStation(station)
         self.realtimeDeparturesObj.departuresFromStation(station) {

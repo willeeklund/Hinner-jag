@@ -104,13 +104,13 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
     }
     
     func checkIfHasSeenWalkthrough() {
-        let walkthroughKey = "hasSeenWalkthrough1"
+        let walkthroughKey = "hasSeenWalkthrough2"
         if !NSUserDefaults.standardUserDefaults().boolForKey(walkthroughKey) {
             self.showWalkthrough()
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: walkthroughKey)
             self.trackEvent("Walkthrough", action: "show", label: "first time", value: 1)
+            NSUserDefaults.standardUserDefaults().synchronize()
         }
-        NSUserDefaults.standardUserDefaults().synchronize()
     }
     
     @IBAction func showWalkthroughButtonPressed(sender: AnyObject) {
@@ -141,7 +141,6 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
     }
     
     func walkthroughPageDidChange(pageNumber: Int) {
-        print("walkthroughPageDidChange(\(pageNumber))")
         if 1 == pageNumber {
             introVideoVC?.playMovie()
         }

@@ -91,7 +91,7 @@ public class Line: NSManagedObject {
             object: nil,
             userInfo: [
                 "category": "Line",
-                "action": "toggleLine",
+                "action": (newActiveValue ? "activate" : "inactivate"),
                 "label": "Line \(lineNumber)",
                 "value": (newActiveValue ? 1 : 0)
             ]

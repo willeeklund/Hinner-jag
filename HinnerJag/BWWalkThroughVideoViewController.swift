@@ -8,6 +8,7 @@
 
 import Foundation
 import MediaPlayer
+import HinnerJagKit
 
 class BWWalkThroughVideoViewController: BWWalkthroughPageViewController {
     
@@ -15,6 +16,7 @@ class BWWalkThroughVideoViewController: BWWalkthroughPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.gaSetup()
         if let path = NSBundle.mainBundle().pathForResource("screen_intro", ofType:"mp4") {
             let url = NSURL.fileURLWithPath(path)
             self.moviePlayer = MPMoviePlayerController(contentURL: url)
@@ -39,7 +41,22 @@ class BWWalkThroughVideoViewController: BWWalkthroughPageViewController {
     func playMovie() {
         if let player = self.moviePlayer {
             player.play()
+            // If user still see this view after 25 sec,
+            // track event because they viewed the whole video
+            NSTimer.schedule(delay: 25) { (timer) in
+                print("User watch entire intro video")
+                self.trackEvent("Walkthrough", action: "watched", label: "entire video", value: (self.checkFirstTimeSeenEntireVideo() ? 1 : 0))
+            }
         }
     }
     
+    func checkFirstTimeSeenEntireVideo() -> Bool {
+        let walkthroughKey = "hasSeenEntireVideo2"
+        if !NSUserDefaults.standardUserDefaults().boolForKey(walkthroughKey) {
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: walkthroughKey)
+            NSUserDefaults.standardUserDefaults().synchronize()
+            return true
+        }
+        return false
+    }
 }

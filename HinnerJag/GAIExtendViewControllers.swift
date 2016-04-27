@@ -53,11 +53,11 @@ extension UIViewController {
     }
     
     func trackEvent(category: String, action: String, label: String, value: NSNumber?) {
-//        print("trackEvent(\(category), \(action), \(label), \(value))")
         let tracker = GAI.sharedInstance().defaultTracker
         if nil == tracker {
             return
         }
+        print("trackEvent(\(category), \(action), \(label), \(value))")
         let trackDictionary = GAIDictionaryBuilder.createEventWithCategory(category, action: action, label: label, value: value).build()
         tracker.send(trackDictionary as [NSObject : AnyObject])
     }

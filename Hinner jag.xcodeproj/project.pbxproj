@@ -47,7 +47,6 @@
 		023F4B7E1AEA168100706872 /* test_departures_9530_stockholms_sodra.json in Resources */ = {isa = PBXBuildFile; fileRef = 023F4B7D1AEA168100706872 /* test_departures_9530_stockholms_sodra.json */; };
 		0248BCB11C9CB5E500F0F05A /* NSTimerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0248BCB01C9CB5E500F0F05A /* NSTimerExtension.swift */; };
 		0248BCB21C9CB63100F0F05A /* NSTimerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0248BCB01C9CB5E500F0F05A /* NSTimerExtension.swift */; };
-		0248BCB31C9CB6AE00F0F05A /* NSTimerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0248BCB01C9CB5E500F0F05A /* NSTimerExtension.swift */; };
 		024965321CCEA47F00A1C97A /* BWWalkThroughVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024965311CCEA47F00A1C97A /* BWWalkThroughVideoViewController.swift */; };
 		024965361CCEA69300A1C97A /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 024965351CCEA69300A1C97A /* MediaPlayer.framework */; };
 		0262F4241CC39A3400028D5B /* journeypatternpoints.json in Resources */ = {isa = PBXBuildFile; fileRef = 0262F4231CC39A3400028D5B /* journeypatternpoints.json */; };
@@ -1260,7 +1259,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0248BCB31C9CB6AE00F0F05A /* NSTimerExtension.swift in Sources */,
 				02C223651B8EE600007A162E /* NotificationController.swift in Sources */,
 				02C223631B8EE600007A162E /* ExtensionDelegate.swift in Sources */,
 				02C223691B8EE600007A162E /* ComplicationController.swift in Sources */,
@@ -1384,7 +1382,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Wilhelm Eklund (ZJ75WN6E34)";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_BUILD_NUMBER = 7;
+				CURRENT_BUILD_NUMBER = 8;
 				CURRENT_PROJECT_VERSION = 2.0;
 				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1436,7 +1434,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Wilhelm Eklund (AAA3F77UH3)";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_BUILD_NUMBER = 7;
+				CURRENT_BUILD_NUMBER = 8;
 				CURRENT_PROJECT_VERSION = 2.0;
 				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
