@@ -131,6 +131,8 @@
 		02DDF84F1ABDB19400A9AF12 /* TravelDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DDF84A1ABDAFBB00A9AF12 /* TravelDetailsCell.swift */; };
 		02E90DA81AB0FBAF00FD5DB7 /* HinnerJagKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0211B20B1AAE37FB00947C45 /* HinnerJagKit.framework */; };
 		02F755BB1AB621210088D6C8 /* metro_stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 02F755BA1AB621210088D6C8 /* metro_stations.json */; };
+		9A9061E51CD0707700999F2F /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9061E31CD0707700999F2F /* Fabric.framework */; };
+		9A9061E61CD0707700999F2F /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9061E41CD0707700999F2F /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -376,6 +378,8 @@
 		02DDF8481ABDAFAE00A9AF12 /* TravelHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelHeaderCell.swift; sourceTree = "<group>"; };
 		02DDF84A1ABDAFBB00A9AF12 /* TravelDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelDetailsCell.swift; sourceTree = "<group>"; };
 		02F755BA1AB621210088D6C8 /* metro_stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = metro_stations.json; sourceTree = "<group>"; };
+		9A9061E31CD0707700999F2F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		9A9061E41CD0707700999F2F /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -383,7 +387,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A9061E51CD0707700999F2F /* Fabric.framework in Frameworks */,
 				024965361CCEA69300A1C97A /* MediaPlayer.framework in Frameworks */,
+				9A9061E61CD0707700999F2F /* Crashlytics.framework in Frameworks */,
 				0236B3D11ABE218300EDF6C8 /* libGoogleAnalyticsServices.a in Frameworks */,
 				02B11BBD1ABA43B9003ACD06 /* libz.dylib in Frameworks */,
 				02B11BBC1ABA43B0003ACD06 /* SystemConfiguration.framework in Frameworks */,
@@ -568,6 +574,8 @@
 			children = (
 				024965351CCEA69300A1C97A /* MediaPlayer.framework */,
 				02B11BB71ABA4331003ACD06 /* libz.dylib */,
+				9A9061E31CD0707700999F2F /* Fabric.framework */,
+				9A9061E41CD0707700999F2F /* Crashlytics.framework */,
 				02B11BB51ABA431E003ACD06 /* SystemConfiguration.framework */,
 				02B11BB31ABA430B003ACD06 /* CoreData.framework */,
 				02B11BB11ABA42EB003ACD06 /* libGoogleAnalyticsServices.a */,
@@ -823,6 +831,7 @@
 				0211B2271AAE37FC00947C45 /* Embed Frameworks */,
 				0211B2551AAE4BB000947C45 /* Embed App Extensions */,
 				02C223771B8EE600007A162E /* Embed Watch Content */,
+				9A9061E21CD0704900999F2F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1143,6 +1152,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		9A9061E21CD0704900999F2F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 108469c469765f0d7a6b11e27072e17f510ac466 2d3baa8d468a309031012e594314570ae8b80f1edab805dc73ef966e1caff9ce";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0211B1DA1AAE37B600947C45 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1442,6 +1467,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = HinnerJag/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1465,6 +1494,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = HinnerJag/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
