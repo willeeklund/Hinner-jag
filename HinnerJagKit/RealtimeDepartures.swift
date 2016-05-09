@@ -18,19 +18,13 @@ public class RealtimeDepartures
     // MARK: - Variables
     let session: NSURLSession
     let realtimeKey = "bebfe14511a74ca5aef16db943ae8589"
-    lazy var apiServer: String = {
-        if self.debugBackend {
-            return "http://localhost:3000"
-        }
-        return "https://hinner-jag.herokuapp.com"
-    }()
     
     public init() {
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
         self.session = NSURLSession(configuration: configuration);
     }
     
-    public func departuresFromStation(station: Station, callback: ([Departure]?, error: NSError?) -> ()) {
+    public func departuresFromStation(station: Site, callback: ([Departure]?, error: NSError?) -> ()) {
         let realtimeApiQueue = dispatch_queue_create("realtime API queue", nil)
         dispatch_async(realtimeApiQueue, {
             if self.debugJsonData {
@@ -42,7 +36,7 @@ public class RealtimeDepartures
     }
     
     // MARK: - Fetch departure JSON data
-    func fetchDummyDepartureJsonData(station: Station, callback: ([Departure]?, error: NSError?) -> ()) {
+    func fetchDummyDepartureJsonData(station: Site, callback: ([Departure]?, error: NSError?) -> ()) {
         print("Please note that dummy data is used for departures")
         // Used dummy data file
         let testFile = "test_departures"
@@ -59,13 +53,15 @@ public class RealtimeDepartures
         self.parseJsonDataToDepartures(testDeparturesData, station: station, callback: callback)
     }
     
-    func performRealtimeApiReqForStation(station: Station, callback: ([Departure]?, error: NSError?) -> ()) {
-        print("stationId = \(station.id)")
-        let request = NSURLRequest(URL: NSURL(string: "\(self.apiServer)/api/realtimedepartures/\(station.id).json")!)
+    func performRealtimeApiReqForStation(station: Site, callback: ([Departure]?, error: NSError?) -> ()) {
+        print("stationId = \(station.siteId)")
+        let urlString = "https://api.sl.se/api2/realtimedepartures.json?key=\(realtimeKey)&timewindow=60&siteid=\(station.siteId)"
+        let request = NSURLRequest(URL: NSURL(string: urlString)!)
         let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
             if error == nil {
                 self.parseJsonDataToDepartures(data, station: station, callback: callback)
             } else {
+                print("Error from SL: \(error)")
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     callback(nil, error: error)
                 })
@@ -75,26 +71,26 @@ public class RealtimeDepartures
     }
     
     // MARK: - Parse JSON data into Departures
-    func parseJsonDataToDepartures(data: NSData?, station: Station, callback: ([Departure]?, error: NSError?) -> ()) {
+    func parseJsonDataToDepartures(data: NSData?, station: Site, callback: ([Departure]?, error: NSError?) -> ()) {
         do {
             let responseDict = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments)
             if let allTypes = responseDict["ResponseData"] as! NSDictionary? {
                 var departureList = [Departure]()
-                // Add Metro departures
-                if let metros = allTypes["Metros"] as! [NSDictionary]? {
-                    for item in metros {
-                        departureList.append(Departure(dict: item, station: station))
-                    }
-                }
-                // Add Train ("pendeltåg") departures
-                if let metros = allTypes["Trains"] as! [NSDictionary]? {
-                    for item in metros {
-                        departureList.append(Departure(dict: item, station: station))
+                // Add departure for the sections we want to use
+                let transportTypeSection = ["Metros", "Trains", "Buses", "Trams", "Ships"]
+                for section in transportTypeSection {
+                    if let chosenSection = allTypes[section] as! [NSDictionary]? {
+                        for item in chosenSection {
+                            departureList.append(Departure(dict: item, station: station))
+                        }
                     }
                 }
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     callback(departureList, error: nil)
                 })
+            } else {
+                print("Weird, expected 'ResponseData' in the response from SL")
+                callback(nil, error: nil)
             }
         } catch let JSONError as NSError {
             dispatch_async(dispatch_get_main_queue(), { () -> Void in

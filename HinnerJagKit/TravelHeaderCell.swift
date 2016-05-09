@@ -14,7 +14,11 @@ public class TravelHeaderCell: UITableViewCell
 {
     
     @IBOutlet weak var trainImage: UIImageView!
+    @IBOutlet weak var starButton: UIButton!
     @IBOutlet weak var headerLabel: UILabel!
+    var lineNumber: Int?
+    var transportType: TransportType?
+    var controller: HinnerJagTableViewController?
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -24,40 +28,65 @@ public class TravelHeaderCell: UITableViewCell
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
-    internal class func createCellForIndexPath(section: Int, tableView: UITableView, mappingDict: Dictionary <Int, String>, departuresDict: Dictionary<String, [Departure]>) -> TravelHeaderCell {
+    @IBAction func tapStar(sender: AnyObject) {
+        // TODO: Make this on a side queue to not block UI
+        if nil != lineNumber {
+            let nbrChanged = Line.toggleLine(lineNumber!)
+            let toggleDirection: String
+            // Update button image
+            if Line.isLineActive(lineNumber!) {
+                starButton.setImage(UIImage(named: "star_full"), forState: .Normal)
+                toggleDirection = "Lade till"
+            } else {
+                starButton.setImage(UIImage(named: "star_empty"), forState: .Normal)
+                toggleDirection = "Tog bort"
+            }
+            // Make controller create new mappings from departures and reload table
+            controller?.createMappingFromFetchedDepartures()
+            // Update HeadlineCell info label. Do it double to be safe.
+            let newMessage = "\(toggleDirection) \(nbrChanged) busstationer på linje \(lineNumber!)"
+            HeadlineCell.infoMessage = newMessage
+            NSNotificationCenter.defaultCenter().postNotificationName(Constants.notificationEventInfoMessage, object: nil, userInfo: [
+                "message": newMessage
+            ])
+        }
+    }
+    
+    internal class func createCellForIndexPath(
+        section: Int,
+        controller: HinnerJagTableViewController,
+        tableView: UITableView,
+        mappingDict: Dictionary <Int, String>,
+        departuresDict: Dictionary<String, [Departure]>
+    ) -> TravelHeaderCell {
         let reuseId = "TravelHeaderCell"
         var cell = tableView.dequeueReusableCellWithIdentifier(reuseId) as? TravelHeaderCell
         if nil == cell {
             cell = TravelHeaderCell()
         }
+        cell?.controller = controller
         if let sectionString = mappingDict[section] {
-            var imageName: String?
-            var directionLabel: String = ""
-            let directionSuffix = self.createDirectionSuffix(sectionString, departuresDict: departuresDict)
-            
-            // Metro groups
-            if sectionString.rangeOfString("gröna") != nil {
-                imageName = "train_green"
-                directionLabel = "Grön linje"
-            } else if sectionString.rangeOfString("röda") != nil {
-                imageName = "train_red"
-                directionLabel = "Röd linje"
-            } else if sectionString.rangeOfString("blå") != nil {
-                imageName = "train_blue"
-                directionLabel = "Blå linje"
-            }
-            // Train groups
-            else if sectionString.rangeOfString("TRAIN") != nil {
-                // TODO: Better image of pendeltåg
-                imageName = "train_purple"
-                directionLabel = ""
-            }
-            
-            // Set image
+            let directionSuffix = Departure.createDirectionSuffix(sectionString, departuresDict: departuresDict)
+            let (directionLabel, imageName, _) = Departure.createLabelAndImageNameFromSection(sectionString, departuresDict: departuresDict)
+            // Find Line number
+            (cell!.lineNumber, cell!.transportType) = Departure.getLineNumberAndTransportTypeFromSection(sectionString, departuresDict: departuresDict)
+            // Set train image
             if nil != imageName {
                 cell?.trainImage.image = UIImage(named: imageName!)
             }
-            
+            // Setup star button
+            if nil != cell!.transportType && .Bus == cell!.transportType! {
+                cell?.starButton.hidden = false
+                if nil != cell!.lineNumber && Line.isLineActive(cell!.lineNumber!) {
+                    cell?.starButton.setImage(UIImage(named: "star_full"), forState: .Normal)
+                } else {
+                    cell?.starButton.setImage(UIImage(named: "star_empty"), forState: .Normal)
+                }
+                cell?.starButton.addTarget(cell!, action: #selector(tapStar), forControlEvents: .TouchUpInside)
+            } else {
+                cell?.starButton.hidden = true
+            }
+            // Set header text
             cell?.headerLabel?.text = "\(directionLabel) \(directionSuffix)"
         } else {
             cell?.headerLabel?.text = ""
@@ -65,38 +94,4 @@ public class TravelHeaderCell: UITableViewCell
         return cell! as TravelHeaderCell
     }
     
-    internal class func createDirectionSuffix(sectionString: String, departuresDict: Dictionary<String, [Departure]>) -> String {
-        let suffixDestination: String
-        if sectionString.rangeOfString("TRAIN") != nil {
-            suffixDestination = "Sthlm"
-        } else {
-            suffixDestination = "T-centralen"
-        }
-        if let depList = departuresDict[sectionString] {
-            let firstDep = depList[0]
-            
-            if firstDep.from_central_direction != nil {
-                var truthValue = firstDep.from_central_direction! == firstDep.direction
-                
-                // If both metros and trains station, reverse direction suffix for train departures
-                let isBothMetroAndTrains = firstDep.stationType != nil && firstDep.stationType! == .MetroAndTrain
-                if isBothMetroAndTrains && "TRAIN" == firstDep.transportMode {
-                    truthValue = !truthValue
-                }
-                
-                if truthValue {
-                    return "från \(suffixDestination)"
-                } else {
-                    return "mot \(suffixDestination)"
-                }
-            } else {
-                // This probably means we are at T-centralen
-                if "TRAIN" == firstDep.transportMode {
-                    return firstDep.lineName
-                }
-            }
-        }
-        // If not departures were received or there is no 'from_central_direction'
-        return ""
-    }
 }

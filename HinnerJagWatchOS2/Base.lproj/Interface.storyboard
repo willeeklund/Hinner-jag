@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="hMK-RC-hDZ">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="hMK-RC-hDZ">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="9019"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="10032"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
@@ -11,19 +11,6 @@
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="HinnerJagWatchOS2" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="434" y="372"/>
-        </scene>
-        <!--Glance Interface Controller-->
-        <scene sceneID="BOz-TT-tkC">
-            <objects>
-                <glanceController spacing="0.0" id="0uZ-2p-rRc" customClass="GlanceController" customModule="HinnerJagWatchOS2" customModuleProvider="target">
-                    <items>
-                        <group alignment="left" id="t8f-Gd-c4y"/>
-                        <group alignment="left" id="uCw-4Q-Ouw"/>
-                    </items>
-                    <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="14"/>
-                </glanceController>
-            </objects>
-            <point key="canvasLocation" x="235" y="672"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -63,6 +50,12 @@
                                 <label alignment="left" text="Söker plats..." id="7tw-hq-tZX"/>
                             </items>
                         </group>
+                        <label alignment="left" text="Hämtar avgångar från SL..." numberOfLines="6" id="NDz-my-5Ga"/>
+                        <picker height="90" alignment="left" hidden="YES" accessibilityLabel="Transport sätt" focusStyle="sequence" id="UeJ-1S-W96">
+                            <connections>
+                                <action selector="didChangeTransportType:" destination="hMK-RC-hDZ" id="Ujb-eo-TSs"/>
+                            </connections>
+                        </picker>
                         <table alignment="left" id="IfG-UP-KPt">
                             <items>
                                 <tableRow identifier="header" selectable="NO" id="Zm3-Ae-JW0" customClass="TravelHeaderRow" customModule="HinnerJagWatchOS2_Extension">
@@ -100,7 +93,9 @@
                     </items>
                     <connections>
                         <outlet property="closestStationLabel" destination="7tw-hq-tZX" id="p75-Ip-BNo"/>
+                        <outlet property="fetchingDataLabel" destination="NDz-my-5Ga" id="OHs-1X-MGB"/>
                         <outlet property="tableView" destination="IfG-UP-KPt" id="mro-Dc-ASJ"/>
+                        <outlet property="transportTypePicker" destination="UeJ-1S-W96" id="ezp-Wc-ghQ"/>
                     </connections>
                 </controller>
             </objects>
