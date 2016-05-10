@@ -35,7 +35,7 @@ var endStationSiteIdList = [
 sections.forEach(function (section) {
     if (stationData[section]) {
         stationData[section].forEach(function (item) {
-            whitelistSiteId.push(item.siteid);
+            whitelistSiteId.push(item.SiteId);
         });
     }
 });
