@@ -328,6 +328,7 @@
 		0299B6931CCFEBAB003CEDE8 /* screen_intro.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = screen_intro.mp4; path = Assets/Grafik/Walkthrough/videos/screen_intro.mp4; sourceTree = SOURCE_ROOT; };
 		0299B6A81CD00684003CEDE8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0299D1921CA1ECD00027AB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = HinnerJag/Base.lproj/LaunchScreen.xib; sourceTree = SOURCE_ROOT; };
+		02A091561CEF871A008E7D7C /* SearchSuggested.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = SearchSuggested.playground; path = HinnerJag/SearchSuggested.playground; sourceTree = SOURCE_ROOT; };
 		02B11B981ABA3D02003ACD06 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
 		02B11B991ABA3D02003ACD06 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
 		02B11B9A1ABA3D02003ACD06 /* GAIEcommerceFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceFields.h; sourceTree = "<group>"; };
@@ -656,6 +657,7 @@
 		0295BEAE1C9DB2C6005669EB /* Playground */ = {
 			isa = PBXGroup;
 			children = (
+				02A091561CEF871A008E7D7C /* SearchSuggested.playground */,
 				02945BBF1CC56ECA00AC4D71 /* SortMappingDict.playground */,
 				0295BEB21C9DB630005669EB /* SegmentedControl.playground */,
 			);
