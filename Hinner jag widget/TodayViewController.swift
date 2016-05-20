@@ -14,7 +14,7 @@ import CoreLocation
 class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLocationManagerDelegate {
     // MARK: - Variables
     var locationManager: CLLocationManager! = CLLocationManager()
-    var linkColor = UIColor(red: 8.0/255.0, green: 206.0/255.0, blue: 253.0/255.0, alpha: 1)
+    let linkColor = UIColor(red: 8.0/255.0, green: 206.0/255.0, blue: 253.0/255.0, alpha: 1)
     
     // MARK: - Life cycle
     required init?(coder aDecoder: NSCoder) {

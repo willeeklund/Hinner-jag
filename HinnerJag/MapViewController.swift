@@ -10,11 +10,15 @@ import Foundation
 import MapKit
 import HinnerJagKit
 
-class MapViewController: UIViewController, MKMapViewDelegate
+class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegate
 {
     @IBOutlet weak var mapView: MKMapView!
-    
+    @IBOutlet weak var searchTextField: UITextField!
+
     var chosenStation: Site?
+    let allSites = Site.getAllSites()
+    let linkColor = UIColor(red: 8.0/255.0, green: 206.0/255.0, blue: 253.0/255.0, alpha: 1)
+    var searchSuggestionView = UIView(frame:CGRectMake(20, 60, 150, 300))
     
     // MARK: - Lifecycle stuff
     required init?(coder aDecoder: NSCoder) {
@@ -25,21 +29,32 @@ class MapViewController: UIViewController, MKMapViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setScreenName("MapViewController")
+        // Search textfield
+        self.searchTextField.delegate = self
+        self.searchTextField.addTarget(self, action: #selector(textFieldValueChanged), forControlEvents: .EditingChanged)
+        self.view.addSubview(searchSuggestionView)
+        // Map
         self.mapView.delegate = self
-        self.mapView.addAnnotations(Site.getAllSites())
+        self.mapView.addAnnotations(allSites)
         self.mapView.showsUserLocation = true
-        var usedCoordinate = CLLocationCoordinate2D(latitude: 59.33, longitude: 18.06)
         if self.chosenStation != nil {
-            // Delta will set zoom level
-            usedCoordinate = self.chosenStation!.coordinate
+            self.setMapCenter(self.chosenStation!.coordinate)
+        } else {
+            self.setMapCenter(CLLocationCoordinate2D(latitude: 59.33, longitude: 18.06))
         }
+    }
+    
+    func setMapCenter(coordinate: CLLocationCoordinate2D) {
+        // Delta will set zoom level
         let delta = 0.02
-        let region = MKCoordinateRegion(center: usedCoordinate, span: MKCoordinateSpan(latitudeDelta: delta, longitudeDelta: delta))
-        
+        let region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: delta, longitudeDelta: delta))
         self.mapView.setRegion(region, animated: true)
     }
     
     @IBAction func closeMap(sender: UIButton) {
+        // Reset search textfield before leaving
+        self.searchTextField.text = ""
+        // Dismiss view controller
         self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -122,6 +137,12 @@ class MapViewController: UIViewController, MKMapViewDelegate
         view.removeGestureRecognizer(self.tapRecognizer)
     }
     
+    func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        // Hide keyboard and suggested searches
+        self.searchTextField.resignFirstResponder()
+        searchSuggestionView.hidden = true
+    }
+    
     func tappedAnnotation(recognizer: UIPanGestureRecognizer) {
         if let view = recognizer.view as? MKAnnotationView {
             if self.presentingViewController is MainAppViewController && view.annotation is Site {
@@ -134,4 +155,75 @@ class MapViewController: UIViewController, MKMapViewDelegate
         }
     }
     
+    // MARK: - Textfield delegate
+    func textFieldDidBeginEditing(textField: UITextField) {
+        searchSuggestionView.hidden = false
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        // Hide keyboard and suggested searches
+        textField.resignFirstResponder()
+        searchSuggestionView.hidden = true
+        return true
+    }
+    
+    func textFieldValueChanged(textField: UITextField) {
+        // Show and clear suggested searches view
+        searchSuggestionView.hidden = false
+        searchSuggestionView.subviews.forEach({ $0.removeFromSuperview() })
+        if nil == textField.text {
+            return
+        }
+        // Trim search string
+        let searchString = textField.text!.lowercaseString.stringByTrimmingCharactersInSet(
+            NSCharacterSet.whitespaceAndNewlineCharacterSet()
+        )
+        // Find sites containing search string
+        let mapCenter = CLLocation(latitude: self.mapView.centerCoordinate.latitude, longitude: self.mapView.centerCoordinate.longitude)
+        let sites = allSites.filter({ (site: Site) in
+            if let title = site.title?.lowercaseString {
+                if title.containsString(searchString) {
+                    return true
+                }
+            }
+            return false
+        }).sort() { (first, second) in
+            // Sort by distance from current map center
+            return first.distanceFromLocation(mapCenter) < second.distanceFromLocation(mapCenter)
+        }
+        
+        // Show suggestions if any matching
+        if 0 == sites.count {
+            return
+        }
+        for (index, site) in sites[0...min(7, sites.count - 1)].enumerate() {
+            let button = UIButton(frame: CGRectMake(0, CGFloat(index * 30), searchSuggestionView.frame.width, 30))
+            button.tintColor = linkColor
+            button.setTitle(site.title!, forState: .Normal)
+            button.backgroundColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.7)
+            button.setTitleColor(UIColor.blueColor(), forState: .Normal)
+            button.addTarget(self, action: #selector(selectSuggestionButton), forControlEvents: .TouchUpInside)
+            searchSuggestionView.addSubview(button)
+            searchSuggestionView.frame.width
+        }
+    }
+    
+    func selectSuggestionButton(button: UIButton) {
+        if let stationName = button.currentTitle {
+            for annotation in mapView.annotations {
+                if stationName == annotation.title! {
+                    if let station = annotation as? Site {
+                        self.trackEvent("Station", action: "search_suggestion_selected", label: "\(station.title!) (\(station.siteId))", value: 1)
+                        self.chosenStation = station
+                        // Update annotation view for this station
+                        mapView.removeAnnotation(station)
+                        mapView.addAnnotation(station)
+                        self.setMapCenter(self.chosenStation!.coordinate)
+                        return
+                    }
+                }
+            }
+            print("Unable to match \(stationName)")
+        }
+    }
 }
