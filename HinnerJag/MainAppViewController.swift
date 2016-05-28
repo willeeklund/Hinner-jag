@@ -119,21 +119,22 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
     }
 
     var introVideoVC: BWWalkThroughVideoViewController?
+    var walkthrough: BWWalkthroughViewController?
     func showWalkthrough() {
         let stb = UIStoryboard(name: "Main", bundle: NSBundle(forClass: self.classForCoder))
         // Create walkthrough view controller
-        let walkthrough = stb.instantiateViewControllerWithIdentifier("walk0") as! BWWalkthroughViewController
+        walkthrough = stb.instantiateViewControllerWithIdentifier("walk0") as? BWWalkthroughViewController
         let page_one    = stb.instantiateViewControllerWithIdentifier("walk1")
         let page_two    = stb.instantiateViewControllerWithIdentifier("walk2")
         if page_two is BWWalkThroughVideoViewController {
-            introVideoVC = page_two as! BWWalkThroughVideoViewController
+            introVideoVC = page_two as? BWWalkThroughVideoViewController
         }
         // Attach the pages to the walkthrough master
-        walkthrough.delegate = self
-        walkthrough.addViewController(page_one)
-        walkthrough.addViewController(page_two)
+        walkthrough?.delegate = self
+        walkthrough?.addViewController(page_one)
+        walkthrough?.addViewController(page_two)
         // Show the walkthrough view controller
-        self.presentViewController(walkthrough, animated: true, completion: nil)
+        self.presentViewController(walkthrough!, animated: true, completion: nil)
     }
     
     func walkthroughCloseButtonPressed() {
@@ -143,6 +144,9 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
     func walkthroughPageDidChange(pageNumber: Int) {
         if 1 == pageNumber {
             introVideoVC?.playMovie()
+            walkthrough?.closeButton?.setTitle("Klar med intro - använd appen", forState: .Normal)
+        } else {
+            walkthrough?.closeButton?.setTitle("Se introfilmen", forState: .Normal)
         }
     }
 }

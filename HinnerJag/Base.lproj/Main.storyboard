@@ -10,7 +10,7 @@
         <!--Map-->
         <scene sceneID="mhg-Ye-K3P">
             <objects>
-                <viewController title="Map" id="QHl-Ia-Pss" customClass="MapViewController" customModule="Hinner_jag" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="map" title="Map" id="QHl-Ia-Pss" customClass="MapViewController" customModule="Hinner_jag" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cvD-eW-BEg"/>
                         <viewControllerLayoutGuide type="bottom" id="cz9-Gk-E8U"/>
@@ -85,12 +85,12 @@
                                 <color key="currentPageIndicatorTintColor" red="0.01176470588" green="0.50588235290000005" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hvg-rc-9dn">
-                                <rect key="frame" x="237" y="538" width="127" height="34"/>
+                                <rect key="frame" x="20" y="538" width="560" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="127" id="tLf-uF-ywn"/>
+                                    <constraint firstAttribute="width" constant="560" id="tLf-uF-ywn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Fortsätt">
+                                <state key="normal" title="Se introfilmen">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -131,7 +131,13 @@
                                 <rect key="frame" x="20" y="56" width="560" height="498"/>
                                 <attributedString key="attributedText">
                                     <fragment>
-                                        <string key="content">- Den här appen är till för dig som vet hur du vill resa.  - Appen hittar stationen närmast dig och visar avgångar därifrån.  - Favoritmarkera busslinjer för att lägga till alla busstationer på linjen.  - </string>
+                                        <string key="content">- Den här appen är till för dig som vet hur du vill resa.
+
+- Appen hittar stationen närmast dig och visar avgångar därifrån.
+
+- Favoritmarkera busslinjer för att lägga till alla busstationer på linjen.
+
+- </string>
                                         <attributes>
                                             <font key="NSFont" size="18" name="HelveticaNeue"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -143,7 +149,9 @@
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content=" appen kan visa nästa avgång, innan du låst upp telefonen. I nästa steg visar vi hur!  ">
+                                    <fragment content=" appen kan visa nästa avgång, innan du låst upp telefonen. I nästa steg visar vi hur!
+
+">
                                         <attributes>
                                             <font key="NSFont" size="18" name="HelveticaNeue"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -221,9 +229,9 @@
                                             </connections>
                                         </button>
                                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3bR-ME-P5W">
-                                            <rect key="frame" x="392" y="57" width="200" height="29"/>
+                                            <rect key="frame" x="343" y="57" width="249" height="29"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="200" id="2uF-K2-K6V"/>
+                                                <constraint firstAttribute="width" constant="249" id="2uF-K2-K6V"/>
                                             </constraints>
                                             <segments>
                                                 <segment title="Tunnelbana"/>
