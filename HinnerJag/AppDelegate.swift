@@ -49,6 +49,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         CoreDataStore.saveContext()
     }
     
+    // MARK: - Open custom URLs "hinner-jag://"
+    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+        if nil == url.host {
+            // If only opening the app, then we are done
+            return true
+        }
+        // Find reference to mainVC
+        if let mainVC = self.window?.rootViewController as? MainAppViewController {
+            switch url.host! {
+            case "map":
+                // Show the map with selected line
+                // Hide view controllers on top of mainVC
+                mainVC.dismissViewControllerAnimated(false, completion: nil)
+                // Select chosen line from URL
+                var selectedLine: Int?
+                let urlComponents = NSURLComponents(URL: url, resolvingAgainstBaseURL: true)
+                for item in (urlComponents?.queryItems)! {
+                    if "line" == item.name {
+                        // Found specified line
+                        if let value = item.value {
+                            selectedLine = Int(value)
+                            break
+                        }
+                    }
+                }
+                // Only show sites from selected line on map
+                mainVC.performSegueWithIdentifier("Show Map", sender: selectedLine)
+                return true
+
+            default:
+                print("HinnerJag could not handle url: \(url)")
+                return false
+            }
+        }
+        return false
+    }
+    
     // MARK: - Watch Connectivity delegate
     @available(iOS 9.0, *)
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {

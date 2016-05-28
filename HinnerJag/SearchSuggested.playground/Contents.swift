@@ -24,3 +24,12 @@ for (index, siteTitle) in sites.enumerate() {
 }
 
 mainView
+
+// Play with URL components
+let url = NSURL(string: "hinner-jag://map?line=5")
+let urlComponents = NSURLComponents(URL: url!, resolvingAgainstBaseURL: true)
+for item in (urlComponents?.queryItems)! {
+    print(item)
+    item.name
+    Int(item.value!)
+}

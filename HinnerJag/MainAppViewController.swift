@@ -95,6 +95,10 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
         if segue.destinationViewController is MapViewController {
             let mapVC: MapViewController = segue.destinationViewController as! MapViewController
             mapVC.chosenStation = self.closestStation
+            // If segue performed by code specifying line number to show
+            if let lineNumber = sender as? Int {
+                mapVC.chosenLineNumber = lineNumber
+            }
         }
     }
     
