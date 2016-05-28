@@ -12,20 +12,37 @@ import HinnerJagKit
 
 public class TravelHeaderCell: UITableViewCell
 {
-    
-    @IBOutlet weak var trainImage: UIImageView!
+    // MARK: - Properties
+    @IBOutlet weak var trainImageButton: UIButton!
+    @IBOutlet weak var headerButton: UIButton!
     @IBOutlet weak var starButton: UIButton!
-    @IBOutlet weak var headerLabel: UILabel!
+
     var lineNumber: Int?
     var transportType: TransportType?
     var controller: HinnerJagTableViewController?
     
+    // MARK: - Init
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
     required public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
+    
+    // MARK: - Interact with table cell
+    @IBAction func tapImageOrHeader(sender: AnyObject) {
+        if nil != lineNumber {
+            // Check if we are in TodayExtension
+            if nil != controller?.extensionContext {
+                // Launch app and show map with only stations along this line
+                if let hinnerJagUrl = NSURL(string: "hinner-jag://map?line=\(lineNumber!)") {
+                    controller?.extensionContext?.openURL(hinnerJagUrl, completionHandler: nil)
+                }
+            } else {
+                controller?.performSegueWithIdentifier("Show Map", sender: lineNumber!)
+            }
+        }
     }
     
     @IBAction func tapStar(sender: AnyObject) {
@@ -52,6 +69,7 @@ public class TravelHeaderCell: UITableViewCell
         }
     }
     
+    // MARK: - Create cell instance
     internal class func createCellForIndexPath(
         section: Int,
         controller: HinnerJagTableViewController,
@@ -72,7 +90,8 @@ public class TravelHeaderCell: UITableViewCell
             (cell!.lineNumber, cell!.transportType) = Departure.getLineNumberAndTransportTypeFromSection(sectionString, departuresDict: departuresDict)
             // Set train image
             if nil != imageName {
-                cell?.trainImage.image = UIImage(named: imageName!)
+                cell?.trainImageButton.setImage(UIImage(named: imageName!), forState: .Normal)
+                cell?.trainImageButton.addTarget(cell!, action: #selector(tapImageOrHeader), forControlEvents: .TouchUpInside)
             }
             // Setup star button
             if nil != cell!.transportType && .Bus == cell!.transportType! {
@@ -87,9 +106,14 @@ public class TravelHeaderCell: UITableViewCell
                 cell?.starButton.hidden = true
             }
             // Set header text
-            cell?.headerLabel?.text = "\(directionLabel) \(directionSuffix)"
+            cell?.headerButton.setTitle("\(directionLabel) \(directionSuffix)", forState: .Normal)
+            cell?.headerButton.addTarget(cell!, action: #selector(tapImageOrHeader), forControlEvents: .TouchUpInside)
+            if nil != controller.extensionContext {
+                // In TodayViewController
+                cell?.headerButton.tintColor = Constants.linkColor
+            }
         } else {
-            cell?.headerLabel?.text = ""
+            cell?.headerButton.setTitle("", forState: .Normal)
         }
         return cell! as TravelHeaderCell
     }

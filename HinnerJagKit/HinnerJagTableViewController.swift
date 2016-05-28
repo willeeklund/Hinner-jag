@@ -167,6 +167,7 @@ public class HinnerJagTableViewController: UITableViewController, LocateStationD
         }
     }
     
+    // MARK: - Search from new closest station
     public func searchFromNewClosestStation(newStation: Site) {
         self.closestStation = newStation
         print("Selected station: \(self.closestStation!)")

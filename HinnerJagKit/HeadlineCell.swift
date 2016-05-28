@@ -61,7 +61,8 @@ public class HeadlineCell: UITableViewCell
             "Tips: Favoritmarkera busslinjer",
             "Tips: Byt station med ett klick",
             "Tips: Fritextsök station via kartan",
-            "Tips: Klicka på stationens namn"
+            "Tips: Klicka på stationens namn",
+            "Tips: Klick på linjens namn för att se alla stationer"
         ]
         let randInt = arc4random_uniform(UInt32(list.count))
         let randMsg = list[Int(randInt)]

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BUW-g8-FM8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BUW-g8-FM8">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -85,43 +85,43 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="27"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jjt-ae-Mx4">
-                                            <rect key="frame" x="36" y="3" width="243" height="19"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" red="0.78182212752525249" green="0.78182212752525249" blue="0.78182212752525249" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="train_blue" highlightedImage="train_blue" translatesAutoresizingMaskIntoConstraints="NO" id="QGx-gb-GH5">
-                                            <rect key="frame" x="8" y="4" width="16" height="17"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="16" id="M7V-va-3Mw"/>
-                                            </constraints>
-                                        </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LAw-5z-Em8">
                                             <rect key="frame" x="287" y="0.0" width="25" height="25"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="25" id="fBv-p4-s71"/>
+                                                <constraint firstAttribute="width" constant="25" id="hOr-j4-yL8"/>
                                             </constraints>
                                             <state key="normal" backgroundImage="star_empty"/>
                                         </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Vq-Ht-QGc">
+                                            <rect key="frame" x="8" y="2" width="21" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="21" id="TM9-JL-Mc3"/>
+                                            </constraints>
+                                            <state key="normal" image="train_blue"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vUR-WS-U2C">
+                                            <rect key="frame" x="37" y="2" width="224" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <state key="normal" title="Button"/>
+                                        </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="QGx-gb-GH5" firstAttribute="top" secondItem="ZRr-RP-twh" secondAttribute="topMargin" constant="-4" id="BlZ-Bh-Onj"/>
-                                        <constraint firstItem="Jjt-ae-Mx4" firstAttribute="top" secondItem="ZRr-RP-twh" secondAttribute="topMargin" constant="-5" id="HR3-Jz-fP4"/>
-                                        <constraint firstItem="Jjt-ae-Mx4" firstAttribute="centerY" secondItem="QGx-gb-GH5" secondAttribute="centerY" id="K8a-Hj-4n1"/>
-                                        <constraint firstItem="LAw-5z-Em8" firstAttribute="top" secondItem="ZRr-RP-twh" secondAttribute="top" id="L0S-hK-sVg"/>
-                                        <constraint firstItem="Jjt-ae-Mx4" firstAttribute="centerY" secondItem="LAw-5z-Em8" secondAttribute="centerY" id="OP8-Ut-sEi"/>
-                                        <constraint firstItem="LAw-5z-Em8" firstAttribute="trailing" secondItem="ZRr-RP-twh" secondAttribute="trailingMargin" id="PQB-Ky-aOv"/>
-                                        <constraint firstItem="QGx-gb-GH5" firstAttribute="leading" secondItem="ZRr-RP-twh" secondAttribute="leadingMargin" id="Suw-In-qOn"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="QGx-gb-GH5" secondAttribute="bottom" constant="-2" id="Yxx-6D-8Zm"/>
-                                        <constraint firstItem="Jjt-ae-Mx4" firstAttribute="leading" secondItem="QGx-gb-GH5" secondAttribute="trailing" constant="12" id="eNU-yp-0BN"/>
-                                        <constraint firstItem="LAw-5z-Em8" firstAttribute="leading" secondItem="Jjt-ae-Mx4" secondAttribute="trailing" constant="8" symbolic="YES" id="hmw-Z0-Kai"/>
+                                        <constraint firstItem="vUR-WS-U2C" firstAttribute="leading" secondItem="6Vq-Ht-QGc" secondAttribute="trailing" constant="8" symbolic="YES" id="GO3-Gx-ywy"/>
+                                        <constraint firstItem="6Vq-Ht-QGc" firstAttribute="top" secondItem="ZRr-RP-twh" secondAttribute="topMargin" constant="-6" id="HS2-Al-eve"/>
+                                        <constraint firstItem="LAw-5z-Em8" firstAttribute="top" secondItem="ZRr-RP-twh" secondAttribute="top" id="K0O-ve-1Nt"/>
+                                        <constraint firstItem="LAw-5z-Em8" firstAttribute="leading" secondItem="vUR-WS-U2C" secondAttribute="trailing" constant="26" id="PkR-x0-i2c"/>
+                                        <constraint firstItem="vUR-WS-U2C" firstAttribute="top" secondItem="6Vq-Ht-QGc" secondAttribute="top" id="Yzf-KL-TCh"/>
+                                        <constraint firstItem="LAw-5z-Em8" firstAttribute="trailing" secondItem="ZRr-RP-twh" secondAttribute="trailingMargin" id="dYg-Ii-Gk5"/>
+                                        <constraint firstItem="vUR-WS-U2C" firstAttribute="bottom" secondItem="6Vq-Ht-QGc" secondAttribute="bottom" id="dvU-GZ-iss"/>
+                                        <constraint firstItem="6Vq-Ht-QGc" firstAttribute="leading" secondItem="ZRr-RP-twh" secondAttribute="leadingMargin" id="hDh-5a-oTH"/>
+                                        <constraint firstItem="vUR-WS-U2C" firstAttribute="centerY" secondItem="LAw-5z-Em8" secondAttribute="centerY" id="hRC-pk-sQa"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="6Vq-Ht-QGc" secondAttribute="bottom" constant="-4" id="tOT-Yc-siP"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="headerLabel" destination="Jjt-ae-Mx4" id="tnr-mU-TNh"/>
+                                    <outlet property="headerButton" destination="vUR-WS-U2C" id="JPv-3y-hIv"/>
                                     <outlet property="starButton" destination="LAw-5z-Em8" id="ANg-6n-ijB"/>
-                                    <outlet property="trainImage" destination="QGx-gb-GH5" id="0Ng-sS-EMg"/>
+                                    <outlet property="trainImageButton" destination="6Vq-Ht-QGc" id="Kfh-5b-z6h"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TravelDetailsCell" rowHeight="25" id="ymP-yz-kBy" customClass="TravelDetailsCell" customModule="Hinner_jag_widget" customModuleProvider="target">

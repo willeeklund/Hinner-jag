@@ -14,7 +14,6 @@ import CoreLocation
 class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLocationManagerDelegate {
     // MARK: - Variables
     var locationManager: CLLocationManager! = CLLocationManager()
-    let linkColor = UIColor(red: 8.0/255.0, green: 206.0/255.0, blue: 253.0/255.0, alpha: 1)
     
     // MARK: - Life cycle
     required init?(coder aDecoder: NSCoder) {
@@ -125,7 +124,7 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
         }
         return 24.0
     }
-        
+    
     // Cell in table
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
@@ -141,7 +140,7 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
                 let dist = station.distanceFromLocation(self.locateStation.locationManager.location!)
                 let distFormat = Utils.distanceFormat(dist)
                 cell?.textLabel?.text = "    \(station.title!) (\(distFormat))"
-                cell?.textLabel?.textColor = self.linkColor
+                cell?.textLabel?.textColor = Constants.linkColor
                 cell?.textLabel?.font = UIFont(name: "Arial", size: 18.0)
             }
             return cell! as UITableViewCell
