@@ -49,9 +49,11 @@ class BWWalkThroughVideoViewController: BWWalkthroughPageViewController {
             player.play()
             // If user still see this view after 25 sec,
             // track event because they viewed the whole video
-            timerForWatching = NSTimer.schedule(delay: 25) { (timer) in
-                print("User did watch entire intro video")
-                self.trackEvent("Walkthrough", action: "watched", label: "entire video", value: (self.checkFirstTimeSeenEntireVideo() ? 1 : 0))
+            timerForWatching = NSTimer.schedule(delay: 25) { [weak self] (timer) in
+                if self != nil {
+                    print("User did watch entire intro video")
+                    self!.trackEvent("Walkthrough", action: "watched", label: "entire video", value: (self!.checkFirstTimeSeenEntireVideo() ? 1 : 0))
+                }
             }
         }
     }
