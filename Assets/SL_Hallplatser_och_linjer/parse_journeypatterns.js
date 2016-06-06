@@ -26,7 +26,6 @@ parseJourneyPatterns = function () {
             console.error(err);
             return;
         }
-        firstRowJourneyPatterns = records[0];
         records.forEach(function (data, i) {
             if (0 === i) {
                 firstRowJourneyPatterns = data;
