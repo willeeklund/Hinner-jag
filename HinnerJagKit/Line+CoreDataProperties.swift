@@ -2,7 +2,7 @@
 //  Line+CoreDataProperties.swift
 //  Hinner jag
 //
-//  Created by Wilhelm Eklund on 13/04/16.
+//  Created by Wilhelm Eklund on 30/05/16.
 //  Copyright © 2016 Wilhelm Eklund. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,8 +14,8 @@ import CoreData
 
 extension Line {
 
-    @NSManaged var lineNumber: Int16
+    @NSManaged var isActive: NSNumber?
+    @NSManaged var lineNumber: NSNumber?
     @NSManaged var stopAreaTypeCode: String?
-    @NSManaged var isActive: Bool
 
 }

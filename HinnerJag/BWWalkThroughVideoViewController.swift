@@ -13,6 +13,12 @@ import HinnerJagKit
 class BWWalkThroughVideoViewController: BWWalkthroughPageViewController {
     
     var moviePlayer: MPMoviePlayerController!
+    var timerForWatching: NSTimer?
+    
+    deinit {
+        timerForWatching?.invalidate()
+        moviePlayer.stop()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +49,8 @@ class BWWalkThroughVideoViewController: BWWalkthroughPageViewController {
             player.play()
             // If user still see this view after 25 sec,
             // track event because they viewed the whole video
-            NSTimer.schedule(delay: 25) { (timer) in
-                print("User watch entire intro video")
+            timerForWatching = NSTimer.schedule(delay: 25) { (timer) in
+                print("User did watch entire intro video")
                 self.trackEvent("Walkthrough", action: "watched", label: "entire video", value: (self.checkFirstTimeSeenEntireVideo() ? 1 : 0))
             }
         }

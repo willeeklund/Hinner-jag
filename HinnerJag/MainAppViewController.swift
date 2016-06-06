@@ -128,8 +128,8 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
         let stb = UIStoryboard(name: "Main", bundle: NSBundle(forClass: self.classForCoder))
         // Create walkthrough view controller
         walkthrough = stb.instantiateViewControllerWithIdentifier("walk0") as? BWWalkthroughViewController
-        let page_one    = stb.instantiateViewControllerWithIdentifier("walk1")
-        let page_two    = stb.instantiateViewControllerWithIdentifier("walk2")
+        let page_one = stb.instantiateViewControllerWithIdentifier("walk1")
+        let page_two = stb.instantiateViewControllerWithIdentifier("walk2")
         if page_two is BWWalkThroughVideoViewController {
             introVideoVC = page_two as? BWWalkThroughVideoViewController
         }
@@ -143,6 +143,8 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
     
     func walkthroughCloseButtonPressed() {
         self.dismissViewControllerAnimated(true, completion: nil)
+        introVideoVC = nil
+        walkthrough = nil
     }
     
     func walkthroughPageDidChange(pageNumber: Int) {

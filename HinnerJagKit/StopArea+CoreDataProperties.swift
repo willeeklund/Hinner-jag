@@ -1,5 +1,5 @@
 //
-//  JourneyPattern+CoreDataProperties.swift
+//  StopArea+CoreDataProperties.swift
 //  Hinner jag
 //
 //  Created by Wilhelm Eklund on 30/05/16.
@@ -12,12 +12,9 @@
 import Foundation
 import CoreData
 
-extension JourneyPattern {
+extension StopArea {
 
-    @NSManaged var lineNumber: Int16
-    @NSManaged var stopAreaNumber: Int16
-    @NSManaged var directionCode: Int16
-    @NSManaged var stopArea: StopArea?
-    @NSManaged var line: Line?
+    @NSManaged var stopAreaNumber: NSNumber?
+    @NSManaged var site: Site?
 
 }

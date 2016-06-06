@@ -5,6 +5,7 @@
       "SiteName": "Abrahamsberg",
       "StopAreaNumber": 1221,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3365630909855,
       "longitude": 17.9531728536484
     },
@@ -13,14 +14,7 @@
       "SiteName": "Akalla",
       "StopAreaNumber": 3271,
       "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.4140350627048,
-      "longitude": 17.9175933082405
-    },
-    {
-      "SiteId": 1009300,
-      "SiteName": "Akalla centrum",
-      "StopAreaNumber": 3271,
-      "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.4140350627048,
       "longitude": 17.9175933082405
     },
@@ -29,22 +23,7 @@
       "SiteName": "Alby",
       "StopAreaNumber": 2761,
       "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.2397122881938,
-      "longitude": 17.8452532554863
-    },
-    {
-      "SiteId": 7365,
-      "SiteName": "Alby (Lagmansbacken)",
-      "StopAreaNumber": 2761,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.2397122881938,
-      "longitude": 17.8452532554863
-    },
-    {
-      "SiteId": 7364,
-      "SiteName": "Alby centrum",
-      "StopAreaNumber": 2761,
-      "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2397122881938,
       "longitude": 17.8452532554863
     },
@@ -53,6 +32,7 @@
       "SiteName": "Alvik",
       "StopAreaNumber": 1201,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3335288880974,
       "longitude": 17.9812769147661
     },
@@ -61,6 +41,7 @@
       "SiteName": "Aspudden",
       "StopAreaNumber": 2611,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.3063624536944,
       "longitude": 18.0017913713571
     },
@@ -69,6 +50,7 @@
       "SiteName": "Axelsberg",
       "StopAreaNumber": 2631,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.3043790895455,
       "longitude": 17.9754640680616
     },
@@ -77,6 +59,7 @@
       "SiteName": "Bagarmossen",
       "StopAreaNumber": 1941,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.276844506474,
       "longitude": 18.1321710896787
     },
@@ -85,6 +68,7 @@
       "SiteName": "Bandhagen",
       "StopAreaNumber": 1661,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2703906474368,
       "longitude": 18.0496470803429
     },
@@ -93,22 +77,7 @@
       "SiteName": "Bergshamra",
       "StopAreaNumber": 2241,
       "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3807188542825,
-      "longitude": 18.0375024886927
-    },
-    {
-      "SiteId": 3432,
-      "SiteName": "Bergshamra centrum",
-      "StopAreaNumber": 2241,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3807188542825,
-      "longitude": 18.0375024886927
-    },
-    {
-      "SiteId": 3430,
-      "SiteName": "Bergshamra södra",
-      "StopAreaNumber": 2241,
-      "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3807188542825,
       "longitude": 18.0375024886927
     },
@@ -117,6 +86,7 @@
       "SiteName": "Björkhagen",
       "StopAreaNumber": 1921,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2916651650232,
       "longitude": 18.1153301250471
     },
@@ -125,6 +95,7 @@
       "SiteName": "Blackeberg",
       "StopAreaNumber": 1271,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3483700573461,
       "longitude": 17.8828507976348
     },
@@ -133,6 +104,7 @@
       "SiteName": "Blåsut",
       "StopAreaNumber": 1811,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2911490050422,
       "longitude": 18.0911411373577
     },
@@ -141,6 +113,7 @@
       "SiteName": "Bredäng",
       "StopAreaNumber": 2651,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2948020263333,
       "longitude": 17.9360405655615
     },
@@ -149,30 +122,16 @@
       "SiteName": "Brommaplan",
       "StopAreaNumber": 1231,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3382848826814,
       "longitude": 17.9396416118668
-    },
-    {
-      "SiteId": 1002,
-      "SiteName": "Centralen",
-      "StopAreaNumber": 1051,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3323449133058,
-      "longitude": 18.0620091038496
-    },
-    {
-      "SiteId": 9002,
-      "SiteName": "Cityterminalen",
-      "StopAreaNumber": 1051,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3323449133058,
-      "longitude": 18.0620091038496
     },
     {
       "SiteId": 9201,
       "SiteName": "Danderyds sjukhus",
       "StopAreaNumber": 2251,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3907288434582,
       "longitude": 18.0418399519128
     },
@@ -181,6 +140,7 @@
       "SiteName": "Duvbo",
       "StopAreaNumber": 3441,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3681560976105,
       "longitude": 17.9627867800152
     },
@@ -189,6 +149,7 @@
       "SiteName": "Enskede gård",
       "StopAreaNumber": 1621,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2889965156478,
       "longitude": 18.0704252270884
     },
@@ -197,14 +158,7 @@
       "SiteName": "Farsta",
       "StopAreaNumber": 1871,
       "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.2447406901976,
-      "longitude": 18.0926444886874
-    },
-    {
-      "SiteId": 1009181,
-      "SiteName": "Farsta centrum",
-      "StopAreaNumber": 1871,
-      "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2447406901976,
       "longitude": 18.0926444886874
     },
@@ -213,38 +167,25 @@
       "SiteName": "Farsta strand",
       "StopAreaNumber": 1881,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.235579029596,
       "longitude": 18.1014245520783
-    },
-    {
-      "SiteId": 1565,
-      "SiteName": "Finn Malmgrens plan",
-      "StopAreaNumber": 1911,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.2947478036316,
-      "longitude": 18.1045316422299
     },
     {
       "SiteId": 9283,
       "SiteName": "Fittja",
       "StopAreaNumber": 2751,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2474643057917,
       "longitude": 17.8610549460239
-    },
-    {
-      "SiteId": 1225,
-      "SiteName": "Fleminggatan/S:t Eriksgatan",
-      "StopAreaNumber": 1151,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3329254595986,
-      "longitude": 18.0308519497068
     },
     {
       "SiteId": 9115,
       "SiteName": "Fridhemsplan",
       "StopAreaNumber": 1151,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3329254595986,
       "longitude": 18.0308519497068
     },
@@ -253,6 +194,7 @@
       "SiteName": "Fruängen",
       "StopAreaNumber": 2851,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2859192468042,
       "longitude": 17.9650576024391
     },
@@ -261,6 +203,7 @@
       "SiteName": "Gamla stan",
       "StopAreaNumber": 1021,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.3231676153901,
       "longitude": 18.0671813093383
     },
@@ -269,6 +212,7 @@
       "SiteName": "Globen",
       "StopAreaNumber": 1611,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.294252115313,
       "longitude": 18.0780247893166
     },
@@ -277,30 +221,7 @@
       "SiteName": "Gubbängen",
       "StopAreaNumber": 1851,
       "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.2633249972723,
-      "longitude": 18.0821386289724
-    },
-    {
-      "SiteId": 1009183,
-      "SiteName": "Gubbängen T-station",
-      "StopAreaNumber": 1851,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.2633249972723,
-      "longitude": 18.0821386289724
-    },
-    {
-      "SiteId": 7956,
-      "SiteName": "Gubbängen T-stn",
-      "StopAreaNumber": 1851,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.2633249972723,
-      "longitude": 18.0821386289724
-    },
-    {
-      "SiteId": 1872,
-      "SiteName": "Gubbängens centrum",
-      "StopAreaNumber": 1851,
-      "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2633249972723,
       "longitude": 18.0821386289724
     },
@@ -309,6 +230,7 @@
       "SiteName": "Gullmarsplan",
       "StopAreaNumber": 1551,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2991301547131,
       "longitude": 18.081001331783
     },
@@ -317,6 +239,7 @@
       "SiteName": "Gärdet",
       "StopAreaNumber": 2121,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3451783990697,
       "longitude": 18.0989905507094
     },
@@ -325,6 +248,7 @@
       "SiteName": "Hagsätra",
       "StopAreaNumber": 1721,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2622146107555,
       "longitude": 18.0131379777607
     },
@@ -333,6 +257,7 @@
       "SiteName": "Hallonbergen",
       "StopAreaNumber": 3231,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.374631925272,
       "longitude": 17.969198247308
     },
@@ -341,22 +266,7 @@
       "SiteName": "Hallunda",
       "StopAreaNumber": 2771,
       "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.2433287961536,
-      "longitude": 17.8252422558522
-    },
-    {
-      "SiteId": 7380,
-      "SiteName": "Hallunda centrum",
-      "StopAreaNumber": 2771,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.2433287961536,
-      "longitude": 17.8252422558522
-    },
-    {
-      "SiteId": 7385,
-      "SiteName": "Hallunda T-station",
-      "StopAreaNumber": 2771,
-      "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2433287961536,
       "longitude": 17.8252422558522
     },
@@ -365,22 +275,16 @@
       "SiteName": "Hammarbyhöjden",
       "StopAreaNumber": 1911,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2947478036316,
       "longitude": 18.1045316422299
-    },
-    {
-      "SiteId": 1031,
-      "SiteName": "Handelshögskolan",
-      "StopAreaNumber": 1121,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3408747277353,
-      "longitude": 18.0579163909249
     },
     {
       "SiteId": 9320,
       "SiteName": "Hjulsta",
       "StopAreaNumber": 3481,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3967287216497,
       "longitude": 17.8887321622357
     },
@@ -389,6 +293,7 @@
       "SiteName": "Hornstull",
       "StopAreaNumber": 2531,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.3159298211534,
       "longitude": 18.0353974885541
     },
@@ -397,6 +302,7 @@
       "SiteName": "Husby",
       "StopAreaNumber": 3261,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.409708376421,
       "longitude": 17.9269236406856
     },
@@ -405,22 +311,16 @@
       "SiteName": "Huvudsta",
       "StopAreaNumber": 3411,
       "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3497424816721,
-      "longitude": 17.9868682374517
-    },
-    {
-      "SiteId": 3490,
-      "SiteName": "Huvudsta centrum",
-      "StopAreaNumber": 3411,
-      "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3497424816721,
       "longitude": 17.9868682374517
     },
     {
       "SiteId": 9262,
-      "SiteName": "Hägerstensåsen (t-banan)",
+      "SiteName": "Hägerstensåsen",
       "StopAreaNumber": 2831,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2951788775285,
       "longitude": 17.9784595232892
     },
@@ -429,6 +329,7 @@
       "SiteName": "Hässelby gård",
       "StopAreaNumber": 1321,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3670701496289,
       "longitude": 17.8443948361943
     },
@@ -437,6 +338,7 @@
       "SiteName": "Hässelby strand",
       "StopAreaNumber": 1331,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3617428105017,
       "longitude": 17.8324667161437
     },
@@ -445,22 +347,16 @@
       "SiteName": "Högdalen",
       "StopAreaNumber": 1701,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2639853583512,
       "longitude": 18.043016841192
     },
     {
-      "SiteId": 9182,
+      "SiteId": 9179,
       "SiteName": "Hökarängen",
       "StopAreaNumber": 1861,
       "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.2579214262491,
-      "longitude": 18.0825147154585
-    },
-    {
-      "SiteId": 9179,
-      "SiteName": "Hökarängen T",
-      "StopAreaNumber": 1861,
-      "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2579214262491,
       "longitude": 18.0825147154585
     },
@@ -469,6 +365,7 @@
       "SiteName": "Hötorget",
       "StopAreaNumber": 1111,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3356150110979,
       "longitude": 18.0629641802656
     },
@@ -477,6 +374,7 @@
       "SiteName": "Islandstorget",
       "StopAreaNumber": 1261,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3459955449046,
       "longitude": 17.8932191536005
     },
@@ -485,54 +383,25 @@
       "SiteName": "Johannelund",
       "StopAreaNumber": 1311,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3679229644215,
       "longitude": 17.8581502010255
-    },
-    {
-      "SiteId": 1023,
-      "SiteName": "Karl XII:s torg",
-      "StopAreaNumber": 3031,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3309374390762,
-      "longitude": 18.0742879543946
     },
     {
       "SiteId": 9222,
       "SiteName": "Karlaplan",
       "StopAreaNumber": 2111,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3389882957986,
       "longitude": 18.0919988929416
-    },
-    {
-      "SiteId": 1109,
-      "SiteName": "Karlavägen",
-      "StopAreaNumber": 2211,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3407986463025,
-      "longitude": 18.0819421476895
-    },
-    {
-      "SiteId": 1230,
-      "SiteName": "Kellgrensgatan",
-      "StopAreaNumber": 3161,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3374214632878,
-      "longitude": 18.0157132213437
     },
     {
       "SiteId": 9302,
       "SiteName": "Kista",
       "StopAreaNumber": 3251,
       "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.4029412127643,
-      "longitude": 17.9426847963992
-    },
-    {
-      "SiteId": 1009302,
-      "SiteName": "Kista centrum",
-      "StopAreaNumber": 3251,
-      "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.4029412127643,
       "longitude": 17.9426847963992
     },
@@ -541,22 +410,16 @@
       "SiteName": "Kristineberg",
       "StopAreaNumber": 1171,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3327232981679,
       "longitude": 18.003070638336
     },
     {
-      "SiteId": 1019,
-      "SiteName": "Kungsgatan / Sveavägen",
-      "StopAreaNumber": 1111,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3356150110979,
-      "longitude": 18.0629641802656
-    },
-    {
       "SiteId": 9340,
-      "SiteName": "Kungsträdgården (T-banan)",
+      "SiteName": "Kungsträdgården",
       "StopAreaNumber": 3031,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.3309374390762,
       "longitude": 18.0742879543946
     },
@@ -565,30 +428,25 @@
       "SiteName": "Kärrtorp",
       "StopAreaNumber": 1931,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2845321216461,
       "longitude": 18.1144782877879
-    },
-    {
-      "SiteId": 1007365,
-      "SiteName": "Lagmansbacken",
-      "StopAreaNumber": 2761,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.2397122881938,
-      "longitude": 17.8452532554863
     },
     {
       "SiteId": 9294,
       "SiteName": "Liljeholmen",
       "StopAreaNumber": 2601,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.3106382256871,
       "longitude": 18.0229147259012
     },
     {
       "SiteId": 9297,
-      "SiteName": "Mariatorget (t-banan)",
+      "SiteName": "Mariatorget",
       "StopAreaNumber": 2511,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.317014373907,
       "longitude": 18.0621173620111
     },
@@ -597,6 +455,7 @@
       "SiteName": "Masmo",
       "StopAreaNumber": 2741,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2499079364721,
       "longitude": 17.8813454805367
     },
@@ -605,6 +464,7 @@
       "SiteName": "Medborgarplatsen",
       "StopAreaNumber": 1511,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.314901652615,
       "longitude": 18.0726046821095
     },
@@ -613,38 +473,25 @@
       "SiteName": "Midsommarkransen",
       "StopAreaNumber": 2811,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.3018796328365,
       "longitude": 18.0120025442611
-    },
-    {
-      "SiteId": 1123,
-      "SiteName": "Musikhögskolan",
-      "StopAreaNumber": 2211,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3407986463025,
-      "longitude": 18.0819421476895
     },
     {
       "SiteId": 9290,
       "SiteName": "Mälarhöjden",
       "StopAreaNumber": 2641,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.3012171040453,
       "longitude": 17.9576693858726
-    },
-    {
-      "SiteId": 1345,
-      "SiteName": "Mälartorget",
-      "StopAreaNumber": 1021,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3231676153901,
-      "longitude": 18.0671813093383
     },
     {
       "SiteId": 9200,
       "SiteName": "Mörby centrum",
       "StopAreaNumber": 2301,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3982038728158,
       "longitude": 18.0368913403574
     },
@@ -653,38 +500,25 @@
       "SiteName": "Norsborg",
       "StopAreaNumber": 2781,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2438361207694,
       "longitude": 17.8145101334601
-    },
-    {
-      "SiteId": 1125,
-      "SiteName": "Nybrogatan",
-      "StopAreaNumber": 2211,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3407986463025,
-      "longitude": 18.0819421476895
     },
     {
       "SiteId": 9304,
       "SiteName": "Näckrosen",
       "StopAreaNumber": 3221,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3673023283251,
       "longitude": 17.9817499464427
-    },
-    {
-      "SiteId": 1082,
-      "SiteName": "Odengatan/Valhallavägen",
-      "StopAreaNumber": 2221,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3465408398297,
-      "longitude": 18.0693332206442
     },
     {
       "SiteId": 9117,
       "SiteName": "Odenplan",
       "StopAreaNumber": 1131,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3427666282387,
       "longitude": 18.0487066097207
     },
@@ -693,14 +527,7 @@
       "SiteName": "Rinkeby",
       "StopAreaNumber": 3461,
       "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3882307692068,
-      "longitude": 17.9279580990992
-    },
-    {
-      "SiteId": 3783,
-      "SiteName": "Rinkeby centrum",
-      "StopAreaNumber": 3461,
-      "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3882307692068,
       "longitude": 17.9279580990992
     },
@@ -709,6 +536,7 @@
       "SiteName": "Rissne",
       "StopAreaNumber": 3451,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3759780553804,
       "longitude": 17.9398093799566
     },
@@ -717,6 +545,7 @@
       "SiteName": "Ropsten",
       "StopAreaNumber": 2131,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.357403590776,
       "longitude": 18.1023655334233
     },
@@ -725,6 +554,7 @@
       "SiteName": "Råcksta",
       "StopAreaNumber": 1281,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3544955347674,
       "longitude": 17.8816247459346
     },
@@ -733,14 +563,16 @@
       "SiteName": "Rådhuset",
       "StopAreaNumber": 3131,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3298558691777,
       "longitude": 18.0449208206458
     },
     {
       "SiteId": 9118,
-      "SiteName": "Rådmansgatan (t-banan)",
+      "SiteName": "Rådmansgatan",
       "StopAreaNumber": 1121,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3408747277353,
       "longitude": 18.0579163909249
     },
@@ -749,94 +581,43 @@
       "SiteName": "Rågsved",
       "StopAreaNumber": 1711,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2566677858854,
       "longitude": 18.0282806560788
-    },
-    {
-      "SiteId": 1001225,
-      "SiteName": "S:t Eriksgatan/Fleminggatan",
-      "StopAreaNumber": 1151,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3329254595986,
-      "longitude": 18.0308519497068
-    },
-    {
-      "SiteId": 1009116,
-      "SiteName": "S:t Eriksplan",
-      "StopAreaNumber": 1141,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3402844329592,
-      "longitude": 18.0374155545597
     },
     {
       "SiteId": 9186,
       "SiteName": "Sandsborg",
       "StopAreaNumber": 1821,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2856752641236,
       "longitude": 18.0919325152121
-    },
-    {
-      "SiteId": 2001225,
-      "SiteName": "Sankt Eriksgatan (på Flemingg)",
-      "StopAreaNumber": 1151,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3329254595986,
-      "longitude": 18.0308519497068
-    },
-    {
-      "SiteId": 3001225,
-      "SiteName": "Sankt Eriksgatan/Fleminggatan",
-      "StopAreaNumber": 1151,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3329254595986,
-      "longitude": 18.0308519497068
     },
     {
       "SiteId": 9116,
       "SiteName": "Sankt Eriksplan",
       "StopAreaNumber": 1141,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3402844329592,
       "longitude": 18.0374155545597
-    },
-    {
-      "SiteId": 1000,
-      "SiteName": "Sergels torg",
-      "StopAreaNumber": 1051,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3323449133058,
-      "longitude": 18.0620091038496
     },
     {
       "SiteId": 9190,
       "SiteName": "Skanstull",
       "StopAreaNumber": 1521,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.3085062340285,
       "longitude": 18.0757968891643
     },
     {
       "SiteId": 9140,
-      "SiteName": "Skarpnäck (t-banan)",
+      "SiteName": "Skarpnäck",
       "StopAreaNumber": 1951,
       "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.2667568074159,
-      "longitude": 18.1333425025773
-    },
-    {
-      "SiteId": 1009140,
-      "SiteName": "Skarpnäcks allé",
-      "StopAreaNumber": 1951,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.2667568074159,
-      "longitude": 18.1333425025773
-    },
-    {
-      "SiteId": 1838,
-      "SiteName": "Skarpnäcksområdet",
-      "StopAreaNumber": 1951,
-      "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2667568074159,
       "longitude": 18.1333425025773
     },
@@ -845,6 +626,7 @@
       "SiteName": "Skogskyrkogården",
       "StopAreaNumber": 1831,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2789670265301,
       "longitude": 18.0955186440715
     },
@@ -853,6 +635,7 @@
       "SiteName": "Skärholmen",
       "StopAreaNumber": 2711,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2769910271436,
       "longitude": 17.907030605839
     },
@@ -861,6 +644,7 @@
       "SiteName": "Skärmarbrink",
       "StopAreaNumber": 1601,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2952757822463,
       "longitude": 18.0903469985574
     },
@@ -869,6 +653,7 @@
       "SiteName": "Slussen",
       "StopAreaNumber": 1011,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.3194556861668,
       "longitude": 18.0715024586738
     },
@@ -877,6 +662,7 @@
       "SiteName": "Sockenplan",
       "StopAreaNumber": 1631,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2836360034953,
       "longitude": 18.0709115148968
     },
@@ -885,14 +671,7 @@
       "SiteName": "Solna centrum",
       "StopAreaNumber": 3211,
       "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3595882420333,
-      "longitude": 17.9984048613743
-    },
-    {
-      "SiteId": 3472,
-      "SiteName": "Solna centrum norra",
-      "StopAreaNumber": 3211,
-      "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3595882420333,
       "longitude": 17.9984048613743
     },
@@ -901,14 +680,16 @@
       "SiteName": "Solna strand",
       "StopAreaNumber": 3421,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3543607460294,
       "longitude": 17.9737817776856
     },
     {
       "SiteId": 9205,
-      "SiteName": "Stadion (t-banan)",
+      "SiteName": "Stadion",
       "StopAreaNumber": 2211,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3407986463025,
       "longitude": 18.0819421476895
     },
@@ -917,62 +698,25 @@
       "SiteName": "Stadshagen",
       "StopAreaNumber": 3161,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3374214632878,
       "longitude": 18.0157132213437
-    },
-    {
-      "SiteId": 1009000,
-      "SiteName": "Stockholms C",
-      "StopAreaNumber": 1051,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3323449133058,
-      "longitude": 18.0620091038496
-    },
-    {
-      "SiteId": 9000,
-      "SiteName": "Stockholms central",
-      "StopAreaNumber": 1051,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3323449133058,
-      "longitude": 18.0620091038496
-    },
-    {
-      "SiteId": 2009000,
-      "SiteName": "Stockholms centralstation",
-      "StopAreaNumber": 1051,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3323449133058,
-      "longitude": 18.0620091038496
-    },
-    {
-      "SiteId": 9600,
-      "SiteName": "Stockholms östra",
-      "StopAreaNumber": 2221,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3465408398297,
-      "longitude": 18.0693332206442
     },
     {
       "SiteId": 9111,
       "SiteName": "Stora mossen",
       "StopAreaNumber": 1211,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3346739342857,
       "longitude": 17.9653388444492
-    },
-    {
-      "SiteId": 301,
-      "SiteName": "Strömkajen",
-      "StopAreaNumber": 3031,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3309374390762,
-      "longitude": 18.0742879543946
     },
     {
       "SiteId": 9164,
       "SiteName": "Stureby",
       "StopAreaNumber": 1651,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2746324840486,
       "longitude": 18.0556984632271
     },
@@ -981,54 +725,16 @@
       "SiteName": "Sundbyberg",
       "StopAreaNumber": 3431,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3604973242179,
       "longitude": 17.9730299115249
-    },
-    {
-      "SiteId": 1009325,
-      "SiteName": "Sundbybergs centrum",
-      "StopAreaNumber": 3431,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3604973242179,
-      "longitude": 17.9730299115249
-    },
-    {
-      "SiteId": 2009325,
-      "SiteName": "Sundbybergs station",
-      "StopAreaNumber": 3431,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3604973242179,
-      "longitude": 17.9730299115249
-    },
-    {
-      "SiteId": 3009325,
-      "SiteName": "Sundbybergs torg",
-      "StopAreaNumber": 3431,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3604973242179,
-      "longitude": 17.9730299115249
-    },
-    {
-      "SiteId": 1001019,
-      "SiteName": "Sveavägen / Kungsgatan",
-      "StopAreaNumber": 1111,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3356150110979,
-      "longitude": 18.0629641802656
     },
     {
       "SiteId": 9165,
       "SiteName": "Svedmyra",
       "StopAreaNumber": 1641,
       "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.2780033440723,
-      "longitude": 18.0679404114574
-    },
-    {
-      "SiteId": 1009165,
-      "SiteName": "Svedmyra T-station",
-      "StopAreaNumber": 1641,
-      "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2780033440723,
       "longitude": 18.0679404114574
     },
@@ -1037,6 +743,7 @@
       "SiteName": "Sätra",
       "StopAreaNumber": 2701,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2849531824229,
       "longitude": 17.9216135898457
     },
@@ -1045,16 +752,9 @@
       "SiteName": "Tallkrogen",
       "StopAreaNumber": 1841,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.27124893277,
       "longitude": 18.0855270227248
-    },
-    {
-      "SiteId": 1009001,
-      "SiteName": "Tcentralen",
-      "StopAreaNumber": 1051,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3323449133058,
-      "longitude": 18.0620091038496
     },
     {
       "SiteId": 9001,
@@ -1069,6 +769,7 @@
       "SiteName": "Tekniska högskolan",
       "StopAreaNumber": 2221,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3465408398297,
       "longitude": 18.0693332206442
     },
@@ -1077,6 +778,7 @@
       "SiteName": "Telefonplan",
       "StopAreaNumber": 2821,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2982563613465,
       "longitude": 17.9973712903092
     },
@@ -1085,14 +787,7 @@
       "SiteName": "Tensta",
       "StopAreaNumber": 3471,
       "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.394315989962,
-      "longitude": 17.9025808499041
-    },
-    {
-      "SiteId": 3786,
-      "SiteName": "Tensta centrum",
-      "StopAreaNumber": 3471,
-      "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.394315989962,
       "longitude": 17.9025808499041
     },
@@ -1101,86 +796,25 @@
       "SiteName": "Thorildsplan",
       "StopAreaNumber": 1161,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3315010977738,
       "longitude": 18.0158735076154
-    },
-    {
-      "SiteId": 1007385,
-      "SiteName": "Tre källors väg",
-      "StopAreaNumber": 2771,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.2433287961536,
-      "longitude": 17.8252422558522
-    },
-    {
-      "SiteId": 3768,
-      "SiteName": "Trondheimsgatan",
-      "StopAreaNumber": 3261,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.409708376421,
-      "longitude": 17.9269236406856
-    },
-    {
-      "SiteId": 3623,
-      "SiteName": "Ulvsundaplan",
-      "StopAreaNumber": 1211,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3346739342857,
-      "longitude": 17.9653388444492
     },
     {
       "SiteId": 9203,
       "SiteName": "Universitetet",
       "StopAreaNumber": 2231,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3653520484087,
       "longitude": 18.0548942030299
-    },
-    {
-      "SiteId": 1009203,
-      "SiteName": "Universitetet norra",
-      "StopAreaNumber": 2231,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3653520484087,
-      "longitude": 18.0548942030299
-    },
-    {
-      "SiteId": 1009306,
-      "SiteName": "V Skogen",
-      "StopAreaNumber": 3201,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3479729721488,
-      "longitude": 18.0034757023761
-    },
-    {
-      "SiteId": 1001082,
-      "SiteName": "Valhallavägen/Odengatan",
-      "StopAreaNumber": 2221,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3465408398297,
-      "longitude": 18.0693332206442
-    },
-    {
-      "SiteId": 1009326,
-      "SiteName": "Vreten",
-      "StopAreaNumber": 3421,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3543607460294,
-      "longitude": 17.9737817776856
     },
     {
       "SiteId": 9286,
       "SiteName": "Vårberg",
       "StopAreaNumber": 2721,
       "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.2759587823212,
-      "longitude": 17.8902468005107
-    },
-    {
-      "SiteId": 1796,
-      "SiteName": "Vårbergs centrum",
-      "StopAreaNumber": 2721,
-      "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2759587823212,
       "longitude": 17.8902468005107
     },
@@ -1189,6 +823,7 @@
       "SiteName": "Vårby gård",
       "StopAreaNumber": 2731,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2643929911102,
       "longitude": 17.8846468762987
     },
@@ -1197,14 +832,7 @@
       "SiteName": "Vällingby",
       "StopAreaNumber": 1301,
       "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3632218280982,
-      "longitude": 17.872113954753
-    },
-    {
-      "SiteId": 1009103,
-      "SiteName": "Vällingby centrum",
-      "StopAreaNumber": 1301,
-      "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3632218280982,
       "longitude": 17.872113954753
     },
@@ -1213,14 +841,7 @@
       "SiteName": "Västertorp",
       "StopAreaNumber": 2841,
       "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.2913602996078,
-      "longitude": 17.9667187843272
-    },
-    {
-      "SiteId": 1009261,
-      "SiteName": "Västertorps centrum",
-      "StopAreaNumber": 2841,
-      "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.2913602996078,
       "longitude": 17.9667187843272
     },
@@ -1229,6 +850,7 @@
       "SiteName": "Västra skogen",
       "StopAreaNumber": 3201,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3479729721488,
       "longitude": 18.0034757023761
     },
@@ -1237,6 +859,7 @@
       "SiteName": "Zinkensdamm",
       "StopAreaNumber": 2521,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.317704613899,
       "longitude": 18.0497079570178
     },
@@ -1245,6 +868,7 @@
       "SiteName": "Åkeshov",
       "StopAreaNumber": 1241,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3417486151278,
       "longitude": 17.9271317433921
     },
@@ -1253,6 +877,7 @@
       "SiteName": "Ängbyplan",
       "StopAreaNumber": 1251,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3419461297905,
       "longitude": 17.9071743692725
     },
@@ -1261,6 +886,7 @@
       "SiteName": "Örnsberg",
       "StopAreaNumber": 2621,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 2,
       "latitude": 59.3054259984142,
       "longitude": 17.9891225410922
     },
@@ -1269,16 +895,9 @@
       "SiteName": "Östermalmstorg",
       "StopAreaNumber": 2101,
       "StopAreaTypeCode": "METROSTN",
+      "from_central_direction": 1,
       "latitude": 59.3349688288931,
       "longitude": 18.0763846822514
-    },
-    {
-      "SiteId": 1009600,
-      "SiteName": "Östra station",
-      "StopAreaNumber": 2221,
-      "StopAreaTypeCode": "METROSTN",
-      "latitude": 59.3465408398297,
-      "longitude": 18.0693332206442
     }
   ],
   "RAILWSTN": [
@@ -1287,14 +906,7 @@
       "SiteName": "Barkarby",
       "StopAreaNumber": 6051,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.4044039583282,
-      "longitude": 17.8668019800996
-    },
-    {
-      "SiteId": 1009703,
-      "SiteName": "Barkarby station",
-      "StopAreaNumber": 6051,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 2,
       "latitude": 59.4044039583282,
       "longitude": 17.8668019800996
     },
@@ -1303,14 +915,7 @@
       "SiteName": "Bro",
       "StopAreaNumber": 6091,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.5125796432899,
-      "longitude": 17.6321036977826
-    },
-    {
-      "SiteId": 1009711,
-      "SiteName": "Bro station",
-      "StopAreaNumber": 6091,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 2,
       "latitude": 59.5125796432899,
       "longitude": 17.6321036977826
     },
@@ -1319,6 +924,7 @@
       "SiteName": "Bålsta",
       "StopAreaNumber": 6101,
       "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 2,
       "latitude": 59.5684711623205,
       "longitude": 17.5351234776509
     },
@@ -1327,22 +933,7 @@
       "SiteName": "Flemingsberg",
       "StopAreaNumber": 5171,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.2190425892828,
-      "longitude": 17.9471918783686
-    },
-    {
-      "SiteId": 7006,
-      "SiteName": "Flemingsbergs station",
-      "StopAreaNumber": 5171,
-      "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.2190425892828,
-      "longitude": 17.9471918783686
-    },
-    {
-      "SiteId": 7007,
-      "SiteName": "Flemingsbergs stn (Fjärrtåg)",
-      "StopAreaNumber": 5171,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 1,
       "latitude": 59.2190425892828,
       "longitude": 17.9471918783686
     },
@@ -1351,6 +942,7 @@
       "SiteName": "Gnesta",
       "StopAreaNumber": 5271,
       "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 1,
       "latitude": 59.0463837990042,
       "longitude": 17.3205014086444
     },
@@ -1359,6 +951,7 @@
       "SiteName": "Gröndalsviken",
       "StopAreaNumber": 6241,
       "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 1,
       "latitude": 58.8989243262914,
       "longitude": 17.9318806950938
     },
@@ -1367,14 +960,7 @@
       "SiteName": "Handen",
       "StopAreaNumber": 6151,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.1681595514654,
-      "longitude": 18.1350336654648
-    },
-    {
-      "SiteId": 1009730,
-      "SiteName": "Handenterminalen",
-      "StopAreaNumber": 6151,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 1,
       "latitude": 59.1681595514654,
       "longitude": 18.1350336654648
     },
@@ -1383,14 +969,7 @@
       "SiteName": "Helenelund",
       "StopAreaNumber": 5051,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.4093843848227,
-      "longitude": 17.9620434225621
-    },
-    {
-      "SiteId": 1009507,
-      "SiteName": "Helenelunds station",
-      "StopAreaNumber": 5051,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 2,
       "latitude": 59.4093843848227,
       "longitude": 17.9620434225621
     },
@@ -1399,6 +978,7 @@
       "SiteName": "Hemfosa",
       "StopAreaNumber": 6201,
       "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 1,
       "latitude": 59.0688885323182,
       "longitude": 17.9765365727196
     },
@@ -1407,22 +987,7 @@
       "SiteName": "Huddinge",
       "StopAreaNumber": 5161,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.2373789647688,
-      "longitude": 17.9804599896234
-    },
-    {
-      "SiteId": 1009527,
-      "SiteName": "Huddinge centrum",
-      "StopAreaNumber": 5161,
-      "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.2373789647688,
-      "longitude": 17.9804599896234
-    },
-    {
-      "SiteId": 2009527,
-      "SiteName": "Huddinge station",
-      "StopAreaNumber": 5161,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 1,
       "latitude": 59.2373789647688,
       "longitude": 17.9804599896234
     },
@@ -1431,14 +996,7 @@
       "SiteName": "Häggvik",
       "StopAreaNumber": 5071,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.4435396080262,
-      "longitude": 17.9331849765592
-    },
-    {
-      "SiteId": 1009505,
-      "SiteName": "Häggviks station",
-      "StopAreaNumber": 5071,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 2,
       "latitude": 59.4435396080262,
       "longitude": 17.9331849765592
     },
@@ -1447,6 +1005,7 @@
       "SiteName": "Hälsovägen",
       "StopAreaNumber": 5171,
       "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 1,
       "latitude": 59.2190425892828,
       "longitude": 17.9471918783686
     },
@@ -1455,14 +1014,7 @@
       "SiteName": "Jakobsberg",
       "StopAreaNumber": 6061,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.4243633114812,
-      "longitude": 17.8330544406513
-    },
-    {
-      "SiteId": 1009702,
-      "SiteName": "Jakobsbergs station",
-      "StopAreaNumber": 6061,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 2,
       "latitude": 59.4243633114812,
       "longitude": 17.8330544406513
     },
@@ -1471,22 +1023,7 @@
       "SiteName": "Jordbro",
       "StopAreaNumber": 6161,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.1423345589651,
-      "longitude": 18.1263751389649
-    },
-    {
-      "SiteId": 1009729,
-      "SiteName": "Jordbro station",
-      "StopAreaNumber": 6161,
-      "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.1423345589651,
-      "longitude": 18.1263751389649
-    },
-    {
-      "SiteId": 2009729,
-      "SiteName": "Jordbro station (Nynäsv)",
-      "StopAreaNumber": 6161,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 1,
       "latitude": 59.1423345589651,
       "longitude": 18.1263751389649
     },
@@ -1495,14 +1032,7 @@
       "SiteName": "Järna",
       "StopAreaNumber": 5251,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.0934767996316,
-      "longitude": 17.5672341883431
-    },
-    {
-      "SiteId": 1009542,
-      "SiteName": "Järna station",
-      "StopAreaNumber": 5251,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 1,
       "latitude": 59.0934767996316,
       "longitude": 17.5672341883431
     },
@@ -1511,22 +1041,7 @@
       "SiteName": "Kallhäll",
       "StopAreaNumber": 6071,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.4528890613171,
-      "longitude": 17.8063148572916
-    },
-    {
-      "SiteId": 1009701,
-      "SiteName": "Kallhälls centrum",
-      "StopAreaNumber": 6071,
-      "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.4528890613171,
-      "longitude": 17.8063148572916
-    },
-    {
-      "SiteId": 2009701,
-      "SiteName": "Kallhälls station",
-      "StopAreaNumber": 6071,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 2,
       "latitude": 59.4528890613171,
       "longitude": 17.8063148572916
     },
@@ -1535,14 +1050,7 @@
       "SiteName": "Karlberg",
       "StopAreaNumber": 5021,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.3395987427238,
-      "longitude": 18.0291966192045
-    },
-    {
-      "SiteId": 1009510,
-      "SiteName": "Karlbergs station",
-      "StopAreaNumber": 5021,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 2,
       "latitude": 59.3395987427238,
       "longitude": 18.0291966192045
     },
@@ -1551,22 +1059,16 @@
       "SiteName": "Krigslida",
       "StopAreaNumber": 6181,
       "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 1,
       "latitude": 59.1096002193194,
       "longitude": 18.0674318203884
     },
     {
-      "SiteId": 1009700,
+      "SiteId": 9700,
       "SiteName": "Kungsängen",
       "StopAreaNumber": 6081,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.4775954598081,
-      "longitude": 17.7518468196534
-    },
-    {
-      "SiteId": 9700,
-      "SiteName": "Kungsängens station",
-      "StopAreaNumber": 6081,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 2,
       "latitude": 59.4775954598081,
       "longitude": 17.7518468196534
     },
@@ -1575,14 +1077,7 @@
       "SiteName": "Märsta",
       "StopAreaNumber": 5121,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.6234652020521,
-      "longitude": 17.8609100977833
-    },
-    {
-      "SiteId": 1009500,
-      "SiteName": "Märsta station",
-      "StopAreaNumber": 5121,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 2,
       "latitude": 59.6234652020521,
       "longitude": 17.8609100977833
     },
@@ -1591,6 +1086,7 @@
       "SiteName": "Mölnbo",
       "StopAreaNumber": 5261,
       "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 1,
       "latitude": 59.0483454007072,
       "longitude": 17.4227573554723
     },
@@ -1599,14 +1095,7 @@
       "SiteName": "Norrviken",
       "StopAreaNumber": 5081,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.457974512238,
-      "longitude": 17.9245843453857
-    },
-    {
-      "SiteId": 1009504,
-      "SiteName": "Norrvikens station",
-      "StopAreaNumber": 5081,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 2,
       "latitude": 59.457974512238,
       "longitude": 17.9245843453857
     },
@@ -1615,6 +1104,7 @@
       "SiteName": "Nynäsgård",
       "StopAreaNumber": 6231,
       "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 1,
       "latitude": 58.9134762845046,
       "longitude": 17.942514225415
     },
@@ -1623,14 +1113,7 @@
       "SiteName": "Nynäshamn",
       "StopAreaNumber": 6251,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 58.9012253445937,
-      "longitude": 17.9513203775916
-    },
-    {
-      "SiteId": 1009720,
-      "SiteName": "Nynäshamns station",
-      "StopAreaNumber": 6251,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 1,
       "latitude": 58.9012253445937,
       "longitude": 17.9513203775916
     },
@@ -1639,14 +1122,7 @@
       "SiteName": "Rosersberg",
       "StopAreaNumber": 5111,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.5830292196293,
-      "longitude": 17.8802334891178
-    },
-    {
-      "SiteId": 1009501,
-      "SiteName": "Rosersbergs station",
-      "StopAreaNumber": 5111,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 2,
       "latitude": 59.5830292196293,
       "longitude": 17.8802334891178
     },
@@ -1655,22 +1131,7 @@
       "SiteName": "Rotebro",
       "StopAreaNumber": 5091,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.476560637556,
-      "longitude": 17.914099929974
-    },
-    {
-      "SiteId": 1009503,
-      "SiteName": "Rotebro station",
-      "StopAreaNumber": 5091,
-      "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.476560637556,
-      "longitude": 17.914099929974
-    },
-    {
-      "SiteId": 2009503,
-      "SiteName": "Rotebro station östra",
-      "StopAreaNumber": 5091,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 2,
       "latitude": 59.476560637556,
       "longitude": 17.914099929974
     },
@@ -1679,14 +1140,7 @@
       "SiteName": "Rönninge",
       "StopAreaNumber": 5201,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.1935933850953,
-      "longitude": 17.7515633393888
-    },
-    {
-      "SiteId": 1009523,
-      "SiteName": "Rönninge station",
-      "StopAreaNumber": 5201,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 1,
       "latitude": 59.1935933850953,
       "longitude": 17.7515633393888
     },
@@ -1695,6 +1149,7 @@
       "SiteName": "Segersäng",
       "StopAreaNumber": 6211,
       "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 1,
       "latitude": 59.0284434159242,
       "longitude": 17.926318690862
     },
@@ -1703,14 +1158,7 @@
       "SiteName": "Skogås",
       "StopAreaNumber": 6141,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.2184088959133,
-      "longitude": 18.1542396802936
-    },
-    {
-      "SiteId": 1009731,
-      "SiteName": "Skogås centrum",
-      "StopAreaNumber": 6141,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 1,
       "latitude": 59.2184088959133,
       "longitude": 18.1542396802936
     },
@@ -1719,22 +1167,7 @@
       "SiteName": "Sollentuna",
       "StopAreaNumber": 5061,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.4280006043487,
-      "longitude": 17.9488464788857
-    },
-    {
-      "SiteId": 1009506,
-      "SiteName": "Sollentuna centrum",
-      "StopAreaNumber": 5061,
-      "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.4280006043487,
-      "longitude": 17.9488464788857
-    },
-    {
-      "SiteId": 2009506,
-      "SiteName": "Sollentuna station",
-      "StopAreaNumber": 5061,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 2,
       "latitude": 59.4280006043487,
       "longitude": 17.9488464788857
     },
@@ -1743,14 +1176,7 @@
       "SiteName": "Solna",
       "StopAreaNumber": 5031,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.3664951754893,
-      "longitude": 18.0096061090093
-    },
-    {
-      "SiteId": 1009509,
-      "SiteName": "Solna station",
-      "StopAreaNumber": 5031,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 2,
       "latitude": 59.3664951754893,
       "longitude": 18.0096061090093
     },
@@ -1759,54 +1185,25 @@
       "SiteName": "Spånga",
       "StopAreaNumber": 6041,
       "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 2,
       "latitude": 59.3843169985891,
       "longitude": 17.8967359769197
-    },
-    {
-      "SiteId": 1009704,
-      "SiteName": "Spånga station",
-      "StopAreaNumber": 6041,
-      "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.3843169985891,
-      "longitude": 17.8967359769197
-    },
-    {
-      "SiteId": 1009529,
-      "SiteName": "Stockholm International Fairs",
-      "StopAreaNumber": 5141,
-      "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.2785293734534,
-      "longitude": 18.010579350293
     },
     {
       "SiteId": 9530,
       "SiteName": "Stockholms södra",
       "StopAreaNumber": 5131,
       "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 1,
       "latitude": 59.3136148940569,
       "longitude": 18.0618920972834
-    },
-    {
-      "SiteId": 2009529,
-      "SiteName": "Stockholmsmässan",
-      "StopAreaNumber": 5141,
-      "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.2785293734534,
-      "longitude": 18.010579350293
     },
     {
       "SiteId": 9528,
       "SiteName": "Stuvsta",
       "StopAreaNumber": 5151,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.253284405428,
-      "longitude": 17.9958508119492
-    },
-    {
-      "SiteId": 1009528,
-      "SiteName": "Stuvsta station",
-      "StopAreaNumber": 5151,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 1,
       "latitude": 59.253284405428,
       "longitude": 17.9958508119492
     },
@@ -1815,6 +1212,7 @@
       "SiteName": "Södertälje centrum",
       "StopAreaNumber": 5231,
       "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 1,
       "latitude": 59.1920626673122,
       "longitude": 17.6272912987098
     },
@@ -1823,6 +1221,7 @@
       "SiteName": "Södertälje hamn",
       "StopAreaNumber": 5221,
       "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 1,
       "latitude": 59.1789721395906,
       "longitude": 17.6463628503415
     },
@@ -1831,46 +1230,16 @@
       "SiteName": "Södertälje Syd",
       "StopAreaNumber": 5241,
       "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 1,
       "latitude": 59.1624163594534,
       "longitude": 17.6437249100011
-    },
-    {
-      "SiteId": 1009530,
-      "SiteName": "Södra station",
-      "StopAreaNumber": 5131,
-      "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.3136148940569,
-      "longitude": 18.0618920972834
-    },
-    {
-      "SiteId": 1365,
-      "SiteName": "Södra station (på Rosenlundsg)",
-      "StopAreaNumber": 5131,
-      "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.3136148940569,
-      "longitude": 18.0618920972834
-    },
-    {
-      "SiteId": 1339,
-      "SiteName": "Södra station(på Swedenborgsg)",
-      "StopAreaNumber": 5131,
-      "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.3136148940569,
-      "longitude": 18.0618920972834
     },
     {
       "SiteId": 9732,
       "SiteName": "Trångsund",
       "StopAreaNumber": 6131,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.2276182961043,
-      "longitude": 18.1309910679969
-    },
-    {
-      "SiteId": 1009732,
-      "SiteName": "Trångsunds torg",
-      "StopAreaNumber": 6131,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 1,
       "latitude": 59.2276182961043,
       "longitude": 18.1309910679969
     },
@@ -1879,22 +1248,7 @@
       "SiteName": "Tullinge",
       "StopAreaNumber": 5181,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.2054046188556,
-      "longitude": 17.9037863856047
-    },
-    {
-      "SiteId": 1009525,
-      "SiteName": "Tullinge station",
-      "StopAreaNumber": 5181,
-      "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.2054046188556,
-      "longitude": 17.9037863856047
-    },
-    {
-      "SiteId": 2009525,
-      "SiteName": "Tullinge station södra",
-      "StopAreaNumber": 5181,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 1,
       "latitude": 59.2054046188556,
       "longitude": 17.9037863856047
     },
@@ -1903,22 +1257,7 @@
       "SiteName": "Tumba",
       "StopAreaNumber": 5191,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.1996577865569,
-      "longitude": 17.8376307585973
-    },
-    {
-      "SiteId": 1009524,
-      "SiteName": "Tumba centrum",
-      "StopAreaNumber": 5191,
-      "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.1996577865569,
-      "longitude": 17.8376307585973
-    },
-    {
-      "SiteId": 2009524,
-      "SiteName": "Tumba station",
-      "StopAreaNumber": 5191,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 1,
       "latitude": 59.1996577865569,
       "longitude": 17.8376307585973
     },
@@ -1927,14 +1266,7 @@
       "SiteName": "Tungelsta",
       "StopAreaNumber": 6191,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.1024787887584,
-      "longitude": 18.0451765239132
-    },
-    {
-      "SiteId": 1009726,
-      "SiteName": "Tungelsta station",
-      "StopAreaNumber": 6191,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 1,
       "latitude": 59.1024787887584,
       "longitude": 18.0451765239132
     },
@@ -1943,14 +1275,7 @@
       "SiteName": "Ulriksdal",
       "StopAreaNumber": 5041,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.3799092284371,
-      "longitude": 18.001071782866
-    },
-    {
-      "SiteId": 1009508,
-      "SiteName": "Ulriksdals station",
-      "StopAreaNumber": 5041,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 2,
       "latitude": 59.3799092284371,
       "longitude": 18.001071782866
     },
@@ -1959,22 +1284,7 @@
       "SiteName": "Upplands Väsby",
       "StopAreaNumber": 5101,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.5210675517557,
-      "longitude": 17.8992056044706
-    },
-    {
-      "SiteId": 1009502,
-      "SiteName": "Upplands Väsby station",
-      "StopAreaNumber": 5101,
-      "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.5210675517557,
-      "longitude": 17.8992056044706
-    },
-    {
-      "SiteId": 2009502,
-      "SiteName": "Upplands Väsby station västra",
-      "StopAreaNumber": 5101,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 2,
       "latitude": 59.5210675517557,
       "longitude": 17.8992056044706
     },
@@ -1983,14 +1293,7 @@
       "SiteName": "Västerhaninge",
       "StopAreaNumber": 6171,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.1221602478616,
-      "longitude": 18.1008707374258
-    },
-    {
-      "SiteId": 1009728,
-      "SiteName": "Västerhaninge station",
-      "StopAreaNumber": 6171,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 1,
       "latitude": 59.1221602478616,
       "longitude": 18.1008707374258
     },
@@ -1999,6 +1302,7 @@
       "SiteName": "Årstaberg",
       "StopAreaNumber": 5135,
       "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 1,
       "latitude": 59.3000263195401,
       "longitude": 18.0291068162036
     },
@@ -2007,14 +1311,7 @@
       "SiteName": "Älvsjö",
       "StopAreaNumber": 5141,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.2785293734534,
-      "longitude": 18.010579350293
-    },
-    {
-      "SiteId": 3009529,
-      "SiteName": "Älvsjö station",
-      "StopAreaNumber": 5141,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 1,
       "latitude": 59.2785293734534,
       "longitude": 18.010579350293
     },
@@ -2023,14 +1320,7 @@
       "SiteName": "Ösmo",
       "StopAreaNumber": 6221,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 58.9845405491788,
-      "longitude": 17.9026222822154
-    },
-    {
-      "SiteId": 8649,
-      "SiteName": "Ösmo station",
-      "StopAreaNumber": 6221,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 1,
       "latitude": 58.9845405491788,
       "longitude": 17.9026222822154
     },
@@ -2039,14 +1329,7 @@
       "SiteName": "Östertälje",
       "StopAreaNumber": 5211,
       "StopAreaTypeCode": "RAILWSTN",
-      "latitude": 59.183785979138,
-      "longitude": 17.6614410184034
-    },
-    {
-      "SiteId": 1009522,
-      "SiteName": "Östertälje station",
-      "StopAreaNumber": 5211,
-      "StopAreaTypeCode": "RAILWSTN",
+      "from_central_direction": 1,
       "latitude": 59.183785979138,
       "longitude": 17.6614410184034
     }
