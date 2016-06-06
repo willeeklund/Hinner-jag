@@ -38,7 +38,7 @@ parseJourneyPatterns = function () {
         });
         console.log('Done with points'.green, records.length);
         // Print to file
-        var outputFilename = __dirname + '/journeypatternpoints.json';
+        var outputFilename = __dirname + '/journeypatternpoints_from_xls.json';
         fs.writeFile(outputFilename, JSON.stringify({'journeyPatternList': journeyPatternList}, null, 2), function(err) {
             if (err) {
               console.log(err);

@@ -54,10 +54,7 @@
 		027BA9BF1CC2AFD7007085E5 /* TransportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05BA21CBEE01100BDF4DE /* TransportType.swift */; };
 		027BA9C21CC2B180007085E5 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05B861CBEB58A00BDF4DE /* CoreDataStore.swift */; };
 		027BA9C31CC2BA2B007085E5 /* Site.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05B8C1CBED1B400BDF4DE /* Site.swift */; };
-		027BA9C41CC2BA3E007085E5 /* Site+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05B8B1CBED1B400BDF4DE /* Site+CoreDataProperties.swift */; };
-		027BA9C51CC2BA44007085E5 /* JourneyPattern+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05B8D1CBED1B400BDF4DE /* JourneyPattern+CoreDataProperties.swift */; };
 		027BA9C61CC2BA48007085E5 /* JourneyPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05B8E1CBED1B400BDF4DE /* JourneyPattern.swift */; };
-		027BA9C71CC2BA4C007085E5 /* Line+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05B8F1CBED1B400BDF4DE /* Line+CoreDataProperties.swift */; };
 		027BA9C81CC2BA50007085E5 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05B901CBED1B400BDF4DE /* Line.swift */; };
 		027BA9C91CC2BA57007085E5 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0210D46D1CBE0A360097D5D9 /* DataModel.xcdatamodeld */; };
 		028143551CA1E82700A6D4D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028143541CA1E82700A6D4D7 /* AppDelegate.swift */; };
@@ -117,16 +114,25 @@
 		02CE16291BD952E5009F788E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02CE16281BD952E5009F788E /* Assets.xcassets */; };
 		02D05B871CBEB58A00BDF4DE /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05B861CBEB58A00BDF4DE /* CoreDataStore.swift */; };
 		02D05B881CBEB64000BDF4DE /* LocateStationIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0227D92F1BDFFF9E00E734BB /* LocateStationIOS.swift */; };
-		02D05B911CBED1B400BDF4DE /* Site+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05B8B1CBED1B400BDF4DE /* Site+CoreDataProperties.swift */; };
 		02D05B921CBED1B400BDF4DE /* Site.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05B8C1CBED1B400BDF4DE /* Site.swift */; };
-		02D05B931CBED1B400BDF4DE /* JourneyPattern+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05B8D1CBED1B400BDF4DE /* JourneyPattern+CoreDataProperties.swift */; };
 		02D05B941CBED1B400BDF4DE /* JourneyPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05B8E1CBED1B400BDF4DE /* JourneyPattern.swift */; };
-		02D05B951CBED1B400BDF4DE /* Line+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05B8F1CBED1B400BDF4DE /* Line+CoreDataProperties.swift */; };
 		02D05B961CBED1B400BDF4DE /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05B901CBED1B400BDF4DE /* Line.swift */; };
 		02D05BA31CBEE01100BDF4DE /* TransportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D05BA21CBEE01100BDF4DE /* TransportType.swift */; };
+		02D2D70A1CFC157200FED0EC /* Site+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D2D7061CFC157200FED0EC /* Site+CoreDataProperties.swift */; };
+		02D2D70B1CFC157200FED0EC /* Site+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D2D7061CFC157200FED0EC /* Site+CoreDataProperties.swift */; };
+		02D2D70C1CFC157200FED0EC /* JourneyPattern+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D2D7071CFC157200FED0EC /* JourneyPattern+CoreDataProperties.swift */; };
+		02D2D70D1CFC157200FED0EC /* JourneyPattern+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D2D7071CFC157200FED0EC /* JourneyPattern+CoreDataProperties.swift */; };
+		02D2D70E1CFC157200FED0EC /* Line+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D2D7081CFC157200FED0EC /* Line+CoreDataProperties.swift */; };
+		02D2D70F1CFC157200FED0EC /* Line+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D2D7081CFC157200FED0EC /* Line+CoreDataProperties.swift */; };
+		02D2D7101CFC157200FED0EC /* StopArea+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D2D7091CFC157200FED0EC /* StopArea+CoreDataProperties.swift */; };
+		02D2D7111CFC157200FED0EC /* StopArea+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D2D7091CFC157200FED0EC /* StopArea+CoreDataProperties.swift */; };
+		02D2D7131CFC15C500FED0EC /* StopArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D2D7121CFC15C500FED0EC /* StopArea.swift */; };
+		02D2D7141CFC15C500FED0EC /* StopArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D2D7121CFC15C500FED0EC /* StopArea.swift */; };
 		02D4E8431AB61DDC00FD597F /* Hinner_jag_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D4E8421AB61DDC00FD597F /* Hinner_jag_Tests.swift */; };
 		02DDF84E1ABDB19200A9AF12 /* TravelDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DDF84A1ABDAFBB00A9AF12 /* TravelDetailsCell.swift */; };
 		02DDF84F1ABDB19400A9AF12 /* TravelDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DDF84A1ABDAFBB00A9AF12 /* TravelDetailsCell.swift */; };
+		02E4AEF11CFC928E00F7819E /* stopareasites.json in Resources */ = {isa = PBXBuildFile; fileRef = 02E4AEF01CFC928E00F7819E /* stopareasites.json */; };
+		02E4AEF21CFC928E00F7819E /* stopareasites.json in Resources */ = {isa = PBXBuildFile; fileRef = 02E4AEF01CFC928E00F7819E /* stopareasites.json */; };
 		02E90DA81AB0FBAF00FD5DB7 /* HinnerJagKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0211B20B1AAE37FB00947C45 /* HinnerJagKit.framework */; };
 		02F755BB1AB621210088D6C8 /* metro_stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 02F755BA1AB621210088D6C8 /* metro_stations.json */; };
 		9A9061E51CD0707700999F2F /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9061E31CD0707700999F2F /* Fabric.framework */; };
@@ -363,18 +369,22 @@
 		02CE16281BD952E5009F788E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02CE16421BD9776E009F788E /* HinnerJagWatchOS2 Extension-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HinnerJagWatchOS2 Extension-Bridging-Header.h"; sourceTree = "<group>"; };
 		02D05B861CBEB58A00BDF4DE /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStore.swift; path = HinnerJagKit/CoreDataStore.swift; sourceTree = "<group>"; };
-		02D05B8B1CBED1B400BDF4DE /* Site+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Site+CoreDataProperties.swift"; path = "HinnerJagKit/Site+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		02D05B8C1CBED1B400BDF4DE /* Site.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Site.swift; path = HinnerJagKit/Site.swift; sourceTree = "<group>"; };
-		02D05B8D1CBED1B400BDF4DE /* JourneyPattern+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "JourneyPattern+CoreDataProperties.swift"; path = "HinnerJagKit/JourneyPattern+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		02D05B8E1CBED1B400BDF4DE /* JourneyPattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JourneyPattern.swift; path = HinnerJagKit/JourneyPattern.swift; sourceTree = "<group>"; };
-		02D05B8F1CBED1B400BDF4DE /* Line+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Line+CoreDataProperties.swift"; path = "HinnerJagKit/Line+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		02D05B901CBED1B400BDF4DE /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Line.swift; path = HinnerJagKit/Line.swift; sourceTree = "<group>"; };
 		02D05BA21CBEE01100BDF4DE /* TransportType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportType.swift; sourceTree = "<group>"; };
+		02D2D6C51CFA4DCF00FED0EC /* DataModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DataModel 2.xcdatamodel"; sourceTree = "<group>"; };
+		02D2D7061CFC157200FED0EC /* Site+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Site+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		02D2D7071CFC157200FED0EC /* JourneyPattern+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JourneyPattern+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		02D2D7081CFC157200FED0EC /* Line+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Line+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		02D2D7091CFC157200FED0EC /* StopArea+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StopArea+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		02D2D7121CFC15C500FED0EC /* StopArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopArea.swift; sourceTree = "<group>"; };
 		02D4E83E1AB61DDC00FD597F /* Hinner jag Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hinner jag Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		02D4E8411AB61DDC00FD597F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02D4E8421AB61DDC00FD597F /* Hinner_jag_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hinner_jag_Tests.swift; sourceTree = "<group>"; };
 		02DDF8481ABDAFAE00A9AF12 /* TravelHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelHeaderCell.swift; sourceTree = "<group>"; };
 		02DDF84A1ABDAFBB00A9AF12 /* TravelDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelDetailsCell.swift; sourceTree = "<group>"; };
+		02E4AEF01CFC928E00F7819E /* stopareasites.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stopareasites.json; sourceTree = "<group>"; };
 		02F755BA1AB621210088D6C8 /* metro_stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = metro_stations.json; sourceTree = "<group>"; };
 		9A9061E31CD0707700999F2F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		9A9061E41CD0707700999F2F /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -648,6 +658,7 @@
 		0262F4221CC399FC00028D5B /* JSON data */ = {
 			isa = PBXGroup;
 			children = (
+				02E4AEF01CFC928E00F7819E /* stopareasites.json */,
 				0262F4231CC39A3400028D5B /* journeypatternpoints.json */,
 				02F755BA1AB621210088D6C8 /* metro_stations.json */,
 			);
@@ -736,13 +747,15 @@
 		02D05B971CBED1BD00BDF4DE /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				02D2D7061CFC157200FED0EC /* Site+CoreDataProperties.swift */,
+				02D2D7071CFC157200FED0EC /* JourneyPattern+CoreDataProperties.swift */,
+				02D2D7081CFC157200FED0EC /* Line+CoreDataProperties.swift */,
+				02D2D7091CFC157200FED0EC /* StopArea+CoreDataProperties.swift */,
 				02D05B861CBEB58A00BDF4DE /* CoreDataStore.swift */,
 				0210D46D1CBE0A360097D5D9 /* DataModel.xcdatamodeld */,
-				02D05B8B1CBED1B400BDF4DE /* Site+CoreDataProperties.swift */,
 				02D05B8C1CBED1B400BDF4DE /* Site.swift */,
-				02D05B8D1CBED1B400BDF4DE /* JourneyPattern+CoreDataProperties.swift */,
+				02D2D7121CFC15C500FED0EC /* StopArea.swift */,
 				02D05B8E1CBED1B400BDF4DE /* JourneyPattern.swift */,
-				02D05B8F1CBED1B400BDF4DE /* Line+CoreDataProperties.swift */,
 				02D05B901CBED1B400BDF4DE /* Line.swift */,
 			);
 			name = CoreData;
@@ -1087,6 +1100,7 @@
 				02C592A11B013EAD002A88E4 /* test_departures_9720_nynashamn.json in Resources */,
 				0262F4241CC39A3400028D5B /* journeypatternpoints.json in Resources */,
 				02B68E521AC5B36D00EFAA66 /* test_departures.json in Resources */,
+				02E4AEF11CFC928E00F7819E /* stopareasites.json in Resources */,
 				023F4B7C1AEA15F500706872 /* test_departures_9520_sodertalje_centrum.json in Resources */,
 				02F755BB1AB621210088D6C8 /* metro_stations.json in Resources */,
 			);
@@ -1119,6 +1133,7 @@
 				022238C01BE0047100E32EBD /* test_departures_9720_nynashamn.json in Resources */,
 				0262F4251CC39A3400028D5B /* journeypatternpoints.json in Resources */,
 				022238BB1BE0041900E32EBD /* metro_stations.json in Resources */,
+				02E4AEF21CFC928E00F7819E /* stopareasites.json in Resources */,
 				022238BE1BE0046B00E32EBD /* test_departures_9520_sodertalje_centrum.json in Resources */,
 				022238BD1BE0046800E32EBD /* test_departures_9510_karlberg.json in Resources */,
 			);
@@ -1189,22 +1204,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02D05B951CBED1B400BDF4DE /* Line+CoreDataProperties.swift in Sources */,
+				02D2D70A1CFC157200FED0EC /* Site+CoreDataProperties.swift in Sources */,
 				0295DD441AC7F6E500D850BA /* Utils.swift in Sources */,
 				02D05BA31CBEE01100BDF4DE /* TransportType.swift in Sources */,
 				0210D46F1CBE0A360097D5D9 /* DataModel.xcdatamodeld in Sources */,
-				02D05B911CBED1B400BDF4DE /* Site+CoreDataProperties.swift in Sources */,
-				02D05B931CBED1B400BDF4DE /* JourneyPattern+CoreDataProperties.swift in Sources */,
+				02D2D7101CFC157200FED0EC /* StopArea+CoreDataProperties.swift in Sources */,
 				0211B2301AAE389A00947C45 /* LocateStation.swift in Sources */,
 				0299B6A91CD00684003CEDE8 /* Constants.swift in Sources */,
 				02D05B941CBED1B400BDF4DE /* JourneyPattern.swift in Sources */,
+				02D2D7131CFC15C500FED0EC /* StopArea.swift in Sources */,
 				0211B2321AAE38B100947C45 /* Departure.swift in Sources */,
 				0248BCB11C9CB5E500F0F05A /* NSTimerExtension.swift in Sources */,
 				02D05B871CBEB58A00BDF4DE /* CoreDataStore.swift in Sources */,
 				02D05B881CBEB64000BDF4DE /* LocateStationIOS.swift in Sources */,
+				02D2D70E1CFC157200FED0EC /* Line+CoreDataProperties.swift in Sources */,
 				02D05B961CBED1B400BDF4DE /* Line.swift in Sources */,
 				02D05B921CBED1B400BDF4DE /* Site.swift in Sources */,
 				0211B22E1AAE387500947C45 /* RealtimeDepartures.swift in Sources */,
+				02D2D70C1CFC157200FED0EC /* JourneyPattern+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1235,22 +1252,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				027BA9C71CC2BA4C007085E5 /* Line+CoreDataProperties.swift in Sources */,
-				027BA9C41CC2BA3E007085E5 /* Site+CoreDataProperties.swift in Sources */,
+				02D2D70B1CFC157200FED0EC /* Site+CoreDataProperties.swift in Sources */,
 				0227D92A1BDFFED400E734BB /* RealtimeDepartures.swift in Sources */,
 				027BA9C91CC2BA57007085E5 /* DataModel.xcdatamodeld in Sources */,
 				0227D92B1BDFFEDB00E734BB /* Departure.swift in Sources */,
-				027BA9C51CC2BA44007085E5 /* JourneyPattern+CoreDataProperties.swift in Sources */,
+				02D2D7111CFC157200FED0EC /* StopArea+CoreDataProperties.swift in Sources */,
 				027BA9C21CC2B180007085E5 /* CoreDataStore.swift in Sources */,
 				0299B6AA1CD006DE003CEDE8 /* Constants.swift in Sources */,
 				027BA9C61CC2BA48007085E5 /* JourneyPattern.swift in Sources */,
+				02D2D7141CFC15C500FED0EC /* StopArea.swift in Sources */,
 				0227D9281BDFFE8800E734BB /* LocateStation.swift in Sources */,
 				0227D9321BE0001700E734BB /* LocateStationWatch.swift in Sources */,
 				027BA9BF1CC2AFD7007085E5 /* TransportType.swift in Sources */,
 				0248BCB21C9CB63100F0F05A /* NSTimerExtension.swift in Sources */,
+				02D2D70F1CFC157200FED0EC /* Line+CoreDataProperties.swift in Sources */,
 				027BA9C81CC2BA50007085E5 /* Line.swift in Sources */,
 				027BA9C31CC2BA2B007085E5 /* Site.swift in Sources */,
 				022238BA1BE0031200E32EBD /* Utils.swift in Sources */,
+				02D2D70D1CFC157200FED0EC /* JourneyPattern+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1937,9 +1956,10 @@
 		0210D46D1CBE0A360097D5D9 /* DataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				02D2D6C51CFA4DCF00FED0EC /* DataModel 2.xcdatamodel */,
 				0210D46E1CBE0A360097D5D9 /* DataModel.xcdatamodel */,
 			);
-			currentVersion = 0210D46E1CBE0A360097D5D9 /* DataModel.xcdatamodel */;
+			currentVersion = 02D2D6C51CFA4DCF00FED0EC /* DataModel 2.xcdatamodel */;
 			name = DataModel.xcdatamodeld;
 			path = HinnerJagKit/DataModel.xcdatamodeld;
 			sourceTree = "<group>";

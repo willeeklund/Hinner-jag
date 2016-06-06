@@ -86,7 +86,7 @@ public class Utils
             let directionString: String
             if nil != dept.transportType && .Bus == dept.transportType! {
                 let lineNumberInt = Int(dept.lineNumber)
-                if nil != lineNumberInt && Line.isLineActive(lineNumberInt!) {
+                if nil != lineNumberInt && Line.isLineActive(lineNumberInt!, withStopAreaTypeCode: dept.transportType!.stopAreaTypeCode()) {
                     directionString = "STAR"
                 } else {
                     directionString = ""

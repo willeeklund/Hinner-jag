@@ -44,16 +44,24 @@ public class CoreDataStore: NSObject {
         do {
             var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: CoreDataStore.managedObjectModel!)
             // Place to store sqlite file
-            let sqliteUrl = CoreDataStore.applicationDocumentsDirectory?.URLByAppendingPathComponent("HinnerJag.sqlite")
-            //        assert(nil != sqliteUrl, "Sqlite URL not found in App Group")
-            //        assert(nil != coordinator, "coordinator could not be created")
+            let sqliteUrl = CoreDataStore.applicationDocumentsDirectory?.URLByAppendingPathComponent("HinnerJag_2_1.sqlite")
+            assert(nil != sqliteUrl, "Sqlite URL not found in App Group")
+            assert(nil != coordinator, "coordinator could not be created")
             if
                 nil == sqliteUrl || nil == coordinator
             {
                 print("Either sqlite or coordinator was nil")
                 return nil
             }
-            try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: sqliteUrl!, options: nil)
+            try coordinator!.addPersistentStoreWithType(
+                NSSQLiteStoreType,
+                configuration: nil,
+                URL: sqliteUrl!,
+                options: [
+                    NSMigratePersistentStoresAutomaticallyOption: true,
+                    NSInferMappingModelAutomaticallyOption: true
+                ]
+            )
             return coordinator
         } catch var error as NSError {
             // Report any error we got.
@@ -61,7 +69,7 @@ public class CoreDataStore: NSObject {
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
             dict[NSLocalizedFailureReasonErrorKey] = failureReason
             dict[NSUnderlyingErrorKey] = error
-            error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
+            error = NSError(domain: "HINNER_JAG_STHLM", code: 1, userInfo: dict)
             // Replace this with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog("Unresolved error \(error), \(error.userInfo)")
@@ -94,14 +102,46 @@ public class CoreDataStore: NSObject {
     
     /**
      Save common managed object context
+     
+     This is always performed on main queue, to be thread safe
     */
     public static func saveContext() {
-        do {
-            if nil != CoreDataStore.managedObjectContext {
-                try CoreDataStore.managedObjectContext!.save()
+        dispatch_async(dispatch_get_main_queue(), {
+            do {
+                if nil != CoreDataStore.managedObjectContext {
+                    try CoreDataStore.managedObjectContext!.save()
+                }
+            } catch let error as NSError  {
+                print("Could not save \(error), \(error.userInfo)")
             }
-        } catch let error as NSError  {
-            print("Could not save \(error), \(error.userInfo)")
-        }
+        })
+    }
+    
+    /**
+     Fetch all items in entity and request to delete them
+     */
+    public static func batchDeleteEntity(entityName: String) {
+        dispatch_async(dispatch_get_main_queue(), {
+            defer { CoreDataStore.saveContext() }
+            do {
+                if #available(iOSApplicationExtension 9.0, *) {
+                    try CoreDataStore.persistentStoreCoordinator?.executeRequest(
+                        NSBatchDeleteRequest(fetchRequest: NSFetchRequest(entityName: entityName)),
+                        withContext: CoreDataStore.managedObjectContext!
+                    )
+                } else {
+                    // Fallback on earlier versions
+                    let fetchRequest = NSFetchRequest(entityName: entityName)
+                    let objectList = try CoreDataStore.managedObjectContext!.executeFetchRequest(fetchRequest)
+                    if let managedObjectList = objectList as? [NSManagedObject] {
+                        _ = managedObjectList.map({
+                            CoreDataStore.managedObjectContext!.deleteObject($0)
+                        })
+                    }
+                }
+            } catch let error as NSError {
+                print(error)
+            }
+        })
     }
 }

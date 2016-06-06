@@ -53,11 +53,12 @@ public class TravelHeaderCell: UITableViewCell
     
     @IBAction func tapStar(sender: AnyObject) {
         // TODO: Make this on a side queue to not block UI
+        let stopAreaTypeCode = transportType?.stopAreaTypeCode()
         if nil != lineNumber {
-            let nbrChanged = Line.toggleLine(lineNumber!)
+            let nbrChanged = Line.toggleLine(lineNumber!, withStopAreaTypeCode: stopAreaTypeCode)
             let toggleDirection: String
             // Update button image
-            if Line.isLineActive(lineNumber!) {
+            if Line.isLineActive(lineNumber!, withStopAreaTypeCode: stopAreaTypeCode) {
                 starButton.setImage(UIImage(named: "star_full"), forState: .Normal)
                 toggleDirection = "Lade till"
             } else {
@@ -102,7 +103,10 @@ public class TravelHeaderCell: UITableViewCell
             // Setup star button
             if nil != cell!.transportType && .Bus == cell!.transportType! {
                 cell?.starButton.hidden = false
-                if nil != cell!.lineNumber && Line.isLineActive(cell!.lineNumber!) {
+                if
+                    nil != cell!.lineNumber
+                    && Line.isLineActive(cell!.lineNumber!, withStopAreaTypeCode: cell!.transportType?.stopAreaTypeCode())
+                {
                     cell?.starButton.setImage(UIImage(named: "star_full"), forState: .Normal)
                 } else {
                     cell?.starButton.setImage(UIImage(named: "star_empty"), forState: .Normal)

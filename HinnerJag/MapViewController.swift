@@ -40,12 +40,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
         self.mapView.showsUserLocation = true
         if nil != chosenLineNumber {
             // User has chosen to present specific line number on map
-            let sitesForLine = JourneyPattern.getSitesForLine(chosenLineNumber!)
+            let sitesForLine = JourneyPattern.getSitesForLine(chosenLineNumber!, withStopAreaTypeCode: chosenStopAreaTypeCode)
             mapView.addAnnotations(sitesForLine)
             // Zoom to show all new annotations
             mapView.showAnnotations(sitesForLine, animated: false)
-            mapView.region.span.latitudeDelta *= 1.2
-            mapView.region.span.longitudeDelta *= 1.2
+            mapView.region.span.latitudeDelta *= 1.3
+            mapView.region.span.longitudeDelta *= 1.3
             mapView.setRegion(mapView.region, animated: true)
         } else {
             // Show all sites on map
