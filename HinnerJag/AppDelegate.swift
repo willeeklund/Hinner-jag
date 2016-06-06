@@ -63,19 +63,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
                 // Hide view controllers on top of mainVC
                 mainVC.dismissViewControllerAnimated(false, completion: nil)
                 // Select chosen line from URL
-                var selectedLine: Int?
+                var selectedDict = Dictionary<String, AnyObject>()
                 let urlComponents = NSURLComponents(URL: url, resolvingAgainstBaseURL: true)
                 for item in (urlComponents?.queryItems)! {
                     if "line" == item.name {
                         // Found specified line
                         if let value = item.value {
-                            selectedLine = Int(value)
-                            break
+                            if let intValue = Int(value) {
+                                selectedDict["lineNumber"] = intValue
+                            }
+                        }
+                    } else if "stopAreaTypeCode" == item.name {
+                        // Found specified stopAreaTypeCode
+                        if let chosenStopAreaTypeCode = item.value {
+                            selectedDict["stopAreaTypeCode"] = chosenStopAreaTypeCode
                         }
                     }
                 }
                 // Only show sites from selected line on map
-                mainVC.performSegueWithIdentifier("Show Map", sender: selectedLine)
+                mainVC.performSegueWithIdentifier("Show Map", sender: selectedDict)
                 return true
 
             default:

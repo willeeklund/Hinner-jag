@@ -96,8 +96,13 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
             let mapVC: MapViewController = segue.destinationViewController as! MapViewController
             mapVC.chosenStation = self.closestStation
             // If segue performed by code specifying line number to show
-            if let lineNumber = sender as? Int {
-                mapVC.chosenLineNumber = lineNumber
+            if let dict = sender as? Dictionary<String, AnyObject> {
+                if let lineNumber = dict["lineNumber"] as? Int {
+                    mapVC.chosenLineNumber = lineNumber
+                }
+                if let chosenStopAreaTypeCode = dict["stopAreaTypeCode"] as? String {
+                    mapVC.chosenStopAreaTypeCode = chosenStopAreaTypeCode
+                }
             }
         }
     }

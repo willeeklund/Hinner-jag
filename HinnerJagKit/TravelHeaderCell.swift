@@ -32,15 +32,21 @@ public class TravelHeaderCell: UITableViewCell
     
     // MARK: - Interact with table cell
     @IBAction func tapImageOrHeader(sender: AnyObject) {
-        if nil != lineNumber {
+        if nil != lineNumber && nil != transportType {
+            let chosenStopAreaTypeCode = transportType!.stopAreaTypeCode()
             // Check if we are in TodayExtension
             if nil != controller?.extensionContext {
                 // Launch app and show map with only stations along this line
-                if let hinnerJagUrl = NSURL(string: "hinner-jag://map?line=\(lineNumber!)") {
+                let query = "line=\(lineNumber!)&stopAreaTypeCode=\(chosenStopAreaTypeCode)"
+                if let hinnerJagUrl = NSURL(string: "hinner-jag://map?\(query)") {
                     controller?.extensionContext?.openURL(hinnerJagUrl, completionHandler: nil)
                 }
             } else {
-                controller?.performSegueWithIdentifier("Show Map", sender: lineNumber!)
+                let selectedDict: Dictionary<String, AnyObject> = [
+                    "lineNumber": lineNumber!,
+                    "stopAreaTypeCode": chosenStopAreaTypeCode
+                ]
+                controller?.performSegueWithIdentifier("Show Map", sender: selectedDict)
             }
         }
     }

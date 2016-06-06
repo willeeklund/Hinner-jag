@@ -17,6 +17,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
 
     var chosenStation: Site?
     var chosenLineNumber: Int?
+    var chosenStopAreaTypeCode: String?
     lazy var allSites = Site.getAllSites()
     let linkColor = UIColor(red: 8.0/255.0, green: 206.0/255.0, blue: 253.0/255.0, alpha: 1)
     var searchSuggestionView = UIView(frame:CGRectMake(20, 60, 150, 300))
