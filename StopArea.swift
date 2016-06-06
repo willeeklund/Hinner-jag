@@ -33,6 +33,10 @@ public class StopArea: NSManagedObject {
         assert(nil != site, "Must set real site")
         assert(0 != stopAreaNumber, "Must set real stopAreaNumber")
     }
+    
+    override public var description: String {
+        return "StopArea(site: \(site), stopAreaNumber: \(stopAreaNumber), stopAreaTypeCode: \(stopAreaTypeCode))"
+    }
 
     // MARK: - Class functions
     

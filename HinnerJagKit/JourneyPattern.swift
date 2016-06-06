@@ -40,6 +40,10 @@ public class JourneyPattern: NSManagedObject {
         assert(0 != stopAreaNumber, "Must set real stopAreaNumber")
     }
     
+    override public var description: String {
+        return "JourneyPattern(lineNumber: \(lineNumber), stopAreaNumber: \(stopAreaNumber))"
+    }
+    
     // MARK: - Class functions
     public class func getSitesForLine(lineNumber: Int, withStopAreaTypeCode chosenTypeCode: String?) -> [Site] {
         var sitesFromLine = [Site]()

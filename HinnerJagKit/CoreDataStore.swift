@@ -106,42 +106,36 @@ public class CoreDataStore: NSObject {
      This is always performed on main queue, to be thread safe
     */
     public static func saveContext() {
-        dispatch_async(dispatch_get_main_queue(), {
-            do {
-                if nil != CoreDataStore.managedObjectContext {
-                    try CoreDataStore.managedObjectContext!.save()
-                }
-            } catch let error as NSError  {
-                print("Could not save \(error), \(error.userInfo)")
-            }
-        })
+        do {
+            try CoreDataStore.managedObjectContext?.save()
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
     }
     
     /**
      Fetch all items in entity and request to delete them
      */
     public static func batchDeleteEntity(entityName: String) {
-        dispatch_async(dispatch_get_main_queue(), {
-            defer { CoreDataStore.saveContext() }
-            do {
-                if #available(iOSApplicationExtension 9.0, *) {
-                    try CoreDataStore.persistentStoreCoordinator?.executeRequest(
-                        NSBatchDeleteRequest(fetchRequest: NSFetchRequest(entityName: entityName)),
-                        withContext: CoreDataStore.managedObjectContext!
-                    )
-                } else {
-                    // Fallback on earlier versions
-                    let fetchRequest = NSFetchRequest(entityName: entityName)
-                    let objectList = try CoreDataStore.managedObjectContext!.executeFetchRequest(fetchRequest)
-                    if let managedObjectList = objectList as? [NSManagedObject] {
-                        _ = managedObjectList.map({
-                            CoreDataStore.managedObjectContext!.deleteObject($0)
-                        })
-                    }
+        defer { CoreDataStore.saveContext() }
+        do {
+            if #available(iOSApplicationExtension 9.0, *) {
+                try CoreDataStore.persistentStoreCoordinator?.executeRequest(
+                    NSBatchDeleteRequest(fetchRequest: NSFetchRequest(entityName: entityName)),
+                    withContext: CoreDataStore.managedObjectContext!
+                )
+            } else {
+                // Fallback on earlier versions
+                let fetchRequest = NSFetchRequest(entityName: entityName)
+                let objectList = try CoreDataStore.managedObjectContext!.executeFetchRequest(fetchRequest)
+                if let managedObjectList = objectList as? [NSManagedObject] {
+                    _ = managedObjectList.map({
+                        CoreDataStore.managedObjectContext!.deleteObject($0)
+                    })
                 }
-            } catch let error as NSError {
-                print(error)
             }
-        })
+        } catch let error as NSError {
+            print(error)
+        }
     }
 }
