@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>${BUNDLE_NAME_PREFIX}Hinner jag med t-banan?</string>
+	<string>${BUNDLE_NAME_PREFIX}Hinner jag? Sthlm</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
