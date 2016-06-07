@@ -74,7 +74,7 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
     override func updateUI() {
         super.updateUI()
         dispatch_async(dispatch_get_main_queue(), {
-            self.updatePreferredContentSize()
+            self.preferredContentSize = self.tableView.contentSize
         })
     }
     
