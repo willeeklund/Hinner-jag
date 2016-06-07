@@ -14,13 +14,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
 {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var searchTextField: UITextField!
-
+    @IBOutlet weak var showLineLabel: UILabel!
+    
     var chosenStation: Site?
     var chosenLineNumber: Int?
     var chosenStopAreaTypeCode: String?
+    var sitesForLine = Set<Site>()
+    var listOfLines = [Int]()
     lazy var allSites = Site.getAllSites()
     let linkColor = UIColor(red: 8.0/255.0, green: 206.0/255.0, blue: 253.0/255.0, alpha: 1)
-    var searchSuggestionView = UIView(frame:CGRectMake(20, 60, 150, 300))
+    var searchSuggestionView = UIView(frame: CGRectMake(20, 60, 150, 300))
+
     
     // MARK: - Lifecycle stuff
     required init?(coder aDecoder: NSCoder) {
@@ -32,18 +36,64 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
         super.viewDidLoad()
         setScreenName("MapViewController")
         // Search textfield
-        self.searchTextField.delegate = self
-        self.searchTextField.addTarget(self, action: #selector(textFieldValueChanged), forControlEvents: .EditingChanged)
-        self.view.addSubview(searchSuggestionView)
+        searchTextField.delegate = self
+        searchTextField.addTarget(self, action: #selector(textFieldValueChanged), forControlEvents: .EditingChanged)
+        view.addSubview(searchSuggestionView)
         // Map
         mapView.delegate = self
         mapView.showsUserLocation = true
         if nil != chosenLineNumber {
+            let prefix = "Visar stationer längs"
+            let labelText: String
             // User has chosen to present specific line number on map
-            let sitesForLine = JourneyPattern.getSitesForLine(chosenLineNumber!, withStopAreaTypeCode: chosenStopAreaTypeCode)
-            mapView.addAnnotations(sitesForLine)
+            if
+                nil != chosenStopAreaTypeCode &&
+                [TransportType.Metro, .Train, .Tram].map({ $0.stopAreaTypeCode() }).contains(chosenStopAreaTypeCode!)
+            {
+                // If metro line, also add the other routes of same color
+                switch chosenLineNumber! {
+                // Blue metro line
+                case 10, 11:
+                    listOfLines = [10, 11]
+                    labelText = "\(prefix) blå linjen"
+                // Red metro line
+                case 13, 14:
+                    listOfLines = [13, 14]
+                    labelText = "\(prefix) röda linjen"
+                // Green metro line
+                case 17, 18, 19:
+                    listOfLines = [17, 18, 19]
+                    labelText = "\(prefix) gröna linjen"
+                // Trains
+                case 33, 34, 35, 36, 37, 38:
+                    listOfLines = [33, 34, 35, 36, 37, 38]
+                    labelText = "\(prefix) pendeltåg"
+                default:
+                    listOfLines = [chosenLineNumber!]
+                    // Tram
+                    if TransportType.Tram.stopAreaTypeCode() == chosenStopAreaTypeCode! {
+                        labelText = "\(prefix) tvärbana \(chosenLineNumber!)"
+                    } else {
+                        labelText = "\(prefix) linje \(chosenLineNumber!)"
+                    }
+                }
+            } else {
+                listOfLines = [chosenLineNumber!]
+                labelText = "\(prefix) linje \(chosenLineNumber!)"
+            }
+            for lineNumber in listOfLines {
+                addSitesFromLineNumber(lineNumber)
+            }
+            // Display showLineLabel
+            showLineLabel.text = labelText
+            showLineLabel.hidden = false
+            showLineLabel.adjustsFontSizeToFitWidth = true
+            showLineLabel.layer.borderColor = linkColor.CGColor
+            showLineLabel.layer.borderWidth = 2.0
+            // Add sites to map
+            mapView.addAnnotations(Array(sitesForLine))
             // Zoom to show all new annotations
-            mapView.showAnnotations(sitesForLine, animated: false)
+            mapView.showAnnotations(mapView.annotations, animated: false)
             mapView.region.span.latitudeDelta *= 1.3
             mapView.region.span.longitudeDelta *= 1.3
             mapView.setRegion(mapView.region, animated: true)
@@ -56,6 +106,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
                 // Default position T-centralen
                 setMapCenter(CLLocationCoordinate2D(latitude: 59.33, longitude: 18.06))
             }
+            showLineLabel.hidden = true
+        }
+    }
+    
+    func addSitesFromLineNumber(number: Int) {
+        for site in JourneyPattern.getSitesForLine(number, withStopAreaTypeCode: chosenStopAreaTypeCode) {
+            sitesForLine.insert(site)
         }
     }
     
@@ -156,6 +213,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
         // Hide keyboard and suggested searches
         searchTextField.resignFirstResponder()
         searchSuggestionView.hidden = true
+        showLineLabel.hidden = nil == chosenLineNumber
     }
     
     func tappedAnnotation(recognizer: UIPanGestureRecognizer) {
@@ -173,12 +231,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
     // MARK: - Textfield delegate
     func textFieldDidBeginEditing(textField: UITextField) {
         searchSuggestionView.hidden = false
+        // Hide showLineLabel if no chosen line or text is entered
+        let hasNoLineNumber = nil == chosenLineNumber
+        let hasText = nil != textField.text && textField.text!.characters.count > 0
+        showLineLabel.hidden = hasNoLineNumber || hasText
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         // Hide keyboard and suggested searches
         textField.resignFirstResponder()
         searchSuggestionView.hidden = true
+        showLineLabel.hidden = nil == chosenLineNumber
         return true
     }
     
@@ -186,6 +249,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
         // Show and clear suggested searches view
         searchSuggestionView.hidden = false
         searchSuggestionView.subviews.forEach({ $0.removeFromSuperview() })
+        showLineLabel.hidden = true
         if nil == textField.text {
             return
         }

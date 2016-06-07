@@ -129,7 +129,7 @@ public class CoreDataStore: NSObject {
                 let fetchRequest = NSFetchRequest(entityName: entityName)
                 let objectList = try CoreDataStore.managedObjectContext!.executeFetchRequest(fetchRequest)
                 if let managedObjectList = objectList as? [NSManagedObject] {
-                    _ = managedObjectList.map({
+                    managedObjectList.forEach({
                         CoreDataStore.managedObjectContext!.deleteObject($0)
                     })
                 }

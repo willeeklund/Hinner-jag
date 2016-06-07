@@ -41,12 +41,25 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Visar stationer längs linje" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M0f-39-v7O">
+                                <rect key="frame" x="20" y="58" width="560" height="32"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="VlH-Bb-6ch"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="M0f-39-v7O" firstAttribute="top" secondItem="ibo-ca-maz" secondAttribute="bottom" constant="8" symbolic="YES" id="2YS-y9-FTu"/>
+                            <constraint firstItem="M0f-39-v7O" firstAttribute="leading" secondItem="ibo-ca-maz" secondAttribute="leading" id="54P-1W-QXc"/>
                             <constraint firstItem="e7q-bG-9cD" firstAttribute="trailing" secondItem="lVR-fQ-Edc" secondAttribute="trailingMargin" id="I1y-jv-s1p"/>
                             <constraint firstItem="ibo-ca-maz" firstAttribute="top" secondItem="e7q-bG-9cD" secondAttribute="top" id="W2R-MH-9oG"/>
                             <constraint firstAttribute="trailing" secondItem="dNT-BO-owL" secondAttribute="trailing" id="WxD-i1-qOW"/>
+                            <constraint firstItem="M0f-39-v7O" firstAttribute="trailing" secondItem="e7q-bG-9cD" secondAttribute="trailing" id="gag-qh-t4O"/>
                             <constraint firstItem="dNT-BO-owL" firstAttribute="top" secondItem="lVR-fQ-Edc" secondAttribute="top" id="ibz-bk-9yU"/>
                             <constraint firstItem="dNT-BO-owL" firstAttribute="bottom" secondItem="cz9-Gk-E8U" secondAttribute="top" id="l4B-qK-A30"/>
                             <constraint firstItem="e7q-bG-9cD" firstAttribute="top" secondItem="cvD-eW-BEg" secondAttribute="bottom" id="lZq-Ze-8xa"/>
@@ -58,6 +71,7 @@
                     <connections>
                         <outlet property="mapView" destination="dNT-BO-owL" id="4ER-LL-xsB"/>
                         <outlet property="searchTextField" destination="ibo-ca-maz" id="LTk-h2-Lwk"/>
+                        <outlet property="showLineLabel" destination="M0f-39-v7O" id="IOu-3C-Lhe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mww-LG-CfO" userLabel="First Responder" sceneMemberID="firstResponder"/>
