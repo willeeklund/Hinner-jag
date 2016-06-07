@@ -25,19 +25,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
     // MARK: - Lifecycle stuff
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.gaSetup()
+        gaSetup()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setScreenName("MapViewController")
+        setScreenName("MapViewController")
         // Search textfield
         self.searchTextField.delegate = self
         self.searchTextField.addTarget(self, action: #selector(textFieldValueChanged), forControlEvents: .EditingChanged)
         self.view.addSubview(searchSuggestionView)
         // Map
-        self.mapView.delegate = self
-        self.mapView.showsUserLocation = true
+        mapView.delegate = self
+        mapView.showsUserLocation = true
         if nil != chosenLineNumber {
             // User has chosen to present specific line number on map
             let sitesForLine = JourneyPattern.getSitesForLine(chosenLineNumber!, withStopAreaTypeCode: chosenStopAreaTypeCode)
@@ -49,12 +49,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
             mapView.setRegion(mapView.region, animated: true)
         } else {
             // Show all sites on map
-            self.mapView.addAnnotations(allSites)
-            if self.chosenStation != nil {
-                self.setMapCenter(self.chosenStation!.coordinate)
+            mapView.addAnnotations(allSites)
+            if chosenStation != nil {
+                setMapCenter(chosenStation!.coordinate)
             } else {
                 // Default position T-centralen
-                self.setMapCenter(CLLocationCoordinate2D(latitude: 59.33, longitude: 18.06))
+                setMapCenter(CLLocationCoordinate2D(latitude: 59.33, longitude: 18.06))
             }
         }
     }
@@ -63,14 +63,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
         // Delta will set zoom level
         let delta = 0.02
         let region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: delta, longitudeDelta: delta))
-        self.mapView.setRegion(region, animated: true)
+        mapView.setRegion(region, animated: true)
     }
     
     @IBAction func closeMap(sender: UIButton) {
         // Reset search textfield before leaving
-        self.searchTextField.text = ""
+        searchTextField.text = ""
         // Dismiss view controller
-        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: - Map annotations
@@ -94,8 +94,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
             if station.isActive {
                 if #available(iOS 9.0, *) {
                     if
-                        nil != self.chosenStation
-                        && station == self.chosenStation!
+                        nil != chosenStation
+                        && station == chosenStation!
                     {
                         view?.pinTintColor = UIColor.blueColor()
                     } else {
@@ -108,8 +108,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
             } else {
                 if #available(iOS 9.0, *) {
                     if
-                        nil != self.chosenStation
-                            && station == self.chosenStation!
+                        nil != chosenStation
+                            && station == chosenStation!
                     {
                         view?.pinTintColor = UIColor.purpleColor()
                     } else if station.isChangedManual {
@@ -128,12 +128,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
     
     // MARK: - Call annotation callout to toggle if station is active
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        if self.presentingViewController is MainAppViewController && view.annotation is Site {
+        if presentingViewController is MainAppViewController && view.annotation is Site {
             let station = view.annotation as! Site
             print("Station tapped. \(station.siteId)")
             // Change active status for this station
             station.toggleActive()
-            self.trackEvent("Station", action: "toggle_active_from_map", label: "\(station.title!) (\(station.siteId))", value: 1)
+            trackEvent("Station", action: "toggle_active_from_map", label: "\(station.title!) (\(station.siteId))", value: 1)
             // Update annotation view for this station
             mapView.removeAnnotation(station)
             mapView.addAnnotation(station)
@@ -146,26 +146,26 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
     }()
     
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
-        view.addGestureRecognizer(self.tapRecognizer)
+        view.addGestureRecognizer(tapRecognizer)
     }
     func mapView(mapView: MKMapView, didDeselectAnnotationView view: MKAnnotationView) {
-        view.removeGestureRecognizer(self.tapRecognizer)
+        view.removeGestureRecognizer(tapRecognizer)
     }
     
     func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         // Hide keyboard and suggested searches
-        self.searchTextField.resignFirstResponder()
+        searchTextField.resignFirstResponder()
         searchSuggestionView.hidden = true
     }
     
     func tappedAnnotation(recognizer: UIPanGestureRecognizer) {
         if let view = recognizer.view as? MKAnnotationView {
-            if self.presentingViewController is MainAppViewController && view.annotation is Site {
+            if presentingViewController is MainAppViewController && view.annotation is Site {
                 let station = view.annotation as! Site
-                let mainAppVC = self.presentingViewController as! MainAppViewController
+                let mainAppVC = presentingViewController as! MainAppViewController
                 mainAppVC.searchFromNewClosestStation(station)
                 mainAppVC.dismissViewControllerAnimated(true, completion: nil)
-                self.trackEvent("Station", action: "change_from_map", label: "\(station.title!) (\(station.siteId))", value: 1)
+                trackEvent("Station", action: "change_from_map", label: "\(station.title!) (\(station.siteId))", value: 1)
             }
         }
     }
@@ -193,7 +193,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
         let searchString = textField.text!.lowercaseString.stringByTrimmingCharactersInSet(
             NSCharacterSet.whitespaceAndNewlineCharacterSet()
         )
-        let mapCenter = CLLocation(latitude: self.mapView.centerCoordinate.latitude, longitude: self.mapView.centerCoordinate.longitude)
+        let mapCenter = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
         // Find sites from annotations containing search string
         let sites = mapView.annotations.filter({ (annotation) in
             if let site = annotation as? Site {
@@ -235,12 +235,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
             for annotation in mapView.annotations {
                 if stationName == annotation.title! {
                     if let station = annotation as? Site {
-                        self.trackEvent("Station", action: "search_suggestion_selected", label: "\(station.title!) (\(station.siteId))", value: 1)
-                        self.chosenStation = station
+                        trackEvent("Station", action: "search_suggestion_selected", label: "\(station.title!) (\(station.siteId))", value: 1)
+                        chosenStation = station
                         // Update annotation view for this station and select it
                         mapView.removeAnnotation(station)
                         mapView.addAnnotation(station)
-                        self.setMapCenter(self.chosenStation!.coordinate)
+                        setMapCenter(chosenStation!.coordinate)
                         mapView.selectAnnotation(station, animated: true)
                         return
                     }
