@@ -44,7 +44,7 @@ public class CoreDataStore: NSObject {
         do {
             var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: CoreDataStore.managedObjectModel!)
             // Place to store sqlite file
-            let sqliteUrl = CoreDataStore.applicationDocumentsDirectory?.URLByAppendingPathComponent("HinnerJag_2_1.sqlite")
+            let sqliteUrl = CoreDataStore.applicationDocumentsDirectory?.URLByAppendingPathComponent("HinnerJag_2.sqlite")
             assert(nil != sqliteUrl, "Sqlite URL not found in App Group")
             assert(nil != coordinator, "coordinator could not be created")
             if
