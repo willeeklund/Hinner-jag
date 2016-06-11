@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 import HinnerJagKit
 
-extension UIViewController {
+public extension UIViewController {
     
-    func gaSetup() {
+    public class func gaSetup() {
         let tracker = GAI.sharedInstance().defaultTracker
         if tracker != nil {
             print("Have already initialized tracker")

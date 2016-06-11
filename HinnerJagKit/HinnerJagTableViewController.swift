@@ -86,7 +86,6 @@ public class HinnerJagTableViewController: UITableViewController, LocateStationD
     // MARK: - Lifecycle stuff
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-//        self.gaSetup()
     }
     
     public override func viewDidLoad() {

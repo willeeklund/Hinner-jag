@@ -21,7 +21,7 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
         self.locationManager.delegate = self
         self.locationManager.requestWhenInUseAuthorization()
         // Init GA
-        self.gaSetup()
+        UIViewController.gaSetup()
     }
     
     // MARK: - Get location of the user

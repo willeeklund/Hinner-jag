@@ -22,7 +22,7 @@ class BWWalkThroughVideoViewController: BWWalkthroughPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.gaSetup()
+        UIViewController.gaSetup()
         if let path = NSBundle.mainBundle().pathForResource("screen_intro", ofType:"mp4") {
             let url = NSURL.fileURLWithPath(path)
             self.moviePlayer = MPMoviePlayerController(contentURL: url)

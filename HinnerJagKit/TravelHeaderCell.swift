@@ -34,12 +34,13 @@ public class TravelHeaderCell: UITableViewCell
     @IBAction func tapImageOrHeader(sender: AnyObject) {
         if nil != lineNumber && nil != transportType {
             let chosenStopAreaTypeCode = transportType!.stopAreaTypeCode()
+            let query = "line=\(lineNumber!)&stopAreaTypeCode=\(chosenStopAreaTypeCode)"
             // Check if we are in TodayExtension
             if nil != controller?.extensionContext {
                 // Launch app and show map with only stations along this line
-                let query = "line=\(lineNumber!)&stopAreaTypeCode=\(chosenStopAreaTypeCode)"
                 if let hinnerJagUrl = NSURL(string: "hinner-jag://map?\(query)") {
                     controller?.extensionContext?.openURL(hinnerJagUrl, completionHandler: nil)
+                    controller?.trackEvent("Show line sites", action: "TodayWidget: callOpenUrl", label: hinnerJagUrl.absoluteString, value: nil)
                 }
             } else {
                 let selectedDict: Dictionary<String, AnyObject> = [
@@ -47,6 +48,7 @@ public class TravelHeaderCell: UITableViewCell
                     "stopAreaTypeCode": chosenStopAreaTypeCode
                 ]
                 controller?.performSegueWithIdentifier("Show Map", sender: selectedDict)
+                controller?.trackEvent("Show line sites", action: "Show Map", label: query, value: nil)
             }
         }
     }

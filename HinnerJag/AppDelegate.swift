@@ -51,8 +51,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     
     // MARK: - Open custom URLs "hinner-jag://"
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+        UIViewController.gaSetup()
         if nil == url.host {
             // If only opening the app, then we are done
+            trackEvent("AppDelegate", action: "openUrl", label: "Only open HinnerJag, no route specified", value: nil)
             return true
         }
         // Find reference to mainVC
@@ -82,10 +84,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
                 }
                 // Only show sites from selected line on map
                 mainVC.performSegueWithIdentifier("Show Map", sender: selectedDict)
+                trackEvent("AppDelegate", action: "openUrl", label: url.absoluteString, value: nil)
                 return true
 
             default:
                 print("HinnerJag could not handle url: \(url)")
+                trackEvent("AppDelegate", action: "openUrlFail", label: "HinnerJag could not handle url: \(url)", value: nil)
                 return false
             }
         }
@@ -102,6 +106,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         }
     }
     
+    // MARK: - Google Analytics
+    func trackEvent(category: String, action: String, label: String, value: NSNumber?) {
+        let tracker = GAI.sharedInstance().defaultTracker
+        if nil == tracker {
+            return
+        }
+        let trackDictionary = GAIDictionaryBuilder.createEventWithCategory(category, action: action, label: label, value: value).build()
+        tracker.send(trackDictionary as [NSObject : AnyObject])
+    }
+    
     func sendScreenViewToGA(name: String) {
         let tracker = GAI.sharedInstance().defaultTracker
         if nil == tracker {
@@ -111,5 +125,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         let eventTracker: NSDictionary = GAIDictionaryBuilder.createScreenView().build()
         tracker.send(eventTracker as [NSObject : AnyObject])
     }
-    
 }

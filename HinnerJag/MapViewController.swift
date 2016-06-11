@@ -29,7 +29,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
     // MARK: - Lifecycle stuff
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        gaSetup()
+        UIViewController.gaSetup()
     }
     
     override func viewDidLoad() {
@@ -97,6 +97,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
             mapView.region.span.latitudeDelta *= 1.3
             mapView.region.span.longitudeDelta *= 1.3
             mapView.setRegion(mapView.region, animated: true)
+            var desc = "Show line \(chosenLineNumber!)"
+            if nil != chosenStopAreaTypeCode {
+                desc += " (\(chosenStopAreaTypeCode!))"
+            }
+            trackEvent("MapViewController", action: "Show", label: desc, value: nil)
         } else {
             // Show all sites on map
             mapView.addAnnotations(allSites)
@@ -107,6 +112,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
                 setMapCenter(CLLocationCoordinate2D(latitude: 59.33, longitude: 18.06))
             }
             showLineLabel.hidden = true
+            trackEvent("MapViewController", action: "Show", label: "Show all sites", value: nil)
         }
     }
     
