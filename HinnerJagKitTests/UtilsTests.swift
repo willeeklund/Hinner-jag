@@ -170,7 +170,7 @@ class UtilsTests: XCTestCase {
         let typesFromMetroAndBus = Utils.uniqueTransportTypesFromDepartures(
             testDepartures["metro"]! + testDepartures["bus"]!
         )
-        XCTAssert(typesFromMetroAndBus == [.Bus, .Metro], "Metro and bus departures")
+        XCTAssert(typesFromMetroAndBus == [.Bus, .Metro] || typesFromMetroAndBus == [.Metro, .Bus], "Metro and bus departures")
         
         let typesFromMetroAndBusAndTrain = Utils.uniqueTransportTypesFromDepartures(
             testDepartures["metro"]! + testDepartures["bus"]! + testDepartures["train"]!
