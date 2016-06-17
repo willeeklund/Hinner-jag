@@ -47,7 +47,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
         self.locationManager.requestWhenInUseAuthorization()
         self.locateStation.delegate = self
         // Init GA
-        self.gaSetup()
+        gaSetup()
     }
     
     // MARK: - Will activate

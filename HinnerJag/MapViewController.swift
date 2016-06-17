@@ -29,7 +29,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
     // MARK: - Lifecycle stuff
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        UIViewController.gaSetup()
+        gaSetup()
     }
     
     override func viewDidLoad() {

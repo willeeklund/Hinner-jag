@@ -19,7 +19,7 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
     // MARK: - Lifecycle stuff
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        UIViewController.gaSetup()
+        gaSetup()
     }
     
     override func viewDidLoad() {

@@ -51,7 +51,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     
     // MARK: - Open custom URLs "hinner-jag://"
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
-        UIViewController.gaSetup()
         if nil == url.host {
             // If only opening the app, then we are done
             trackEvent("AppDelegate", action: "openUrl", label: "Only open HinnerJag, no route specified", value: nil)
@@ -108,7 +107,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     
     // MARK: - Google Analytics
     func trackEvent(category: String, action: String, label: String, value: NSNumber?) {
-        let tracker = GAI.sharedInstance().defaultTracker
+        UIViewController.gaSetupTracker()
+        var tracker = GAI.sharedInstance().defaultTracker
         if nil == tracker {
             return
         }

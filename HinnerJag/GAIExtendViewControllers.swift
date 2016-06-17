@@ -12,7 +12,7 @@ import HinnerJagKit
 
 public extension UIViewController {
     
-    public class func gaSetup() {
+    public class func gaSetupTracker() {
         let tracker = GAI.sharedInstance().defaultTracker
         if tracker != nil {
             print("Have already initialized tracker")
@@ -29,6 +29,10 @@ public extension UIViewController {
                 }
             }
         }
+    }
+    
+    public func gaSetup() {
+        UIViewController.gaSetupTracker()
         // Listen to GaTrackEvent notification
         NSNotificationCenter.defaultCenter().addObserver(
             self,
