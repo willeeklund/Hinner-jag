@@ -10,23 +10,23 @@ import Foundation
 import CoreData
 
 
-public class JourneyPattern: NSManagedObject {
+open class JourneyPattern: NSManagedObject {
 
     static let entityName = "JourneyPattern"
     
     // MARK: - Init
-    public override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    public override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertInto: context)
     }
     public init(dict: NSDictionary) {
         assert(nil != CoreDataStore.managedObjectContext, "Must be able to create managed object context")
         // Init with shared managed object context
-        let entity =  NSEntityDescription.entityForName(
-            JourneyPattern.entityName,
-            inManagedObjectContext: CoreDataStore.managedObjectContext!
+        let entity =  NSEntityDescription.entity(
+            forEntityName: JourneyPattern.entityName,
+            in: CoreDataStore.managedObjectContext!
         )
         assert(nil != entity, "Entity 'JourneyPattern' should never fail")
-        super.init(entity: entity!, insertIntoManagedObjectContext: CoreDataStore.managedObjectContext)
+        super.init(entity: entity!, insertInto: CoreDataStore.managedObjectContext)
         // Hopefully we can read info from the dictionary, otherwise use defaults
         if let dictLineNumberString = dict["LineNumber"] as? Int {
             lineNumber = Int64(dictLineNumberString)
@@ -40,25 +40,24 @@ public class JourneyPattern: NSManagedObject {
         assert(0 != stopAreaNumber, "Must set real stopAreaNumber")
     }
     
-    override public var description: String {
+    override open var description: String {
         return "JourneyPattern(lineNumber: \(lineNumber), stopAreaNumber: \(stopAreaNumber))"
     }
     
     // MARK: - Class functions
-    public class func getSitesForLine(lineNumber: Int, withStopAreaTypeCode chosenTypeCode: String?) -> [Site] {
+    open class func getSitesForLine(_ lineNumber: Int, withStopAreaTypeCode chosenTypeCode: String?) -> [Site] {
         var sitesFromLine = [Site]()
-        let fetchRequest = NSFetchRequest(entityName: JourneyPattern.entityName)
+        let fetchRequest: NSFetchRequest<JourneyPattern> = NSFetchRequest(entityName: JourneyPattern.entityName)
         // Use predicate to only fetch for this line number
         fetchRequest.predicate = NSPredicate(format: "lineNumber = \(lineNumber)", argumentArray: nil)
         do {
-            if let journeyPatterns = try CoreDataStore.managedObjectContext!.executeFetchRequest(fetchRequest) as? [JourneyPattern] {
-                if journeyPatterns.count > 0 {
-                    for point in journeyPatterns {
-                        sitesFromLine.appendContentsOf(JourneyPattern.sitesFromStopAreaNumber(
-                            point.stopAreaNumber,
-                            withStopAreaTypeCode: chosenTypeCode
-                        ))
-                    }
+            let journeyPatterns = try CoreDataStore.managedObjectContext!.fetch(fetchRequest)
+            if journeyPatterns.count > 0 {
+                for point in journeyPatterns {
+                    sitesFromLine.append(contentsOf: JourneyPattern.sitesFromStopAreaNumber(
+                        point.stopAreaNumber,
+                        withStopAreaTypeCode: chosenTypeCode
+                    ))
                 }
             }
         } catch let error as NSError {
@@ -74,13 +73,13 @@ public class JourneyPattern: NSManagedObject {
      */
     class func fillWithAllJourneyPatterns() {
         CoreDataStore.batchDeleteEntity(JourneyPattern.entityName)
-        let hinnerJagKitBundle = NSBundle(forClass: CoreDataStore.classForCoder())
-        let journeyPatternsFilePath = hinnerJagKitBundle.pathForResource("journeypatternpoints", ofType: "json")
+        let hinnerJagKitBundle = Bundle(for: CoreDataStore.classForCoder())
+        let journeyPatternsFilePath = hinnerJagKitBundle.path(forResource: "journeypatternpoints", ofType: "json")
         assert(nil != journeyPatternsFilePath, "The file journeypatternpoints.json must be included in the framework")
-        let journeyPatternsData = NSData(contentsOfFile: journeyPatternsFilePath!)
+        let journeyPatternsData = try? Data(contentsOf: URL(fileURLWithPath: journeyPatternsFilePath!))
         assert(nil != journeyPatternsData, "journeypatternpoints.json must contain valid data")
         do {
-            if let responseDict = try NSJSONSerialization.JSONObjectWithData(journeyPatternsData!, options: .MutableContainers) as? NSDictionary {
+            if let responseDict = try JSONSerialization.jsonObject(with: journeyPatternsData!, options: .mutableContainers) as? NSDictionary {
                 // Save to context after return
                 defer { CoreDataStore.saveContext() }
                 // Add journey patterns
@@ -110,7 +109,7 @@ public class JourneyPattern: NSManagedObject {
      
      This will only change the value of the Bus stations along this line
      */
-    public class func toggleSitesForLine(lineNumber: Int, to newActiveValue: Bool, withStopAreaTypeCode chosenTypeCode: String?) -> Int {
+    open class func toggleSitesForLine(_ lineNumber: Int, to newActiveValue: Bool, withStopAreaTypeCode chosenTypeCode: String?) -> Int {
         // Save to context after return
         defer { CoreDataStore.saveContext() }
         var nbrChanged = 0
@@ -138,29 +137,28 @@ public class JourneyPattern: NSManagedObject {
             }
         }
         // Send notification to update station list
-        NSNotificationCenter.defaultCenter().postNotificationName("LocateStationUpdateStationList", object: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "LocateStationUpdateStationList"), object: nil)
         print("Did toggle \(nbrChanged) stations")
         return nbrChanged
     }
     
     // MARK: - Private class functions
     
-    private class func sitesFromStopAreaNumber(stopAreaNumber: Int64, withStopAreaTypeCode chosenTypeCode: String?) -> [Site] {
+    fileprivate class func sitesFromStopAreaNumber(_ stopAreaNumber: Int64, withStopAreaTypeCode chosenTypeCode: String?) -> [Site] {
         var siteList = [Site]()
         // Find the site for the stopAreaNumber
-        let fetchRequest = NSFetchRequest(entityName: StopArea.entityName)
+        let fetchRequest: NSFetchRequest<StopArea> = NSFetchRequest(entityName: StopArea.entityName)
         // Use predicate to only fetch for this stopAreaNumber
         fetchRequest.predicate = NSPredicate(format: "stopAreaNumber = \(stopAreaNumber)", argumentArray: nil)
         do {
-            if let stopAreaList = try CoreDataStore.managedObjectContext!.executeFetchRequest(fetchRequest) as? [StopArea] {
-                for stopArea in stopAreaList {
-                    // If caller has chosen a stopAreaTypeCode to include, only include those
-                    if nil != chosenTypeCode && stopArea.stopAreaTypeCode != chosenTypeCode! {
-                        continue
-                    }
-                    if let site = stopArea.site {
-                        siteList.append(site)
-                    }
+            let stopAreaList = try CoreDataStore.managedObjectContext!.fetch(fetchRequest)
+            for stopArea in stopAreaList {
+                // If caller has chosen a stopAreaTypeCode to include, only include those
+                if nil != chosenTypeCode && stopArea.stopAreaTypeCode != chosenTypeCode! {
+                    continue
+                }
+                if let site = stopArea.site {
+                    siteList.append(site)
                 }
             }
         } catch let error as NSError {

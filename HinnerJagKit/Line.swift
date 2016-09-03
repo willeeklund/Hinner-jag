@@ -10,23 +10,23 @@ import Foundation
 import CoreData
 
 
-public class Line: NSManagedObject {
+open class Line: NSManagedObject {
 
     static let entityName = "Line"
     
     // MARK: - Init
-    public override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    public override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertInto: context)
     }
     public init(lineNumber newLineNumber: Int, withStopAreaTypeCode chosenTypeCode: String?, isActive activeValue: Bool) {
         assert(nil != CoreDataStore.managedObjectContext, "Must be able to create managed object context")
         // Init with shared managed object context
-        let entity =  NSEntityDescription.entityForName(
-            Line.entityName,
-            inManagedObjectContext: CoreDataStore.managedObjectContext!
+        let entity =  NSEntityDescription.entity(
+            forEntityName: Line.entityName,
+            in: CoreDataStore.managedObjectContext!
         )
         assert(nil != entity, "Entity 'Line' should never fail")
-        super.init(entity: entity!, insertIntoManagedObjectContext: CoreDataStore.managedObjectContext)
+        super.init(entity: entity!, insertInto: CoreDataStore.managedObjectContext)
         lineNumber = Int64(newLineNumber)
         stopAreaTypeCode = chosenTypeCode
         isActive = activeValue
@@ -34,33 +34,31 @@ public class Line: NSManagedObject {
     
     // MARK: - Class functions
     class func getActiveLines() -> [Line] {
-        let fetchRequest = NSFetchRequest(entityName: Line.entityName)
+        let fetchRequest: NSFetchRequest<Line> = NSFetchRequest(entityName: Line.entityName)
         // Use predicate to only fetch active lines
         fetchRequest.predicate = NSPredicate(format: "isActive = \(true)", argumentArray: nil)
         do {
-            if let lines = try CoreDataStore.managedObjectContext!.executeFetchRequest(fetchRequest) as? [Line] {
-                return lines
-            }
+            let lines = try CoreDataStore.managedObjectContext!.fetch(fetchRequest)
+            return lines
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
         return [Line]()
     }
     
-    class func getLinesForNumber(lineNumber: Int, withStopAreaTypeCode chosenTypeCode: String?) -> [Line] {
-        let fetchRequest = NSFetchRequest(entityName: Line.entityName)
+    class func getLinesForNumber(_ lineNumber: Int, withStopAreaTypeCode chosenTypeCode: String?) -> [Line] {
+        let fetchRequest: NSFetchRequest<Line> = NSFetchRequest(entityName: Line.entityName)
         // Use predicate to only fetch for this line number
         fetchRequest.predicate = NSPredicate(format: "lineNumber = \(lineNumber)", argumentArray: nil)
         do {
-            if let lines = try CoreDataStore.managedObjectContext!.executeFetchRequest(fetchRequest) as? [Line] {
-                return lines.filter() { line in
-                    if nil == chosenTypeCode {
-                        return true
-                    } else if nil == line.stopAreaTypeCode {
-                        return false
-                    } else {
-                        return line.stopAreaTypeCode! == chosenTypeCode!
-                    }
+            let lines = try CoreDataStore.managedObjectContext!.fetch(fetchRequest)
+            return lines.filter() { line in
+                if nil == chosenTypeCode {
+                    return true
+                } else if nil == line.stopAreaTypeCode {
+                    return false
+                } else {
+                    return line.stopAreaTypeCode! == chosenTypeCode!
                 }
             }
         } catch let error as NSError {
@@ -69,7 +67,7 @@ public class Line: NSManagedObject {
         return [Line]()
     }
     
-    public class func isLineActive(lineNumber: Int, withStopAreaTypeCode chosenTypeCode: String?) -> Bool {
+    open class func isLineActive(_ lineNumber: Int, withStopAreaTypeCode chosenTypeCode: String?) -> Bool {
         let lines = Line.getLinesForNumber(lineNumber, withStopAreaTypeCode: chosenTypeCode)
         if lines.count > 0 {
             return lines.first!.isActive
@@ -87,7 +85,7 @@ public class Line: NSManagedObject {
      
      This will only change the value of the Bus stations along this line
      */
-    public class func toggleLine(lineNumber: Int, withStopAreaTypeCode chosenTypeCode: String?) -> Int {
+    open class func toggleLine(_ lineNumber: Int, withStopAreaTypeCode chosenTypeCode: String?) -> Int {
         // Save to context after return
         defer {
             CoreDataStore.saveContext()
@@ -105,8 +103,8 @@ public class Line: NSManagedObject {
             _ = Line(lineNumber: lineNumber, withStopAreaTypeCode: chosenTypeCode, isActive: newActiveValue)
         }
         // Post notification to track Google Analytics event
-        NSNotificationCenter.defaultCenter().postNotificationName(
-            Constants.gaTrackEvent,
+        NotificationCenter.default.post(
+            name: Notification.Name(rawValue: Constants.gaTrackEvent),
             object: nil,
             userInfo: [
                 "category": "Line",
@@ -119,7 +117,7 @@ public class Line: NSManagedObject {
         return JourneyPattern.toggleSitesForLine(lineNumber, to: newActiveValue, withStopAreaTypeCode: chosenTypeCode)
     }
     
-    public class func sitesActivatedByActiveLines() -> [Site] {
+    open class func sitesActivatedByActiveLines() -> [Site] {
         // Create list of all Sites that were added as result of active Lines.
         // This is only interesting if current aim is to make sites inactive
         var activatedSitesByOtherLines = [Site]()
@@ -129,7 +127,7 @@ public class Line: NSManagedObject {
                 Int(activeLine.lineNumber),
                 withStopAreaTypeCode: activeLine.stopAreaTypeCode
             )
-            activatedSitesByOtherLines.appendContentsOf(sites)
+            activatedSitesByOtherLines.append(contentsOf: sites)
         }
         return activatedSitesByOtherLines
     }

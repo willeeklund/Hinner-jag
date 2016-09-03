@@ -1,9 +1,26 @@
-//
-//  BWWalkthroughViewController.swift
-//
-//  Created by Yari D'areglia on 15/09/14 (wait... why do I wrote code the Day of my Birthday?! C'Mon Yari... )
-//  Copyright (c) 2014 Yari D'areglia. All rights reserved.
-//
+/*
+ The MIT License (MIT)
+ 
+ Copyright (c) 2015 Yari D'areglia @bitwaker
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+ */
 
 import UIKit
 
@@ -15,12 +32,12 @@ import UIKit
  Probably the Walkthrough is presented by this delegate.
  **/
 
-@objc protocol BWWalkthroughViewControllerDelegate{
+@objc public protocol BWWalkthroughViewControllerDelegate{
     
     @objc optional func walkthroughCloseButtonPressed()              // If the skipRequest(sender:) action is connected to a button, this function is called when that button is pressed.
     @objc optional func walkthroughNextButtonPressed()               //
     @objc optional func walkthroughPrevButtonPressed()               //
-    @objc optional func walkthroughPageDidChange(pageNumber:Int)     // Called when current page changes
+    @objc optional func walkthroughPageDidChange(_ pageNumber:Int)     // Called when current page changes
     
 }
 
@@ -29,78 +46,95 @@ import UIKit
  The walkthrough page represents any page added to the Walkthrough.
  At the moment it's only used to perform custom animations on didScroll.
  **/
-@objc protocol BWWalkthroughPage{
+@objc public protocol BWWalkthroughPage{
     // While sliding to the "next" slide (from right to left), the "current" slide changes its offset from 1.0 to 2.0 while the "next" slide changes it from 0.0 to 1.0
     // While sliding to the "previous" slide (left to right), the current slide changes its offset from 1.0 to 0.0 while the "previous" slide changes it from 2.0 to 1.0
     // The other pages update their offsets whith values like 2.0, 3.0, -2.0... depending on their positions and on the status of the walkthrough
     // This value can be used on the previous, current and next page to perform custom animations on page's subviews.
     
-    @objc func walkthroughDidScroll(position:CGFloat, offset:CGFloat)   // Called when the main Scrollview...scrolls
+    @objc func walkthroughDidScroll(_ position:CGFloat, offset:CGFloat)   // Called when the main Scrollview...scrolls
 }
 
 
-@objc class BWWalkthroughViewController: UIViewController, UIScrollViewDelegate{
+@objc open class BWWalkthroughViewController: UIViewController, UIScrollViewDelegate{
     
     // MARK: - Public properties -
     
-    weak var delegate:BWWalkthroughViewControllerDelegate?
+    weak open var delegate:BWWalkthroughViewControllerDelegate?
     
     // TODO: If you need a page control, next or prev buttons add them via IB and connect them with these Outlets
-    @IBOutlet var pageControl:UIPageControl?
-    @IBOutlet var nextButton:UIButton?
-    @IBOutlet var prevButton:UIButton?
-    @IBOutlet var closeButton:UIButton?
+    @IBOutlet open var pageControl:UIPageControl?
+    @IBOutlet open var nextButton:UIButton?
+    @IBOutlet open var prevButton:UIButton?
+    @IBOutlet open var closeButton:UIButton?
     
-    
-    var currentPage:Int{    // The index of the current page (readonly)
+    open var currentPage: Int {    // The index of the current page (readonly)
         get{
             let page = Int((scrollview.contentOffset.x / view.bounds.size.width))
             return page
         }
     }
     
+    open var currentViewController:UIViewController{ //the controller for the currently visible page
+        get{
+            let currentPage = self.currentPage;
+            return controllers[currentPage];
+        }
+    }
+    
+    open var numberOfPages:Int{ //the total number of pages in the walkthrough
+        get {
+            return self.controllers.count
+        }
+    }
+    
     
     // MARK: - Private properties -
     
-    private let scrollview:UIScrollView! = UIScrollView()
-    private var controllers:[UIViewController]! = [UIViewController]()
-    private var lastViewConstraint:NSArray?
+    open let scrollview = UIScrollView()
+    fileprivate var controllers = [UIViewController]()
+    fileprivate var lastViewConstraint: [NSLayoutConstraint]?
     
     
     // MARK: - Overrides -
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
+    required public init?(coder aDecoder: NSCoder) {
         // Setup the scrollview
         scrollview.showsHorizontalScrollIndicator = false
         scrollview.showsVerticalScrollIndicator = false
-        scrollview.pagingEnabled = true
-        
-        // Controllers as empty array
-        controllers = Array()
+        scrollview.isPagingEnabled = true
+        super.init(coder: aDecoder)
     }
     
-    override func viewDidLoad() {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    override open func viewDidLoad() {
         super.viewDidLoad()
-        self.setScreenName("WalkthroughViewController")
         
-        // Initialize UIScrollView
+        // Initialize UI Elements
+        
+        pageControl?.addTarget(self, action: #selector(BWWalkthroughViewController.pageControlDidTouch), for: UIControlEvents.touchUpInside)
+        
+        // Scrollview
         
         scrollview.delegate = self
         scrollview.translatesAutoresizingMaskIntoConstraints = false
         
-        view.insertSubview(scrollview, atIndex: 0) //scrollview is inserted as first view of the hierarchy
+        view.insertSubview(scrollview, at: 0) //scrollview is inserted as first view of the hierarchy
         
         // Set scrollview related constraints
         
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[scrollview]-0-|", options:[], metrics: nil, views: ["scrollview":scrollview]))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[scrollview]-0-|", options:[], metrics: nil, views: ["scrollview":scrollview]))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[scrollview]-0-|", options:[], metrics: nil, views: ["scrollview":scrollview]))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[scrollview]-0-|", options:[], metrics: nil, views: ["scrollview":scrollview]))
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
+        
+        updateUI()
         
         pageControl?.numberOfPages = controllers.count
         pageControl?.currentPage = 0
@@ -109,33 +143,29 @@ import UIKit
     
     // MARK: - Internal methods -
     
-    @IBAction func nextPage(){
-        
+    /**
+     * Progresses to the next page, or calls the finished delegate method if already on the last page
+     */
+    @IBAction open func nextPage(){
         if (currentPage + 1) < controllers.count {
             
             delegate?.walkthroughNextButtonPressed?()
-            
-            var frame = scrollview.frame
-            frame.origin.x = CGFloat(currentPage + 1) * frame.size.width
-            scrollview.scrollRectToVisible(frame, animated: true)
+            gotoPage(currentPage + 1)
         }
     }
     
-    @IBAction func prevPage(){
+    @IBAction open func prevPage(){
         
         if currentPage > 0 {
             
             delegate?.walkthroughPrevButtonPressed?()
-            
-            var frame = scrollview.frame
-            frame.origin.x = CGFloat(currentPage - 1) * frame.size.width
-            scrollview.scrollRectToVisible(frame, animated: true)
+            gotoPage(currentPage - 1)
         }
     }
     
-    // TODO: If you want to implement a "skip" option
-    // connect a button to this IBAction and implement the delegate with the skipWalkthrough
-    @IBAction func close(sender: AnyObject){
+    // TODO: If you want to implement a "skip" button
+    // connect the button to this IBAction and implement the delegate with the skipWalkthrough
+    @IBAction func close(_ sender: AnyObject){
         // Go to next if has not seen all pages
         if (currentPage + 1) < controllers.count {
             nextPage()
@@ -145,12 +175,28 @@ import UIKit
         }
     }
     
+    func pageControlDidTouch(){
+        
+        if let pc = pageControl{
+            gotoPage(pc.currentPage)
+        }
+    }
+    
+    fileprivate func gotoPage(_ page:Int){
+        
+        if page < controllers.count{
+            var frame = scrollview.frame
+            frame.origin.x = CGFloat(page) * frame.size.width
+            scrollview.scrollRectToVisible(frame, animated: true)
+        }
+    }
+    
     /**
      addViewController
      Add a new page to the walkthrough.
      To have information about the current position of the page in the walkthrough add a UIVIewController which implements BWWalkthroughPage
      */
-    func addViewController(vc:UIViewController)->Void{
+    open func addViewController(_ vc:UIViewController)->Void{
         
         controllers.append(vc)
         
@@ -165,64 +211,62 @@ import UIKit
         
         // - Generic cnst
         
-        vc.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[view(h)]", options:[], metrics: metricDict, views: ["view":vc.view]))
-        vc.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[view(w)]", options:[], metrics: metricDict, views: ["view":vc.view]))
-        scrollview.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[view]|", options:[], metrics: nil, views: ["view":vc.view,]))
+        vc.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[view(h)]", options:[], metrics: metricDict, views: ["view":vc.view]))
+        vc.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[view(w)]", options:[], metrics: metricDict, views: ["view":vc.view]))
+        scrollview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]|", options:[], metrics: nil, views: ["view":vc.view]))
         
         // cnst for position: 1st element
         
         if controllers.count == 1{
-            scrollview.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[view]", options:[], metrics: nil, views: ["view":vc.view,]))
-            
+            scrollview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]", options:[], metrics: nil, views: ["view":vc.view,]))
             // cnst for position: other elements
-            
-        }else{
+        } else {
             
             let previousVC = controllers[controllers.count-2]
-            let previousView = previousVC.view;
-            
-            scrollview.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[previousView]-0-[view]", options:[], metrics: nil, views: ["previousView":previousView,"view":vc.view]))
-            
-            if let cst = lastViewConstraint{
-                scrollview.removeConstraints(cst as! [NSLayoutConstraint])
+            if let previousView = previousVC.view {
+                // For this constraint to work, previousView can not be optional
+                scrollview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[previousView]-0-[view]", options:[], metrics: nil, views: ["previousView":previousView,"view":vc.view]))
             }
-            lastViewConstraint = NSLayoutConstraint.constraintsWithVisualFormat("H:[view]-0-|", options:[], metrics: nil, views: ["view":vc.view])
-            scrollview.addConstraints(lastViewConstraint as! [NSLayoutConstraint])
+            
+            if let cst = lastViewConstraint {
+                scrollview.removeConstraints(cst)
+            }
+            lastViewConstraint = NSLayoutConstraint.constraints(withVisualFormat: "H:[view]-0-|", options:[], metrics: nil, views: ["view":vc.view])
+            scrollview.addConstraints(lastViewConstraint!)
         }
     }
     
     /**
-     Update the UI to reflect the current walkthrough situation
+     Update the UI to reflect the current walkthrough status
      **/
     
-    private func updateUI(){
+    fileprivate func updateUI(){
         
         // Get the current page
         
         pageControl?.currentPage = currentPage
         
         // Notify delegate about the new page
-        
         delegate?.walkthroughPageDidChange?(currentPage)
         
         // Hide/Show navigation buttons
         
         if currentPage == controllers.count - 1{
-            nextButton?.hidden = true
+            nextButton?.isHidden = true
         }else{
-            nextButton?.hidden = false
+            nextButton?.isHidden = false
         }
         
         if currentPage == 0{
-            prevButton?.hidden = true
+            prevButton?.isHidden = true
         }else{
-            prevButton?.hidden = false
+            prevButton?.isHidden = false
         }
     }
     
     // MARK: - Scrollview Delegate -
     
-    func scrollViewDidScroll(sv: UIScrollView) {
+    open func scrollViewDidScroll(_ sv: UIScrollView) {
         
         for i in 0 ..< controllers.count {
             
@@ -246,21 +290,21 @@ import UIKit
         }
     }
     
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    open func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         updateUI()
     }
     
-    func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+    open func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         updateUI()
     }
-    
     
     /* WIP */
-    override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    override open func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         print("CHANGE")
     }
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    override open func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         print("SIZE")
     }
+    
 }

@@ -10,21 +10,21 @@ import Foundation
 import CoreData
 
 
-public class StopArea: NSManagedObject {
+open class StopArea: NSManagedObject {
     static let entityName = "StopArea"
     
     // MARK: - Init
-    public override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    public override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertInto: context)
     }
     public init(site linkedSite: Site, stopAreaNumber number: Int, stopAreaTypeCode chosenTypeCode: String?) {
         // Init with shared managed object context
-        let entity =  NSEntityDescription.entityForName(
-            StopArea.entityName,
-            inManagedObjectContext: CoreDataStore.managedObjectContext!
+        let entity =  NSEntityDescription.entity(
+            forEntityName: StopArea.entityName,
+            in: CoreDataStore.managedObjectContext!
         )
         assert(nil != entity, "Entity 'StopArea' should never fail")
-        super.init(entity: entity!, insertIntoManagedObjectContext: CoreDataStore.managedObjectContext)
+        super.init(entity: entity!, insertInto: CoreDataStore.managedObjectContext)
         
         site = linkedSite
         stopAreaNumber = Int64(number)
@@ -34,7 +34,7 @@ public class StopArea: NSManagedObject {
         assert(0 != stopAreaNumber, "Must set real stopAreaNumber")
     }
     
-    override public var description: String {
+    override open var description: String {
         return "StopArea(site: \(site), stopAreaNumber: \(stopAreaNumber), stopAreaTypeCode: \(stopAreaTypeCode))"
     }
 
@@ -66,14 +66,14 @@ public class StopArea: NSManagedObject {
     
     // MARK: - Private helper functions
     
-    private class func readStopAreasDictionary() -> NSDictionary? {
-        let hinnerJagKitBundle = NSBundle(forClass: CoreDataStore.classForCoder())
-        let stopAreasFilePath = hinnerJagKitBundle.pathForResource("stopareasites", ofType: "json")
+    fileprivate class func readStopAreasDictionary() -> NSDictionary? {
+        let hinnerJagKitBundle = Bundle(for: CoreDataStore.classForCoder())
+        let stopAreasFilePath = hinnerJagKitBundle.path(forResource: "stopareasites", ofType: "json")
         assert(nil != stopAreasFilePath, "The file stopareasites.json must be included in the framework")
-        let stopAreasData = NSData(contentsOfFile: stopAreasFilePath!)
+        let stopAreasData = try? Data(contentsOf: URL(fileURLWithPath: stopAreasFilePath!))
         assert(nil != stopAreasData, "stopareasites.json must contain valid data")
         do {
-            if let responseDict = try NSJSONSerialization.JSONObjectWithData(stopAreasData!, options: .MutableContainers) as? NSDictionary {
+            if let responseDict = try JSONSerialization.jsonObject(with: stopAreasData!, options: .mutableContainers) as? NSDictionary {
                 return responseDict["siteIdAndStopArea"] as? NSDictionary
             }
         } catch let error as NSError  {

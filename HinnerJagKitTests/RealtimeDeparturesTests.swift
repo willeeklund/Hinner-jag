@@ -13,7 +13,7 @@ import XCTest
 class RealtimeDeparturesTests: XCTestCase {
     var realtimeDepartures = RealtimeDepartures()
     var stationFarstaStrand: Site?
-    let hinnerJagKitBundle = NSBundle(forClass: LocateStation.classForCoder())
+    let hinnerJagKitBundle = Bundle(for: LocateStation.self)
     
     override func setUp() {
         super.setUp()
@@ -33,17 +33,17 @@ class RealtimeDeparturesTests: XCTestCase {
         super.tearDown()
     }
     
-    func readTestFile(testFile: String) -> NSData {
-        let testDeparturesFilePath = hinnerJagKitBundle.pathForResource(testFile, ofType: "json")
+    func readTestFile(testFile: String) -> Data {
+        let testDeparturesFilePath = hinnerJagKitBundle.path(forResource: testFile, ofType: "json")
         assert(nil != testDeparturesFilePath, "The file \(testFile).json must be included in the framework")
         let testDeparturesData = NSData(contentsOfFile: testDeparturesFilePath!)
-        return testDeparturesData!
+        return testDeparturesData! as Data
     }
     
     func testParseJsonDataToDepartures() {
-        let expectation = self.expectationWithDescription("Can parse JSON files")
+        let expectation = self.expectation(description: "Can parse JSON files")
         let testFile = "test_departures_9180_farsta_strand"
-        let testDeparturesData = readTestFile(testFile)
+        let testDeparturesData = readTestFile(testFile: testFile)
         var depList: [Departure]?
         realtimeDepartures.parseJsonDataToDepartures(testDeparturesData, station: stationFarstaStrand!) { (departures: [Departure]?, error: NSError?) in
             depList = departures
@@ -53,14 +53,14 @@ class RealtimeDeparturesTests: XCTestCase {
             XCTAssert(departuresDict.count == 1, "There are exactly 2 groups of departures from Abrahamsberg")
             expectation.fulfill()
         }
-        self.waitForExpectationsWithTimeout(200) { (error) in
+        self.waitForExpectations(timeout: 200) { (error) in
             XCTAssert(depList != nil, "We got some departures")
         }
     }
 
     func testParseBadDataToDepartures() {
-        let expectation = self.expectationWithDescription("Can handle bad JSON file")
-        let testDeparturesData = "No useful data".dataUsingEncoding(NSUTF8StringEncoding)
+        let expectation = self.expectation(description: "Can handle bad JSON file")
+        let testDeparturesData = "No useful data".data(using: String.Encoding.utf8)
         
         var depList: [Departure]?
         realtimeDepartures.parseJsonDataToDepartures(testDeparturesData, station: stationFarstaStrand!) { (departures: [Departure]?, error: NSError?) in
@@ -68,7 +68,7 @@ class RealtimeDeparturesTests: XCTestCase {
             XCTAssert(error != nil, "We got an error message")
             expectation.fulfill()
         }
-        self.waitForExpectationsWithTimeout(200) { (error) in
+        self.waitForExpectations(timeout: 200) { (error) in
             XCTAssert(depList == nil, "We did not get any departures from bad data")
         }
     }

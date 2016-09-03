@@ -11,7 +11,19 @@ import UIKit
 import MapKit
 import HinnerJagKit
 
-public class HeadlineCell: UITableViewCell
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+
+open class HeadlineCell: UITableViewCell
 {
     var controller: HinnerJagTableViewController?
     @IBOutlet weak var headerLabel: UILabel!
@@ -20,39 +32,39 @@ public class HeadlineCell: UITableViewCell
     @IBOutlet weak var stationTypeSegment: UISegmentedControl!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    @IBAction func changeSelectedStation(sender: UIButton) {
+    @IBAction func changeSelectedStation(_ sender: UIButton) {
         if nil != self.controller {
             self.controller!.changeChosenStation()
         }
     }
     
     var uniqueTransportTypes = [TransportType]()
-    @IBAction func stationTypeSegmentChanged(sender: UISegmentedControl) {
+    @IBAction func stationTypeSegmentChanged(_ sender: UISegmentedControl) {
         if nil != self.controller {
             self.controller!.setPreferredTransportType(self.uniqueTransportTypes[sender.selectedSegmentIndex])
         }
     }
     
     // MARK: - Info message
-    public static var infoMessage: String?
-    func changeInfoLabel(notification: NSNotification) {
+    open static var infoMessage: String?
+    func changeInfoLabel(_ notification: Notification) {
         // Display "message" from notification userInfo
-        if nil != notification.userInfo {
-            if let newMessage = notification.userInfo!["message"] as? String {
+        if nil != (notification as NSNotification).userInfo {
+            if let newMessage = (notification as NSNotification).userInfo!["message"] as? String {
                 HeadlineCell.infoMessage = newMessage
-            } else if let useRandom = notification.userInfo!["random"] as? Bool {
+            } else if let useRandom = (notification as NSNotification).userInfo!["random"] as? Bool {
                 if useRandom {
                     HeadlineCell.setRandomInfoMessage(true)
                 }
             }
             // Show new infoMessage
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async(execute: {
                 self.infoLabel.text = HeadlineCell.infoMessage
             })
         }
     }
     
-    public class func setRandomInfoMessage(force: Bool = false) {
+    open class func setRandomInfoMessage(_ force: Bool = false) {
         if false == force && nil != HeadlineCell.infoMessage {
             return
         }
@@ -70,10 +82,10 @@ public class HeadlineCell: UITableViewCell
     }
     
     // MARK: - Activity indicator
-    func toggleActivityIndicator(notification: NSNotification) {
-        if let userInfo = notification.userInfo {
+    func toggleActivityIndicator(_ notification: Notification) {
+        if let userInfo = (notification as NSNotification).userInfo {
             if let showActivityIndicator = userInfo["show"] as? Bool {
-                dispatch_async(dispatch_get_main_queue(), {
+                DispatchQueue.main.async(execute: {
                     if showActivityIndicator {
                         self.activityIndicator.startAnimating()
                     } else {
@@ -93,28 +105,28 @@ public class HeadlineCell: UITableViewCell
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
-    public class func createCellForTableView(
-        tableView: UITableView,
+    open class func createCellForTableView(
+        _ tableView: UITableView,
         controller: HinnerJagTableViewController,
         closestStation: Site?,
         location: CLLocation?,
         departures: [Departure]?
     ) -> HeadlineCell? {
         let reuseId = "HeadlineCell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(reuseId) as? HeadlineCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: reuseId) as? HeadlineCell
         if nil == cell {
             cell = HeadlineCell()
         }
         cell?.controller = controller
         // Text on button
         let closestStationLabel = Utils.getLabelTextForClosestStation(closestStation, ownLocation: location)
-        cell?.closestStationButton.setTitle(closestStationLabel, forState: .Normal)
+        cell?.closestStationButton.setTitle(closestStationLabel, for: UIControlState())
         // Customize segmented control for travel types of the departures
-        cell?.stationTypeSegment.hidden = (nil == departures)
+        cell?.stationTypeSegment.isHidden = (nil == departures)
         if nil != departures {
             cell?.uniqueTransportTypes = Utils.uniqueTransportTypesFromDepartures(departures!)
             if cell?.uniqueTransportTypes.count < 2 {
-                cell?.stationTypeSegment.hidden = true
+                cell?.stationTypeSegment.isHidden = true
                 return cell! as HeadlineCell
             }
             // Dynamic segment labels
@@ -122,17 +134,17 @@ public class HeadlineCell: UITableViewCell
             cell?.stationTypeSegment.removeAllSegments()
             var i = 0
             for segmentName in namesList! {
-                cell?.stationTypeSegment.insertSegmentWithTitle(segmentName, atIndex: i, animated: false)
+                cell?.stationTypeSegment.insertSegment(withTitle: segmentName, at: i, animated: false)
                 i += 1
             }
             // Show selected segment
             let currentTransportType = Utils.currentTransportType(departures!)
-            cell?.stationTypeSegment.selectedSegmentIndex = (cell?.uniqueTransportTypes.indexOf(currentTransportType)!)!
+            cell?.stationTypeSegment.selectedSegmentIndex = (cell?.uniqueTransportTypes.index(of: currentTransportType)!)!
         }
         // Change message of infoLabel, and listen for notification about new info
-        NSNotificationCenter.defaultCenter().addObserver(cell!, selector: #selector(changeInfoLabel), name: Constants.notificationEventInfoMessage, object: nil)
+        NotificationCenter.default.addObserver(cell!, selector: #selector(changeInfoLabel), name: NSNotification.Name(rawValue: Constants.notificationEventInfoMessage), object: nil)
         // Listen for notification to toggle activity indicator
-        NSNotificationCenter.defaultCenter().addObserver(cell!, selector: #selector(toggleActivityIndicator), name: Constants.notificationEventActivityIndicator, object: nil)
+        NotificationCenter.default.addObserver(cell!, selector: #selector(toggleActivityIndicator), name: NSNotification.Name(rawValue: Constants.notificationEventActivityIndicator), object: nil)
         HeadlineCell.setRandomInfoMessage()
         cell?.infoLabel.text = HeadlineCell.infoMessage
         

@@ -11,33 +11,33 @@ import CoreLocation
 import MapKit
 import CoreData
 
-public class Site: NSManagedObject, MKAnnotation {
+open class Site: NSManagedObject, MKAnnotation {
     static let entityName = "Site"
 
     // MARK: - MKAnnotation protocol variables
-    public var title: String? {
+    open var title: String? {
         get {
             return self.siteName
         }
     }
-    public var coordinate: CLLocationCoordinate2D {
+    open var coordinate: CLLocationCoordinate2D {
         get {
             return CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
         }
     }
 
     // MARK: - Init
-    public override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    public override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertInto: context)
     }
     public init(dict: NSDictionary) {
         // Init with shared managed object context
-        let entity =  NSEntityDescription.entityForName(
-            Site.entityName,
-            inManagedObjectContext: CoreDataStore.managedObjectContext!
+        let entity =  NSEntityDescription.entity(
+            forEntityName: Site.entityName,
+            in: CoreDataStore.managedObjectContext!
         )
         assert(nil != entity, "Entity 'Site' should never fail")
-        super.init(entity: entity!, insertIntoManagedObjectContext: CoreDataStore.managedObjectContext)
+        super.init(entity: entity!, insertInto: CoreDataStore.managedObjectContext)
         // Hopefully we can read info from the dictionary, otherwise use defaults
         if let dictLatitude = dict["latitude"] as? Double {
             latitude = dictLatitude
@@ -70,27 +70,26 @@ public class Site: NSManagedObject, MKAnnotation {
     }
     
     // MARK: - Change state av save to Core Data
-    public func toggleActive() {
+    open func toggleActive() {
         isActive = !self.isActive
         isChangedManual = true
         CoreDataStore.saveContext()
     }
     
     // MARK: - Distance from location
-    public func distanceFromLocation(location: CLLocation) -> CLLocationDistance {
-        let ownLocation = CLLocation(coordinate: self.coordinate, altitude: 1, horizontalAccuracy: 1, verticalAccuracy: 1, timestamp: NSDate())
-        return ownLocation.distanceFromLocation(location)
+    open func distanceFromLocation(_ location: CLLocation) -> CLLocationDistance {
+        let ownLocation = CLLocation(coordinate: self.coordinate, altitude: 1, horizontalAccuracy: 1, verticalAccuracy: 1, timestamp: Date())
+        return ownLocation.distance(from: location)
     }
     
     // MARK: - Class functions
-    public class func getAllSites() -> [Site] {
-        let fetchRequest = NSFetchRequest(entityName: Site.entityName)
+    open class func getAllSites() -> [Site] {
+        let fetchRequest: NSFetchRequest<Site> = NSFetchRequest(entityName: Site.entityName)
         do {
-            if let sites = try CoreDataStore.managedObjectContext!.executeFetchRequest(fetchRequest) as? [Site] {
-                print("Got \(sites.count) sites back from DB")
-                if sites.count > 0 {
-                    return sites
-                }
+            let sites = try CoreDataStore.managedObjectContext!.fetch(fetchRequest)
+            print("Got \(sites.count) sites back from DB")
+            if sites.count > 0 {
+                return sites
             }
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
@@ -99,15 +98,14 @@ public class Site: NSManagedObject, MKAnnotation {
         return Site.fillWithSites()
     }
 
-    public class func getAllActiveSites() -> [Site] {
-        let fetchRequest = NSFetchRequest(entityName: Site.entityName)
+    open class func getAllActiveSites() -> [Site] {
+        let fetchRequest: NSFetchRequest<Site> = NSFetchRequest(entityName: Site.entityName)
         fetchRequest.predicate = NSPredicate(format: "isActive = \(true)", argumentArray: nil)
         do {
-            if let sites = try CoreDataStore.managedObjectContext!.executeFetchRequest(fetchRequest) as? [Site] {
-                print("Got \(sites.count) active sites back from DB")
-                if sites.count > 0 {
-                    return sites
-                }
+            let sites = try CoreDataStore.managedObjectContext!.fetch(fetchRequest)
+            print("Got \(sites.count) active sites back from DB")
+            if sites.count > 0 {
+                return sites
             }
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
@@ -123,7 +121,7 @@ public class Site: NSManagedObject, MKAnnotation {
      
      Should only be called once, otherwise duplicates will occur
      */
-    private class func fillWithSites() -> [Site] {
+    fileprivate class func fillWithSites() -> [Site] {
         CoreDataStore.batchDeleteEntity(Site.entityName)
         var siteList = [Site]()
         if let metroStationsDictionary = Site.readMetroStationsDictionary() {
@@ -139,21 +137,21 @@ public class Site: NSManagedObject, MKAnnotation {
             for type in stationTypes {
                 // Add stations
                 if let siteInfoList = metroStationsDictionary[type] as? [NSDictionary] {
-                    siteList.appendContentsOf(siteInfoList.map({ Site(dict: $0) }))
+                    siteList.append(contentsOf: siteInfoList.map({ Site(dict: $0) }))
                 }
             }
         }
         return siteList
     }
     
-    private class func readMetroStationsDictionary() -> NSDictionary? {
-        let hinnerJagKitBundle = NSBundle(forClass: CoreDataStore.classForCoder())
-        let metroStationsFilePath = hinnerJagKitBundle.pathForResource("metro_stations", ofType: "json")
+    fileprivate class func readMetroStationsDictionary() -> NSDictionary? {
+        let hinnerJagKitBundle = Bundle(for: CoreDataStore.classForCoder())
+        let metroStationsFilePath = hinnerJagKitBundle.path(forResource: "metro_stations", ofType: "json")
         assert(nil != metroStationsFilePath, "The file metro_stations.json must be included in the framework")
-        let metroStationsData = NSData(contentsOfFile: metroStationsFilePath!)
+        let metroStationsData = try? Data(contentsOf: URL(fileURLWithPath: metroStationsFilePath!))
         assert(nil != metroStationsData, "metro_stations.json must contain valid data")
         do {
-            if let responseDict = try NSJSONSerialization.JSONObjectWithData(metroStationsData!, options: .MutableContainers) as? NSDictionary {
+            if let responseDict = try JSONSerialization.jsonObject(with: metroStationsData!, options: .mutableContainers) as? NSDictionary {
                 return responseDict
             }
         } catch let error as NSError  {

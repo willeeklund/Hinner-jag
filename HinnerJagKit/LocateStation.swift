@@ -12,15 +12,15 @@ import CoreLocation
 import CoreData
 
 public protocol LocateStationDelegate {
-    func locateStationFoundClosestStation(station: Site?)
-    func locateStationFoundSortedStations(stationsSorted: [Site], withDepartures departures: [Departure]?, error: NSError?)
+    func locateStationFoundClosestStation(_ station: Site?)
+    func locateStationFoundSortedStations(_ stationsSorted: [Site], withDepartures departures: [Departure]?, error: NSError?)
 }
 
-public class LocateStationBase: NSObject, CLLocationManagerDelegate
+open class LocateStationBase: NSObject, CLLocationManagerDelegate
 {
-    public var delegate: LocateStationDelegate?
+    open var delegate: LocateStationDelegate?
     
-    public var locationManager: CLLocationManager! = CLLocationManager()
+    open var locationManager: CLLocationManager! = CLLocationManager()
     
     var realtimeDeparturesObj = RealtimeDepartures()
 
@@ -31,34 +31,34 @@ public class LocateStationBase: NSObject, CLLocationManagerDelegate
         self.locationManager.requestWhenInUseAuthorization()
     }
     
-    public func startUpdatingLocation() {
+    open func startUpdatingLocation() {
         // Show activity indicator
-        NSNotificationCenter.defaultCenter().postNotificationName(Constants.notificationEventActivityIndicator, object: nil, userInfo: [
+        NotificationCenter.default.post(name: Notification.Name(rawValue: Constants.notificationEventActivityIndicator), object: nil, userInfo: [
             "show": true
         ])
     }
     
     // MARK: - Get location of the user
-    public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    open func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.locationManager.stopUpdatingLocation()
         if let location = locations.last {
             self.findClosestStationFromLocationAndFetchDepartures(location)
         }
     }
 
-    public func findClosestStationFromLocation(location: CLLocation) -> [Site] {
+    open func findClosestStationFromLocation(_ location: CLLocation) -> [Site] {
         let closestStationsSorted = self.findStationsSortedClosestToLatitude(location.coordinate.latitude, longitude: location.coordinate.longitude)
         return closestStationsSorted
     }
     
-    public func findClosestStationFromLocationAndFetchDepartures(location: CLLocation) {
+    open func findClosestStationFromLocationAndFetchDepartures(_ location: CLLocation) {
         let closestStationsSorted: [Site] = self.findClosestStationFromLocation(location)
         self.findDeparturesFromStation(closestStationsSorted.first!, stationList: closestStationsSorted)
     }
 
-    public func findDeparturesFromStation(station: Site, stationList: [Site]?) {
+    open func findDeparturesFromStation(_ station: Site, stationList: [Site]?) {
         // Show activity indicator
-        NSNotificationCenter.defaultCenter().postNotificationName(Constants.notificationEventActivityIndicator, object: nil, userInfo: [
+        NotificationCenter.default.post(name: Notification.Name(rawValue: Constants.notificationEventActivityIndicator), object: nil, userInfo: [
             "show": true
         ])
         var usedStationList = stationList
@@ -68,23 +68,23 @@ public class LocateStationBase: NSObject, CLLocationManagerDelegate
             // When we check that the user is reasonably close to ANY station,
             // this is a good place to send back possible errors
             if nil == stationList {
-                let usedLocation = CLLocation(coordinate: station.coordinate, altitude: 1, horizontalAccuracy: 1, verticalAccuracy: 1, timestamp: NSDate())
+                let usedLocation = CLLocation(coordinate: station.coordinate, altitude: 1, horizontalAccuracy: 1, verticalAccuracy: 1, timestamp: Date())
                 usedStationList = self.findClosestStationFromLocation(usedLocation)
             }
             self.delegate?.locateStationFoundSortedStations(usedStationList!, withDepartures: departures, error: nil)
             // Hide activity indicator
-            NSNotificationCenter.defaultCenter().postNotificationName(Constants.notificationEventActivityIndicator, object: nil, userInfo: [
+            NotificationCenter.default.post(name: Notification.Name(rawValue: Constants.notificationEventActivityIndicator), object: nil, userInfo: [
                 "show": false
             ])
         }
     }
     
-    public func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+    open func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("ERROR - location manager: \(error)")
     }
 
     // Compare distance from all known stations, return closest one
-    public func findStationsSortedClosestToLatitude(latitude: Double, longitude: Double) -> [Site] {
+    open func findStationsSortedClosestToLatitude(_ latitude: Double, longitude: Double) -> [Site] {
         let userLocation = CLLocation(latitude: latitude, longitude: longitude)
         var sortedStationList: [Site] = Site.getAllActiveSites()
         let optimalNumberOfStations = 5
@@ -102,7 +102,7 @@ public class LocateStationBase: NSObject, CLLocationManagerDelegate
                 sortedStationList = smallerList
             }
         }
-        sortedStationList.sortInPlace({ $0.distanceFromLocation(userLocation) < $1.distanceFromLocation(userLocation) })
+        sortedStationList.sort(by: { $0.distanceFromLocation(userLocation) < $1.distanceFromLocation(userLocation) })
         
         // Only return 6 stations
         return Array(sortedStationList[0...min(optimalNumberOfStations, sortedStationList.count - 1)])

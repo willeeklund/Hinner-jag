@@ -25,13 +25,13 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
     }
     
     // MARK: - Get location of the user
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.locationManager.stopUpdatingLocation()
         let location = locations.last!
         self.locateStation.findClosestStationFromLocationAndFetchDepartures(location)
     }
 
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("ERROR - location manager. \(error)")
     }
     
@@ -51,7 +51,7 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
         self.updatePreferredContentSize()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.locationManager.startUpdatingLocation()
         if let locationManagerLocation = self.locationManager.location {
             // Less than 2 minutes ago, use old location
@@ -65,7 +65,7 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
         // Check if user has used this today widget before
         checkHasUsedBefore()
         // Set random info message
-        NSNotificationCenter.defaultCenter().postNotificationName(Constants.notificationEventInfoMessage, object: nil, userInfo: [
+        NotificationCenter.default.post(name: Notification.Name(rawValue: Constants.notificationEventInfoMessage), object: nil, userInfo: [
             "random": true
         ])
     }
@@ -73,7 +73,7 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
     // MARK: - Update UI
     override func updateUI() {
         super.updateUI()
-        dispatch_async(dispatch_get_main_queue(), {
+        DispatchQueue.main.async(execute: {
             self.preferredContentSize = self.tableView.contentSize
         })
     }
@@ -82,17 +82,17 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
         var height: CGFloat = 80.0
         let rowHeight = CGFloat(self.tableView(self.tableView, heightForHeaderInSection: 1))
         var i = 0;
-        while i < self.numberOfSectionsInTableView(self.tableView) {
+        while i < self.numberOfSections(in: self.tableView) {
             height += rowHeight * CGFloat(self.tableView(self.tableView, numberOfRowsInSection: i) + 1)
             i += 1
         }
         height = max(height, 180)
-        self.preferredContentSize = CGSizeMake(0, height)
+        self.preferredContentSize = CGSize(width: 0, height: height)
     }
     
     // MARK: - Table stuff
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let mappingName = self.mappingDict[section] {
             if let depList = self.departuresDict[mappingName] {
                 if self.departuresDict.count > 4 {
@@ -107,7 +107,7 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
         return super.tableView(tableView, numberOfRowsInSection: section)
     }
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             if self.shouldShowStationTypeSegment() {
                 return 90.0
@@ -118,23 +118,23 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
         return 27.0
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.section == 0 {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (indexPath as NSIndexPath).section == 0 {
             return 30
         }
         return 24.0
     }
     
     // Cell in table
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if (indexPath as NSIndexPath).section == 0 {
             // Section for changing closest station manually
             let reuseId = "chooseStation"
-            var cell = tableView.dequeueReusableCellWithIdentifier(reuseId) 
+            var cell = tableView.dequeueReusableCell(withIdentifier: reuseId)
             if cell == nil {
-                cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: reuseId)
+                cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: reuseId)
             }
-            let usedRow = indexPath.row + 1
+            let usedRow = (indexPath as NSIndexPath).row + 1
             if usedRow < self.closestSortedStations.count {
                 let station = self.closestSortedStations[usedRow]
                 let dist = station.distanceFromLocation(self.locateStation.locationManager.location!)
@@ -150,21 +150,21 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
     }
     
     // MARK: - Today widget specific stuff
-    func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
-        completionHandler(NCUpdateResult.NewData)
+    func widgetPerformUpdate(completionHandler: ((NCUpdateResult) -> Void)) {
+        completionHandler(NCUpdateResult.newData)
     }
     
-    func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> (UIEdgeInsets) {
-            return UIEdgeInsetsZero
+    func widgetMarginInsets(forProposedMarginInsets defaultMarginInsets: UIEdgeInsets) -> (UIEdgeInsets) {
+            return .zero
     }
     
     // MARK: - Check if first time using today widget
     func checkHasUsedBefore() {
         let hasSeenTodayWidgetKey = "hasSeenTodayWidget"
-        if !NSUserDefaults.standardUserDefaults().boolForKey(hasSeenTodayWidgetKey) {
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: hasSeenTodayWidgetKey)
+        if !UserDefaults.standard.bool(forKey: hasSeenTodayWidgetKey) {
+            UserDefaults.standard.set(true, forKey: hasSeenTodayWidgetKey)
             self.trackEvent("TodayWidget", action: "show", label: "first time", value: 1)
-            NSUserDefaults.standardUserDefaults().synchronize()
+            UserDefaults.standard.synchronize()
         }
     }
 }

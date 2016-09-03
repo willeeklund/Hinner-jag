@@ -143,7 +143,7 @@ class UtilsTests: XCTestCase {
     
     override func tearDown() {
         // Clear user defaults for preferred transport type
-        NSUserDefaults.standardUserDefaults().removeObjectForKey("preferredTransportTypeKey")
+        UserDefaults.standard.removeObject(forKey: "preferredTransportTypeKey")
         super.tearDown()
     }
     
@@ -172,8 +172,11 @@ class UtilsTests: XCTestCase {
         )
         XCTAssert(typesFromMetroAndBus == [.Bus, .Metro] || typesFromMetroAndBus == [.Metro, .Bus], "Metro and bus departures")
         
+        let metro = testDepartures["metro"]!
+        let bus = testDepartures["bus"]!
+        let train = testDepartures["train"]!
         let typesFromMetroAndBusAndTrain = Utils.uniqueTransportTypesFromDepartures(
-            testDepartures["metro"]! + testDepartures["bus"]! + testDepartures["train"]!
+            metro + bus + train
         )
         XCTAssert(typesFromMetroAndBusAndTrain.count == 3, "MetroBusTrain list has length 3")
         XCTAssert(typesFromMetroAndBusAndTrain.contains(.Metro), "MetroBusTrain list has .Metro")
@@ -220,9 +223,12 @@ class UtilsTests: XCTestCase {
     // MARK: - Mapping departures
     func testMappingDepartures() {
         Utils.setPreferredTransportType(.Bus)
-        self.measureBlock() {
+        self.measure() {
+            let metro = self.testDepartures["metro"]!
+            let bus = self.testDepartures["bus"]!
+            let train = self.testDepartures["train"]!
             let (mappingDict, departuresDict) = Utils.getMappingFromDepartures(
-                self.testDepartures["metro"]! + self.testDepartures["bus"]! + self.testDepartures["train"]!,
+                metro + bus + train,
                 mappingStart: 0
             )
             XCTAssert(mappingDict.count == 2, "Only use the departures for preferred transport type in mapping dictionary")

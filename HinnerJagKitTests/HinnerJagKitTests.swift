@@ -21,7 +21,7 @@ class HinnerJagKitTests: XCTestCase {
     override func tearDown() {
         // Empty CoreData
         for site in Site.getAllSites() {
-            CoreDataStore.managedObjectContext!.deleteObject(site)
+            CoreDataStore.managedObjectContext!.delete(site)
         }
         CoreDataStore.saveContext()
         super.tearDown()
@@ -46,8 +46,8 @@ class HinnerJagKitTests: XCTestCase {
     func testMeasureFindClosestStation() {
         let locateStation = LocateStation()
         print("There are \(Site.getAllSites().count) stations to sort")
-        self.measureBlock() {
-            locateStation.findStationsSortedClosestToLatitude(59.3365630909855, longitude: 17.9531728536484)
+        self.measure() {
+            _ = locateStation.findStationsSortedClosestToLatitude(59.3365630909855, longitude: 17.9531728536484)
         }
     }
     
@@ -57,7 +57,7 @@ class HinnerJagKitTests: XCTestCase {
     }
     
     func testFetchingResultsFromAPI() {
-        let expectation = self.expectationWithDescription("Can fetch from the API")
+        let expectation = self.expectation(description: "Can fetch from the API")
         let realtimeDepartures = RealtimeDepartures()
         var depList: [Departure]?
         let abDict = NSMutableDictionary()
@@ -78,7 +78,7 @@ class HinnerJagKitTests: XCTestCase {
             expectation.fulfill()
         }
         
-        self.waitForExpectationsWithTimeout(2000) { (error) in
+        self.waitForExpectations(timeout: 2000) { (error) in
             XCTAssert(depList != nil, "We got some departures")
         }
     }

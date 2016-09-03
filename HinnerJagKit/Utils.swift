@@ -12,7 +12,7 @@ import MapKit
 /**
 Utilities class to make small transformations etc used by all other classes
 */
-public class Utils
+open class Utils
 {
     // MARK: - Transport types
     
@@ -28,7 +28,7 @@ public class Utils
     By casting the result of an Array.map first into a Set and then into Array,
     duplicates of the same transport type are removed
     */
-    public class func uniqueTransportTypesFromDepartures(departures: [Departure]) -> [TransportType] {
+    open class func uniqueTransportTypesFromDepartures(_ departures: [Departure]) -> [TransportType] {
         return Array(Set(departures.map({ dept in dept.transportType! })))
     }
     
@@ -38,7 +38,7 @@ public class Utils
     - returns:
     TransportType to be shown
     */
-    public class func currentTransportType(departures: [Departure]) -> TransportType {
+    open class func currentTransportType(_ departures: [Departure]) -> TransportType {
         let uniqueTransportTypes = uniqueTransportTypesFromDepartures(departures)
         // If we have one of them as preferred, filter on that
         let preferredTransportType = getPreferredTransportType()
@@ -68,7 +68,7 @@ public class Utils
     to map these string into arrays of Departures. This is needed when showing the results in a table
     where the places are determined by the row number.
     */
-    public class func getMappingFromDepartures(departures: [Departure], mappingStart: Int = 0) -> (Dictionary <Int, String>, Dictionary<String, [Departure]>) {
+    open class func getMappingFromDepartures(_ departures: [Departure], mappingStart: Int = 0) -> (Dictionary <Int, String>, Dictionary<String, [Departure]>) {
         var largestUsedMapping: Int = mappingStart
         var mappingDict = Dictionary <Int, String>()
         var departuresDict = Dictionary <String, [Departure]>()
@@ -109,9 +109,9 @@ public class Utils
         }
         
         // Create array of Strings sorted with the STAR-marked groups first
-        let mappingStringsSorted = mappingDict.values.sort() {
-            let firstStar = $0.rangeOfString("STAR") != nil
-            let secondStar = $1.rangeOfString("STAR") != nil
+        let mappingStringsSorted = mappingDict.values.sorted() {
+            let firstStar = $0.range(of: "STAR") != nil
+            let secondStar = $1.range(of: "STAR") != nil
             if (firstStar && secondStar) || (!firstStar && !secondStar) {
                 return $0 < $1
             } else if firstStar {
@@ -135,7 +135,7 @@ public class Utils
     }
     
     // MARK: - Small tranformation methods
-    public class func getLabelTextForClosestStation(station: Site?, ownLocation location: CLLocation?) -> String {
+    open class func getLabelTextForClosestStation(_ station: Site?, ownLocation location: CLLocation?) -> String {
         if nil == station || nil == location {
             return "Söker efter plats..."
         } else {
@@ -157,7 +157,7 @@ public class Utils
     - parameters:
         - distance: The distance to format
     */
-    public class func distanceFormat(distance: Double) -> String {
+    open class func distanceFormat(_ distance: Double) -> String {
         // Round to even 50m steps
         var dist = Int(distance / 50.0)
         dist *= 50
@@ -177,7 +177,7 @@ public class Utils
     /**
     Human readable name for transport type
     */
-    public class func transportTypeStringToName(transportType: TransportType) -> String {
+    open class func transportTypeStringToName(_ transportType: TransportType) -> String {
         switch transportType {
         case .Metro: return "T-bana"
         case .Train: return "Pendeltåg"
@@ -189,8 +189,8 @@ public class Utils
     
     // MARK: - Keep track of preferred transport type for the user
     static let preferredTransportTypeKey = "preferredTransportTypeKey"
-    public class func getPreferredTransportType() -> TransportType? {
-        let preferredTravelTypeString = NSUserDefaults.standardUserDefaults().stringForKey(Utils.preferredTransportTypeKey)
+    open class func getPreferredTransportType() -> TransportType? {
+        let preferredTravelTypeString = UserDefaults.standard.string(forKey: Utils.preferredTransportTypeKey)
         if nil != preferredTravelTypeString {
             return TransportType(rawValue: preferredTravelTypeString!)
         } else {
@@ -198,8 +198,8 @@ public class Utils
         }
     }
     
-    public class func setPreferredTransportType(type: TransportType) {
-        NSUserDefaults.standardUserDefaults().setValue(type.rawValue, forKey: Utils.preferredTransportTypeKey)
-        NSUserDefaults.standardUserDefaults().synchronize()
+    open class func setPreferredTransportType(_ type: TransportType) {
+        UserDefaults.standard.setValue(type.rawValue, forKey: Utils.preferredTransportTypeKey)
+        UserDefaults.standard.synchronize()
     }
 }

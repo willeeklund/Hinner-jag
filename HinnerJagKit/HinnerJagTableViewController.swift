@@ -11,34 +11,34 @@ import UIKit
 import MapKit
 import HinnerJagKit
 
-public class HinnerJagTableViewController: UITableViewController, LocateStationDelegate
+open class HinnerJagTableViewController: UITableViewController, LocateStationDelegate
 {
     // MARK: - Variables
-    public var fetchedDepartures: [Departure]?
-    public var mappingDict: Dictionary <Int, String> = Dictionary <Int, String>()
-    public var departuresDict: Dictionary<String, [Departure]> = Dictionary<String, [Departure]>() {
+    open var fetchedDepartures: [Departure]?
+    open var mappingDict: Dictionary <Int, String> = Dictionary <Int, String>()
+    open var departuresDict: Dictionary<String, [Departure]> = Dictionary<String, [Departure]>() {
         didSet {
             self.updateUI()
         }
     }
     
-    public var selectChosenStation: Bool = false {
+    open var selectChosenStation: Bool = false {
         didSet {
             self.updateUI()
         }
     }
 
-    public var closestStation: Site?
-    public var closestSortedStations: [Site] = [Site]()
+    open var closestStation: Site?
+    open var closestSortedStations: [Site] = [Site]()
     
     // MARK: - Locate station
-    public var locateStation: LocateStation = LocateStation()
+    open var locateStation: LocateStation = LocateStation()
     
-    public func locateStationFoundClosestStation(station: Site?) {
+    open func locateStationFoundClosestStation(_ station: Site?) {
         self.closestStation = station
     }
     
-    public func locateStationFoundSortedStations(stationsSorted: [Site], withDepartures departures: [Departure]?, error: NSError?) {
+    open func locateStationFoundSortedStations(_ stationsSorted: [Site], withDepartures departures: [Departure]?, error: NSError?) {
         let station = stationsSorted.first
         self.closestSortedStations = stationsSorted
         self.fetchedDepartures = departures
@@ -56,12 +56,12 @@ public class HinnerJagTableViewController: UITableViewController, LocateStationD
     }
 
     // MARK: - Get last known location
-    public func getLastLocation() -> CLLocation? {
+    open func getLastLocation() -> CLLocation? {
         return nil
     }
     
     // MARK: - Create mapping from fetched departures
-    public func createMappingFromFetchedDepartures() {
+    open func createMappingFromFetchedDepartures() {
         if nil != self.fetchedDepartures && nil != self.closestStation {
             (self.mappingDict, self.departuresDict) = Utils.getMappingFromDepartures(
                 self.fetchedDepartures!,
@@ -71,12 +71,12 @@ public class HinnerJagTableViewController: UITableViewController, LocateStationD
     }
     
     // MARK: - Toggle to choose different station
-    public func changeChosenStation() {
+    open func changeChosenStation() {
         self.selectChosenStation = !self.selectChosenStation
     }
     
     // MARK: - Select preferred travel type from a segment
-    public func setPreferredTransportType(type: TransportType) {
+    open func setPreferredTransportType(_ type: TransportType) {
         Utils.setPreferredTransportType(type)
         self.createMappingFromFetchedDepartures()
         self.trackEvent("TravelType", action: "changePreferred", label: "\(type)", value: 1)
@@ -88,20 +88,20 @@ public class HinnerJagTableViewController: UITableViewController, LocateStationD
         super.init(coder: aDecoder)
     }
     
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         self.locateStation.delegate = self
     }
     
     // MARK: - Update UI
-    public func updateUI() {
-        headlineCell?.stationTypeSegment.hidden = true
-        dispatch_async(dispatch_get_main_queue(), {
+    open func updateUI() {
+        headlineCell?.stationTypeSegment.isHidden = true
+        DispatchQueue.main.async(execute: {
             self.tableView.reloadData()
         })
     }
     
-    public func shouldShowStationTypeSegment() -> Bool {
+    open func shouldShowStationTypeSegment() -> Bool {
         // If we do not have departures or we only have one type of departures,
         // do not show the segmented control
         if nil == fetchedDepartures {
@@ -112,11 +112,11 @@ public class HinnerJagTableViewController: UITableViewController, LocateStationD
     }
     
     // MARK: - Table stuff
-    override public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override open func numberOfSections(in tableView: UITableView) -> Int {
         return self.departuresDict.count + 1 // Extra section for closest station
     }
     
-    override public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let mappingName = self.mappingDict[section] {
             if let depList = self.departuresDict[mappingName] {
                 return depList.count
@@ -130,12 +130,12 @@ public class HinnerJagTableViewController: UITableViewController, LocateStationD
         }
     }
     
-    override public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section != 0 {
+    override open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath as NSIndexPath).section != 0 {
             return
         }
-        let usedRow = indexPath.row + 1
-        print("Did select section: \(indexPath.section) row: \(usedRow)")
+        let usedRow = (indexPath as NSIndexPath).row + 1
+        print("Did select section: \((indexPath as NSIndexPath).section) row: \(usedRow)")
         if usedRow < self.closestSortedStations.count {
             let station = self.closestSortedStations[usedRow]
             searchFromNewClosestStation(station)
@@ -145,7 +145,7 @@ public class HinnerJagTableViewController: UITableViewController, LocateStationD
     }
 
     var headlineCell: HeadlineCell?
-    override public func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
             headlineCell = HeadlineCell.createCellForTableView(
                 tableView,
@@ -167,7 +167,7 @@ public class HinnerJagTableViewController: UITableViewController, LocateStationD
     }
     
     // MARK: - Search from new closest station
-    public func searchFromNewClosestStation(newStation: Site) {
+    open func searchFromNewClosestStation(_ newStation: Site) {
         self.closestStation = newStation
         print("Selected station: \(self.closestStation!)")
         // Instead of searching through the active stations to find the closest,

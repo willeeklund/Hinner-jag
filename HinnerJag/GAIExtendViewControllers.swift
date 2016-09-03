@@ -18,13 +18,13 @@ public extension UIViewController {
             print("Have already initialized tracker")
             return
         }
-        let hinnerJagKitBundle = NSBundle(forClass: LocateStation.classForCoder())
-        if let path = hinnerJagKitBundle.pathForResource("Info", ofType: "plist") {
+        let hinnerJagKitBundle = Bundle(for: LocateStation.classForCoder())
+        if let path = hinnerJagKitBundle.path(forResource: "Info", ofType: "plist") {
             if let infoDict = NSDictionary(contentsOfFile: path) as? Dictionary<String, AnyObject> {
                 if let gaTrackerId: String = infoDict["GA_TRACKING_ID"] as? String {
                     if gaTrackerId.hasPrefix("UA-") {
                         GAI.sharedInstance().trackUncaughtExceptions = true
-                        GAI.sharedInstance().trackerWithTrackingId(gaTrackerId)
+                        GAI.sharedInstance().tracker(withTrackingId: gaTrackerId)
                     }
                 }
             }
@@ -34,15 +34,15 @@ public extension UIViewController {
     public func gaSetup() {
         UIViewController.gaSetupTracker()
         // Listen to GaTrackEvent notification
-        NSNotificationCenter.defaultCenter().addObserver(
+        NotificationCenter.default.addObserver(
             self,
             selector: #selector(handleGaTrackEvent),
-            name: Constants.gaTrackEvent,
+            name: NSNotification.Name(rawValue: Constants.gaTrackEvent),
             object: nil
         )
     }
     
-    func setScreenName(name: String) {
+    func setScreenName(_ name: String) {
         self.title = name
         self.sendScreenView()
     }
@@ -52,26 +52,27 @@ public extension UIViewController {
         if nil == tracker {
             return
         }
-        tracker.set(kGAIScreenName, value: self.title)
-        tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
+        tracker?.set(kGAIScreenName, value: self.title)
+        tracker?.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
     }
     
-    func trackEvent(category: String, action: String, label: String, value: NSNumber?) {
+    func trackEvent(_ category: String, action: String, label: String, value: NSNumber?) {
         let tracker = GAI.sharedInstance().defaultTracker
         if nil == tracker {
             return
         }
         print("trackEvent(\(category), \(action), \(label), \(value))")
-        let trackDictionary = GAIDictionaryBuilder.createEventWithCategory(category, action: action, label: label, value: value).build()
-        tracker.send(trackDictionary as [NSObject : AnyObject])
+        if let trackDictionary = GAIDictionaryBuilder.createEvent(withCategory: category, action: action, label: label, value: value).build() {
+            tracker?.send(trackDictionary as [NSObject : AnyObject])
+        }
     }
     
     // MARK: - GaTrackEvent notification listener
-    func handleGaTrackEvent(notification: NSNotification) {
+    func handleGaTrackEvent(_ notification: Notification) {
         // Only track if this view is shown on screen, avoid duplicates
-        if (self.isViewLoaded() && nil != self.view.window) {
+        if (self.isViewLoaded && nil != self.view.window) {
             // Get event details from notification userInfo
-            if let userInfo = notification.userInfo {
+            if let userInfo = (notification as NSNotification).userInfo {
                 let category = userInfo["category"] as? String
                 let action = userInfo["action"] as? String
                 let label = userInfo["label"] as? String

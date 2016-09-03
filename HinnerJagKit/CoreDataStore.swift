@@ -9,28 +9,28 @@
 import Foundation
 import CoreData
 
-public class CoreDataStore: NSObject {
+open class CoreDataStore: NSObject {
     
     // MARK: - Core Data stack
     
-    static var applicationDocumentsDirectory: NSURL? = {
+    static var applicationDocumentsDirectory: URL? = {
 //        // The directory the application uses to store the Core Data store file. This code uses a directory named "com.wilhelmeklund.Hinner-jag" in the application's documents Application Support directory.
 //        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
 //        return urls[urls.count-1]
         // Store application documents, such as sqlite file for CoreData, in App Group folder
-        return NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.com.wilhelmeklund.HinnerJagGroup")
+        return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.wilhelmeklund.HinnerJagGroup")
     }()
     
     static var managedObjectModel: NSManagedObjectModel? = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
         //        let modelURL = NSBundle.mainBundle().URLForResource("HinnerJag", withExtension: "momd")!
-        let hinnerJagKitBundle = NSBundle(forClass: CoreDataStore.classForCoder())
-        let modelURL = hinnerJagKitBundle.URLForResource("DataModel", withExtension: "momd")
+        let hinnerJagKitBundle = Bundle(for: CoreDataStore.classForCoder())
+        let modelURL = hinnerJagKitBundle.url(forResource: "DataModel", withExtension: "momd")
         if nil == modelURL {
             print("CoreDataStore.managedObjectModel was nil. Could not find 'DataModel.momd'.")
             return nil
         }
-        return NSManagedObjectModel(contentsOfURL: modelURL!)
+        return NSManagedObjectModel(contentsOf: modelURL!)
     }()
     
     static var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
@@ -44,7 +44,7 @@ public class CoreDataStore: NSObject {
         do {
             var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: CoreDataStore.managedObjectModel!)
             // Place to store sqlite file
-            let sqliteUrl = CoreDataStore.applicationDocumentsDirectory?.URLByAppendingPathComponent("HinnerJag_2.sqlite")
+            let sqliteUrl = CoreDataStore.applicationDocumentsDirectory?.appendingPathComponent("HinnerJag_2.sqlite")
             assert(nil != sqliteUrl, "Sqlite URL not found in App Group")
             assert(nil != coordinator, "coordinator could not be created")
             if
@@ -53,10 +53,10 @@ public class CoreDataStore: NSObject {
                 print("Either sqlite or coordinator was nil")
                 return nil
             }
-            try coordinator!.addPersistentStoreWithType(
-                NSSQLiteStoreType,
-                configuration: nil,
-                URL: sqliteUrl!,
+            try coordinator!.addPersistentStore(
+                ofType: NSSQLiteStoreType,
+                configurationName: nil,
+                at: sqliteUrl!,
                 options: [
                     NSMigratePersistentStoresAutomaticallyOption: true,
                     NSInferMappingModelAutomaticallyOption: true
@@ -65,7 +65,7 @@ public class CoreDataStore: NSObject {
             return coordinator
         } catch var error as NSError {
             // Report any error we got.
-            var dict = [NSObject: AnyObject]()
+            var dict = [String: Any]()
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
             dict[NSLocalizedFailureReasonErrorKey] = failureReason
             dict[NSUnderlyingErrorKey] = error
@@ -84,7 +84,7 @@ public class CoreDataStore: NSObject {
     
     // MARK: - managedObjectContext
     
-    public static var managedObjectContext: NSManagedObjectContext? {
+    open static var managedObjectContext: NSManagedObjectContext? {
         get {
             if nil != CoreDataStore.obj {
                 return CoreDataStore.obj!
@@ -93,7 +93,7 @@ public class CoreDataStore: NSObject {
             if nil == coordinator {
                 return nil
             }
-            let managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+            let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
             managedObjectContext.persistentStoreCoordinator = coordinator!
             CoreDataStore.obj = managedObjectContext
             return managedObjectContext
@@ -105,7 +105,7 @@ public class CoreDataStore: NSObject {
      
      This is always performed on main queue, to be thread safe
     */
-    public static func saveContext() {
+    open static func saveContext() {
         do {
             try CoreDataStore.managedObjectContext?.save()
         } catch let error as NSError  {
@@ -116,23 +116,22 @@ public class CoreDataStore: NSObject {
     /**
      Fetch all items in entity and request to delete them
      */
-    public static func batchDeleteEntity(entityName: String) {
+    open static func batchDeleteEntity(_ entityName: String) {
         defer { CoreDataStore.saveContext() }
         do {
             if #available(iOSApplicationExtension 9.0, *) {
-                try CoreDataStore.persistentStoreCoordinator?.executeRequest(
+                try CoreDataStore.persistentStoreCoordinator?.execute(
                     NSBatchDeleteRequest(fetchRequest: NSFetchRequest(entityName: entityName)),
-                    withContext: CoreDataStore.managedObjectContext!
+                    with: CoreDataStore.managedObjectContext!
                 )
             } else {
                 // Fallback on earlier versions
-                let fetchRequest = NSFetchRequest(entityName: entityName)
-                let objectList = try CoreDataStore.managedObjectContext!.executeFetchRequest(fetchRequest)
-                if let managedObjectList = objectList as? [NSManagedObject] {
-                    managedObjectList.forEach({
-                        CoreDataStore.managedObjectContext!.deleteObject($0)
-                    })
-                }
+                let fetchRequest: NSFetchRequest<NSManagedObject> = NSFetchRequest(entityName: entityName)
+                let objectList = try CoreDataStore.managedObjectContext!.fetch(fetchRequest)
+                let managedObjectList = objectList
+                managedObjectList.forEach({
+                    CoreDataStore.managedObjectContext!.delete($0)
+                })
             }
         } catch let error as NSError {
             print(error)

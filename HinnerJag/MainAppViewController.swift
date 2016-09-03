@@ -31,20 +31,20 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
         self.refresh(nil)
     }
     
-    @IBAction func refresh(sender: AnyObject?) {
+    @IBAction func refresh(_ sender: AnyObject?) {
         print("Refreshing position")
         self.locateStation.startUpdatingLocation()
         // Update info label with random message
-        NSNotificationCenter.defaultCenter().postNotificationName(Constants.notificationEventInfoMessage, object: nil, userInfo: [
+        NotificationCenter.default.post(name: Notification.Name(rawValue: Constants.notificationEventInfoMessage), object: nil, userInfo: [
             "random": true
         ])
 
     }
     
     // MARK: - Locate station delegate protocol
-    override func locateStationFoundSortedStations(stationsSorted: [Site], withDepartures departures: [Departure]?, error: NSError?) {
+    override func locateStationFoundSortedStations(_ stationsSorted: [Site], withDepartures departures: [Departure]?, error: NSError?) {
         super.locateStationFoundSortedStations(stationsSorted, withDepartures: departures, error: error)
-        dispatch_async(dispatch_get_main_queue(), {
+        DispatchQueue.main.async(execute: {
             self.refreshControl!.endRefreshing()
         })
     }
@@ -52,15 +52,15 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
     // MARK: - Table stuff
     
     // Cell in table
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if (indexPath as NSIndexPath).section == 0 {
             // Section for changing closest station manually
             let reuseId = "chooseStation"
-            var cell = tableView.dequeueReusableCellWithIdentifier(reuseId)
+            var cell = tableView.dequeueReusableCell(withIdentifier: reuseId)
             if cell == nil {
-                cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: reuseId)
+                cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: reuseId)
             }
-            let usedRow = indexPath.row + 1
+            let usedRow = (indexPath as NSIndexPath).row + 1
             if usedRow < self.closestSortedStations.count {
                 let station = self.closestSortedStations[usedRow]
                 if let location = self.locateStation.locationManager.location {
@@ -78,7 +78,7 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
         }
     }
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             if self.shouldShowStationTypeSegment() {
                 return 160.0
@@ -91,9 +91,9 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
     }
     
     // MARK: - Segue
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.destinationViewController is MapViewController {
-            let mapVC: MapViewController = segue.destinationViewController as! MapViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is MapViewController {
+            let mapVC: MapViewController = segue.destination as! MapViewController
             mapVC.chosenStation = self.closestStation
             // If segue performed by code specifying line number to show
             if let dict = sender as? Dictionary<String, AnyObject> {
@@ -109,20 +109,20 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
     
     // MARK: - Introduction walkthrough of the app
     func startWalkthroughTimer() {
-        NSTimer.scheduledTimerWithTimeInterval(10.0, target: self, selector: #selector(MainAppViewController.checkIfHasSeenWalkthrough), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(MainAppViewController.checkIfHasSeenWalkthrough), userInfo: nil, repeats: false)
     }
     
     func checkIfHasSeenWalkthrough() {
         let walkthroughKey = "hasSeenWalkthrough2"
-        if !NSUserDefaults.standardUserDefaults().boolForKey(walkthroughKey) {
+        if !UserDefaults.standard.bool(forKey: walkthroughKey) {
             self.showWalkthrough()
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: walkthroughKey)
+            UserDefaults.standard.set(true, forKey: walkthroughKey)
             self.trackEvent("Walkthrough", action: "show", label: "first time", value: 1)
-            NSUserDefaults.standardUserDefaults().synchronize()
+            UserDefaults.standard.synchronize()
         }
     }
     
-    @IBAction func showWalkthroughButtonPressed(sender: AnyObject) {
+    @IBAction func showWalkthroughButtonPressed(_ sender: AnyObject) {
         self.showWalkthrough()
         self.trackEvent("Walkthrough", action: "show", label: "manual", value: 1)
     }
@@ -130,34 +130,44 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
     var introVideoVC: BWWalkThroughVideoViewController?
     var walkthrough: BWWalkthroughViewController?
     func showWalkthrough() {
-        let stb = UIStoryboard(name: "Main", bundle: NSBundle(forClass: self.classForCoder))
+        let stb = UIStoryboard(name: "Main", bundle: Bundle(for: self.classForCoder))
         // Create walkthrough view controller
-        walkthrough = stb.instantiateViewControllerWithIdentifier("walk0") as? BWWalkthroughViewController
-        let page_one = stb.instantiateViewControllerWithIdentifier("walk1")
-        let page_two = stb.instantiateViewControllerWithIdentifier("walk2")
+        walkthrough = stb.instantiateViewController(withIdentifier: "walk0") as? BWWalkthroughViewController
+        if nil == walkthrough {
+            print("Coulr not create walkthrough view controller")
+            return
+        }
+        let page_one = stb.instantiateViewController(withIdentifier: "walk1")
+        let page_two = stb.instantiateViewController(withIdentifier: "walk2")
         if page_two is BWWalkThroughVideoViewController {
             introVideoVC = page_two as? BWWalkThroughVideoViewController
         }
         // Attach the pages to the walkthrough master
-        walkthrough?.delegate = self
-        walkthrough?.addViewController(page_one)
-        walkthrough?.addViewController(page_two)
+        walkthrough!.delegate = self
+        walkthrough!.addViewController(page_one)
+        walkthrough!.addViewController(page_two)
         // Show the walkthrough view controller
-        self.presentViewController(walkthrough!, animated: true, completion: nil)
+        self.present(walkthrough!, animated: true) {
+            print("Done presenting the walkthrough controller")
+        }
     }
     
     func walkthroughCloseButtonPressed() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
         introVideoVC = nil
         walkthrough = nil
     }
     
-    func walkthroughPageDidChange(pageNumber: Int) {
+    func walkthroughNextButtonPressed() {
+        print("The next button was pressed")
+    }
+    
+    func walkthroughPageDidChange(_ pageNumber:Int) {
         if 1 == pageNumber {
             introVideoVC?.playMovie()
-            walkthrough?.closeButton?.setTitle("Klar med intro - använd appen", forState: .Normal)
+            walkthrough?.closeButton?.setTitle("Klar med intro - använd appen", for: UIControlState())
         } else {
-            walkthrough?.closeButton?.setTitle("Se introfilmen", forState: .Normal)
+            walkthrough?.closeButton?.setTitle("Se introfilmen", for: UIControlState())
         }
     }
 }

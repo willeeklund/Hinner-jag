@@ -8,25 +8,25 @@
 
 import Foundation
 
-public class RealtimeDepartures
+open class RealtimeDepartures
 {
     // MARK: - Debug variables
     // Unit test will fail if any of these are true to prevent them from being checked in
-    public let debugBackend = false
-    public let debugJsonData = false
+    open let debugBackend = false
+    open let debugJsonData = false
 
     // MARK: - Variables
-    let session: NSURLSession
+    let session: URLSession
     let realtimeKey = "bebfe14511a74ca5aef16db943ae8589"
     
     public init() {
-        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        self.session = NSURLSession(configuration: configuration);
+        let configuration = URLSessionConfiguration.default
+        self.session = URLSession(configuration: configuration);
     }
     
-    public func departuresFromStation(station: Site, callback: ([Departure]?, error: NSError?) -> ()) {
-        let realtimeApiQueue = dispatch_queue_create("realtime API queue", nil)
-        dispatch_async(realtimeApiQueue, {
+    open func departuresFromStation(_ station: Site, callback: @escaping ([Departure]?, _ error: NSError?) -> ()) {
+        let realtimeApiQueue = DispatchQueue(label: "realtime API queue", attributes: [])
+        realtimeApiQueue.async(execute: {
             if self.debugJsonData {
                 self.fetchDummyDepartureJsonData(station, callback: callback)
             } else {
@@ -36,7 +36,7 @@ public class RealtimeDepartures
     }
     
     // MARK: - Fetch departure JSON data
-    func fetchDummyDepartureJsonData(station: Site, callback: ([Departure]?, error: NSError?) -> ()) {
+    func fetchDummyDepartureJsonData(_ station: Site, callback: @escaping ([Departure]?, _ error: NSError?) -> ()) {
         print("Please note that dummy data is used for departures")
         // Used dummy data file
         let testFile = "test_departures"
@@ -46,24 +46,24 @@ public class RealtimeDepartures
 //        testFile = "test_departures_9325_sundbyberg"
 //        testFile = "test_departures_9180_farsta_strand"
         
-        let hinnerJagKitBundle = NSBundle(forClass: LocateStation.classForCoder())
-        let testDeparturesFilePath = hinnerJagKitBundle.pathForResource(testFile, ofType: "json")
+        let hinnerJagKitBundle = Bundle(for: LocateStation.classForCoder())
+        let testDeparturesFilePath = hinnerJagKitBundle.path(forResource: testFile, ofType: "json")
         assert(nil != testDeparturesFilePath, "The file \(testFile).json must be included in the framework")
-        let testDeparturesData = NSData(contentsOfFile: testDeparturesFilePath!)
+        let testDeparturesData = try? Data(contentsOf: URL(fileURLWithPath: testDeparturesFilePath!))
         self.parseJsonDataToDepartures(testDeparturesData, station: station, callback: callback)
     }
     
-    func performRealtimeApiReqForStation(station: Site, callback: ([Departure]?, error: NSError?) -> ()) {
+    func performRealtimeApiReqForStation(_ station: Site, callback: @escaping ([Departure]?, _ error: NSError?) -> ()) {
         print("stationId = \(station.siteId)")
         let urlString = "https://api.sl.se/api2/realtimedepartures.json?key=\(realtimeKey)&timewindow=60&siteid=\(station.siteId)"
-        let request = NSURLRequest(URL: NSURL(string: urlString)!)
-        let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
-            if error == nil {
-                self.parseJsonDataToDepartures(data, station: station, callback: callback)
+        let request = URLRequest(url: URL(string: urlString)!)
+        let task = session.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
+            if error == nil && data != nil {
+                self.parseJsonDataToDepartures(data!, station: station, callback: callback)
             } else {
                 print("Error from SL: \(error)")
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    callback(nil, error: error)
+                DispatchQueue.main.async(execute: { () -> Void in
+                    callback(nil, error as NSError?)
                 })
             }
         })
@@ -71,10 +71,10 @@ public class RealtimeDepartures
     }
     
     // MARK: - Parse JSON data into Departures
-    func parseJsonDataToDepartures(data: NSData?, station: Site, callback: ([Departure]?, error: NSError?) -> ()) {
+    func parseJsonDataToDepartures(_ data: Data?, station: Site, callback: @escaping ([Departure]?, _ error: NSError?) -> ()) {
         do {
-            let responseDict = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments)
-            if let allTypes = responseDict["ResponseData"] as! NSDictionary? {
+            let responseDict = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as! [String: Any]
+            if let allTypes = responseDict["ResponseData"]  as? NSDictionary {
                 var departureList = [Departure]()
                 // Add departure for the sections we want to use
                 let transportTypeSection = ["Metros", "Trains", "Buses", "Trams", "Ships"]
@@ -85,16 +85,16 @@ public class RealtimeDepartures
                         }
                     }
                 }
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    callback(departureList, error: nil)
+                DispatchQueue.main.async(execute: { () -> Void in
+                    callback(departureList, nil)
                 })
             } else {
                 print("Weird, expected 'ResponseData' in the response from SL")
-                callback(nil, error: nil)
+                callback(nil, nil)
             }
         } catch let JSONError as NSError {
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                callback(nil, error: JSONError)
+            DispatchQueue.main.async(execute: { () -> Void in
+                callback(nil, JSONError)
             })
         }
     }

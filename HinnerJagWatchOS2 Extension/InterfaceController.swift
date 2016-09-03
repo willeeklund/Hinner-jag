@@ -10,6 +10,26 @@ import WatchKit
 import Foundation
 import HinnerJagWatchKit
 import WatchConnectivity
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, LocateStationDelegate {
     // MARK: - Variables
@@ -40,8 +60,8 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
     @IBOutlet var transportTypePicker: WKInterfacePicker!
     
     // MARK: - Initilization
-    override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
+    override func awake(withContext context: Any?) {
+        super.awake(withContext: context)
         print("awaking - finally!")
         self.locationManager.delegate = self
         self.locationManager.requestWhenInUseAuthorization()
@@ -117,9 +137,9 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
         var currentHeaderIndex: Int?
         var currentGroupIndex: Int?
         var currentGroupDepartures = [Departure]()
-        for (index, rowType) in self.typesOfRows.enumerate() {
+        for (index, rowType) in self.typesOfRows.enumerated() {
             if "header" == rowType {
-                if let header = self.tableView.rowControllerAtIndex(index) as! TravelHeaderRow? {
+                if let header = self.tableView.rowController(at: index) as! TravelHeaderRow? {
                     // Set label for header row
                     currentHeaderIndex = index
                     currentGroupIndex = self.groupFromIndex[index]
@@ -146,7 +166,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
                     }
                 }
             } else if "details" == rowType {
-                if let detailRow = self.tableView.rowControllerAtIndex(index) as! TravelDetailsRow? {
+                if let detailRow = self.tableView.rowController(at: index) as! TravelDetailsRow? {
                     // Set label for details row
                     var departure: Departure?
                     if nil != currentHeaderIndex {
@@ -175,7 +195,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
         let currentTransportType = Utils.currentTransportType(fetchedDepartures!)
         var selectedIndex = 0
         var pickerItems = [WKPickerItem]()
-        for (index, type) in uniqueTransportTypes.enumerate() {
+        for (index, type) in uniqueTransportTypes.enumerated() {
             let item = WKPickerItem()
             item.title = Utils.transportTypeStringToName(type)
             pickerItems.append(item)
@@ -188,15 +208,15 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
         transportTypePicker.setHidden(false)
     }
     
-    @IBAction func didChangeTransportType(index: Int) {
+    @IBAction func didChangeTransportType(_ index: Int) {
         let newType = uniqueTransportTypes[index]
         Utils.setPreferredTransportType(newType)
         createMappingFromFetchedDepartures()
     }
     
     // MARK: - Timers to indicate time for user with dots
-    var searchingForLocationTimer: NSTimer?
-    var searchingForDeparturesTimer: NSTimer?
+    var searchingForLocationTimer: Timer?
+    var searchingForDeparturesTimer: Timer?
     
     func intervalCheckForStation() {
         let fetchingLocationText = "Söker plats"
@@ -206,17 +226,17 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
         self.fetchingDataLabel.setHidden(true)
         // Interval to see when we find the station
         var timerStationCount = 0
-        self.searchingForLocationTimer = NSTimer.schedule(repeatInterval: 1) { (timer) in
+        self.searchingForLocationTimer = Timer.schedule(repeatInterval: 1) { (timer) in
             // Only keep one timer instance going
             if timer != self.searchingForLocationTimer {
                 // If not the same timer, remove it
-                timer.invalidate()
+                timer?.invalidate()
                 return
             }
             timerStationCount += 1
             // Check if still no station is selected
             if nil == self.closestStation {
-                let dots = String(count: timerStationCount, repeatedValue: "." as Character)
+                let dots = String(repeating: ".", count: timerStationCount)
                 self.closestStationLabel.setText("\(fetchingLocationText)\(dots)")
             } else {
                 self.searchingForLocationTimer?.invalidate()
@@ -236,18 +256,18 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
             self.fetchingDataLabel.setHidden(false)
             // Interval to see when we find the departures
             var timerDeparturesCount = 0
-            self.searchingForDeparturesTimer = NSTimer.schedule(repeatInterval: 1) { (timer) in
+            self.searchingForDeparturesTimer = Timer.schedule(repeatInterval: 1) { (timer) in
                 // Keep single timer
                 if timer != self.searchingForDeparturesTimer {
                     // If not the same timer, remove it
                     print("Illegal timer -> invalidate")
-                    timer.invalidate()
+                    timer?.invalidate()
                     return
                 }
                 timerDeparturesCount += 1
                 // Check if still no station is selected
                 if timerDeparturesCount < 10 {
-                    let points = String(count: timerDeparturesCount, repeatedValue: "." as Character)
+                    let points = String(repeating: ".", count: timerDeparturesCount)
                     self.fetchingDataLabel.setText("\(fetchingDataText)\(points)")
                 } else {
                     self.searchingForDeparturesTimer?.invalidate()
@@ -272,13 +292,13 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
     }
     
     // MARK: - Locate station delegate protocol
-    func locateStationFoundClosestStation(station: Site?) {
+    func locateStationFoundClosestStation(_ station: Site?) {
         self.fetchedDepartures = nil
         self.closestStation = station
         self.departuresDict = Dictionary<String, [Departure]>()
     }
     
-    func locateStationFoundSortedStations(stationsSorted: [Site], withDepartures departures: [Departure]?, error: NSError?) {
+    func locateStationFoundSortedStations(_ stationsSorted: [Site], withDepartures departures: [Departure]?, error: NSError?) {
         if nil == departures {
             print("No departures were found. Error: \(error)")
         }
@@ -303,7 +323,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
     }
     
     // MARK: - Get location of the user
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("didUpdateLocations")
         self.locationManager.stopUpdatingLocation()
         let location = locations.last!
@@ -315,11 +335,11 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
             print("Ignoring double location fetching")
         }
         // Save latest coordinates
-        NSUserDefaults.standardUserDefaults().setDouble(location.coordinate.latitude, forKey: latestStationLatKey)
-        NSUserDefaults.standardUserDefaults().setDouble(location.coordinate.longitude, forKey: latestStationLongKey)
+        UserDefaults.standard.set(location.coordinate.latitude, forKey: latestStationLatKey)
+        UserDefaults.standard.set(location.coordinate.longitude, forKey: latestStationLongKey)
     }
     
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("ERROR - location manager. \(error)")
     }
     
@@ -347,7 +367,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
 //        }
     }
     
-    func setScreenName(name: String) {
+    func setScreenName(_ name: String) {
 //        let tracker = GAI.sharedInstance().defaultTracker
 //        if nil == tracker {
 //            return
@@ -356,11 +376,11 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
 //        tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
 
         sendMessageToPhone([
-            "trackScreenName": name
+            "trackScreenName": name as AnyObject
         ])
     }
     
-    func trackEvent(category: String, action: String, label: String, value: NSNumber?) {
+    func trackEvent(_ category: String, action: String, label: String, value: NSNumber?) {
 //        let tracker = GAI.sharedInstance().defaultTracker
 //        if nil == tracker {
 //            return
@@ -376,20 +396,20 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
             valueToSend = 0.0
         }
         let eventInfo: [String: AnyObject] = [
-            "category": category,
-            "action": action,
-            "label": label,
+            "category": category as AnyObject,
+            "action": action as AnyObject,
+            "label": label as AnyObject,
             "value": valueToSend
         ]
         sendMessageToPhone([
-            "trackEvent": eventInfo
+            "trackEvent": eventInfo as AnyObject
         ])
     }
     
-    func sendMessageToPhone(message: [String: AnyObject]) {
+    func sendMessageToPhone(_ message: [String: AnyObject]) {
         // Send to iOS app using Watch Connectivity
-        if true == WCSession.defaultSession().reachable {
-            let session = WCSession.defaultSession()
+        if true == WCSession.default().isReachable {
+            let session = WCSession.default()
             session.sendMessage(message, replyHandler: { reply in
                 if let msg = reply["msg"] as? String {
                     print("Message from iPhone: \(msg)")

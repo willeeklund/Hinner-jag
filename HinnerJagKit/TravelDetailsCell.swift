@@ -24,16 +24,16 @@ class TravelDetailsCell: UITableViewCell
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
-    internal class func createCellForIndexPath(indexPath: NSIndexPath, tableView: UITableView, mappingDict: Dictionary <Int, String>, departuresDict: Dictionary<String, [Departure]>) -> TravelDetailsCell {
+    internal class func createCellForIndexPath(_ indexPath: IndexPath, tableView: UITableView, mappingDict: Dictionary <Int, String>, departuresDict: Dictionary<String, [Departure]>) -> TravelDetailsCell {
         let reuseId = "TravelDetailsCell"
-        var cell: TravelDetailsCell? = tableView.dequeueReusableCellWithIdentifier(reuseId) as? TravelDetailsCell
+        var cell: TravelDetailsCell? = tableView.dequeueReusableCell(withIdentifier: reuseId) as? TravelDetailsCell
         if nil == cell {
             cell = TravelDetailsCell()
         }
-        if let mappingName = mappingDict[indexPath.section] {
+        if let mappingName = mappingDict[(indexPath as NSIndexPath).section] {
             if let depList = departuresDict[mappingName] {
-                if indexPath.row < depList.count {
-                    let departure = depList[indexPath.row]
+                if (indexPath as NSIndexPath).row < depList.count {
+                    let departure = depList[(indexPath as NSIndexPath).row]
                     cell?.remainingTimeLabel?.text = departure.remainingTime
                     cell?.destinationLabel?.text = departure.destination
                 }

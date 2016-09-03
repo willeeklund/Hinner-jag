@@ -8,8 +8,8 @@
 
 import Foundation
 
-public class LocateStation: LocateStationBase {
-    public override func startUpdatingLocation() {
+open class LocateStation: LocateStationBase {
+    open override func startUpdatingLocation() {
         self.locationManager.requestLocation()
     }
 

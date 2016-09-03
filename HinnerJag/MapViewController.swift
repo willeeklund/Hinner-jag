@@ -23,7 +23,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
     var listOfLines = [Int]()
     lazy var allSites = Site.getAllSites()
     let linkColor = UIColor(red: 8.0/255.0, green: 206.0/255.0, blue: 253.0/255.0, alpha: 1)
-    var searchSuggestionView = UIView(frame: CGRectMake(20, 60, 150, 300))
+    var searchSuggestionView = UIView(frame: CGRect(x: 20, y: 60, width: 150, height: 300))
 
     
     // MARK: - Lifecycle stuff
@@ -37,7 +37,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
         setScreenName("MapViewController")
         // Search textfield
         searchTextField.delegate = self
-        searchTextField.addTarget(self, action: #selector(textFieldValueChanged), forControlEvents: .EditingChanged)
+        searchTextField.addTarget(self, action: #selector(textFieldValueChanged), for: .editingChanged)
         view.addSubview(searchSuggestionView)
         // Map
         mapView.delegate = self
@@ -86,9 +86,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
             }
             // Display showLineLabel
             showLineLabel.text = labelText
-            showLineLabel.hidden = false
+            showLineLabel.isHidden = false
             showLineLabel.adjustsFontSizeToFitWidth = true
-            showLineLabel.layer.borderColor = linkColor.CGColor
+            showLineLabel.layer.borderColor = linkColor.cgColor
             showLineLabel.layer.borderWidth = 2.0
             // Add sites to map
             mapView.addAnnotations(Array(sitesForLine))
@@ -111,39 +111,39 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
                 // Default position T-centralen
                 setMapCenter(CLLocationCoordinate2D(latitude: 59.33, longitude: 18.06))
             }
-            showLineLabel.hidden = true
+            showLineLabel.isHidden = true
             trackEvent("MapViewController", action: "Show", label: "Show all sites", value: nil)
         }
     }
     
-    func addSitesFromLineNumber(number: Int) {
+    func addSitesFromLineNumber(_ number: Int) {
         for site in JourneyPattern.getSitesForLine(number, withStopAreaTypeCode: chosenStopAreaTypeCode) {
             sitesForLine.insert(site)
         }
     }
     
-    func setMapCenter(coordinate: CLLocationCoordinate2D) {
+    func setMapCenter(_ coordinate: CLLocationCoordinate2D) {
         // Delta will set zoom level
         let delta = 0.02
         let region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: delta, longitudeDelta: delta))
         mapView.setRegion(region, animated: true)
     }
     
-    @IBAction func closeMap(sender: UIButton) {
+    @IBAction func closeMap(_ sender: UIButton) {
         // Reset search textfield before leaving
         searchTextField.text = ""
         // Dismiss view controller
-        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Map annotations
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         // Use default view for the users location
         if annotation is MKUserLocation {
             return nil
         }
         let reuseId = "PinAnnotation"
-        var view = self.mapView?.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
+        var view = self.mapView?.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
         if nil == view {
             view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
         }
@@ -160,37 +160,37 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
                         nil != chosenStation
                         && station == chosenStation!
                     {
-                        view?.pinTintColor = UIColor.blueColor()
+                        view?.pinTintColor = UIColor.blue
                     } else {
-                        view?.pinTintColor = UIColor.greenColor()
+                        view?.pinTintColor = UIColor.green
                     }
                 } else {
-                    view?.pinColor = .Green
+                    view?.pinColor = .green
                 }
-                accessoryButton.setImage(UIImage(named: "star_full"), forState: .Normal)
+                accessoryButton.setImage(UIImage(named: "star_full"), for: UIControlState())
             } else {
                 if #available(iOS 9.0, *) {
                     if
                         nil != chosenStation
                             && station == chosenStation!
                     {
-                        view?.pinTintColor = UIColor.purpleColor()
+                        view?.pinTintColor = UIColor.purple
                     } else if station.isChangedManual {
-                        view?.pinTintColor = UIColor.blackColor()
+                        view?.pinTintColor = UIColor.black
                     } else {
-                        view?.pinTintColor = UIColor.redColor()
+                        view?.pinTintColor = UIColor.red
                     }
                 } else {
-                    view?.pinColor = .Red
+                    view?.pinColor = .red
                 }
-                accessoryButton.setImage(UIImage(named: "star_empty"), forState: .Normal)
+                accessoryButton.setImage(UIImage(named: "star_empty"), for: UIControlState())
             }
         }
         return view
     }
     
     // MARK: - Call annotation callout to toggle if station is active
-    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if presentingViewController is MainAppViewController && view.annotation is Site {
             let station = view.annotation as! Site
             print("Station tapped. \(station.siteId)")
@@ -208,73 +208,73 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
         return UITapGestureRecognizer(target: self, action: #selector(MapViewController.tappedAnnotation(_:)))
     }()
     
-    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         view.addGestureRecognizer(tapRecognizer)
     }
-    func mapView(mapView: MKMapView, didDeselectAnnotationView view: MKAnnotationView) {
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         view.removeGestureRecognizer(tapRecognizer)
     }
     
-    func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         // Hide keyboard and suggested searches
         searchTextField.resignFirstResponder()
-        searchSuggestionView.hidden = true
-        showLineLabel.hidden = nil == chosenLineNumber
+        searchSuggestionView.isHidden = true
+        showLineLabel.isHidden = nil == chosenLineNumber
     }
     
-    func tappedAnnotation(recognizer: UIPanGestureRecognizer) {
+    func tappedAnnotation(_ recognizer: UIPanGestureRecognizer) {
         if let view = recognizer.view as? MKAnnotationView {
             if presentingViewController is MainAppViewController && view.annotation is Site {
                 let station = view.annotation as! Site
                 let mainAppVC = presentingViewController as! MainAppViewController
                 mainAppVC.searchFromNewClosestStation(station)
-                mainAppVC.dismissViewControllerAnimated(true, completion: nil)
+                mainAppVC.dismiss(animated: true, completion: nil)
                 trackEvent("Station", action: "change_from_map", label: "\(station.title!) (\(station.siteId))", value: 1)
             }
         }
     }
     
     // MARK: - Textfield delegate
-    func textFieldDidBeginEditing(textField: UITextField) {
-        searchSuggestionView.hidden = false
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        searchSuggestionView.isHidden = false
         // Hide showLineLabel if no chosen line or text is entered
         let hasNoLineNumber = nil == chosenLineNumber
         let hasText = nil != textField.text && textField.text!.characters.count > 0
-        showLineLabel.hidden = hasNoLineNumber || hasText
+        showLineLabel.isHidden = hasNoLineNumber || hasText
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Hide keyboard and suggested searches
         textField.resignFirstResponder()
-        searchSuggestionView.hidden = true
-        showLineLabel.hidden = nil == chosenLineNumber
+        searchSuggestionView.isHidden = true
+        showLineLabel.isHidden = nil == chosenLineNumber
         return true
     }
     
-    func textFieldValueChanged(textField: UITextField) {
+    func textFieldValueChanged(_ textField: UITextField) {
         // Show and clear suggested searches view
-        searchSuggestionView.hidden = false
+        searchSuggestionView.isHidden = false
         searchSuggestionView.subviews.forEach({ $0.removeFromSuperview() })
-        showLineLabel.hidden = true
+        showLineLabel.isHidden = true
         if nil == textField.text {
             return
         }
         // Trim search string
-        let searchString = textField.text!.lowercaseString.stringByTrimmingCharactersInSet(
-            NSCharacterSet.whitespaceAndNewlineCharacterSet()
+        let searchString = textField.text!.lowercased().trimmingCharacters(
+            in: CharacterSet.whitespacesAndNewlines
         )
         let mapCenter = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
         // Find sites from annotations containing search string
         let sites = mapView.annotations.filter({ (annotation) in
             if let site = annotation as? Site {
-                if let title = site.title?.lowercaseString {
-                    if title.containsString(searchString) {
+                if let title = site.title?.lowercased() {
+                    if title.contains(searchString) {
                         return true
                     }
                 }
             }
             return false
-        }).sort() {
+        }).sorted() {
             if let first = $0 as? Site {
                 if let second = $1 as? Site {
                     // Sort by distance from current map center
@@ -288,19 +288,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
         if 0 == sites.count {
             return
         }
-        for (index, site) in sites[0...min(7, sites.count - 1)].enumerate() {
-            let button = UIButton(frame: CGRectMake(0, CGFloat(index * 30), searchSuggestionView.frame.width, 30))
+        for (index, site) in sites[0...min(7, sites.count - 1)].enumerated() {
+            let button = UIButton(frame: CGRect(x: 0, y: CGFloat(index * 30), width: searchSuggestionView.frame.width, height: 30))
             button.tintColor = linkColor
-            button.setTitle(site.title!, forState: .Normal)
+            button.setTitle(site.title!, for: UIControlState())
             button.backgroundColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.7)
-            button.setTitleColor(UIColor.blueColor(), forState: .Normal)
-            button.addTarget(self, action: #selector(selectSuggestionButton), forControlEvents: .TouchUpInside)
+            button.setTitleColor(UIColor.blue, for: UIControlState())
+            button.addTarget(self, action: #selector(selectSuggestionButton), for: .touchUpInside)
             searchSuggestionView.addSubview(button)
-            searchSuggestionView.frame.width
+            _ = searchSuggestionView.frame.width
         }
     }
     
-    func selectSuggestionButton(button: UIButton) {
+    func selectSuggestionButton(_ button: UIButton) {
         if let stationName = button.currentTitle {
             for annotation in mapView.annotations {
                 if stationName == annotation.title! {
