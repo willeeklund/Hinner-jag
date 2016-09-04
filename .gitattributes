@@ -1,0 +1,4 @@
+venv/* linguist-vendored
+Crashlytics.framework linguist-vendored
+Fabric.framework linguist-vendored
+Assets/* linguist-documentation
