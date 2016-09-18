@@ -150,7 +150,7 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
     }
     
     // MARK: - Today widget specific stuff
-    func widgetPerformUpdate(completionHandler: ((NCUpdateResult) -> Void)) {
+    private func widgetPerformUpdate(completionHandler: ((NCUpdateResult) -> Void)) {
         completionHandler(NCUpdateResult.newData)
     }
     
