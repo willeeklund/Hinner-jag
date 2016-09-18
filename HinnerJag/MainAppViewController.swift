@@ -170,4 +170,9 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
             walkthrough?.closeButton?.setTitle("Se introfilmen", for: UIControlState())
         }
     }
+    
+    // MARK: - Network activity indicator
+    override open func setNetworkActivityIndicator(visible: Bool) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = visible
+    }
 }

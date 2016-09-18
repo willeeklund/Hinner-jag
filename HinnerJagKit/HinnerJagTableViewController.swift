@@ -36,9 +36,11 @@ open class HinnerJagTableViewController: UITableViewController, LocateStationDel
     
     open func locateStationFoundClosestStation(_ station: Site?) {
         self.closestStation = station
+        setNetworkActivityIndicator(visible: true)
     }
     
     open func locateStationFoundSortedStations(_ stationsSorted: [Site], withDepartures departures: [Departure]?, error: NSError?) {
+        setNetworkActivityIndicator(visible: false)
         let station = stationsSorted.first
         self.closestSortedStations = stationsSorted
         self.fetchedDepartures = departures
@@ -174,5 +176,11 @@ open class HinnerJagTableViewController: UITableViewController, LocateStationDel
         // just trigger fetching departures for selected station
         self.locateStation.findDeparturesFromStation(newStation, stationList: nil)
         self.departuresDict = Dictionary<String, [Departure]>()
+        setNetworkActivityIndicator(visible: true)
+    }
+    
+    // MARK: - Network activity indicator
+    open func setNetworkActivityIndicator(visible: Bool) {
+        // Do not set network activity indicator in extension
     }
 }
