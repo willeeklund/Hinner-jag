@@ -44,10 +44,15 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
         super.viewDidLoad()
         self.setScreenName("TodayViewController")
         self.tableView.delegate = self
-        
+        if #available(iOSApplicationExtension 10.0, *) {
+            // This makes it possible to see the longer display mode
+            extensionContext?.widgetLargestAvailableDisplayMode = .expanded
+        }
+        self.view.backgroundColor = UIColor.darkGray
         // Reset
         self.departuresDict = Dictionary<String, [Departure]>()
         self.closestStation = nil
+        // Content size
         self.updatePreferredContentSize()
     }
     
@@ -74,7 +79,7 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
     override func updateUI() {
         super.updateUI()
         DispatchQueue.main.async(execute: {
-            self.preferredContentSize = self.tableView.contentSize
+            self.updatePreferredContentSize()
         })
     }
     
@@ -86,8 +91,13 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
             height += rowHeight * CGFloat(self.tableView(self.tableView, numberOfRowsInSection: i) + 1)
             i += 1
         }
-        height = max(height, 180)
+        height = max(height, 480)
         self.preferredContentSize = CGSize(width: 0, height: height)
+    }
+    
+    @available(iOSApplicationExtension 10.0, *)
+    func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
+        preferredContentSize = maxSize
     }
     
     // MARK: - Table stuff
