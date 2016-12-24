@@ -135,6 +135,7 @@
 		02E4AEF21CFC928E00F7819E /* stopareasites.json in Resources */ = {isa = PBXBuildFile; fileRef = 02E4AEF01CFC928E00F7819E /* stopareasites.json */; };
 		02E90DA81AB0FBAF00FD5DB7 /* HinnerJagKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0211B20B1AAE37FB00947C45 /* HinnerJagKit.framework */; };
 		02F4DC191E0E89FB00445C5F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02F4DC181E0E89FB00445C5F /* Images.xcassets */; };
+		02F4DC1B1E0EFBC600445C5F /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F4DC1A1E0EFBC600445C5F /* UIColorExtension.swift */; };
 		02F755BB1AB621210088D6C8 /* metro_stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 02F755BA1AB621210088D6C8 /* metro_stations.json */; };
 		9A9061E51CD0707700999F2F /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9061E31CD0707700999F2F /* Fabric.framework */; };
 		9A9061E61CD0707700999F2F /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9061E41CD0707700999F2F /* Crashlytics.framework */; };
@@ -387,6 +388,7 @@
 		02DDF84A1ABDAFBB00A9AF12 /* TravelDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelDetailsCell.swift; sourceTree = "<group>"; };
 		02E4AEF01CFC928E00F7819E /* stopareasites.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stopareasites.json; sourceTree = "<group>"; };
 		02F4DC181E0E89FB00445C5F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		02F4DC1A1E0EFBC600445C5F /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		02F755BA1AB621210088D6C8 /* metro_stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = metro_stations.json; sourceTree = "<group>"; };
 		9A9061E31CD0707700999F2F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		9A9061E41CD0707700999F2F /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -645,6 +647,7 @@
 			isa = PBXGroup;
 			children = (
 				0248BCB01C9CB5E500F0F05A /* NSTimerExtension.swift */,
+				02F4DC1A1E0EFBC600445C5F /* UIColorExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1222,6 +1225,7 @@
 				0295DD441AC7F6E500D850BA /* Utils.swift in Sources */,
 				02D05BA31CBEE01100BDF4DE /* TransportType.swift in Sources */,
 				0210D46F1CBE0A360097D5D9 /* DataModel.xcdatamodeld in Sources */,
+				02F4DC1B1E0EFBC600445C5F /* UIColorExtension.swift in Sources */,
 				02D2D7101CFC157200FED0EC /* StopArea+CoreDataProperties.swift in Sources */,
 				0211B2301AAE389A00947C45 /* LocateStation.swift in Sources */,
 				0299B6A91CD00684003CEDE8 /* Constants.swift in Sources */,
