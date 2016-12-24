@@ -14,7 +14,16 @@ import CoreLocation
 class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLocationManagerDelegate {
     // MARK: - Variables
     var locationManager: CLLocationManager! = CLLocationManager()
+
     
+    // MARK: - Views to explain to user to click "Show more"
+    @IBOutlet weak var coverView: UIView!
+    
+    @IBOutlet weak var showMoreImage: UIImageView!
+    
+    @IBOutlet weak var arrowTopRight: UIImageView!
+    
+
     // MARK: - Life cycle
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -54,6 +63,13 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
         self.closestStation = nil
         // Content size
         self.updatePreferredContentSize()
+        // Set up cover views
+        coverView.isHidden = true
+        coverView.frame = CGRect.zero
+        coverView.layer.zPosition = 3
+        showMoreImage.layer.cornerRadius = 3
+        showMoreImage.clipsToBounds = true
+        arrowTopRight.image = arrowTopRight.image?.withRenderingMode(.alwaysTemplate)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,6 +97,22 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
         DispatchQueue.main.async(execute: {
             self.updatePreferredContentSize()
         })
+        if #available(iOSApplicationExtension 10.0, *) {
+            switch extensionContext!.widgetActiveDisplayMode {
+            case .expanded:
+                print("We are already in the expanded mode")
+                coverView.frame = CGRect.zero
+                coverView.isHidden = true
+                break
+            case .compact:
+                print("This is the compact mode")
+                coverView.frame = view.frame
+                coverView.isHidden = false
+                break
+            }
+        } else {
+            print("Old iOS version. No widgetActiveDisplayMode")
+        }
     }
     
     func updatePreferredContentSize() {
@@ -98,6 +130,7 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
     @available(iOSApplicationExtension 10.0, *)
     func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
         preferredContentSize = maxSize
+        updateUI()
     }
     
     // MARK: - Table stuff
@@ -106,7 +139,7 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
         if let mappingName = self.mappingDict[section] {
             if let depList = self.departuresDict[mappingName] {
                 if self.departuresDict.count > 4 {
-                    // We only have room for the next two 
+                    // We only have room for the next two
                     // departures at T-centralen
                     return min(2, depList.count)
                 }

@@ -1,47 +1,103 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BUW-g8-FM8">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D12b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="BUW-g8-FM8">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Today View Controller-->
         <scene sceneID="XJ8-8X-duP">
             <objects>
                 <tableViewController id="BUW-g8-FM8" customClass="TodayViewController" customModule="Hinner_jag_widget" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cy6-6w-Xp4">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cy6-6w-Xp4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="trq-Xd-rj1">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tryck på" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wbQ-ok-tt3">
+                                    <rect key="frame" x="111" y="32" width="66" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="uppe till höger" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gKJ-6m-Xnb">
+                                    <rect key="frame" x="257" y="32" width="110" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="visa_fler" translatesAutoresizingMaskIntoConstraints="NO" id="5Zt-Ud-7rI">
+                                    <rect key="frame" x="185" y="28" width="64" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="64" id="4cu-3T-1qv"/>
+                                        <constraint firstAttribute="height" constant="30" id="FF5-nb-Bpw"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="för att kunna se alla avgångar." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="q7u-Hn-TEM">
+                                    <rect key="frame" x="138" y="62" width="229" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_top_right" translatesAutoresizingMaskIntoConstraints="NO" id="fbE-L2-U1x">
+                                    <rect key="frame" x="311" y="2" width="24" height="24"/>
+                                    <color key="tintColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="24" id="RGr-c8-2hY"/>
+                                        <constraint firstAttribute="width" constant="24" id="VlW-ob-Mo6"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" red="0.020856342428290396" green="0.4793186865482234" blue="0.3023519628951396" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="fbE-L2-U1x" secondAttribute="trailing" constant="40" id="7EC-ys-2eD"/>
+                                <constraint firstItem="q7u-Hn-TEM" firstAttribute="top" secondItem="5Zt-Ud-7rI" secondAttribute="bottom" constant="4" id="K3I-L4-wJS"/>
+                                <constraint firstItem="gKJ-6m-Xnb" firstAttribute="top" secondItem="trq-Xd-rj1" secondAttribute="top" constant="32" id="Kix-V5-igx"/>
+                                <constraint firstItem="gKJ-6m-Xnb" firstAttribute="leading" secondItem="5Zt-Ud-7rI" secondAttribute="trailing" constant="8" id="PhU-Om-lwv"/>
+                                <constraint firstAttribute="trailing" secondItem="gKJ-6m-Xnb" secondAttribute="trailing" constant="8" id="VQD-Kz-Aus"/>
+                                <constraint firstItem="wbQ-ok-tt3" firstAttribute="centerY" secondItem="5Zt-Ud-7rI" secondAttribute="centerY" id="bCv-in-gKr"/>
+                                <constraint firstItem="5Zt-Ud-7rI" firstAttribute="centerY" secondItem="gKJ-6m-Xnb" secondAttribute="centerY" id="bNe-O7-mxY"/>
+                                <constraint firstItem="fbE-L2-U1x" firstAttribute="top" secondItem="trq-Xd-rj1" secondAttribute="top" constant="2" id="gIE-2S-E0V"/>
+                                <constraint firstItem="5Zt-Ud-7rI" firstAttribute="leading" secondItem="wbQ-ok-tt3" secondAttribute="trailing" constant="8" id="nBz-rw-LBZ"/>
+                                <constraint firstItem="q7u-Hn-TEM" firstAttribute="trailing" secondItem="gKJ-6m-Xnb" secondAttribute="trailing" id="zfN-v1-f1U"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell opaque="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeadlineCell" rowHeight="90" id="O00-Hc-7L4" customClass="HeadlineCell" customModule="Hinner_jag_widget" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="22" width="320" height="90"/>
+                                <rect key="frame" x="0.0" y="272" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O00-Hc-7L4" id="7Xb-tX-Aqt">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xpu-e3-0mu">
-                                            <rect key="frame" x="8" y="0.0" width="220" height="29"/>
+                                            <rect key="frame" x="8" y="0.0" width="275" height="29"/>
                                             <segments>
                                                 <segment title="Tunnelbana"/>
                                                 <segment title="Pendeltåg"/>
                                             </segments>
-                                            <color key="tintColor" red="0.14117647707462311" green="0.81176477670669556" blue="0.99215692281723022" alpha="1" colorSpace="deviceRGB"/>
+                                            <color key="tintColor" red="0.1480715274810791" green="0.76937520503997803" blue="0.98886847496032715" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="stationTypeSegmentChanged:" destination="O00-Hc-7L4" eventType="valueChanged" id="FV5-3F-sdi"/>
                                             </connections>
                                         </segmentedControl>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OeZ-JZ-aTY">
-                                            <rect key="frame" x="8" y="26" width="304" height="34"/>
+                                            <rect key="frame" x="8" y="26" width="359" height="34"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <state key="normal" title="Button">
-                                                <color key="titleColor" red="0.0" green="0.76078431372549016" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleColor" red="0.0" green="0.76078431372549016" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                             <state key="highlighted">
-                                                <color key="titleColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                             <connections>
                                                 <action selector="changeSelectedStation:" destination="O00-Hc-7L4" eventType="touchUpInside" id="cCi-8b-ibR"/>
@@ -50,12 +106,12 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tips: byt station med ett klick" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FKt-vu-9Hq">
                                             <rect key="frame" x="8" y="61" width="225" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="D9X-hn-sNb">
-                                            <rect key="frame" x="275" y="0.0" width="37" height="37"/>
-                                            <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <rect key="frame" x="330" y="0.0" width="37" height="37"/>
+                                            <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </activityIndicatorView>
                                     </subviews>
                                     <constraints>
@@ -79,14 +135,14 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TravelHeaderCell" rowHeight="27" id="jGy-rW-P4M" customClass="TravelHeaderCell" customModule="Hinner_jag_widget" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="112" width="320" height="27"/>
+                                <rect key="frame" x="0.0" y="362" width="375" height="27"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jGy-rW-P4M" id="ZRr-RP-twh">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="27"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="27"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LAw-5z-Em8">
-                                            <rect key="frame" x="287" y="0.0" width="25" height="25"/>
+                                            <rect key="frame" x="342" y="0.0" width="25" height="25"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="25" id="hOr-j4-yL8"/>
                                             </constraints>
@@ -100,7 +156,7 @@
                                             <state key="normal" image="train_blue"/>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vUR-WS-U2C">
-                                            <rect key="frame" x="37" y="2" width="224" height="21"/>
+                                            <rect key="frame" x="37" y="2" width="279" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <state key="normal" title="Button"/>
                                         </button>
@@ -125,10 +181,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TravelDetailsCell" rowHeight="25" id="ymP-yz-kBy" customClass="TravelDetailsCell" customModule="Hinner_jag_widget" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="139" width="320" height="25"/>
+                                <rect key="frame" x="0.0" y="389" width="375" height="25"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ymP-yz-kBy" id="VYH-zv-pFr">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="25"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="25"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="33 min" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPK-oH-0no">
@@ -137,13 +193,13 @@
                                                 <constraint firstAttribute="width" constant="55" id="zN0-cU-0pP"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9Q-jv-Uqc">
-                                            <rect key="frame" x="71" y="1" width="249" height="21"/>
+                                            <rect key="frame" x="71" y="1" width="304" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -169,16 +225,29 @@
                         </connections>
                     </tableView>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="SuB-cV-Oa9">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
+                    <connections>
+                        <outlet property="arrowTopRight" destination="fbE-L2-U1x" id="Tz8-rk-Fuq"/>
+                        <outlet property="coverView" destination="trq-Xd-rj1" id="sAL-Gs-p1c"/>
+                        <outlet property="showMoreImage" destination="5Zt-Ud-7rI" id="0Tc-XK-0YN"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ph6-Rz-OGg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="508" y="440"/>
+            <point key="canvasLocation" x="507.5" y="439.5"/>
         </scene>
     </scenes>
     <resources>
+        <image name="arrow_top_right" width="64" height="64"/>
         <image name="star_empty" width="300" height="300"/>
-        <image name="train_blue" width="300" height="300"/>
+        <image name="train_blue" width="150" height="150"/>
+        <image name="visa_fler" width="174" height="70"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
+    </simulatedMetricsContainer>
 </document>
