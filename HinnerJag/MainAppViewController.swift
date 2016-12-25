@@ -176,4 +176,9 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
     override open func setNetworkActivityIndicator(visible: Bool) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = visible
     }
+    
+    // Hide status bar
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 }

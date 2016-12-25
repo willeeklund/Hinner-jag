@@ -319,4 +319,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
             print("Unable to match \(stationName)")
         }
     }
+    
+    // Hide status bar
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 }

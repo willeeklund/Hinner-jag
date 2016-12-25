@@ -307,4 +307,8 @@ import UIKit
         print("SIZE")
     }
     
+    // Hide status bar
+    override open var prefersStatusBarHidden: Bool {
+        return true
+    }
 }
