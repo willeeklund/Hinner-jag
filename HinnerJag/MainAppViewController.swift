@@ -146,6 +146,7 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
         walkthrough!.delegate = self
         walkthrough!.addViewController(page_one)
         walkthrough!.addViewController(page_two)
+        walkthrough!.view.backgroundColor = UIColor(hex: "F1FFF1")
         // Show the walkthrough view controller
         self.present(walkthrough!, animated: true) {
             print("Done presenting the walkthrough controller")
