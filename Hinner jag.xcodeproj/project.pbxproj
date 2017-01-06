@@ -128,6 +128,9 @@
 		02D2D7111CFC157200FED0EC /* StopArea+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D2D7091CFC157200FED0EC /* StopArea+CoreDataProperties.swift */; };
 		02D2D7131CFC15C500FED0EC /* StopArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D2D7121CFC15C500FED0EC /* StopArea.swift */; };
 		02D2D7141CFC15C500FED0EC /* StopArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D2D7121CFC15C500FED0EC /* StopArea.swift */; };
+		02D36C021E1F0ADA00E4AE5F /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02D36C011E1F0ADA00E4AE5F /* CoreSpotlight.framework */; };
+		02D36C031E1F0B2F00E4AE5F /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02D36C011E1F0ADA00E4AE5F /* CoreSpotlight.framework */; };
+		02D36C061E1FAC7100E4AE5F /* CoreSpotlightIndexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D36BFD1E1F084A00E4AE5F /* CoreSpotlightIndexer.swift */; };
 		02D4E8431AB61DDC00FD597F /* Hinner_jag_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D4E8421AB61DDC00FD597F /* Hinner_jag_Tests.swift */; };
 		02DDF84E1ABDB19200A9AF12 /* TravelDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DDF84A1ABDAFBB00A9AF12 /* TravelDetailsCell.swift */; };
 		02DDF84F1ABDB19400A9AF12 /* TravelDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DDF84A1ABDAFBB00A9AF12 /* TravelDetailsCell.swift */; };
@@ -381,6 +384,8 @@
 		02D2D7081CFC157200FED0EC /* Line+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Line+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		02D2D7091CFC157200FED0EC /* StopArea+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StopArea+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		02D2D7121CFC15C500FED0EC /* StopArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopArea.swift; sourceTree = "<group>"; };
+		02D36BFD1E1F084A00E4AE5F /* CoreSpotlightIndexer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreSpotlightIndexer.swift; sourceTree = "<group>"; };
+		02D36C011E1F0ADA00E4AE5F /* CoreSpotlight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreSpotlight.framework; path = System/Library/Frameworks/CoreSpotlight.framework; sourceTree = SDKROOT; };
 		02D4E83E1AB61DDC00FD597F /* Hinner jag Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hinner jag Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		02D4E8411AB61DDC00FD597F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02D4E8421AB61DDC00FD597F /* Hinner_jag_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hinner_jag_Tests.swift; sourceTree = "<group>"; };
@@ -399,6 +404,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02D36C031E1F0B2F00E4AE5F /* CoreSpotlight.framework in Frameworks */,
 				9A9061E51CD0707700999F2F /* Fabric.framework in Frameworks */,
 				024965361CCEA69300A1C97A /* MediaPlayer.framework in Frameworks */,
 				9A9061E61CD0707700999F2F /* Crashlytics.framework in Frameworks */,
@@ -414,6 +420,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02D36C021E1F0ADA00E4AE5F /* CoreSpotlight.framework in Frameworks */,
 				0236B3D21ABE219600EDF6C8 /* libGoogleAnalyticsServices.a in Frameworks */,
 				02B11BB81ABA4331003ACD06 /* libz.dylib in Frameworks */,
 				02B11BB61ABA431E003ACD06 /* SystemConfiguration.framework in Frameworks */,
@@ -534,6 +541,7 @@
 		0211B20C1AAE37FB00947C45 /* HinnerJagKit */ = {
 			isa = PBXGroup;
 			children = (
+				02D36BFC1E1F081F00E4AE5F /* Core Spotlight */,
 				02D05B971CBED1BD00BDF4DE /* CoreData */,
 				0248BCAF1C9CB5BB00F0F05A /* Extensions */,
 				022DE4851AC8199B000E9462 /* Controllers */,
@@ -584,6 +592,7 @@
 		0211B2451AAE4BB000947C45 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				02D36C011E1F0ADA00E4AE5F /* CoreSpotlight.framework */,
 				024965351CCEA69300A1C97A /* MediaPlayer.framework */,
 				02B11BB71ABA4331003ACD06 /* libz.dylib */,
 				9A9061E31CD0707700999F2F /* Fabric.framework */,
@@ -766,6 +775,14 @@
 			);
 			name = CoreData;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		02D36BFC1E1F081F00E4AE5F /* Core Spotlight */ = {
+			isa = PBXGroup;
+			children = (
+				02D36BFD1E1F084A00E4AE5F /* CoreSpotlightIndexer.swift */,
+			);
+			name = "Core Spotlight";
 			sourceTree = "<group>";
 		};
 		02D4E83F1AB61DDC00FD597F /* Hinner jag Tests */ = {
@@ -1232,6 +1249,7 @@
 				02D05B941CBED1B400BDF4DE /* JourneyPattern.swift in Sources */,
 				02D2D7131CFC15C500FED0EC /* StopArea.swift in Sources */,
 				0211B2321AAE38B100947C45 /* Departure.swift in Sources */,
+				02D36C061E1FAC7100E4AE5F /* CoreSpotlightIndexer.swift in Sources */,
 				0248BCB11C9CB5E500F0F05A /* NSTimerExtension.swift in Sources */,
 				02D05B871CBEB58A00BDF4DE /* CoreDataStore.swift in Sources */,
 				02D05B881CBEB64000BDF4DE /* LocateStationIOS.swift in Sources */,

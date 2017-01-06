@@ -114,6 +114,21 @@ open class Site: NSManagedObject, MKAnnotation {
         return Site.fillWithSites().filter({ $0.isActive })
     }
     
+    open class func getSite(id: Int64) -> Site? {
+        let fetchRequest: NSFetchRequest<Site> = NSFetchRequest(entityName: Site.entityName)
+        fetchRequest.predicate = NSPredicate(format: "siteId = %d", argumentArray: [id])
+        do {
+            let sites = try CoreDataStore.managedObjectContext!.fetch(fetchRequest)
+            if 1 == sites.count {
+                return sites.first
+            }
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        return nil
+    }
+
+    
     // MARK: - Private helper functions
     
     /**

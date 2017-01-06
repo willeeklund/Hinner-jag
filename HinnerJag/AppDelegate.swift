@@ -12,15 +12,20 @@ import HinnerJagKit
 import WatchConnectivity
 import Fabric
 import Crashlytics
-
+import CoreSpotlight
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     
     var window: UIWindow?
+    let csIndexer = CoreSpotlightIndexer()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         Fabric.with([Crashlytics.self])
-        // Override point for customization after application launch.
+        
+        if #available(iOS 9.0, *) {
+            CSSearchableIndex.default().indexDelegate = csIndexer
+        }
         return true
     }
     
@@ -57,39 +62,70 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         }
         // Find reference to mainVC
         if let mainVC = self.window?.rootViewController as? MainAppViewController {
+            // Hide view controllers on top of mainVC
+            mainVC.dismiss(animated: false, completion: nil)
+            // Decide action from url host
             switch url.host! {
+            
             case "map":
                 // Show the map with selected line
-                // Hide view controllers on top of mainVC
-                mainVC.dismiss(animated: false, completion: nil)
                 // Select chosen line from URL
                 var selectedDict = Dictionary<String, AnyObject>()
                 let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)
                 for item in (urlComponents?.queryItems)! {
-                    if "line" == item.name {
+                    if "line" == item.name,
                         // Found specified line
-                        if let value = item.value {
-                            if let intValue = Int(value) {
-                                selectedDict["lineNumber"] = intValue as AnyObject
-                            }
-                        }
-                    } else if "stopAreaTypeCode" == item.name {
+                        let value = item.value,
+                        let intValue = Int(value)
+                    {
+                        selectedDict["lineNumber"] = intValue as AnyObject
+                    } else if "stopAreaTypeCode" == item.name,
                         // Found specified stopAreaTypeCode
-                        if let chosenStopAreaTypeCode = item.value {
-                            selectedDict["stopAreaTypeCode"] = chosenStopAreaTypeCode as AnyObject
-                        }
+                        let chosenStopAreaTypeCode = item.value
+                    {
+                        selectedDict["stopAreaTypeCode"] = chosenStopAreaTypeCode as AnyObject
                     }
                 }
                 // Only show sites from selected line on map
                 mainVC.performSegue(withIdentifier: "Show Map", sender: selectedDict)
                 trackEvent("AppDelegate", action: "openUrl", label: url.absoluteString, value: nil)
                 return true
+                
+            case "site":
+                let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)
+                for item in (urlComponents?.queryItems)! {
+                    if "siteId" == item.name,
+                        let value = item.value,
+                        let newSiteId = Int64(value),
+                        let newSite = Site.getSite(id: newSiteId)
+                    {
+                        // Show selected site
+                        mainVC.searchFromNewClosestStation(newSite)
+                        trackEvent("AppDelegate", action: "openUrl", label: url.absoluteString, value: nil)
+                        return true
+                    }
+                }
 
             default:
                 print("HinnerJag could not handle url: \(url)")
                 trackEvent("AppDelegate", action: "openUrlFail", label: "HinnerJag could not handle url: \(url)", value: nil)
-                return false
             }
+        }
+        return false
+    }
+    
+    // MARK: - Open Spotlight search
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+        // Check if this is a user activity to see a specific site
+        if let activityIdentifier = userActivity.userInfo?["kCSSearchableItemActivityIdentifier"] as? String,
+            let mainVC = self.window?.rootViewController as? MainAppViewController,
+            activityIdentifier.contains(CoreSpotlightIndexer.identifierPrefix),
+            let newSiteId = Int64(activityIdentifier.replacingOccurrences(of: CoreSpotlightIndexer.identifierPrefix, with: "")),
+            let newSite = Site.getSite(id: newSiteId)
+        {
+            mainVC.searchFromNewClosestStation(newSite)
+            trackEvent("AppDelegate", action: "continue userActivity", label: activityIdentifier, value: nil)
+            return true
         }
         return false
     }
