@@ -79,7 +79,7 @@ public class CoreSpotlightIndexer: NSObject, CSSearchableIndexDelegate {
     }
     
     private func searchItemFrom(site: Site) -> CSSearchableItem? {
-        guard let siteTitle = site.title else {
+        guard site.title != nil else {
             // Site must have title to be searchable
             return nil
         }
