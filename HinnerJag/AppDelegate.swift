@@ -114,19 +114,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         return false
     }
     
-    // MARK: - Open Spotlight search
+    // MARK: - Open Spotlight search result
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+        guard let mainVC = self.window?.rootViewController as? MainAppViewController,
+            let userInfo = userActivity.userInfo
+            else
+        {
+            return false
+        }
         // Check if this is a user activity to see a specific site
-        if let activityIdentifier = userActivity.userInfo?["kCSSearchableItemActivityIdentifier"] as? String,
-            let mainVC = self.window?.rootViewController as? MainAppViewController,
-            activityIdentifier.contains(CoreSpotlightIndexer.identifierPrefix),
-            let newSiteId = Int64(activityIdentifier.replacingOccurrences(of: CoreSpotlightIndexer.identifierPrefix, with: "")),
-            let newSite = Site.getSite(id: newSiteId)
+        var siteId: Int64?
+        if let contentType = userInfo["contentType"] as? String,
+            CoreSpotlightIndexer.siteType == contentType
+        {
+            siteId = userInfo["identifier"] as? Int64
+        } else if let activityIdentifier = userInfo["kCSSearchableItemActivityIdentifier"] as? String,
+            activityIdentifier.contains(CoreSpotlightIndexer.identifierPrefix)
+        {
+            siteId = Int64(activityIdentifier.replacingOccurrences(of: CoreSpotlightIndexer.identifierPrefix, with: ""))
+        }
+        // If found site id, search from that site
+        if let siteId = siteId,
+            let newSite = Site.getSite(id: siteId)
         {
             mainVC.searchFromNewClosestStation(newSite)
-            trackEvent("AppDelegate", action: "continue userActivity", label: activityIdentifier, value: nil)
+            trackEvent("AppDelegate", action: "Continue userActivity", label: "Show site \(siteId)", value: nil)
             return true
         }
+        // Could not continue the user activity
         return false
     }
     

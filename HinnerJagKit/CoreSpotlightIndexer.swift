@@ -12,6 +12,7 @@ import CoreSpotlight
 @available(iOSApplicationExtension 9.0, *)
 public class CoreSpotlightIndexer: NSObject, CSSearchableIndexDelegate {
     public static let siteType = "com.wilhelmeklund.Hinner-jag.siteType"
+    public static let viewSiteActivityType = "com.wilhelmeklund.Hinner-jag.viewSiteActivityType"
     public static let identifierPrefix = "site"
     private let hasIndexedSitesKey = "hasIndexedSites1"
     
@@ -37,18 +38,21 @@ public class CoreSpotlightIndexer: NSObject, CSSearchableIndexDelegate {
     
     public func searchableIndex(_ searchableIndex: CSSearchableIndex, reindexAllSearchableItemsWithAcknowledgementHandler acknowledgementHandler: @escaping () -> Void)
     {
-        var searchableItems = [CSSearchableItem]()
-        for site in Site.getAllSites() {
-            if let searchItem = searchItemFrom(site: site) {
-                searchableItems.append(searchItem)
+        // Need to use main queue because we get Site list from Core Data.
+        DispatchQueue.main.async { [unowned self] in
+            var searchableItems = [CSSearchableItem]()
+            for site in Site.getAllSites() {
+                if let searchItem = self.searchItemFrom(site: site) {
+                    searchableItems.append(searchItem)
+                }
             }
-        }
-        searchableIndex.indexSearchableItems(searchableItems) { error in
-            if nil != error {
-                print("Error indexing: \(error)")
-            } else {
-                print("Done indexing of \(searchableItems.count) stations")
-                acknowledgementHandler()
+            searchableIndex.indexSearchableItems(searchableItems) { error in
+                if nil != error {
+                    print("Error indexing: \(error)")
+                } else {
+                    print("Done indexing of \(searchableItems.count) stations")
+                    acknowledgementHandler()
+                }
             }
         }
     }
@@ -80,12 +84,18 @@ public class CoreSpotlightIndexer: NSObject, CSSearchableIndexDelegate {
             return nil
         }
         let uniqueId = "\(CoreSpotlightIndexer.identifierPrefix)\(site.siteId)"
-        let searchAttributes = CSSearchableItemAttributeSet(itemContentType: CoreSpotlightIndexer.siteType)
-        searchAttributes.title = siteTitle
-        searchAttributes.contentDescription = "Se avgångar just nu från \(siteTitle)"
+        let searchAttributes = CoreSpotlightIndexer.attributeSetFrom(site: site)
         let searchItem = CSSearchableItem(uniqueIdentifier: uniqueId, domainIdentifier: CoreSpotlightIndexer.identifierPrefix, attributeSet: searchAttributes)
         return searchItem
     }
     
-    
+    public class func attributeSetFrom(site: Site) -> CSSearchableItemAttributeSet {
+        let searchAttributes = CSSearchableItemAttributeSet(itemContentType: CoreSpotlightIndexer.siteType)
+        searchAttributes.identifier = "\(site.siteId)"
+        searchAttributes.title = site.title!
+        searchAttributes.contentDescription = "Se avgångar just nu från \(site.title!)"
+        searchAttributes.latitude = site.latitude as NSNumber
+        searchAttributes.longitude = site.longitude as NSNumber
+        return searchAttributes
+    }
 }

@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import MapKit
 import HinnerJagKit
+import CoreSpotlight
 
 open class HinnerJagTableViewController: UITableViewController, LocateStationDelegate
 {
@@ -45,7 +46,24 @@ open class HinnerJagTableViewController: UITableViewController, LocateStationDel
         self.closestSortedStations = stationsSorted
         self.fetchedDepartures = departures
         if nil != station && nil != station!.title {
+            // Track that station was found
             self.trackEvent("Station", action: "found", label: "\(station!.title!) (\(station!.siteId))", value: 1)
+            if #available(iOS 9.0, *) {
+                // Create user activity
+                let userActivity = NSUserActivity(activityType: CoreSpotlightIndexer.viewSiteActivityType)
+                userActivity.title = "\(station!.title!)"
+                userActivity.userInfo = [
+                    "contentType": CoreSpotlightIndexer.siteType,
+                    "identifier": station!.siteId
+                ]
+                userActivity.keywords = ["SL", "tunnelbana", "buss"]
+                userActivity.isEligibleForSearch = true
+                userActivity.isEligibleForHandoff = false
+                userActivity.isEligibleForPublicIndexing = true
+                userActivity.contentAttributeSet = CoreSpotlightIndexer.attributeSetFrom(site: station!)
+                userActivity.becomeCurrent()
+                self.userActivity = userActivity
+            }
         }
         
         if nil == departures {

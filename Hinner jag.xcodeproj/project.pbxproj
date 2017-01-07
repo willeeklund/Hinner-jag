@@ -131,6 +131,7 @@
 		02D36C021E1F0ADA00E4AE5F /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02D36C011E1F0ADA00E4AE5F /* CoreSpotlight.framework */; };
 		02D36C031E1F0B2F00E4AE5F /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02D36C011E1F0ADA00E4AE5F /* CoreSpotlight.framework */; };
 		02D36C061E1FAC7100E4AE5F /* CoreSpotlightIndexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D36BFD1E1F084A00E4AE5F /* CoreSpotlightIndexer.swift */; };
+		02D36C071E2035D200E4AE5F /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02D36C011E1F0ADA00E4AE5F /* CoreSpotlight.framework */; };
 		02D4E8431AB61DDC00FD597F /* Hinner_jag_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D4E8421AB61DDC00FD597F /* Hinner_jag_Tests.swift */; };
 		02DDF84E1ABDB19200A9AF12 /* TravelDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DDF84A1ABDAFBB00A9AF12 /* TravelDetailsCell.swift */; };
 		02DDF84F1ABDB19400A9AF12 /* TravelDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DDF84A1ABDAFBB00A9AF12 /* TravelDetailsCell.swift */; };
@@ -441,6 +442,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02D36C071E2035D200E4AE5F /* CoreSpotlight.framework in Frameworks */,
 				0236B3D31ABE21A600EDF6C8 /* libGoogleAnalyticsServices.a in Frameworks */,
 				02B11BC31ABA48DA003ACD06 /* libz.dylib in Frameworks */,
 				02B11BC21ABA48D2003ACD06 /* CoreData.framework in Frameworks */,
@@ -1438,7 +1440,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Wilhelm Eklund (ZJ75WN6E34)";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_BUILD_NUMBER = 1;
-				CURRENT_PROJECT_VERSION = 2.3;
+				CURRENT_PROJECT_VERSION = 2.4;
 				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1492,7 +1494,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Wilhelm Eklund (AAA3F77UH3)";
 				COPY_PHASE_STRIP = YES;
 				CURRENT_BUILD_NUMBER = 1;
-				CURRENT_PROJECT_VERSION = 2.3;
+				CURRENT_PROJECT_VERSION = 2.4;
 				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
