@@ -143,6 +143,8 @@
 		02F755BB1AB621210088D6C8 /* metro_stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 02F755BA1AB621210088D6C8 /* metro_stations.json */; };
 		9A9061E51CD0707700999F2F /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9061E31CD0707700999F2F /* Fabric.framework */; };
 		9A9061E61CD0707700999F2F /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9061E41CD0707700999F2F /* Crashlytics.framework */; };
+		FEEBCCC21E6F3A7200383C12 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEEBCCC11E6F3A7200383C12 /* Config.plist */; };
+		FEEBCCC31E6F3A7200383C12 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEEBCCC11E6F3A7200383C12 /* Config.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -398,6 +400,7 @@
 		02F755BA1AB621210088D6C8 /* metro_stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = metro_stations.json; sourceTree = "<group>"; };
 		9A9061E31CD0707700999F2F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		9A9061E41CD0707700999F2F /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		FEEBCCC11E6F3A7200383C12 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Config.plist; path = HinnerJagKit/Config.plist; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -568,6 +571,7 @@
 			isa = PBXGroup;
 			children = (
 				0211B20E1AAE37FB00947C45 /* Info.plist */,
+				FEEBCCC11E6F3A7200383C12 /* Config.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1132,6 +1136,7 @@
 				02C592A71B0140A5002A88E4 /* test_departures_9180_farsta_strand.json in Resources */,
 				023F4B7A1AE8C05A00706872 /* test_departures_9510_karlberg.json in Resources */,
 				023F4B7E1AEA168100706872 /* test_departures_9530_stockholms_sodra.json in Resources */,
+				FEEBCCC21E6F3A7200383C12 /* Config.plist in Resources */,
 				02C592A11B013EAD002A88E4 /* test_departures_9720_nynashamn.json in Resources */,
 				0262F4241CC39A3400028D5B /* journeypatternpoints.json in Resources */,
 				02B68E521AC5B36D00EFAA66 /* test_departures.json in Resources */,
@@ -1166,6 +1171,7 @@
 				022238C21BE0047800E32EBD /* test_departures_9180_farsta_strand.json in Resources */,
 				022238BC1BE0046400E32EBD /* test_departures.json in Resources */,
 				022238BF1BE0046E00E32EBD /* test_departures_9530_stockholms_sodra.json in Resources */,
+				FEEBCCC31E6F3A7200383C12 /* Config.plist in Resources */,
 				022238C01BE0047100E32EBD /* test_departures_9720_nynashamn.json in Resources */,
 				0262F4251CC39A3400028D5B /* journeypatternpoints.json in Resources */,
 				022238BB1BE0041900E32EBD /* metro_stations.json in Resources */,
@@ -1524,6 +1530,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Hinner jag.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = AAA3F77UH3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1552,6 +1559,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Hinner jag.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = AAA3F77UH3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1685,6 +1693,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Hinner jag widget/Hinner jag widget.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = AAA3F77UH3;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1711,6 +1720,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Hinner jag widget/Hinner jag widget.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = AAA3F77UH3;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Hinner jag widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -1793,6 +1803,7 @@
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = AAA3F77UH3;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				IBSC_MODULE = HinnerJagWatchOS2_Extension;
@@ -1820,6 +1831,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = AAA3F77UH3;
 				GCC_NO_COMMON_BLOCKS = YES;
 				IBSC_MODULE = HinnerJagWatchOS2_Extension;
 				INFOPLIST_FILE = HinnerJagWatchOS2/Info.plist;
@@ -1846,6 +1858,7 @@
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = AAA3F77UH3;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "HinnerJagWatchOS2 Extension/Info.plist";
@@ -1872,6 +1885,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = AAA3F77UH3;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "HinnerJagWatchOS2 Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";

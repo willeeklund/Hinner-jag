@@ -17,7 +17,6 @@ open class RealtimeDepartures
 
     // MARK: - Variables
     let session: URLSession
-    let realtimeKey = "bebfe14511a74ca5aef16db943ae8589"
     
     public init() {
         let configuration = URLSessionConfiguration.default
@@ -54,8 +53,18 @@ open class RealtimeDepartures
     }
     
     func performRealtimeApiReqForStation(_ station: Site, callback: @escaping ([Departure]?, _ error: NSError?) -> ()) {
-        print("stationId = \(station.siteId)")
-        let urlString = "https://api.sl.se/api2/realtimedepartures.json?key=\(realtimeKey)&timewindow=60&siteid=\(station.siteId)"
+        // Read configuration from plist file
+        guard
+            let bundle = Bundle(identifier: "com.wilhelmeklund.HinnerJagKit"),
+            let configPath = bundle.path(forResource: "Config", ofType: "plist"),
+            let configDict = NSDictionary(contentsOfFile: configPath),
+            let realtimeKey = configDict["realtimeKey"] as? String
+            else
+        {
+            print("Could not read config file with realtimeKey")
+            fatalError()
+        }
+        let urlString = "https://api.sl.se/api2/realtimedeparturesV4.json?key=\(realtimeKey)&timewindow=60&siteid=\(station.siteId)"
         let request = URLRequest(url: URL(string: urlString)!)
         let task = session.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
             if error == nil && data != nil {
