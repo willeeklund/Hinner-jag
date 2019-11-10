@@ -408,8 +408,8 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, Loc
     
     func sendMessageToPhone(_ message: [String: AnyObject]) {
         // Send to iOS app using Watch Connectivity
-        if true == WCSession.default().isReachable {
-            let session = WCSession.default()
+        if true == WCSession.default.isReachable {
+            let session = WCSession.default
             session.sendMessage(message, replyHandler: { reply in
                 if let msg = reply["msg"] as? String {
                     print("Message from iPhone: \(msg)")

@@ -26,7 +26,7 @@ open class TravelHeaderCell: UITableViewCell
         super.init(coder: aDecoder)
     }
     
-    required public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    required public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
@@ -61,10 +61,10 @@ open class TravelHeaderCell: UITableViewCell
             let toggleDirection: String
             // Update button image
             if Line.isLineActive(lineNumber!, withStopAreaTypeCode: stopAreaTypeCode) {
-                starButton.setImage(UIImage(named: "star_full"), for: UIControlState())
+                starButton.setImage(UIImage(named: "star_full"), for: UIControl.State())
                 toggleDirection = "Lade till"
             } else {
-                starButton.setImage(UIImage(named: "star_empty"), for: UIControlState())
+                starButton.setImage(UIImage(named: "star_empty"), for: UIControl.State())
                 toggleDirection = "Tog bort"
             }
             // Make controller create new mappings from departures and reload table
@@ -99,7 +99,7 @@ open class TravelHeaderCell: UITableViewCell
             (cell!.lineNumber, cell!.transportType) = Departure.getLineNumberAndTransportTypeFromSection(sectionString, departuresDict: departuresDict)
             // Set train image
             if nil != imageName {
-                cell?.trainImageButton.setImage(UIImage(named: imageName!), for: UIControlState())
+                cell?.trainImageButton.setImage(UIImage(named: imageName!), for: UIControl.State())
                 cell?.trainImageButton.addTarget(cell!, action: #selector(tapImageOrHeader), for: .touchUpInside)
             }
             // Setup star button
@@ -109,23 +109,23 @@ open class TravelHeaderCell: UITableViewCell
                     nil != cell!.lineNumber
                     && Line.isLineActive(cell!.lineNumber!, withStopAreaTypeCode: cell!.transportType?.stopAreaTypeCode())
                 {
-                    cell?.starButton.setImage(UIImage(named: "star_full"), for: UIControlState())
+                    cell?.starButton.setImage(UIImage(named: "star_full"), for: UIControl.State())
                 } else {
-                    cell?.starButton.setImage(UIImage(named: "star_empty"), for: UIControlState())
+                    cell?.starButton.setImage(UIImage(named: "star_empty"), for: UIControl.State())
                 }
                 cell?.starButton.addTarget(cell!, action: #selector(tapStar), for: .touchUpInside)
             } else {
                 cell?.starButton.isHidden = true
             }
             // Set header text
-            cell?.headerButton.setTitle("\(directionLabel) \(directionSuffix)", for: UIControlState())
+            cell?.headerButton.setTitle("\(directionLabel) \(directionSuffix)", for: UIControl.State())
             cell?.headerButton.addTarget(cell!, action: #selector(tapImageOrHeader), for: .touchUpInside)
             if nil != controller.extensionContext {
                 // In TodayViewController
                 cell?.headerButton.tintColor = Constants.linkColor
             }
         } else {
-            cell?.headerButton.setTitle("", for: UIControlState())
+            cell?.headerButton.setTitle("", for: UIControl.State())
         }
         return cell! as TravelHeaderCell
     }

@@ -175,7 +175,7 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
             let reuseId = "chooseStation"
             var cell = tableView.dequeueReusableCell(withIdentifier: reuseId)
             if cell == nil {
-                cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: reuseId)
+                cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: reuseId)
             }
             let usedRow = (indexPath as NSIndexPath).row + 1
             if usedRow < self.closestSortedStations.count {

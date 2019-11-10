@@ -68,7 +68,7 @@ public extension UIViewController {
     }
     
     // MARK: - GaTrackEvent notification listener
-    func handleGaTrackEvent(_ notification: Notification) {
+    @objc func handleGaTrackEvent(_ notification: Notification) {
         // Only track if this view is shown on screen, avoid duplicates
         if (self.isViewLoaded && nil != self.view.window) {
             // Get event details from notification userInfo

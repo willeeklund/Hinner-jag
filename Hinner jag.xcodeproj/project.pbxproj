@@ -143,10 +143,9 @@
 		02F755BB1AB621210088D6C8 /* metro_stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 02F755BA1AB621210088D6C8 /* metro_stations.json */; };
 		9A9061E51CD0707700999F2F /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9061E31CD0707700999F2F /* Fabric.framework */; };
 		9A9061E61CD0707700999F2F /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9061E41CD0707700999F2F /* Crashlytics.framework */; };
-		FEEBCCC21E6F3A7200383C12 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEEBCCC11E6F3A7200383C12 /* Config.plist */; };
-		FEEBCCC31E6F3A7200383C12 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEEBCCC11E6F3A7200383C12 /* Config.plist */; };
 		FEEBCCC51E6F478700383C12 /* Instabug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEEBCCC41E6F478700383C12 /* Instabug.framework */; };
 		FEEBCCC61E6F478700383C12 /* Instabug.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FEEBCCC41E6F478700383C12 /* Instabug.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FEF059912378BA7400DD4C20 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEF059902378BA7400DD4C20 /* Config.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -403,8 +402,8 @@
 		02F755BA1AB621210088D6C8 /* metro_stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = metro_stations.json; sourceTree = "<group>"; };
 		9A9061E31CD0707700999F2F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		9A9061E41CD0707700999F2F /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		FEEBCCC11E6F3A7200383C12 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Config.plist; path = HinnerJagKit/Config.plist; sourceTree = SOURCE_ROOT; };
 		FEEBCCC41E6F478700383C12 /* Instabug.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Instabug.framework; sourceTree = "<group>"; };
+		FEF059902378BA7400DD4C20 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -575,8 +574,8 @@
 		0211B20D1AAE37FB00947C45 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FEF059902378BA7400DD4C20 /* Config.plist */,
 				0211B20E1AAE37FB00947C45 /* Info.plist */,
-				FEEBCCC11E6F3A7200383C12 /* Config.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1036,7 +1035,7 @@
 					0211B1DD1AAE37B600947C45 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = AAA3F77UH3;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 1010;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -1046,18 +1045,18 @@
 					0211B20A1AAE37FB00947C45 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = AAA3F77UH3;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 1010;
 					};
 					0211B2141AAE37FC00947C45 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = AAA3F77UH3;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 1010;
 						TestTargetID = 0211B1DD1AAE37B600947C45;
 					};
 					0211B2431AAE4BB000947C45 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = AAA3F77UH3;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 1010;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -1067,7 +1066,7 @@
 					0227D91A1BDFFE3D00E734BB = {
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = AAA3F77UH3;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 1010;
 					};
 					02C2234C1B8EE5FF007A162E = {
 						CreatedOnToolsVersion = 7.0;
@@ -1082,7 +1081,7 @@
 					02C223581B8EE600007A162E = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = AAA3F77UH3;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 1010;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -1092,7 +1091,7 @@
 					02D4E83D1AB61DDC00FD597F = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = AAA3F77UH3;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 0211B1DD1AAE37B600947C45;
 					};
@@ -1143,7 +1142,7 @@
 				02C592A71B0140A5002A88E4 /* test_departures_9180_farsta_strand.json in Resources */,
 				023F4B7A1AE8C05A00706872 /* test_departures_9510_karlberg.json in Resources */,
 				023F4B7E1AEA168100706872 /* test_departures_9530_stockholms_sodra.json in Resources */,
-				FEEBCCC21E6F3A7200383C12 /* Config.plist in Resources */,
+				FEF059912378BA7400DD4C20 /* Config.plist in Resources */,
 				02C592A11B013EAD002A88E4 /* test_departures_9720_nynashamn.json in Resources */,
 				0262F4241CC39A3400028D5B /* journeypatternpoints.json in Resources */,
 				02B68E521AC5B36D00EFAA66 /* test_departures.json in Resources */,
@@ -1178,7 +1177,6 @@
 				022238C21BE0047800E32EBD /* test_departures_9180_farsta_strand.json in Resources */,
 				022238BC1BE0046400E32EBD /* test_departures.json in Resources */,
 				022238BF1BE0046E00E32EBD /* test_departures_9530_stockholms_sodra.json in Resources */,
-				FEEBCCC31E6F3A7200383C12 /* Config.plist in Resources */,
 				022238C01BE0047100E32EBD /* test_departures_9720_nynashamn.json in Resources */,
 				0262F4251CC39A3400028D5B /* journeypatternpoints.json in Resources */,
 				022238BB1BE0041900E32EBD /* metro_stations.json in Resources */,
@@ -1568,7 +1566,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wilhelmeklund.Hinner-jag";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1597,7 +1596,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wilhelmeklund.Hinner-jag";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -1631,7 +1631,8 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1662,7 +1663,8 @@
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1686,7 +1688,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wilhelmeklund.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hinner jag.app/Hinner jag";
 			};
 			name = Debug;
@@ -1704,7 +1707,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wilhelmeklund.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hinner jag.app/Hinner jag";
 			};
 			name = Release;
@@ -1731,7 +1735,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1754,7 +1759,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -1780,7 +1786,8 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				VERSION_INFO_PREFIX = "";
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
@@ -1809,7 +1816,8 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				VERSION_INFO_PREFIX = "";
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
@@ -1890,7 +1898,8 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -1916,7 +1925,8 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -1941,7 +1951,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wilhelmeklund.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hinner jag.app/Hinner jag";
 			};
 			name = Debug;
@@ -1962,7 +1973,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wilhelmeklund.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hinner jag.app/Hinner jag";
 			};
 			name = Release;

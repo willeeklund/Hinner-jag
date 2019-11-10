@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     var window: UIWindow?
     let csIndexer = CoreSpotlightIndexer()
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         Fabric.with([Crashlytics.self])
         Instabug.start(withToken: "dbf9a1999264217837c328e2d17e9b2d", invocationEvent: .screenshot)
         
@@ -117,7 +117,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     }
     
     // MARK: - Open Spotlight search result
-    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         guard let mainVC = self.window?.rootViewController as? MainAppViewController,
             let userInfo = userActivity.userInfo
             else
