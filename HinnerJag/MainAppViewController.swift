@@ -70,7 +70,7 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
                         cell?.textLabel?.text = "    \(siteTitle) (\(distFormat))"
                     }
                 }
-                cell?.textLabel?.textColor = UIColor(red: 0, green: 0.478431, blue: 1.0, alpha: 1.0)
+                cell?.textLabel?.textColor = Constants.linkColor
             }
             
             return cell! as UITableViewCell

@@ -121,6 +121,7 @@ open class HeadlineCell: UITableViewCell
         // Text on button
         let closestStationLabel = Utils.getLabelTextForClosestStation(closestStation, ownLocation: location)
         cell?.closestStationButton.setTitle(closestStationLabel, for: UIControl.State())
+        cell?.closestStationButton.tintColor = Constants.linkColor
         // Customize segmented control for travel types of the departures
         cell?.stationTypeSegment.isHidden = (nil == departures)
         if nil != departures {

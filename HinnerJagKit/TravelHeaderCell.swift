@@ -122,10 +122,7 @@ open class TravelHeaderCell: UITableViewCell
             // Set header text
             cell?.headerButton.setTitle("\(directionLabel) \(directionSuffix)", for: UIControl.State())
             cell?.headerButton.addTarget(cell!, action: #selector(tapImageOrHeader), for: .touchUpInside)
-            if nil != controller.extensionContext {
-                // In TodayViewController
-                cell?.headerButton.tintColor = Constants.linkColor
-            }
+            cell?.headerButton.tintColor = Constants.linkColor
         } else {
             cell?.headerButton.setTitle("", for: UIControl.State())
         }
