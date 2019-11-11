@@ -233,7 +233,7 @@
 		0299B6931CCFEBAB003CEDE8 /* screen_intro.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = screen_intro.mp4; path = Assets/Grafik/Walkthrough/videos/screen_intro.mp4; sourceTree = SOURCE_ROOT; };
 		0299B6A81CD00684003CEDE8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0299D1921CA1ECD00027AB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = HinnerJag/Base.lproj/LaunchScreen.xib; sourceTree = SOURCE_ROOT; };
-		02A091561CEF871A008E7D7C /* SearchSuggested.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = SearchSuggested.playground; path = HinnerJag/SearchSuggested.playground; sourceTree = SOURCE_ROOT; };
+		02A091561CEF871A008E7D7C /* SearchSuggested.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = SearchSuggested.playground; path = HinnerJag/SearchSuggested.playground; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		02B11B981ABA3D02003ACD06 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
 		02B11B991ABA3D02003ACD06 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
 		02B11B9A1ABA3D02003ACD06 /* GAIEcommerceFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceFields.h; sourceTree = "<group>"; };
@@ -762,7 +762,7 @@
 					0211B1DD1AAE37B600947C45 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = AAA3F77UH3;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1110;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -772,18 +772,18 @@
 					0211B20A1AAE37FB00947C45 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = AAA3F77UH3;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1110;
 					};
 					0211B2141AAE37FC00947C45 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = AAA3F77UH3;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1110;
 						TestTargetID = 0211B1DD1AAE37B600947C45;
 					};
 					0211B2431AAE4BB000947C45 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = AAA3F77UH3;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1110;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -793,7 +793,7 @@
 					02D4E83D1AB61DDC00FD597F = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = AAA3F77UH3;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1110;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 0211B1DD1AAE37B600947C45;
 					};
@@ -804,6 +804,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -1182,7 +1183,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1212,7 +1213,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -1247,7 +1248,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1279,7 +1280,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1304,7 +1305,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wilhelmeklund.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hinner jag.app/Hinner jag";
 			};
 			name = Debug;
@@ -1323,7 +1324,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wilhelmeklund.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hinner jag.app/Hinner jag";
 			};
 			name = Release;
@@ -1351,7 +1352,7 @@
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1375,7 +1376,7 @@
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -1400,7 +1401,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wilhelmeklund.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hinner jag.app/Hinner jag";
 			};
 			name = Debug;
@@ -1422,7 +1423,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wilhelmeklund.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hinner jag.app/Hinner jag";
 			};
 			name = Release;

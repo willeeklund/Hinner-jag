@@ -12,8 +12,8 @@ open class RealtimeDepartures
 {
     // MARK: - Debug variables
     // Unit test will fail if any of these are true to prevent them from being checked in
-    open let debugBackend = false
-    open let debugJsonData = false
+    public let debugBackend = false
+    public let debugJsonData = false
 
     // MARK: - Variables
     let session: URLSession

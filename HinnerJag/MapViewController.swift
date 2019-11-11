@@ -239,7 +239,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
         searchSuggestionView.isHidden = false
         // Hide showLineLabel if no chosen line or text is entered
         let hasNoLineNumber = nil == chosenLineNumber
-        let hasText = nil != textField.text && textField.text!.characters.count > 0
+        let hasText = nil != textField.text && textField.text!.count > 0
         showLineLabel.isHidden = hasNoLineNumber || hasText
     }
     

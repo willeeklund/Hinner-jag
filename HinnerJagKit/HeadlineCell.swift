@@ -46,7 +46,7 @@ open class HeadlineCell: UITableViewCell
     }
     
     // MARK: - Info message
-    open static var infoMessage: String?
+    public static var infoMessage: String?
     @objc func changeInfoLabel(_ notification: Notification) {
         // Display "message" from notification userInfo
         if nil != (notification as NSNotification).userInfo {
@@ -139,7 +139,7 @@ open class HeadlineCell: UITableViewCell
             }
             // Show selected segment
             let currentTransportType = Utils.currentTransportType(departures!)
-            cell?.stationTypeSegment.selectedSegmentIndex = (cell?.uniqueTransportTypes.index(of: currentTransportType)!)!
+            cell?.stationTypeSegment.selectedSegmentIndex = (cell?.uniqueTransportTypes.firstIndex(of: currentTransportType)!)!
         }
         // Change message of infoLabel, and listen for notification about new info
         NotificationCenter.default.addObserver(cell!, selector: #selector(changeInfoLabel), name: NSNotification.Name(rawValue: Constants.notificationEventInfoMessage), object: nil)
