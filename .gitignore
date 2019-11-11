@@ -7,4 +7,5 @@ build/
 env/
 .DS_Store
 UserInterfaceState.xcuserstate
+HinnerJagKit/Config.plist
 

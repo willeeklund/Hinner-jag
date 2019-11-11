@@ -143,6 +143,10 @@
 		02F755BB1AB621210088D6C8 /* metro_stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 02F755BA1AB621210088D6C8 /* metro_stations.json */; };
 		9A9061E51CD0707700999F2F /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9061E31CD0707700999F2F /* Fabric.framework */; };
 		9A9061E61CD0707700999F2F /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9061E41CD0707700999F2F /* Crashlytics.framework */; };
+		FEEBCCC21E6F3A7200383C12 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEEBCCC11E6F3A7200383C12 /* Config.plist */; };
+		FEEBCCC31E6F3A7200383C12 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEEBCCC11E6F3A7200383C12 /* Config.plist */; };
+		FEEBCCC51E6F478700383C12 /* Instabug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEEBCCC41E6F478700383C12 /* Instabug.framework */; };
+		FEEBCCC61E6F478700383C12 /* Instabug.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FEEBCCC41E6F478700383C12 /* Instabug.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -226,6 +230,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				0211B2231AAE37FC00947C45 /* HinnerJagKit.framework in Embed Frameworks */,
+				FEEBCCC61E6F478700383C12 /* Instabug.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -398,6 +403,8 @@
 		02F755BA1AB621210088D6C8 /* metro_stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = metro_stations.json; sourceTree = "<group>"; };
 		9A9061E31CD0707700999F2F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		9A9061E41CD0707700999F2F /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		FEEBCCC11E6F3A7200383C12 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Config.plist; path = HinnerJagKit/Config.plist; sourceTree = SOURCE_ROOT; };
+		FEEBCCC41E6F478700383C12 /* Instabug.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Instabug.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -408,6 +415,7 @@
 				02D36C031E1F0B2F00E4AE5F /* CoreSpotlight.framework in Frameworks */,
 				9A9061E51CD0707700999F2F /* Fabric.framework in Frameworks */,
 				024965361CCEA69300A1C97A /* MediaPlayer.framework in Frameworks */,
+				FEEBCCC51E6F478700383C12 /* Instabug.framework in Frameworks */,
 				9A9061E61CD0707700999F2F /* Crashlytics.framework in Frameworks */,
 				0236B3D11ABE218300EDF6C8 /* libGoogleAnalyticsServices.a in Frameworks */,
 				02B11BBD1ABA43B9003ACD06 /* libz.dylib in Frameworks */,
@@ -568,6 +576,7 @@
 			isa = PBXGroup;
 			children = (
 				0211B20E1AAE37FB00947C45 /* Info.plist */,
+				FEEBCCC11E6F3A7200383C12 /* Config.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -594,6 +603,7 @@
 		0211B2451AAE4BB000947C45 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FEEBCCC41E6F478700383C12 /* Instabug.framework */,
 				02D36C011E1F0ADA00E4AE5F /* CoreSpotlight.framework */,
 				024965351CCEA69300A1C97A /* MediaPlayer.framework */,
 				02B11BB71ABA4331003ACD06 /* libz.dylib */,
@@ -867,7 +877,8 @@
 				0211B2271AAE37FC00947C45 /* Embed Frameworks */,
 				0211B2551AAE4BB000947C45 /* Embed App Extensions */,
 				02C223771B8EE600007A162E /* Embed Watch Content */,
-				9A9061E21CD0704900999F2F /* ShellScript */,
+				9A9061E21CD0704900999F2F /* Fabric script */,
+				FEEBCCC71E6F487800383C12 /* Instabug script */,
 			);
 			buildRules = (
 			);
@@ -1132,6 +1143,7 @@
 				02C592A71B0140A5002A88E4 /* test_departures_9180_farsta_strand.json in Resources */,
 				023F4B7A1AE8C05A00706872 /* test_departures_9510_karlberg.json in Resources */,
 				023F4B7E1AEA168100706872 /* test_departures_9530_stockholms_sodra.json in Resources */,
+				FEEBCCC21E6F3A7200383C12 /* Config.plist in Resources */,
 				02C592A11B013EAD002A88E4 /* test_departures_9720_nynashamn.json in Resources */,
 				0262F4241CC39A3400028D5B /* journeypatternpoints.json in Resources */,
 				02B68E521AC5B36D00EFAA66 /* test_departures.json in Resources */,
@@ -1166,6 +1178,7 @@
 				022238C21BE0047800E32EBD /* test_departures_9180_farsta_strand.json in Resources */,
 				022238BC1BE0046400E32EBD /* test_departures.json in Resources */,
 				022238BF1BE0046E00E32EBD /* test_departures_9530_stockholms_sodra.json in Resources */,
+				FEEBCCC31E6F3A7200383C12 /* Config.plist in Resources */,
 				022238C01BE0047100E32EBD /* test_departures_9720_nynashamn.json in Resources */,
 				0262F4251CC39A3400028D5B /* journeypatternpoints.json in Resources */,
 				022238BB1BE0041900E32EBD /* metro_stations.json in Resources */,
@@ -1202,18 +1215,33 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		9A9061E21CD0704900999F2F /* ShellScript */ = {
+		9A9061E21CD0704900999F2F /* Fabric script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Fabric script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "./Fabric.framework/run 108469c469765f0d7a6b11e27072e17f510ac466 2d3baa8d468a309031012e594314570ae8b80f1edab805dc73ef966e1caff9ce";
+		};
+		FEEBCCC71E6F487800383C12 /* Instabug script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Instabug script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Instabug.framework/Instabug.bundle/strip-frameworks.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1440,7 +1468,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Wilhelm Eklund (ZJ75WN6E34)";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_BUILD_NUMBER = 1;
-				CURRENT_PROJECT_VERSION = 2.4;
+				CURRENT_PROJECT_VERSION = 2.5;
 				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1494,7 +1522,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Wilhelm Eklund (AAA3F77UH3)";
 				COPY_PHASE_STRIP = YES;
 				CURRENT_BUILD_NUMBER = 1;
-				CURRENT_PROJECT_VERSION = 2.4;
+				CURRENT_PROJECT_VERSION = 2.5;
 				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1524,6 +1552,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Hinner jag.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = AAA3F77UH3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1552,6 +1581,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Hinner jag.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = AAA3F77UH3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1685,6 +1715,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Hinner jag widget/Hinner jag widget.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = AAA3F77UH3;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1711,6 +1742,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Hinner jag widget/Hinner jag widget.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = AAA3F77UH3;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Hinner jag widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -1793,6 +1825,7 @@
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = AAA3F77UH3;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				IBSC_MODULE = HinnerJagWatchOS2_Extension;
@@ -1820,6 +1853,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = AAA3F77UH3;
 				GCC_NO_COMMON_BLOCKS = YES;
 				IBSC_MODULE = HinnerJagWatchOS2_Extension;
 				INFOPLIST_FILE = HinnerJagWatchOS2/Info.plist;
@@ -1846,6 +1880,7 @@
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = AAA3F77UH3;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "HinnerJagWatchOS2 Extension/Info.plist";
@@ -1872,6 +1907,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = AAA3F77UH3;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "HinnerJagWatchOS2 Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";

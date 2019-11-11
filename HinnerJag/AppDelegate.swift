@@ -11,6 +11,7 @@ import CoreData
 import HinnerJagKit
 import WatchConnectivity
 import Fabric
+import Instabug
 import Crashlytics
 import CoreSpotlight
 
@@ -22,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         Fabric.with([Crashlytics.self])
+        Instabug.start(withToken: "dbf9a1999264217837c328e2d17e9b2d", invocationEvent: .screenshot)
         
         if #available(iOS 9.0, *) {
             CSSearchableIndex.default().indexDelegate = csIndexer
