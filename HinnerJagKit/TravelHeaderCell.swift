@@ -32,25 +32,27 @@ open class TravelHeaderCell: UITableViewCell
     
     // MARK: - Interact with table cell
     @IBAction func tapImageOrHeader(_ sender: AnyObject) {
-        if nil != lineNumber && nil != transportType {
-            let chosenStopAreaTypeCode = transportType!.stopAreaTypeCode()
-            let query = "line=\(lineNumber!)&stopAreaTypeCode=\(chosenStopAreaTypeCode)"
-            // Check if we are in TodayExtension
-            if nil != controller?.extensionContext {
-                // Launch app and show map with only stations along this line
-                if let hinnerJagUrl = URL(string: "hinner-jag://map?\(query)") {
-                    controller?.extensionContext?.open(hinnerJagUrl, completionHandler: nil)
-                    controller?.trackEvent("Show line sites", action: "TodayWidget: callOpenUrl", label: hinnerJagUrl.absoluteString, value: nil)
-                }
-            } else {
-                let selectedDict: Dictionary<String, AnyObject> = [
-                    "lineNumber": lineNumber! as AnyObject,
-                    "stopAreaTypeCode": chosenStopAreaTypeCode as AnyObject
-                ]
-                controller?.performSegue(withIdentifier: "Show Map", sender: selectedDict)
-                controller?.trackEvent("Show line sites", action: "Show Map", label: query, value: nil)
-            }
-        }
+        // Did tap image or header. But since searching for stops along the line does not work, do nothing
+        return
+//        if nil != lineNumber && nil != transportType {
+//            let chosenStopAreaTypeCode = transportType!.stopAreaTypeCode()
+//            let query = "line=\(lineNumber!)&stopAreaTypeCode=\(chosenStopAreaTypeCode)"
+//            // Check if we are in TodayExtension
+//            if nil != controller?.extensionContext {
+//                // Launch app and show map with only stations along this line
+//                if let hinnerJagUrl = URL(string: "hinner-jag://map?\(query)") {
+//                    controller?.extensionContext?.open(hinnerJagUrl, completionHandler: nil)
+//                    controller?.trackEvent("Show line sites", action: "TodayWidget: callOpenUrl", label: hinnerJagUrl.absoluteString, value: nil)
+//                }
+//            } else {
+//                let selectedDict: Dictionary<String, AnyObject> = [
+//                    "lineNumber": lineNumber! as AnyObject,
+//                    "stopAreaTypeCode": chosenStopAreaTypeCode as AnyObject
+//                ]
+//                controller?.performSegue(withIdentifier: "Show Map", sender: selectedDict)
+//                controller?.trackEvent("Show line sites", action: "Show Map", label: query, value: nil)
+//            }
+//        }
     }
     
     @IBAction func tapStar(_ sender: AnyObject) {
