@@ -7,17 +7,17 @@
 //
 
 import Foundation
-import MediaPlayer
+import AVKit
 import HinnerJagKit
 
 class BWWalkThroughVideoViewController: BWWalkthroughPageViewController {
     
-    var moviePlayer: MPMoviePlayerController!
+    var moviePlayer: AVPlayerViewController!
     var timerForWatching: Timer?
     
     deinit {
         timerForWatching?.invalidate()
-        moviePlayer.stop()
+        moviePlayer.player?.pause()
     }
     
     override func viewDidLoad() {
@@ -25,16 +25,13 @@ class BWWalkThroughVideoViewController: BWWalkthroughPageViewController {
         gaSetup()
         if let path = Bundle.main.path(forResource: "screen_intro", ofType:"mp4") {
             let url = URL(fileURLWithPath: path)
-            self.moviePlayer = MPMoviePlayerController(contentURL: url)
+            let avPlayer = AVPlayer(url: url)
+            self.moviePlayer = AVPlayerViewController()
+            self.moviePlayer.player = avPlayer
             if let player = self.moviePlayer {
                 let deltaY = CGFloat(60)
-                player.view.frame = CGRect(x: 0, y: deltaY, width: self.view.frame.size.width, height: self.view.frame.size.height - deltaY * 2)
+                player.view.frame = CGRect(x: 0, y: deltaY, width: self.view.frame.size.width, height: self.view.frame.size.height - deltaY * 3)
                 player.view.sizeToFit()
-                player.scalingMode = .aspectFit
-                player.controlStyle = .embedded
-                player.backgroundView.backgroundColor = UIColor.white
-                player.movieSourceType = .file
-                player.repeatMode = MPMovieRepeatMode.none
                 self.view.addSubview(player.view)
             } else {
                 print("Could not create MediaPlayer")
@@ -45,7 +42,7 @@ class BWWalkThroughVideoViewController: BWWalkthroughPageViewController {
     }
     
     func playMovie() {
-        if let player = self.moviePlayer {
+        if let player = self.moviePlayer.player {
             player.play()
             // If user still see this view after 25 sec,
             // track event because they viewed the whole video

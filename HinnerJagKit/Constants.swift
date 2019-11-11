@@ -9,8 +9,8 @@
 import Foundation
 
 open class Constants {
-    open static let notificationEventActivityIndicator = "HeadlineCellActivityIndicator"
-    open static let notificationEventInfoMessage = "HeadlineCellInfoLabelMessage"
-    open static let gaTrackEvent = "gaTrackEvent"
-    open static let linkColor = UIColor(red: 8.0/255.0, green: 206.0/255.0, blue: 253.0/255.0, alpha: 1)
+    public static let notificationEventActivityIndicator = "HeadlineCellActivityIndicator"
+    public static let notificationEventInfoMessage = "HeadlineCellInfoLabelMessage"
+    public static let gaTrackEvent = "gaTrackEvent"
+    public static let linkColor = UIColor(red: 30.0/255.0, green: 89.0/255.0, blue: 185.0/255.0, alpha: 1)
 }

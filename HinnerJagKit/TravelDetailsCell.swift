@@ -20,7 +20,7 @@ class TravelDetailsCell: UITableViewCell
         super.init(coder: aDecoder)
     }
     
-    required override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    required override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     

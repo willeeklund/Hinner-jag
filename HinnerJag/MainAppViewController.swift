@@ -58,7 +58,7 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
             let reuseId = "chooseStation"
             var cell = tableView.dequeueReusableCell(withIdentifier: reuseId)
             if cell == nil {
-                cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: reuseId)
+                cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: reuseId)
             }
             let usedRow = (indexPath as NSIndexPath).row + 1
             if usedRow < self.closestSortedStations.count {
@@ -70,7 +70,7 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
                         cell?.textLabel?.text = "    \(siteTitle) (\(distFormat))"
                     }
                 }
-                cell?.textLabel?.textColor = UIColor(red: 0, green: 0.478431, blue: 1.0, alpha: 1.0)
+                cell?.textLabel?.textColor = Constants.linkColor
             }
             
             return cell! as UITableViewCell
@@ -114,7 +114,7 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
         Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(MainAppViewController.checkIfHasSeenWalkthrough), userInfo: nil, repeats: false)
     }
     
-    func checkIfHasSeenWalkthrough() {
+    @objc func checkIfHasSeenWalkthrough() {
         let walkthroughKey = "hasSeenWalkthrough2"
         if !UserDefaults.standard.bool(forKey: walkthroughKey) {
             self.showWalkthrough()
@@ -168,9 +168,9 @@ class MainAppViewController: HinnerJagTableViewController, BWWalkthroughViewCont
     func walkthroughPageDidChange(_ pageNumber:Int) {
         if 1 == pageNumber {
             introVideoVC?.playMovie()
-            walkthrough?.closeButton?.setTitle("Klar med intro - använd appen", for: UIControlState())
+            walkthrough?.closeButton?.setTitle("Klar med intro - använd appen", for: UIControl.State())
         } else {
-            walkthrough?.closeButton?.setTitle("Se introfilmen", for: UIControlState())
+            walkthrough?.closeButton?.setTitle("Se introfilmen", for: UIControl.State())
         }
     }
     

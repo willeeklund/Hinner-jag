@@ -84,7 +84,7 @@ open class CoreDataStore: NSObject {
     
     // MARK: - managedObjectContext
     
-    open static var managedObjectContext: NSManagedObjectContext? {
+    public static var managedObjectContext: NSManagedObjectContext? {
         get {
             if nil != CoreDataStore.obj {
                 return CoreDataStore.obj!
@@ -105,7 +105,7 @@ open class CoreDataStore: NSObject {
      
      This is always performed on main queue, to be thread safe
     */
-    open static func saveContext() {
+    public static func saveContext() {
         do {
             try CoreDataStore.managedObjectContext?.save()
         } catch let error as NSError  {
@@ -116,7 +116,7 @@ open class CoreDataStore: NSObject {
     /**
      Fetch all items in entity and request to delete them
      */
-    open static func batchDeleteEntity(_ entityName: String) {
+    public static func batchDeleteEntity(_ entityName: String) {
         defer { CoreDataStore.saveContext() }
         do {
             if #available(iOSApplicationExtension 9.0, *) {

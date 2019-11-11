@@ -46,8 +46,8 @@ open class HeadlineCell: UITableViewCell
     }
     
     // MARK: - Info message
-    open static var infoMessage: String?
-    func changeInfoLabel(_ notification: Notification) {
+    public static var infoMessage: String?
+    @objc func changeInfoLabel(_ notification: Notification) {
         // Display "message" from notification userInfo
         if nil != (notification as NSNotification).userInfo {
             if let newMessage = (notification as NSNotification).userInfo!["message"] as? String {
@@ -82,7 +82,7 @@ open class HeadlineCell: UITableViewCell
     }
     
     // MARK: - Activity indicator
-    func toggleActivityIndicator(_ notification: Notification) {
+    @objc func toggleActivityIndicator(_ notification: Notification) {
         if let userInfo = (notification as NSNotification).userInfo {
             if let showActivityIndicator = userInfo["show"] as? Bool {
                 DispatchQueue.main.async(execute: {
@@ -101,7 +101,7 @@ open class HeadlineCell: UITableViewCell
         super.init(coder: aDecoder)
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
@@ -120,7 +120,8 @@ open class HeadlineCell: UITableViewCell
         cell?.controller = controller
         // Text on button
         let closestStationLabel = Utils.getLabelTextForClosestStation(closestStation, ownLocation: location)
-        cell?.closestStationButton.setTitle(closestStationLabel, for: UIControlState())
+        cell?.closestStationButton.setTitle(closestStationLabel, for: UIControl.State())
+        cell?.closestStationButton.tintColor = Constants.linkColor
         // Customize segmented control for travel types of the departures
         cell?.stationTypeSegment.isHidden = (nil == departures)
         if nil != departures {
@@ -139,7 +140,7 @@ open class HeadlineCell: UITableViewCell
             }
             // Show selected segment
             let currentTransportType = Utils.currentTransportType(departures!)
-            cell?.stationTypeSegment.selectedSegmentIndex = (cell?.uniqueTransportTypes.index(of: currentTransportType)!)!
+            cell?.stationTypeSegment.selectedSegmentIndex = (cell?.uniqueTransportTypes.firstIndex(of: currentTransportType)!)!
         }
         // Change message of infoLabel, and listen for notification about new info
         NotificationCenter.default.addObserver(cell!, selector: #selector(changeInfoLabel), name: NSNotification.Name(rawValue: Constants.notificationEventInfoMessage), object: nil)

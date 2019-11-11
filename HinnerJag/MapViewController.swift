@@ -167,7 +167,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
                 } else {
                     view?.pinColor = .green
                 }
-                accessoryButton.setImage(UIImage(named: "star_full"), for: UIControlState())
+                accessoryButton.setImage(UIImage(named: "star_full"), for: UIControl.State())
             } else {
                 if #available(iOS 9.0, *) {
                     if
@@ -183,7 +183,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
                 } else {
                     view?.pinColor = .red
                 }
-                accessoryButton.setImage(UIImage(named: "star_empty"), for: UIControlState())
+                accessoryButton.setImage(UIImage(named: "star_empty"), for: UIControl.State())
             }
         }
         return view
@@ -222,7 +222,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
         showLineLabel.isHidden = nil == chosenLineNumber
     }
     
-    func tappedAnnotation(_ recognizer: UIPanGestureRecognizer) {
+    @objc func tappedAnnotation(_ recognizer: UIPanGestureRecognizer) {
         if let view = recognizer.view as? MKAnnotationView {
             if presentingViewController is MainAppViewController && view.annotation is Site {
                 let station = view.annotation as! Site
@@ -239,7 +239,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
         searchSuggestionView.isHidden = false
         // Hide showLineLabel if no chosen line or text is entered
         let hasNoLineNumber = nil == chosenLineNumber
-        let hasText = nil != textField.text && textField.text!.characters.count > 0
+        let hasText = nil != textField.text && textField.text!.count > 0
         showLineLabel.isHidden = hasNoLineNumber || hasText
     }
     
@@ -251,7 +251,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
         return true
     }
     
-    func textFieldValueChanged(_ textField: UITextField) {
+    @objc func textFieldValueChanged(_ textField: UITextField) {
         // Show and clear suggested searches view
         searchSuggestionView.isHidden = false
         searchSuggestionView.subviews.forEach({ $0.removeFromSuperview() })
@@ -291,16 +291,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegat
         for (index, site) in sites[0...min(7, sites.count - 1)].enumerated() {
             let button = UIButton(frame: CGRect(x: 0, y: CGFloat(index * 30), width: searchSuggestionView.frame.width, height: 30))
             button.tintColor = linkColor
-            button.setTitle(site.title!, for: UIControlState())
+            button.setTitle(site.title!, for: UIControl.State())
             button.backgroundColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.7)
-            button.setTitleColor(UIColor.blue, for: UIControlState())
+            button.setTitleColor(UIColor.blue, for: UIControl.State())
             button.addTarget(self, action: #selector(selectSuggestionButton), for: .touchUpInside)
             searchSuggestionView.addSubview(button)
             _ = searchSuggestionView.frame.width
         }
     }
     
-    func selectSuggestionButton(_ button: UIButton) {
+    @objc func selectSuggestionButton(_ button: UIButton) {
         if let stationName = button.currentTitle {
             for annotation in mapView.annotations {
                 if stationName == annotation.title! {

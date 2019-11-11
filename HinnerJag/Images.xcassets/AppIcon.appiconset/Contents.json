@@ -45,6 +45,12 @@
       "idiom" : "iphone",
       "filename" : "HinnerjagSTHLM_180x180.png",
       "scale" : "3x"
+    },
+    {
+      "size" : "1024x1024",
+      "idiom" : "ios-marketing",
+      "filename" : "HinnerjagSTHLM_1024x1024.png",
+      "scale" : "1x"
     }
   ],
   "info" : {

@@ -57,7 +57,7 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
             // This makes it possible to see the longer display mode
             extensionContext?.widgetLargestAvailableDisplayMode = .expanded
         }
-        self.view.backgroundColor = UIColor.darkGray
+        self.view.backgroundColor = UIColor.lightGray
         // Reset
         self.departuresDict = Dictionary<String, [Departure]>()
         self.closestStation = nil
@@ -175,7 +175,7 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
             let reuseId = "chooseStation"
             var cell = tableView.dequeueReusableCell(withIdentifier: reuseId)
             if cell == nil {
-                cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: reuseId)
+                cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: reuseId)
             }
             let usedRow = (indexPath as NSIndexPath).row + 1
             if usedRow < self.closestSortedStations.count {
@@ -193,7 +193,7 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
     }
     
     // MARK: - Today widget specific stuff
-    private func widgetPerformUpdate(completionHandler: ((NCUpdateResult) -> Void)) {
+    internal func widgetPerformUpdate(completionHandler: ((NCUpdateResult) -> Void)) {
         completionHandler(NCUpdateResult.newData)
     }
     

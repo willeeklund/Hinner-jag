@@ -91,7 +91,7 @@ import UIKit
     
     // MARK: - Private properties -
     
-    open let scrollview = UIScrollView()
+    public let scrollview = UIScrollView()
     fileprivate var controllers = [UIViewController]()
     fileprivate var lastViewConstraint: [NSLayoutConstraint]?
     
@@ -115,7 +115,7 @@ import UIKit
         
         // Initialize UI Elements
         
-        pageControl?.addTarget(self, action: #selector(BWWalkthroughViewController.pageControlDidTouch), for: UIControlEvents.touchUpInside)
+        pageControl?.addTarget(self, action: #selector(BWWalkthroughViewController.pageControlDidTouch), for: UIControl.Event.touchUpInside)
         
         // Scrollview
         
@@ -175,7 +175,7 @@ import UIKit
         }
     }
     
-    func pageControlDidTouch(){
+    @objc func pageControlDidTouch(){
         
         if let pc = pageControl{
             gotoPage(pc.currentPage)

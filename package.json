@@ -1,28 +1,28 @@
 {
-  "name": "Hinner-jag",
-  "version": "2.0.0",
+  "name": "hinner-jag",
+  "version": "3.0.0",
   "description": "Will I make it in time for the Sthlm subway?",
   "main": "Gruntfile.js",
   "engines": {
-    "node": "0.10.30"
+    "node": ">=8"
   },
   "scripts": {
     "start": "node ./backend/index.js"
   },
   "dependencies": {
     "async": "~0.6",
-    "browserify": "^3.41.0",
+    "browserify": "^16.5.0",
     "colors": "~0.6.2",
-    "csv": "^0.4.1",
+    "csv": "^5.1.3",
     "excel-parser": "^0.2.2",
-    "express": "~2.0",
-    "hbs": "~2.4",
+    "express": "^4.17.1",
+    "hbs": "^4.0.6",
     "memory-cache": "0.0.5",
-    "mongodb": "~1.3",
-    "newrelic": "^1.18.3",
+    "mongodb": "^3.3.3",
+    "newrelic": "^6.1.0",
     "nodetime": "~0.8",
     "pg": "^4.2.0",
-    "request": "~2.34",
+    "request": "^2.88.0",
     "xml2js": "~0.4"
   },
   "devDependencies": {},
