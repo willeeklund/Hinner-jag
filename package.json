@@ -22,7 +22,7 @@
     "newrelic": "^1.18.3",
     "nodetime": "~0.8",
     "pg": "^4.2.0",
-    "request": "~2.34",
+    "request": "~2.88",
     "xml2js": "~0.4"
   },
   "devDependencies": {},
