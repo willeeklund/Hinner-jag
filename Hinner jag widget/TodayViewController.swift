@@ -57,7 +57,7 @@ class TodayViewController: HinnerJagTableViewController, NCWidgetProviding, CLLo
             // This makes it possible to see the longer display mode
             extensionContext?.widgetLargestAvailableDisplayMode = .expanded
         }
-        self.view.backgroundColor = UIColor.lightGray
+//        self.view.backgroundColor = UIColor.lightGray
         // Reset
         self.departuresDict = Dictionary<String, [Departure]>()
         self.closestStation = nil
