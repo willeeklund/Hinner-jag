@@ -7,5 +7,5 @@ build/
 env/
 .DS_Store
 UserInterfaceState.xcuserstate
-HinnerJagKit/Config.plist
+hinner-jag-swift/HinnerJagKit/Config.plist
 
